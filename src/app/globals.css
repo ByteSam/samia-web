@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6ecda;
+  --foreground: #241509;
+
+  /* SamIA brand palette */
+  --color-sand: #f6ecda;
+  --color-sand-dark: #ecdcb9;
+  --color-ink: #241509;
+  --color-terracota: #c1502e;
+  --color-terracota-dark: #9c3d21;
+  --color-rojo-tierra: #8c2f1b;
+  --color-dorado: #c1892b;
+  --color-dorado-light: #e9c876;
+  --color-whatsapp: #25d366;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sand: var(--color-sand);
+  --color-sand-dark: var(--color-sand-dark);
+  --color-ink: var(--color-ink);
+  --color-terracota: var(--color-terracota);
+  --color-terracota-dark: var(--color-terracota-dark);
+  --color-rojo-tierra: var(--color-rojo-tierra);
+  --color-dorado: var(--color-dorado);
+  --color-dorado-light: var(--color-dorado-light);
+  --color-whatsapp: var(--color-whatsapp);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* ---- Tarjetas: radius grande, mucho padding, sin sombra fuerte ---- */
+.card-soft {
+  border-radius: 24px;
+  border: 1px solid rgba(36, 21, 9, 0.08);
+  background: white;
+  padding: 32px;
+}
+
+.card-soft-tint {
+  border-radius: 24px;
+  border: 1px solid rgba(193, 80, 46, 0.15);
+  background: rgba(193, 80, 46, 0.06);
+  padding: 32px;
+}
+
+.card-soft-dark {
+  border-radius: 24px;
+  background: var(--color-ink);
+  color: var(--color-sand);
+  padding: 32px;
+}
+
+/* ---- Botones: grandes, pill, hover sutil, sin gradiente ---- */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.btn-pill:hover {
+  opacity: 0.88;
+}
+.btn-pill:active {
+  transform: scale(0.98);
+}
+
+.btn-pill-solid {
+  background: var(--color-terracota);
+  color: white;
+}
+.btn-pill-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1.5px solid rgba(36, 21, 9, 0.15);
+}
+.btn-pill-whatsapp {
+  background: var(--color-whatsapp);
+  color: white;
+}
+
+/* ---- Chip / tag ---- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(193, 80, 46, 0.08);
+  color: var(--color-terracota-dark);
+}
+
+/* ---- Animaciones sutiles ---- */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+.reveal.is-visible {
+  animation: fade-in-up 0.6s ease forwards;
+}
+
+.hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(36, 21, 9, 0.08);
+}
