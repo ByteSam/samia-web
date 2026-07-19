@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
+import LeadForm from "@/components/LeadForm";
 import { CAL_COM_URL, whatsappLink } from "@/lib/contact";
 
 // Mientras no exista un link real de Cal.com, "Agendar" cae a WhatsApp con mensaje precargado.
@@ -144,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* FLUJO */}
-      <section className="mx-auto max-w-5xl px-6 pb-20">
+      <section className="mx-auto max-w-5xl px-6 pb-12">
         <div className="grid gap-6 sm:grid-cols-3">
           {FLUJO.map((step, i) => (
             <Reveal key={step.t} delay={i * 80}>
@@ -161,6 +162,13 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      {/* FORMULARIO DE LEADS — el paso 2 del flujo, en vivo */}
+      <section id="contacto" className="mx-auto max-w-md px-6 pb-20">
+        <Reveal>
+          <LeadForm />
+        </Reveal>
       </section>
 
       {/* TECNOLOGIAS */}
