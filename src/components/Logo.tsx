@@ -6,9 +6,9 @@ type LogoProps = {
   height?: number;
 };
 
-const LOGO_RATIO = 1310 / 347;
+const LOGO_RATIO = 1294 / 526;
 
-/** Marca SamIA (logo real, generado por Daniel). */
+/** Marca ichan (logo real, generado por Daniel). */
 export default function Logo({ className, height = 40 }: LogoProps) {
   return (
     <Image
