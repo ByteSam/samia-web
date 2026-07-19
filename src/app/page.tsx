@@ -9,9 +9,46 @@ import {
   Wrench,
   MessageCircleMore,
   CalendarCheck,
+  ClipboardList,
+  Settings2,
+  PackageCheck,
 } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
+import { CAL_COM_URL, whatsappLink } from "@/lib/contact";
+
+// Mientras no exista un link real de Cal.com, "Agendar" cae a WhatsApp con mensaje precargado.
+const AGENDAR_HREF =
+  CAL_COM_URL ?? whatsappLink("Hola, quiero agendar un diagnóstico gratis");
+
+const FLUJO = [
+  {
+    t: "Visita la web",
+    d: "Un visitante llega a tu página desde redes, Google o un anuncio.",
+    icon: Wrench,
+  },
+  {
+    t: "Deja sus datos",
+    d: "Completa un formulario simple: nombre, contacto y qué necesita.",
+    icon: ClipboardList,
+  },
+  {
+    t: "Recibes el aviso",
+    d: "Te llega un mensaje de WhatsApp al instante — así no pierdes al lead.",
+    icon: MessageCircleMore,
+  },
+];
+
+const TECNOLOGIAS = [
+  "AWS",
+  "OpenAI",
+  "Claude",
+  "n8n",
+  "WhatsApp Business",
+  "Culqi",
+  "Google Calendar",
+  "Notion",
+];
 
 const NICHOS = [
   {
@@ -34,24 +71,21 @@ const NICHO_PROXIMAMENTE = {
   icon: Building2,
 };
 
-const PAQUETES = [
+const PROCESO = [
   {
-    nombre: "Recepcionista IA WhatsApp",
-    entrega: "3-7 días",
-    setup: "S/1,500 – 3,500",
-    retainer: "S/350 – 800 /mes",
+    t: "Diagnóstico gratuito",
+    d: "Conversamos sobre tu negocio y detectamos qué procesos automatizar.",
+    icon: ClipboardList,
   },
   {
-    nombre: "Missed-call text-back",
-    entrega: "1-2 días",
-    setup: "S/500 – 1,200",
-    retainer: "S/200 – 500 /mes",
+    t: "Implementación",
+    d: "Configuro el asistente e integro las herramientas necesarias.",
+    icon: Settings2,
   },
   {
-    nombre: "Chatbot con base de conocimiento (RAG)",
-    entrega: "1-3 semanas",
-    setup: "S/2,500 – 7,000",
-    retainer: "S/400 – 1,000 /mes",
+    t: "Entrega",
+    d: "Probamos todo contigo hasta dejarlo funcionando.",
+    icon: PackageCheck,
   },
 ];
 
@@ -71,34 +105,94 @@ export default function Home() {
         />
 
         <Reveal>
-          <span className="chip">Ingeniería real de IA · en soles · por WhatsApp</span>
+          <span className="chip">Webs que venden · automatización · WhatsApp</span>
         </Reveal>
 
         <Reveal delay={80}>
-          <h1 className="relative mt-6 max-w-3xl text-[2.5rem] font-normal leading-[1.05] text-ink sm:text-6xl md:text-[4.5rem]">
-            Tu negocio responde el{" "}
-            <span className="font-display italic text-terracota">100%</span> de sus
-            mensajes, 24/7.
+          <h1 className="relative mt-6 max-w-2xl text-[2.5rem] font-normal leading-[1.05] text-ink sm:text-6xl md:text-[4rem]">
+            Una web que{" "}
+            <span className="font-display italic text-terracota">convierte</span> visitas
+            en clientes.
           </h1>
         </Reveal>
         <Reveal delay={140}>
           <p className="relative mt-6 max-w-xl text-lg text-ink/60">
-            Asistentes de IA por WhatsApp y automatizaciones para pymes
-            peruanas — andando en días, no en meses.
+            Diseño tu web, conecto tus formularios y te aviso por WhatsApp
+            cuando llega un nuevo cliente potencial.
           </p>
         </Reveal>
         <Reveal delay={200}>
-          <div className="relative mt-10 flex flex-wrap gap-4">
-            <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
-              Diagnóstico gratis
-            </WhatsAppButton>
+          <div className="relative mt-10 flex flex-col items-start gap-3">
+            <div className="flex flex-wrap gap-4">
+              <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
+                Diagnóstico gratis
+              </WhatsAppButton>
+              <a
+                href={AGENDAR_HREF}
+                target={CAL_COM_URL ? "_blank" : undefined}
+                rel={CAL_COM_URL ? "noopener noreferrer" : undefined}
+                className="btn-pill btn-pill-ghost"
+              >
+                Agendar diagnóstico gratis
+              </a>
+            </div>
+            <p className="text-sm text-ink/55">
+              Hablarás directamente conmigo, no con un call center.
+            </p>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* FLUJO */}
+      <section className="mx-auto max-w-5xl px-6 pb-20">
+        <div className="grid gap-6 sm:grid-cols-3">
+          {FLUJO.map((step, i) => (
+            <Reveal key={step.t} delay={i * 80}>
+              <div className="card-soft h-full">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-sm font-medium text-ink">
+                    {i + 1}
+                  </span>
+                  <step.icon className="h-5 w-5 text-terracota" strokeWidth={1.5} />
+                </div>
+                <h3 className="mt-4 font-medium text-ink">{step.t}</h3>
+                <p className="mt-2 text-sm text-ink/60">{step.d}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* TECNOLOGIAS */}
+      <section className="mx-auto max-w-5xl px-6 pb-20">
+        <Reveal>
+          <p className="text-center text-xs font-medium uppercase tracking-[0.15em] text-ink/45">
+            Construido sobre herramientas profesionales
+          </p>
+          <div className="mx-auto mt-5 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            {TECNOLOGIAS.map((t) => (
+              <span
+                key={t}
+                className="text-sm font-medium tracking-wide text-ink/60"
+              >
+                {t}
+              </span>
+            ))}
           </div>
         </Reveal>
       </section>
 
       {/* GRID DE TARJETAS — lo que hace tu asistente */}
       <section className="mx-auto max-w-5xl px-6 pb-24">
-        <div className="grid gap-6 md:grid-cols-3 md:auto-rows-fr">
+        <Reveal>
+          <h2 className="text-3xl font-medium text-ink">Y tu web no se queda ahí</h2>
+          <p className="mt-2 max-w-md text-ink/60">
+            Una web es el inicio, no el final. Cuando tu negocio lo necesita,
+            la conecto con WhatsApp y automatizaciones para que ninguna
+            consulta se pierda.
+          </p>
+        </Reveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-3 md:auto-rows-fr">
           <Reveal className="md:col-span-1" delay={0}>
             <div className="card-soft hover-lift h-full">
               <span className="chip">capacidades</span>
@@ -135,9 +229,10 @@ export default function Home() {
               <p className="mt-8 font-display text-6xl italic text-terracota-dark">
                 &lt;30<span className="text-2xl not-italic font-sans"> seg</span>
               </p>
-              <div className="mt-6 flex items-center gap-2 text-xs font-medium text-terracota-dark/70">
+              <div className="mt-6 flex items-center gap-2 text-xs font-medium text-terracota-dark/80">
                 <Hexagon className="h-4 w-4 shrink-0" strokeWidth={1.5} />
-                Meta que fijo en cada implementación, medible desde el día 1.
+                Es lo que me propongo con cada cliente — lo compruebas desde
+                la primera semana.
               </div>
             </div>
           </Reveal>
@@ -158,8 +253,8 @@ export default function Home() {
                   </span>
                 </div>
                 <p className="mt-3 text-sm text-sand/65">
-                  Atiende consultas 24/7, deriva a un humano solo cuando hace
-                  falta.
+                  Atiende consultas al instante, deriva a un humano solo
+                  cuando hace falta.
                 </p>
               </div>
             </Reveal>
@@ -186,78 +281,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NICHOS */}
+      {/* COMO TRABAJAMOS */}
       <section className="mx-auto max-w-5xl px-6 pb-24">
         <Reveal>
-          <h2 className="text-3xl font-medium text-ink">A qué negocios sirvo</h2>
-          <p className="mt-2 max-w-md text-ink/60">
-            Mismo motor, ajustado al dolor específico de tu rubro.
-          </p>
+          <h2 className="text-3xl font-medium text-ink">Cómo trabajamos</h2>
         </Reveal>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {NICHOS.map((n, i) => (
-            <Reveal key={n.title} delay={i * 80}>
-              <Link href={n.href} className="card-soft hover-lift group block h-full">
-                <n.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
-                <h3 className="mt-5 text-lg font-medium text-ink">{n.title}</h3>
-                <p className="mt-2 text-sm text-ink/60">{n.problema}</p>
-              </Link>
-            </Reveal>
-          ))}
-          <Reveal delay={NICHOS.length * 80}>
-            <div className="card-soft h-full opacity-60">
-              <NICHO_PROXIMAMENTE.icon className="h-7 w-7 text-ink/40" strokeWidth={1.5} />
-              <div className="mt-5 flex items-center gap-2">
-                <h3 className="text-lg font-medium text-ink/60">{NICHO_PROXIMAMENTE.title}</h3>
-                <span className="chip !bg-ink/5 !text-ink/50 text-[0.65rem]">Próximamente</span>
-              </div>
-              <p className="mt-2 text-sm text-ink/45">{NICHO_PROXIMAMENTE.problema}</p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* PRECIOS */}
-      <section id="precios" className="mx-auto max-w-5xl px-6 pb-24">
-        <Reveal>
-          <h2 className="text-3xl font-medium text-ink">Paquetes, en soles</h2>
-          <p className="mt-2 max-w-md text-ink/60">
-            Precios claros desde el inicio — sin &quot;depende&quot;.
-          </p>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {PAQUETES.map((p, i) => (
-            <Reveal key={p.nombre} delay={i * 80}>
+          {PROCESO.map((step, i) => (
+            <Reveal key={step.t} delay={i * 80}>
               <div className="card-soft hover-lift h-full">
-                <h3 className="font-medium text-ink">{p.nombre}</h3>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-terracota-dark/70">
-                  Entrega: {p.entrega}
-                </p>
-                <p className="mt-6 text-2xl font-medium text-ink">{p.setup}</p>
-                <p className="text-sm text-ink/50">Setup</p>
-                <p className="mt-2 text-sm font-medium text-dorado">{p.retainer}</p>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-sm font-medium text-ink">
+                    {i + 1}
+                  </span>
+                  <step.icon className="h-5 w-5 text-terracota" strokeWidth={1.5} />
+                </div>
+                <h3 className="mt-4 font-medium text-ink">{step.t}</h3>
+                <p className="mt-2 text-sm text-ink/60">{step.d}</p>
               </div>
             </Reveal>
           ))}
         </div>
-        <Reveal delay={240}>
-          <div className="mt-6 card-soft-tint">
-            <h3 className="font-medium text-ink">
-              ¿Quieres todo integrado? — Infraestructura Digital Completa
-            </h3>
-            <p className="mt-2 text-sm text-ink/65">
-              Web + pagos + automatización + datos + monitoreo, en una sola
-              arquitectura. Ideal si ya tienes un asistente andando y quieres
-              escalar.
-            </p>
-            <Link
-              href="/infraestructura-digital"
-              className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-terracota-dark hover:underline"
-            >
-              Ver Infraestructura Digital Completa <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </Reveal>
       </section>
 
       {/* SOBRE MI */}
@@ -279,16 +323,82 @@ export default function Home() {
                 <span className="font-display italic text-dorado-light">Sam</span>.
               </h2>
               <p className="mt-4 max-w-2xl text-sand/70">
-                Crecí en Vinzos, Áncash, y hoy trabajo como ingeniero de nube y
-                datos. SamIA nace de construir con las mismas herramientas que
-                uso en mi trabajo — AWS, automatización, IA — puestas al
-                servicio de negocios peruanos que no tienen por qué perder
-                clientes por no contestar a tiempo.
+                Soy peruano, con formación en Ciencia de Datos y certificación
+                en IA Generativa (DeepLearning.AI). Automatizo procesos y
+                construyo agentes con LLMs sobre AWS — las mismas
+                herramientas que pongo al servicio de negocios peruanos para
+                que no pierdan clientes por no responder a tiempo.
               </p>
               <p className="mt-4 max-w-2xl text-sand/70">
-                No vendo &quot;un chatbot&quot;: construyo una vez y reutilizo,
-                por eso entrego rápido y cobro justo.
+                Te ayudo a construir rápido, a escalar sin fricción, y a que
+                todo sea confiable desde el primer día.
               </p>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* NICHOS */}
+      <section className="mx-auto max-w-5xl px-6 pb-24">
+        <Reveal>
+          <h2 className="text-3xl font-medium text-ink">Negocios donde trabajo</h2>
+          <p className="mt-2 max-w-md text-ink/60">
+            Mismo motor de IA, adaptado al problema real de tu rubro.
+          </p>
+        </Reveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {NICHOS.map((n, i) => (
+            <Reveal key={n.title} delay={i * 80}>
+              <Link href={n.href} className="card-soft hover-lift group block h-full">
+                <n.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
+                <h3 className="mt-5 text-lg font-medium text-ink">{n.title}</h3>
+                <p className="mt-2 text-sm text-ink/60">{n.problema}</p>
+              </Link>
+            </Reveal>
+          ))}
+          <Reveal delay={NICHOS.length * 80}>
+            <div className="card-soft h-full opacity-60">
+              <NICHO_PROXIMAMENTE.icon className="h-7 w-7 text-ink/60" strokeWidth={1.5} />
+              <div className="mt-5 flex items-center gap-2">
+                <h3 className="text-lg font-medium text-ink">{NICHO_PROXIMAMENTE.title}</h3>
+                <span className="chip !bg-ink/5 !text-ink/70 text-[0.65rem]">Próximamente</span>
+              </div>
+              <p className="mt-2 text-sm text-ink/60">{NICHO_PROXIMAMENTE.problema}</p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* CUANTO CUESTA */}
+      <section id="precios" className="mx-auto max-w-3xl px-6 pb-24">
+        <Reveal>
+          <h2 className="text-3xl font-medium text-ink">¿Cuánto cuesta?</h2>
+          <div className="mt-8 card-soft-tint">
+            <p className="text-ink/75">
+              Cada negocio necesita una configuración distinta. El precio
+              depende de las integraciones, automatizaciones y herramientas
+              necesarias.
+            </p>
+            <p className="mt-4 text-ink/75">
+              La mayoría de los proyectos comienzan entre{" "}
+              <strong className="font-medium text-ink">S/1,500 y S/5,000</strong>. Después
+              del diagnóstico gratuito recibirás una propuesta cerrada y sin
+              costos ocultos.
+            </p>
+            <p className="mt-4 text-sm text-ink/60">
+              ¿Ya tienes un asistente funcionando y quieres integrar pagos,
+              datos y monitoreo en una sola arquitectura?{" "}
+              <Link
+                href="/infraestructura-digital"
+                className="inline-flex items-center gap-1 font-medium text-terracota-dark hover:underline"
+              >
+                Conoce Infraestructura Digital Completa <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
+            </p>
+            <div className="mt-6">
+              <WhatsAppButton message="Hola, quiero solicitar un diagnóstico gratuito">
+                Solicitar diagnóstico gratuito
+              </WhatsAppButton>
             </div>
           </div>
         </Reveal>

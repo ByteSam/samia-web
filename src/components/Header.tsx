@@ -25,13 +25,10 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm font-medium text-ink/70 md:flex">
-          <Link href="/" className="transition-colors hover:text-terracota">
-            Inicio
-          </Link>
           <NavDropdown label="Soluciones" items={SOLUCIONES} />
           <NavDropdown label="Servicios" items={SERVICIOS} />
           <Link href="/#sobre-mi" className="transition-colors hover:text-terracota">
-            Sobre mí
+            Conoce a Daniel
           </Link>
         </nav>
 

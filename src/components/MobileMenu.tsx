@@ -30,13 +30,6 @@ export default function MobileMenu({ groups }: MobileMenuProps) {
 
       {open && (
         <div className="absolute left-4 right-4 top-full mt-3 rounded-2xl border border-ink/8 bg-white p-4 shadow-[0_12px_32px_rgba(36,21,9,0.12)]">
-          <Link
-            href="/"
-            onClick={() => setOpen(false)}
-            className="block rounded-xl px-3 py-2 font-medium text-ink hover:bg-sand"
-          >
-            Inicio
-          </Link>
           {groups.map((group) => (
             <div key={group.label} className="mt-2">
               <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink/40">
@@ -59,7 +52,7 @@ export default function MobileMenu({ groups }: MobileMenuProps) {
             onClick={() => setOpen(false)}
             className="mt-2 block rounded-xl px-3 py-2 font-medium text-ink hover:bg-sand"
           >
-            Sobre mí
+            Conoce a Daniel
           </Link>
         </div>
       )}

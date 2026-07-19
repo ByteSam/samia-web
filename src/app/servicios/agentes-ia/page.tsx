@@ -57,8 +57,9 @@ export default function AgentesIAPage() {
             Un agente de IA para cada punto donde hoy pierdes clientes.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
-            Desde un recepcionista simple hasta una suite multicanal completa
-            — mismo motor, ajustado a lo que tu negocio necesita hoy.
+            Especializado en WhatsApp — no una suite omnicanal genérica.
+            Desde un recepcionista simple hasta una suite multicanal
+            completa, ajustado a lo que tu negocio necesita hoy.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <WhatsAppButton message="Hola, quiero información sobre agentes de IA">

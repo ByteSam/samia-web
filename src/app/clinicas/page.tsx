@@ -41,6 +41,7 @@ const PAQUETES = [
       "Agenda + recordatorios (anti-ausencias)",
       "Calificación de pacientes",
       "Integración con tu sistema + reportes",
+      "Videoconsulta / telemedicina",
     ],
   },
 ];
@@ -253,20 +254,6 @@ export default function ClinicasPage() {
             Quiero el Profesional
           </WhatsAppButton>
         </div>
-      </section>
-
-      {/* 7. PRUEBA SOCIAL */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 text-center">
-        <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">Ya está funcionando.</h2>
-          <blockquote className="card-soft mt-6 text-left text-ink/75 italic">
-            &quot;Pasamos de responder al día siguiente a responder en segundos.
-            Las ausencias bajaron de forma notoria en el primer mes.&quot;
-            <footer className="mt-3 not-italic text-sm text-ink/45">
-              — [Nombre, cargo, clínica]
-            </footer>
-          </blockquote>
-        </Reveal>
       </section>
 
       {/* 8. GARANTIA */}
