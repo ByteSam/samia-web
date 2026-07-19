@@ -1,0 +1,16 @@
+{
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml",
+    "removeComments": false,
+    "removeEmptyLines": false
+  },
+  "ignore": {
+    "customPatterns": [
+      "public/**/*.png",
+      "public/**/*.jpg",
+      "public/**/*.jpeg",
+      "public/**/*.svg"
+    ]
+  }
+}

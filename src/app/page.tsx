@@ -12,15 +12,12 @@ import {
   ClipboardList,
   Settings2,
   PackageCheck,
+  Hammer,
+  Scale,
 } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 import LeadForm from "@/components/LeadForm";
-import { CAL_COM_URL, whatsappLink } from "@/lib/contact";
-
-// Mientras no exista un link real de Cal.com, "Agendar" cae a WhatsApp con mensaje precargado.
-const AGENDAR_HREF =
-  CAL_COM_URL ?? whatsappLink("Hola, quiero agendar un diagnóstico gratis");
 
 const FLUJO = [
   {
@@ -42,13 +39,11 @@ const FLUJO = [
 
 const TECNOLOGIAS = [
   "AWS",
-  "OpenAI",
-  "Claude",
+  "Amazon Bedrock",
   "n8n",
-  "WhatsApp Business",
+  "WhatsApp Business API",
   "Culqi",
   "Google Calendar",
-  "Notion",
 ];
 
 const NICHOS = [
@@ -71,6 +66,23 @@ const NICHO_PROXIMAMENTE = {
   problema: "Leads que se enfrían porque nadie responde en los primeros minutos.",
   icon: Building2,
 };
+
+const CASOS = [
+  {
+    nombre: "Fortaleza Vinzos",
+    rubro: "Reformas y remodelación",
+    entregable: "Landing page a medida.",
+    icon: Hammer,
+    estado: "entregado" as const,
+  },
+  {
+    nombre: "Servicios legales",
+    rubro: "Abogacía",
+    entregable: "Landing page a medida.",
+    icon: Scale,
+    estado: "proximamente" as const,
+  },
+];
 
 const PROCESO = [
   {
@@ -128,14 +140,6 @@ export default function Home() {
               <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
                 Diagnóstico gratis
               </WhatsAppButton>
-              <a
-                href={AGENDAR_HREF}
-                target={CAL_COM_URL ? "_blank" : undefined}
-                rel={CAL_COM_URL ? "noopener noreferrer" : undefined}
-                className="btn-pill btn-pill-ghost"
-              >
-                Agendar diagnóstico gratis
-              </a>
             </div>
             <p className="text-sm text-ink/55">
               Hablarás directamente conmigo, no con un call center.
@@ -165,9 +169,15 @@ export default function Home() {
       </section>
 
       {/* FORMULARIO DE LEADS — el paso 2 del flujo, en vivo */}
-      <section id="contacto" className="mx-auto max-w-md px-6 pb-20">
+      <section id="contacto" className="mx-auto max-w-md px-6 pb-20 text-center">
         <Reveal>
-          <LeadForm />
+          <h2 className="text-2xl font-medium text-ink">Pruébalo tú mismo</h2>
+          <p className="mt-2 text-sm text-ink/60">
+            Completa el formulario — así de simple es el paso 2 de arriba, en vivo.
+          </p>
+          <div className="mt-6 text-left">
+            <LeadForm />
+          </div>
         </Reveal>
       </section>
 
@@ -177,12 +187,9 @@ export default function Home() {
           <p className="text-center text-xs font-medium uppercase tracking-[0.15em] text-ink/45">
             Construido sobre herramientas profesionales
           </p>
-          <div className="mx-auto mt-5 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          <div className="mx-auto mt-5 flex max-w-3xl flex-wrap items-center justify-center gap-3">
             {TECNOLOGIAS.map((t) => (
-              <span
-                key={t}
-                className="text-sm font-medium tracking-wide text-ink/60"
-              >
+              <span key={t} className="chip">
                 {t}
               </span>
             ))}
@@ -319,7 +326,7 @@ export default function Home() {
             <div className="relative mx-auto h-40 w-40 overflow-hidden rounded-2xl border border-sand/15 bg-sand/5 md:mx-0">
               <Image
                 src="/daniel.jpg"
-                alt="Daniel, fundador de SamIA"
+                alt="Daniel, fundador de ichan"
                 fill
                 sizes="160px"
                 className="object-cover"
@@ -344,6 +351,37 @@ export default function Home() {
             </div>
           </div>
         </Reveal>
+      </section>
+
+      {/* CASOS REALES */}
+      <section className="mx-auto max-w-5xl px-6 pb-24">
+        <Reveal>
+          <h2 className="text-3xl font-medium text-ink">Casos reales</h2>
+          <p className="mt-2 max-w-md text-ink/60">
+            Negocios peruanos donde ya estoy poniendo esto en práctica.
+          </p>
+        </Reveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {CASOS.map((c, i) => (
+            <Reveal key={c.nombre} delay={i * 80}>
+              <div
+                className={`card-soft h-full ${c.estado === "proximamente" ? "opacity-60" : ""}`}
+              >
+                <c.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
+                <div className="mt-5 flex items-center gap-2">
+                  <h3 className="text-lg font-medium text-ink">{c.nombre}</h3>
+                  {c.estado === "proximamente" && (
+                    <span className="chip !bg-ink/5 !text-ink/70 text-[0.65rem]">
+                      Próximamente
+                    </span>
+                  )}
+                </div>
+                <p className="mt-1 text-sm text-ink/50">{c.rubro}</p>
+                <p className="mt-2 text-sm text-ink/60">{c.entregable}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       {/* NICHOS */}
@@ -443,6 +481,12 @@ export default function Home() {
               Escríbeme por WhatsApp
             </WhatsAppButton>
           </div>
+          <a
+            href="#contacto"
+            className="mt-4 inline-block text-sm text-ink/55 underline underline-offset-2 hover:text-terracota"
+          >
+            o deja tus datos en el formulario ↑
+          </a>
         </Reveal>
       </section>
     </>

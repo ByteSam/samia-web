@@ -26,7 +26,7 @@ Datos, dashboards y BI no son una categoría principal del menú. Son:
 
 ## Política de precios
 
-SamIA no oculta por completo el precio ni publica tarifas cerradas para trabajos variables.
+ichan no oculta por completo el precio ni publica tarifas cerradas para trabajos variables.
 
 - Home: mostrar un rango general y explicar que la propuesta final es cerrada y sin costos ocultos.
 - Servicios productizados: mostrar un precio “desde” solo cuando el alcance mínimo y el plazo estén definidos.

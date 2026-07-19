@@ -88,9 +88,6 @@ export default function ClinicasPage() {
         </Reveal>
         <Reveal delay={140}>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <a href="#demo" className="btn-pill btn-pill-ghost">
-              Probar la demo
-            </a>
             <WhatsAppButton message="Hola, vi tu web y quiero el asistente para mi clínica">
               Escríbeme por WhatsApp
             </WhatsAppButton>
@@ -167,23 +164,6 @@ export default function ClinicasPage() {
           No vendemos &quot;un chatbot con IA&quot;. Te devolvemos tiempo de
           recepción y pacientes que hoy se pierden.
         </p>
-      </section>
-
-      {/* 4. DEMO EN VIVO */}
-      <section id="demo" className="mx-auto max-w-4xl px-6 pb-20 text-center">
-        <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">
-            Pruébalo ahora, como si fueras un paciente.
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-ink/60">
-            Escríbele abajo: pregúntale por horarios, precios o pide una
-            cita. Así de rápido responderá a tus pacientes.
-          </p>
-          <div className="card-soft mx-auto mt-8 flex h-64 max-w-md items-center justify-center border-dashed text-sm text-ink/40">
-            {/* TODO: incrustar aquí el widget de la demo (ej. Chatbase embed) */}
-            👉 widget de la demo (Chatbase) va aquí
-          </div>
-        </Reveal>
       </section>
 
       {/* 5. COMO FUNCIONA */}

@@ -1,4 +1,4 @@
-# Documentación oficial de SamIA
+# Documentación oficial de ichan
 
 Esta carpeta es la fuente de verdad para las decisiones vigentes del negocio y del sitio. Antes de crear una página, cambiar una oferta o ajustar el copy, se debe revisar esta documentación.
 

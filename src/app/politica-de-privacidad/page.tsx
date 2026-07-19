@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Política de Privacidad",
-  description: "Cómo SamIA recopila, usa y protege tus datos personales.",
+  description: "Cómo ichan recopila, usa y protege tus datos personales.",
 };
 
 export default function PoliticaDePrivacidadPage() {
@@ -21,7 +21,7 @@ export default function PoliticaDePrivacidadPage() {
           <div>
             <h2 className="text-lg font-medium text-ink">1. Quién trata tus datos</h2>
             <p className="mt-2 text-sm leading-relaxed">
-              SamIA es un servicio unipersonal operado por Daniel — atención
+              ichan es un servicio unipersonal operado por Daniel — atención
               100% remota desde Perú. Como responsable del tratamiento, cumplo
               con la Ley N° 29733 de Protección de Datos Personales de Perú.
             </p>

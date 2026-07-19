@@ -4,7 +4,7 @@
 
 ## Propósito
 
-SamIA ayuda a negocios peruanos a convertir visitas y consultas en clientes mediante una web clara, captura de leads por WhatsApp y automatización útil.
+ichan ayuda a negocios peruanos a convertir visitas y consultas en clientes mediante una web clara, captura de leads por WhatsApp y automatización útil.
 
 ## Enfoque de lanzamiento
 

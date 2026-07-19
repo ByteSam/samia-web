@@ -13,7 +13,7 @@ export default function Logo({ className, height = 40 }: LogoProps) {
   return (
     <Image
       src="/logo.png"
-      alt="SamIA"
+      alt="ichan"
       height={height}
       width={Math.round(height * LOGO_RATIO)}
       className={className}

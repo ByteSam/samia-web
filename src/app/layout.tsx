@@ -18,8 +18,8 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "SamIA — Asistentes de WhatsApp con IA para negocios en Perú",
-    template: "%s | SamIA",
+    default: "ichan — Asistentes de WhatsApp con IA para negocios en Perú",
+    template: "%s | ichan",
   },
   description:
     "Automatización y agentes de IA por WhatsApp para pymes peruanas. Menos ausencias, más clientes, configurado en días. Precios en soles.",
