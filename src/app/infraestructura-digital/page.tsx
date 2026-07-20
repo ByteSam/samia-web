@@ -7,6 +7,7 @@ import {
   BarChart3,
   Activity,
   Check,
+  ShieldCheck,
 } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
@@ -21,7 +22,7 @@ const MODULOS = [
   { icon: Globe, t: "Web/app", d: "Landing o portal de cliente que vende, no solo informa." },
   { icon: Database, t: "Backend + auth", d: "Datos y usuarios ordenados, con panel de cliente si lo necesitas." },
   { icon: Wallet, t: "Pagos", d: "Cobra online y por WhatsApp (Culqi/Izipay/Yape)." },
-  { icon: Workflow, t: "Automatización", d: "Tu negocio conectado: leads, cobros, notificaciones, SUNAT." },
+  { icon: Workflow, t: "Automatización", d: "Leads, OCR de documentos, facturación electrónica SUNAT e integraciones entre tus sistemas (CRM↔ERP↔email)." },
   { icon: BarChart3, t: "Datos/BI", d: "Un tablero con tus KPIs reales, no una hoja de cálculo perdida." },
   { icon: Activity, t: "Analítica + monitoreo", d: "Mides lo que pasa y te avisa antes de que se caiga." },
 ];
@@ -53,6 +54,21 @@ const PAQUETES = [
       "Backend + auth + panel de cliente",
       "Dashboard BI + analítica + monitoreo",
     ],
+  },
+];
+
+const FAQS = [
+  {
+    q: "¿Necesito ya un asistente de WhatsApp para empezar aquí?",
+    a: "No es obligatorio, pero es lo más común — la mayoría llega a Infraestructura Digital después de validar un servicio más chico primero.",
+  },
+  {
+    q: "¿Puedo empezar por el paquete Base y subir después?",
+    a: "Sí. Los tres paquetes están pensados para escalar sin rehacer nada.",
+  },
+  {
+    q: "¿Qué pasa si solo necesito 2 de los 5 módulos?",
+    a: "Lo vemos en el diagnóstico y armamos una combinación a medida si ningún paquete calza exacto.",
   },
 ];
 
@@ -124,6 +140,38 @@ export default function InfraestructuraDigitalPage() {
           El retainer cubre hosting, monitoreo, respaldos, ajustes y
           optimización — lo que sostiene el servicio funcionando.
         </p>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-6 pb-20">
+        <Reveal>
+          <div className="card-soft-tint text-center">
+            <ShieldCheck className="mx-auto h-8 w-8 text-terracota" strokeWidth={1.5} />
+            <h2 className="mt-4 text-2xl font-normal text-ink md:text-3xl">
+              Riesgo cero para ti.
+            </h2>
+            <p className="mt-4 text-ink/65">
+              Piloto de <strong className="font-medium text-ink">14 días</strong>. Si la
+              arquitectura no funciona como se acordó en el diagnóstico,{" "}
+              <strong className="font-medium text-ink">no pagas la configuración</strong>.
+            </p>
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-6 pb-20">
+        <Reveal>
+          <h2 className="text-2xl font-normal text-ink md:text-3xl">Preguntas frecuentes</h2>
+        </Reveal>
+        <div className="mt-8 space-y-6">
+          {FAQS.map((f, i) => (
+            <Reveal key={f.q} delay={i * 60}>
+              <div className="border-b border-ink/8 pb-6 last:border-0">
+                <p className="font-medium text-ink">{f.q}</p>
+                <p className="mt-1 text-sm text-ink/60">{f.a}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <section className="mx-auto max-w-3xl px-6 pb-28">

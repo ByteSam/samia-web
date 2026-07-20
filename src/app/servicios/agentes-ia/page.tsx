@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
-import { MessageSquareText, CalendarClock, BookOpenText, Headset, Layers } from "lucide-react";
+import {
+  MessageSquareText,
+  CalendarClock,
+  BookOpenText,
+  Headset,
+  Layers,
+  PhoneMissed,
+  UserPlus,
+  ShieldCheck,
+} from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 
@@ -45,6 +54,39 @@ const CATALOGO = [
     setup: "S/9,000 – 20,000",
     retainer: "S/700 – 1,500",
   },
+  {
+    icon: PhoneMissed,
+    nombre: "Missed-call text-back",
+    entrega: "1-2 días",
+    setup: "S/500 – 1,200",
+    retainer: "S/200 – 500",
+  },
+  {
+    icon: UserPlus,
+    nombre: "Captación + seguimiento de leads",
+    entrega: "3-7 días",
+    setup: "S/900 – 2,500",
+    retainer: "S/300 – 700",
+  },
+];
+
+const FAQS = [
+  {
+    q: "¿El agente reemplaza mi atención al cliente?",
+    a: "No. Filtra lo repetitivo y te pasa solo las conversaciones que de verdad necesitan a una persona.",
+  },
+  {
+    q: "¿Cuánto tarda en estar listo?",
+    a: "Normalmente pocos días desde que tengo la información de tu negocio.",
+  },
+  {
+    q: "¿Necesito cambiar mi número de WhatsApp?",
+    a: "No. Se conecta a tu número actual mediante la API oficial de WhatsApp.",
+  },
+  {
+    q: "¿Puedo empezar simple e ir sumando funciones?",
+    a: "Sí — la mayoría empieza con un Recepcionista IA y va agregando agenda, calificación de leads u otros módulos después.",
+  },
 ];
 
 export default function AgentesIAPage() {
@@ -69,7 +111,7 @@ export default function AgentesIAPage() {
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-28">
+      <section className="mx-auto max-w-5xl px-6 pb-20">
         <Reveal>
           <h2 className="text-2xl font-normal text-ink md:text-3xl">Catálogo, en soles</h2>
         </Reveal>
@@ -99,6 +141,38 @@ export default function AgentesIAPage() {
             y te recomiendo el punto de partida.
           </p>
         </Reveal>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-6 pb-20">
+        <Reveal>
+          <div className="card-soft-tint text-center">
+            <ShieldCheck className="mx-auto h-8 w-8 text-terracota" strokeWidth={1.5} />
+            <h2 className="mt-4 text-2xl font-normal text-ink md:text-3xl">
+              Riesgo cero para ti.
+            </h2>
+            <p className="mt-4 text-ink/65">
+              Piloto de <strong className="font-medium text-ink">14 días</strong>. Si el
+              agente no te ahorra tiempo ni recupera clientes,{" "}
+              <strong className="font-medium text-ink">no pagas la configuración</strong>.
+            </p>
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-6 pb-28">
+        <Reveal>
+          <h2 className="text-2xl font-normal text-ink md:text-3xl">Preguntas frecuentes</h2>
+        </Reveal>
+        <div className="mt-8 space-y-6">
+          {FAQS.map((f, i) => (
+            <Reveal key={f.q} delay={i * 60}>
+              <div className="border-b border-ink/8 pb-6 last:border-0">
+                <p className="font-medium text-ink">{f.q}</p>
+                <p className="mt-1 text-sm text-ink/60">{f.a}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </section>
     </>
   );

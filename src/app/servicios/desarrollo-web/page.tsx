@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { LayoutTemplate, Building2, Briefcase, LayoutDashboard, ShoppingCart } from "lucide-react";
+import {
+  LayoutTemplate,
+  Building2,
+  Briefcase,
+  LayoutDashboard,
+  ShoppingCart,
+  ShieldCheck,
+} from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 
@@ -15,6 +22,25 @@ const CATALOGO = [
   { icon: Briefcase, nombre: "Portafolio", setup: "S/1,200 – 4,000" },
   { icon: LayoutDashboard, nombre: "Portal de cliente", setup: "S/3,000 – 10,000" },
   { icon: ShoppingCart, nombre: "E-commerce", setup: "S/3,500 – 15,000" },
+];
+
+const FAQS = [
+  {
+    q: "¿El sitio queda en código real o en un builder tipo Wix?",
+    a: "Código real (Next.js), no plantillas genéricas — más rápido, más control, mejor indexado en Google.",
+  },
+  {
+    q: "¿Incluye conexión a WhatsApp?",
+    a: "Sí, desde el día uno — todo botón de contacto lleva directo a tu WhatsApp.",
+  },
+  {
+    q: "¿Ya tengo dominio, lo puedo usar?",
+    a: "Sí. Si no tienes, te ayudo a elegir y comprarlo.",
+  },
+  {
+    q: "¿Cuánto tarda en estar listo?",
+    a: "Depende del tipo de sitio — desde días para una landing, hasta semanas para un portal o e-commerce.",
+  },
 ];
 
 export default function DesarrolloWebPage() {
@@ -60,6 +86,38 @@ export default function DesarrolloWebPage() {
             ajustes menores).
           </p>
         </Reveal>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-6 pb-20">
+        <Reveal>
+          <div className="card-soft-tint text-center">
+            <ShieldCheck className="mx-auto h-8 w-8 text-terracota" strokeWidth={1.5} />
+            <h2 className="mt-4 text-2xl font-normal text-ink md:text-3xl">
+              Riesgo cero para ti.
+            </h2>
+            <p className="mt-4 text-ink/65">
+              Piloto de <strong className="font-medium text-ink">14 días</strong>. Si el
+              sitio no te trae los resultados esperados,{" "}
+              <strong className="font-medium text-ink">no pagas la configuración</strong>.
+            </p>
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-6 pb-28">
+        <Reveal>
+          <h2 className="text-2xl font-normal text-ink md:text-3xl">Preguntas frecuentes</h2>
+        </Reveal>
+        <div className="mt-8 space-y-6">
+          {FAQS.map((f, i) => (
+            <Reveal key={f.q} delay={i * 60}>
+              <div className="border-b border-ink/8 pb-6 last:border-0">
+                <p className="font-medium text-ink">{f.q}</p>
+                <p className="mt-1 text-sm text-ink/60">{f.a}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </section>
     </>
   );

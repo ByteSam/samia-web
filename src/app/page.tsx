@@ -5,7 +5,6 @@ import {
   Hexagon,
   ShieldCheck,
   Stethoscope,
-  Building2,
   Wrench,
   MessageCircleMore,
   CalendarCheck,
@@ -58,13 +57,13 @@ const NICHOS = [
     problema: "Emergencias y consultas fuera de horario que se van a la competencia.",
     icon: Wrench,
   },
+  {
+    href: "/servicios-legales",
+    title: "Servicios legales",
+    problema: "Consultas laborales urgentes que se pierden por no responder a tiempo.",
+    icon: Scale,
+  },
 ];
-
-const NICHO_PROXIMAMENTE = {
-  title: "Inmobiliarias",
-  problema: "Leads que se enfrían porque nadie responde en los primeros minutos.",
-  icon: Building2,
-};
 
 const CASOS = [
   {
@@ -336,8 +335,7 @@ export default function Home() {
             </div>
             <div>
               <h2 className="text-3xl font-medium">
-                Soy Daniel — me dicen{" "}
-                <span className="font-display italic text-dorado-light">Sam</span>.
+                Soy <span className="font-display italic text-dorado-light">Daniel</span>.
               </h2>
               <p className="mt-4 max-w-2xl text-sand/70">
                 Soy peruano, con formación en Ciencia de Datos y certificación
@@ -404,16 +402,6 @@ export default function Home() {
               </Link>
             </Reveal>
           ))}
-          <Reveal delay={NICHOS.length * 80}>
-            <div className="card-soft h-full opacity-60">
-              <NICHO_PROXIMAMENTE.icon className="h-7 w-7 text-ink/60" strokeWidth={1.5} />
-              <div className="mt-5 flex items-center gap-2">
-                <h3 className="text-lg font-medium text-ink">{NICHO_PROXIMAMENTE.title}</h3>
-                <span className="chip !bg-ink/5 !text-ink/70 text-[0.65rem]">Próximamente</span>
-              </div>
-              <p className="mt-2 text-sm text-ink/60">{NICHO_PROXIMAMENTE.problema}</p>
-            </div>
-          </Reveal>
         </div>
       </section>
 

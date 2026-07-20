@@ -7,11 +7,11 @@ import WhatsAppButton from "./WhatsAppButton";
 const SOLUCIONES = [
   { href: "/clinicas", label: "Clínicas" },
   { href: "/servicios-locales", label: "Servicios Locales" },
+  { href: "/servicios-legales", label: "Servicios Legales" },
 ];
 
 const SERVICIOS = [
   { href: "/servicios/agentes-ia", label: "Agentes IA" },
-  { href: "/servicios/automatizacion", label: "Automatización" },
   { href: "/infraestructura-digital", label: "Infraestructura Digital" },
   { href: "/servicios/desarrollo-web", label: "Desarrollo Web" },
 ];
