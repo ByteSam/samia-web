@@ -73,7 +73,11 @@ export default function LeadForm() {
         />
       </div>
 
-      <button type="submit" disabled={disabled} className="btn-pill btn-pill-whatsapp w-full disabled:opacity-40">
+      <button
+        type="submit"
+        disabled={disabled}
+        className="btn-pill btn-pill-whatsapp w-full disabled:!bg-ink/10 disabled:!text-ink/40 disabled:cursor-not-allowed"
+      >
         Enviar por WhatsApp
       </button>
       <p className="text-center text-xs text-ink/45">

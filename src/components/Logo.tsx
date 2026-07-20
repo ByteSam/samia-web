@@ -1,23 +1,28 @@
-import Image from "next/image";
+import { Waves } from "lucide-react";
 
 type LogoProps = {
   className?: string;
-  /** Altura en px del logo */
+  /** Altura en px de referencia para escalar el logo */
   height?: number;
 };
 
-const LOGO_RATIO = 1294 / 526;
-
-/** Marca ichan (logo real, generado por Daniel). */
+/** Marca ichan — wordmark en texto (el archivo logo.png tenía un halo que lo hacía ilegible a tamaño navbar; queda como wordmark hasta tener un archivo nuevo sin ese problema). */
 export default function Logo({ className, height = 40 }: LogoProps) {
+  const fontSize = height * 0.72;
+  const iconSize = height * 0.44;
+  const badgeSize = height * 0.78;
   return (
-    <Image
-      src="/logo.png"
-      alt="ichan"
-      height={height}
-      width={Math.round(height * LOGO_RATIO)}
-      className={className}
-      priority
-    />
+    <span
+      className={`inline-flex items-center gap-2 font-display text-ink ${className ?? ""}`}
+      style={{ fontSize }}
+    >
+      <span
+        className="inline-flex shrink-0 items-center justify-center rounded-full bg-dorado/15"
+        style={{ width: badgeSize, height: badgeSize }}
+      >
+        <Waves className="text-dorado" style={{ width: iconSize, height: iconSize }} strokeWidth={2} />
+      </span>
+      ichan
+    </span>
   );
 }

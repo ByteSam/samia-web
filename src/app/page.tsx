@@ -38,10 +38,9 @@ const FLUJO = [
 ];
 
 const TECNOLOGIAS = [
-  "AWS",
   "Amazon Bedrock",
   "n8n",
-  "WhatsApp Business API",
+  "WhatsApp Cloud API",
   "Culqi",
   "Google Calendar",
 ];
@@ -187,9 +186,12 @@ export default function Home() {
           <p className="text-center text-xs font-medium uppercase tracking-[0.15em] text-ink/45">
             Construido sobre herramientas profesionales
           </p>
-          <div className="mx-auto mt-5 flex max-w-3xl flex-wrap items-center justify-center gap-3">
+          <div className="mx-auto mt-5 flex max-w-3xl flex-wrap items-center justify-center gap-2.5">
             {TECNOLOGIAS.map((t) => (
-              <span key={t} className="chip">
+              <span
+                key={t}
+                className="rounded-full border border-ink/10 bg-white/50 px-4 py-1.5 text-sm font-medium text-ink/60"
+              >
                 {t}
               </span>
             ))}
@@ -365,7 +367,7 @@ export default function Home() {
           {CASOS.map((c, i) => (
             <Reveal key={c.nombre} delay={i * 80}>
               <div
-                className={`card-soft h-full ${c.estado === "proximamente" ? "opacity-60" : ""}`}
+                className={`card-soft-tint h-full ${c.estado === "proximamente" ? "opacity-60" : ""}`}
               >
                 <c.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
                 <div className="mt-5 flex items-center gap-2">
