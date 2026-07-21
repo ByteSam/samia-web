@@ -48,7 +48,7 @@ export default function MobileMenu({ groups }: MobileMenuProps) {
             </div>
           ))}
           <Link
-            href="/#sobre-mi"
+            href="/#casos-reales"
             onClick={() => setOpen(false)}
             className="mt-2 block rounded-xl px-3 py-2 font-medium text-ink hover:bg-sand"
           >

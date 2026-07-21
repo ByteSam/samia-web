@@ -1,69 +1,13 @@
-import Link from "next/link";
-import Image from "next/image";
-import {
-  ArrowUpRight,
-  Hexagon,
-  ShieldCheck,
-  Stethoscope,
-  Wrench,
-  MessageCircleMore,
-  CalendarCheck,
-  ClipboardList,
-  Settings2,
-  PackageCheck,
-  Hammer,
-  Scale,
-} from "lucide-react";
+import { ArrowUpRight, Hexagon, MessageCircleMore, CalendarCheck, Hammer, Scale } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 import LeadForm from "@/components/LeadForm";
-
-const FLUJO = [
-  {
-    t: "Visita la web",
-    d: "Un visitante llega a tu página desde redes, Google o un anuncio.",
-    icon: Wrench,
-  },
-  {
-    t: "Deja sus datos",
-    d: "Completa un formulario simple: nombre, contacto y qué necesita.",
-    icon: ClipboardList,
-  },
-  {
-    t: "Recibes el aviso",
-    d: "Te llega un mensaje de WhatsApp al instante — así no pierdes al lead.",
-    icon: MessageCircleMore,
-  },
-];
-
-const TECNOLOGIAS = [
-  "Amazon Bedrock",
-  "n8n",
-  "WhatsApp Cloud API",
-  "Culqi",
-  "Google Calendar",
-];
-
-const NICHOS = [
-  {
-    href: "/clinicas",
-    title: "Clínicas y salud",
-    problema: "Pacientes que se pierden por no contestar a tiempo o citas que nadie confirma.",
-    icon: Stethoscope,
-  },
-  {
-    href: "/servicios-locales",
-    title: "Servicios locales",
-    problema: "Emergencias y consultas fuera de horario que se van a la competencia.",
-    icon: Wrench,
-  },
-  {
-    href: "/servicios-legales",
-    title: "Servicios legales",
-    problema: "Consultas laborales urgentes que se pierden por no responder a tiempo.",
-    icon: Scale,
-  },
-];
+import ProblemaSection from "@/components/ProblemaSection";
+import ServiciosGrid from "@/components/ServiciosGrid";
+import ProcesoSection from "@/components/ProcesoSection";
+import FundadorBlock from "@/components/FundadorBlock";
+import GarantiaSection from "@/components/GarantiaSection";
+import FAQSection from "@/components/FAQSection";
 
 const CASOS = [
   {
@@ -82,21 +26,22 @@ const CASOS = [
   },
 ];
 
-const PROCESO = [
+const FAQS_HOME = [
   {
-    t: "Diagnóstico gratuito",
-    d: "Conversamos sobre tu negocio y detectamos qué procesos automatizar.",
-    icon: ClipboardList,
+    q: "¿Necesito cambiar mi número de WhatsApp?",
+    a: "No. Se conecta a tu número actual mediante la API oficial de WhatsApp.",
   },
   {
-    t: "Implementación",
-    d: "Configuro el asistente e integro las herramientas necesarias.",
-    icon: Settings2,
+    q: "¿Reemplaza a mi equipo?",
+    a: "No. Filtra lo repetitivo y te pasa solo las conversaciones que de verdad necesitan a una persona.",
   },
   {
-    t: "Entrega",
-    d: "Probamos todo contigo hasta dejarlo funcionando.",
-    icon: PackageCheck,
+    q: "¿Cuánto tarda en estar listo?",
+    a: "Normalmente pocos días desde que tengo la información de tu negocio.",
+  },
+  {
+    q: "¿Qué pasa si no funciona para mi caso?",
+    a: "No pagas la configuración — es literalmente lo que cubre el piloto de 14 días.",
   },
 ];
 
@@ -105,7 +50,6 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative mx-auto max-w-6xl overflow-hidden px-6 pb-16 pt-20 md:pt-24">
-        {/* blobs decorativos */}
         <div
           aria-hidden
           className="pointer-events-none absolute -right-24 -top-24 h-[420px] w-[420px] rounded-full bg-gradient-to-br from-terracota/25 via-dorado/20 to-transparent blur-3xl"
@@ -121,22 +65,22 @@ export default function Home() {
 
         <Reveal delay={80}>
           <h1 className="relative mt-6 max-w-2xl text-[2.5rem] font-normal leading-[1.05] text-ink sm:text-6xl md:text-[4rem]">
-            Una web que{" "}
-            <span className="font-display italic text-terracota">convierte</span> visitas
-            en clientes.
+            Tu negocio nunca deja pasar un{" "}
+            <span className="font-display italic text-terracota">cliente</span>.
           </h1>
         </Reveal>
         <Reveal delay={140}>
           <p className="relative mt-6 max-w-xl text-lg text-ink/60">
-            Diseño tu web, conecto tus formularios y te aviso por WhatsApp
-            cuando llega un nuevo cliente potencial.
+            Atiendo mejor a tus clientes por WhatsApp, te ahorro trabajo
+            manual, y respondo por el resultado — implementado directamente
+            por mí, con garantía de 14 días.
           </p>
         </Reveal>
         <Reveal delay={200}>
           <div className="relative mt-10 flex flex-col items-start gap-3">
             <div className="flex flex-wrap gap-4">
               <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
-                Diagnóstico gratis
+                Diagnóstico gratis por WhatsApp
               </WhatsAppButton>
             </div>
             <p className="text-sm text-ink/55">
@@ -146,59 +90,10 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* FLUJO */}
-      <section className="mx-auto max-w-5xl px-6 pb-12">
-        <div className="grid gap-6 sm:grid-cols-3">
-          {FLUJO.map((step, i) => (
-            <Reveal key={step.t} delay={i * 80}>
-              <div className="card-soft h-full">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-sm font-medium text-ink">
-                    {i + 1}
-                  </span>
-                  <step.icon className="h-5 w-5 text-terracota" strokeWidth={1.5} />
-                </div>
-                <h3 className="mt-4 font-medium text-ink">{step.t}</h3>
-                <p className="mt-2 text-sm text-ink/60">{step.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      {/* PROBLEMA */}
+      <ProblemaSection />
 
-      {/* FORMULARIO DE LEADS — el paso 2 del flujo, en vivo */}
-      <section id="contacto" className="mx-auto max-w-md px-6 pb-20 text-center">
-        <Reveal>
-          <h2 className="text-2xl font-medium text-ink">Pruébalo tú mismo</h2>
-          <p className="mt-2 text-sm text-ink/60">
-            Completa el formulario — así de simple es el paso 2 de arriba, en vivo.
-          </p>
-          <div className="mt-6 text-left">
-            <LeadForm />
-          </div>
-        </Reveal>
-      </section>
-
-      {/* TECNOLOGIAS */}
-      <section className="mx-auto max-w-5xl px-6 pb-20">
-        <Reveal>
-          <p className="text-center text-xs font-medium uppercase tracking-[0.15em] text-ink/45">
-            Construido sobre herramientas profesionales
-          </p>
-          <div className="mx-auto mt-5 flex max-w-3xl flex-wrap items-center justify-center gap-2.5">
-            {TECNOLOGIAS.map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-ink/10 bg-white/50 px-4 py-1.5 text-sm font-medium text-ink/60"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </Reveal>
-      </section>
-
-      {/* GRID DE TARJETAS — lo que hace tu asistente */}
+      {/* PROPUESTA DE VALOR */}
       <section className="mx-auto max-w-5xl px-6 pb-24">
         <Reveal>
           <h2 className="text-3xl font-medium text-ink">Y tu web no se queda ahí</h2>
@@ -211,7 +106,7 @@ export default function Home() {
         <div className="mt-10 grid gap-6 md:grid-cols-3 md:auto-rows-fr">
           <Reveal className="md:col-span-1" delay={0}>
             <div className="card-soft hover-lift h-full">
-              <span className="chip">capacidades</span>
+              <span className="chip">beneficios</span>
               <ul className="mt-6 space-y-4 text-sm">
                 {[
                   "Responde WhatsApp al instante",
@@ -297,64 +192,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* COMO TRABAJAMOS */}
-      <section className="mx-auto max-w-5xl px-6 pb-24">
-        <Reveal>
-          <h2 className="text-3xl font-medium text-ink">Cómo trabajamos</h2>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {PROCESO.map((step, i) => (
-            <Reveal key={step.t} delay={i * 80}>
-              <div className="card-soft hover-lift h-full">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-sm font-medium text-ink">
-                    {i + 1}
-                  </span>
-                  <step.icon className="h-5 w-5 text-terracota" strokeWidth={1.5} />
-                </div>
-                <h3 className="mt-4 font-medium text-ink">{step.t}</h3>
-                <p className="mt-2 text-sm text-ink/60">{step.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      {/* SERVICIOS */}
+      <ServiciosGrid />
 
-      {/* SOBRE MI */}
-      <section id="sobre-mi" className="mx-auto max-w-5xl px-6 pb-24">
+      {/* PROCESO + FORMULARIO EN VIVO */}
+      <ProcesoSection />
+      <section id="contacto" className="mx-auto max-w-md px-6 pb-24 text-center">
         <Reveal>
-          <div className="card-soft-dark grid gap-10 md:grid-cols-[220px_1fr] md:p-12">
-            <div className="relative mx-auto h-40 w-40 overflow-hidden rounded-2xl border border-sand/15 bg-sand/5 md:mx-0">
-              <Image
-                src="/daniel.jpg"
-                alt="Daniel, fundador de ichan"
-                fill
-                sizes="160px"
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl font-medium">
-                Soy <span className="font-display italic text-dorado-light">Daniel</span>.
-              </h2>
-              <p className="mt-4 max-w-2xl text-sand/70">
-                Soy peruano, con formación en Ciencia de Datos y certificación
-                en IA Generativa (DeepLearning.AI). Automatizo procesos y
-                construyo agentes con LLMs sobre AWS — las mismas
-                herramientas que pongo al servicio de negocios peruanos para
-                que no pierdan clientes por no responder a tiempo.
-              </p>
-              <p className="mt-4 max-w-2xl text-sand/70">
-                Te ayudo a construir rápido, a escalar sin fricción, y a que
-                todo sea confiable desde el primer día.
-              </p>
-            </div>
+          <h3 className="text-xl font-medium text-ink">Pruébalo tú mismo</h3>
+          <p className="mt-2 text-sm text-ink/60">
+            Completa el formulario — así de simple es el paso 1 de arriba, en vivo.
+          </p>
+          <div className="mt-6 text-left">
+            <LeadForm />
           </div>
         </Reveal>
       </section>
 
-      {/* CASOS REALES */}
-      <section className="mx-auto max-w-5xl px-6 pb-24">
+      {/* CASOS REALES + FUNDADOR */}
+      <section id="casos-reales" className="mx-auto max-w-5xl px-6 pb-24">
         <Reveal>
           <h2 className="text-3xl font-medium text-ink">Casos reales</h2>
           <p className="mt-2 max-w-md text-ink/60">
@@ -382,80 +238,16 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
-      </section>
-
-      {/* NICHOS */}
-      <section className="mx-auto max-w-5xl px-6 pb-24">
-        <Reveal>
-          <h2 className="text-3xl font-medium text-ink">Negocios donde trabajo</h2>
-          <p className="mt-2 max-w-md text-ink/60">
-            Mismo motor de IA, adaptado al problema real de tu rubro.
-          </p>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {NICHOS.map((n, i) => (
-            <Reveal key={n.title} delay={i * 80}>
-              <Link href={n.href} className="card-soft hover-lift group block h-full">
-                <n.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
-                <h3 className="mt-5 text-lg font-medium text-ink">{n.title}</h3>
-                <p className="mt-2 text-sm text-ink/60">{n.problema}</p>
-              </Link>
-            </Reveal>
-          ))}
+        <div className="mt-6">
+          <FundadorBlock />
         </div>
       </section>
 
-      {/* CUANTO CUESTA */}
-      <section id="precios" className="mx-auto max-w-3xl px-6 pb-24">
-        <Reveal>
-          <h2 className="text-3xl font-medium text-ink">¿Cuánto cuesta?</h2>
-          <div className="mt-8 card-soft-tint">
-            <p className="text-ink/75">
-              Cada negocio necesita una configuración distinta. El precio
-              depende de las integraciones, automatizaciones y herramientas
-              necesarias.
-            </p>
-            <p className="mt-4 text-ink/75">
-              La mayoría de los proyectos comienzan entre{" "}
-              <strong className="font-medium text-ink">S/1,500 y S/5,000</strong>. Después
-              del diagnóstico gratuito recibirás una propuesta cerrada y sin
-              costos ocultos.
-            </p>
-            <p className="mt-4 text-sm text-ink/60">
-              ¿Ya tienes un asistente funcionando y quieres integrar pagos,
-              datos y monitoreo en una sola arquitectura?{" "}
-              <Link
-                href="/infraestructura-digital"
-                className="inline-flex items-center gap-1 font-medium text-terracota-dark hover:underline"
-              >
-                Conoce Infraestructura Digital Completa <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
-            </p>
-            <div className="mt-6">
-              <WhatsAppButton message="Hola, quiero solicitar un diagnóstico gratuito">
-                Solicitar diagnóstico gratuito
-              </WhatsAppButton>
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
       {/* GARANTIA */}
-      <section className="mx-auto max-w-3xl px-6 pb-16">
-        <Reveal>
-          <div className="card-soft-tint text-center">
-            <ShieldCheck className="mx-auto h-8 w-8 text-terracota" strokeWidth={1.5} />
-            <h2 className="mt-4 text-2xl font-medium text-ink md:text-3xl">
-              Riesgo cero para ti.
-            </h2>
-            <p className="mt-4 text-ink/65">
-              Piloto de <strong className="font-medium text-ink">14 días</strong>. Si el
-              asistente no te ahorra tiempo ni recupera clientes,{" "}
-              <strong className="font-medium text-ink">no pagas la configuración</strong>.
-            </p>
-          </div>
-        </Reveal>
-      </section>
+      <GarantiaSection condicion="el asistente no te ahorra tiempo ni recupera clientes" />
+
+      {/* FAQ */}
+      <FAQSection items={FAQS_HOME} />
 
       {/* CTA FINAL */}
       <section className="mx-auto max-w-3xl px-6 pb-28 text-center">

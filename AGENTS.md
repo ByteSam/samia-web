@@ -12,6 +12,7 @@ Este proyecto usa el flujo `/generate-prp` → `/execute-prp` (ver `.claude/comm
 ### 🔄 Project Awareness & Context
 - Revisar `docs/00-decisiones-vigentes.md` antes de cambiar oferta, mensaje de la web, embudo, precios o arquitectura.
 - Consultar `~/Desktop/DANIEL/files/prd-samia.md` para el estado actual del producto (pendientes, roadmap, decisiones descartadas).
+- Consultar `~/Desktop/DANIEL/files/brand-book-ichan.md` (documento fundacional, congelado v1.0) antes de cualquier cambio de identidad visual, contenido de marca, propuesta comercial o mensaje. **Ningún cambio importante en la marca puede hacerse sin justificar qué parte del Brand Book se modifica y por qué.**
 
 ### 🧱 Code Structure & Modularity
 - Componentes reutilizables en `src/components/`, páginas en `src/app/<ruta>/page.tsx`.
