@@ -12,6 +12,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
+import CatalogGrid from "@/components/CatalogGrid";
 
 export const metadata: Metadata = {
   title: "Agentes de WhatsApp con IA para negocios en Perú",
@@ -97,7 +98,7 @@ export default function AgentesIAPage() {
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
         <Reveal>
           <span className="chip">Servicio · Agentes IA</span>
-          <h1 className="mx-auto mt-6 max-w-3xl text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-6xl">
+          <h1 className="mx-auto mt-6 max-w-3xl text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-[4rem]">
             Un agente de IA para cada punto donde hoy pierdes clientes.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
@@ -113,37 +114,14 @@ export default function AgentesIAPage() {
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-20">
-        <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">Catálogo, en soles</h2>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {CATALOGO.map((p, i) => (
-            <Reveal key={p.nombre} delay={i * 70}>
-              <div className="card-soft hover-lift flex h-full flex-col">
-                <p.icon className="h-6 w-6 text-terracota" strokeWidth={1.5} />
-                <h3 className="mt-4 font-medium text-ink">{p.nombre}</h3>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-terracota-dark/70">
-                  Entrega: {p.entrega}
-                </p>
-                <div className="mt-4 flex items-end justify-between">
-                  <div>
-                    <p className="text-xl font-medium text-ink">{p.setup}</p>
-                    <p className="text-xs text-ink/50">Setup</p>
-                  </div>
-                  <p className="text-sm font-medium text-dorado">{p.retainer}/mes</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+      <CatalogGrid items={CATALOGO}>
         <Reveal delay={240}>
-          <p className="mt-6 text-sm text-ink/50">
+          <p className="text-sm text-ink/50">
             ¿No sabes cuál te conviene? En el diagnóstico gratis vemos tu caso
             y te recomiendo el punto de partida.
           </p>
         </Reveal>
-      </section>
+      </CatalogGrid>
 
       <GarantiaSection condicion="el agente no te ahorra tiempo ni recupera clientes" />
 

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Check, PhoneMissed, Clock3, MapPinned } from "lucide-react";
+import { PhoneMissed, Clock3, MapPinned } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
+import PricingTiers from "@/components/PricingTiers";
 
 export const metadata: Metadata = {
   title: "Asistente de WhatsApp con IA para servicios locales en Perú",
@@ -70,7 +71,7 @@ export default function ServiciosLocalesPage() {
       {/* 1. HERO */}
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
         <Reveal>
-          <h1 className="text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-6xl">
+          <h1 className="text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-[4rem]">
             Cada llamada perdida es un cliente que se va con otro gasfitero.
           </h1>
         </Reveal>
@@ -94,7 +95,7 @@ export default function ServiciosLocalesPage() {
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
           <div className="card-soft">
-            <h2 className="text-2xl font-normal text-ink md:text-3xl">
+            <h2 className="text-2xl font-medium text-ink md:text-3xl">
               Estás en un techo, debajo de un lavadero o manejando — y el
               teléfono suena.
             </h2>
@@ -120,7 +121,7 @@ export default function ServiciosLocalesPage() {
       {/* 3. LA SOLUCION */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">
+          <h2 className="text-2xl font-medium text-ink md:text-3xl">
             No contestas el teléfono — pero nunca dejas a nadie sin
             respuesta.
           </h2>
@@ -155,34 +156,7 @@ export default function ServiciosLocalesPage() {
       </section>
 
       {/* 4. PAQUETES */}
-      <section className="mx-auto max-w-5xl px-6 pb-20">
-        <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">
-            Precios claros. Sin sorpresas.
-          </h2>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {PAQUETES.map((p, i) => (
-            <Reveal key={p.nombre} delay={i * 80}>
-              <div className={`h-full ${p.destacado ? "card-soft-tint" : "card-soft"}`}>
-                {p.destacado && <span className="chip mb-3">El más elegido</span>}
-                <h3 className="text-lg font-medium text-ink">{p.nombre}</h3>
-                <p className="mt-3 text-2xl font-medium text-ink">{p.setup}</p>
-                <p className="text-xs text-ink/50">Configuración</p>
-                <p className="mt-1 text-lg font-medium text-dorado">{p.mensualidad}/mes</p>
-                <ul className="mt-4 space-y-2 text-sm text-ink/65">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-terracota" strokeWidth={1.75} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <PricingTiers paquetes={PAQUETES} />
 
       {/* 5. GARANTIA */}
       <GarantiaSection condicion="el asistente no te ayuda a recuperar clientes que hoy pierdes" />
@@ -193,7 +167,7 @@ export default function ServiciosLocalesPage() {
       {/* 7. CTA FINAL */}
       <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
         <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">
+          <h2 className="text-2xl font-medium text-ink md:text-3xl">
             ¿Cuántas llamadas vas a dejar pasar esta semana?
           </h2>
           <p className="mt-3 text-ink/60">

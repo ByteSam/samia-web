@@ -38,7 +38,7 @@ export default function ServiciosLegalesPage() {
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
         <Reveal>
           <span className="chip">Especializado en derecho laboral</span>
-          <h1 className="mx-auto mt-6 max-w-3xl text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-6xl">
+          <h1 className="mx-auto mt-6 max-w-3xl text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-[4rem]">
             Tu estudio deja de perder consultas laborales por no responder a
             tiempo.
           </h1>
@@ -63,7 +63,7 @@ export default function ServiciosLegalesPage() {
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
           <div className="card-soft">
-            <h2 className="text-2xl font-normal text-ink md:text-3xl">
+            <h2 className="text-2xl font-medium text-ink md:text-3xl">
               Cada consulta sin responder es un caso que se va a otro estudio.
             </h2>
             <ul className="mt-6 space-y-3 text-ink/65">
@@ -93,7 +93,7 @@ export default function ServiciosLegalesPage() {
       {/* 3. LA SOLUCION */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">
+          <h2 className="text-2xl font-medium text-ink md:text-3xl">
             Un asistente que atiende por tu estudio, 24/7.
           </h2>
         </Reveal>
@@ -135,7 +135,7 @@ export default function ServiciosLegalesPage() {
       {/* 4. CUANTO CUESTA */}
       <section className="mx-auto max-w-3xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">¿Cuánto cuesta?</h2>
+          <h2 className="text-2xl font-medium text-ink md:text-3xl">¿Cuánto cuesta?</h2>
           <div className="mt-8 card-soft-tint">
             <p className="text-ink/75">
               Cada estudio necesita una configuración distinta. El precio
@@ -166,7 +166,7 @@ export default function ServiciosLegalesPage() {
       {/* 7. CTA FINAL */}
       <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
         <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">
+          <h2 className="text-2xl font-medium text-ink md:text-3xl">
             ¿Cuántas consultas laborales vas a dejar sin responder esta
             semana?
           </h2>

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Check, Clock, CalendarCheck, UserCheck } from "lucide-react";
+import { Clock, CalendarCheck, UserCheck } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
+import PricingTiers from "@/components/PricingTiers";
 
 export const metadata: Metadata = {
   title: "Asistente de WhatsApp con IA para clínicas en Perú",
@@ -78,7 +79,7 @@ export default function ClinicasPage() {
       {/* 1. HERO */}
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
         <Reveal>
-          <h1 className="text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-6xl">
+          <h1 className="text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-[4rem]">
             Tu clínica deja de perder pacientes por no responder a tiempo.
           </h1>
         </Reveal>
@@ -102,7 +103,7 @@ export default function ClinicasPage() {
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
           <div className="card-soft">
-            <h2 className="text-2xl font-normal text-ink md:text-3xl">
+            <h2 className="text-2xl font-medium text-ink md:text-3xl">
               Cada mensaje sin responder es un paciente que se va a otra
               clínica.
             </h2>
@@ -132,7 +133,7 @@ export default function ClinicasPage() {
       {/* 3. LA SOLUCION */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">
+          <h2 className="text-2xl font-medium text-ink md:text-3xl">
             Un asistente que trabaja por tu recepción, 24/7.
           </h2>
         </Reveal>
@@ -172,7 +173,7 @@ export default function ClinicasPage() {
       {/* 5. COMO FUNCIONA */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">Listo en 3 pasos.</h2>
+          <h2 className="text-2xl font-medium text-ink md:text-3xl">Listo en 3 pasos.</h2>
         </Reveal>
         <ol className="mt-8 space-y-6">
           {[
@@ -205,39 +206,11 @@ export default function ClinicasPage() {
       </section>
 
       {/* 6. PAQUETES */}
-      <section className="mx-auto max-w-5xl px-6 pb-20">
-        <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">
-            Precios claros. Sin sorpresas.
-          </h2>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {PAQUETES.map((p, i) => (
-            <Reveal key={p.nombre} delay={i * 80}>
-              <div className={`h-full ${p.destacado ? "card-soft-tint" : "card-soft"}`}>
-                {p.destacado && <span className="chip mb-3">El más elegido</span>}
-                <h3 className="text-lg font-medium text-ink">{p.nombre}</h3>
-                <p className="mt-3 text-2xl font-medium text-ink">{p.setup}</p>
-                <p className="text-xs text-ink/50">Configuración</p>
-                <p className="mt-1 text-lg font-medium text-dorado">{p.mensualidad}/mes</p>
-                <ul className="mt-4 space-y-2 text-sm text-ink/65">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-terracota" strokeWidth={1.75} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <div className="mt-8 text-center">
-          <WhatsAppButton message="Hola, quiero el paquete Profesional para mi clínica">
-            Quiero el Profesional
-          </WhatsAppButton>
-        </div>
-      </section>
+      <PricingTiers paquetes={PAQUETES}>
+        <WhatsAppButton message="Hola, quiero el paquete Profesional para mi clínica">
+          Quiero el Profesional
+        </WhatsAppButton>
+      </PricingTiers>
 
       {/* 8. GARANTIA */}
       <GarantiaSection
@@ -251,7 +224,7 @@ export default function ClinicasPage() {
       {/* 10. CTA FINAL */}
       <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
         <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">
+          <h2 className="text-2xl font-medium text-ink md:text-3xl">
             ¿Cuántos pacientes vas a dejar de perder este mes?
           </h2>
           <p className="mt-3 text-ink/60">
