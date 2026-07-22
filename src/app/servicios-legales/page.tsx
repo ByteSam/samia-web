@@ -4,6 +4,8 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
+import ProblemSection from "@/components/ProblemSection";
+import SolutionGrid from "@/components/SolutionGrid";
 
 export const metadata: Metadata = {
   title: "Asistente de WhatsApp con IA para estudios de abogacía laboral en Perú",
@@ -60,77 +62,44 @@ export default function ServiciosLegalesPage() {
       </section>
 
       {/* 2. EL PROBLEMA */}
-      <section className="mx-auto max-w-4xl px-6 pb-20">
-        <Reveal>
-          <div className="card-soft">
-            <h2 className="text-2xl font-medium text-ink md:text-3xl">
-              Cada consulta sin responder es un caso que se va a otro estudio.
-            </h2>
-            <ul className="mt-6 space-y-3 text-ink/65">
-              <li>
-                • Consultas por despidos, liquidaciones u hostigamiento
-                llegan a cualquier hora — muchas veces en medio de una
-                crisis, y el trabajador no espera.
-              </li>
-              <li>
-                • Respondes siempre lo mismo (¿cuánto cobran?, ¿qué
-                necesito?) en vez de dedicar ese tiempo a tus casos.
-              </li>
-              <li>
-                • Sin un primer filtro, cuesta distinguir una consulta real
-                de alguien que solo pregunta por curiosidad.
-              </li>
-            </ul>
-            <p className="mt-6 text-sm text-ink/50">
-              Responder en menos de 5 minutos multiplica hasta 21 veces las
-              probabilidades de conversión — por WhatsApp, contestar en
-              menos de 1 minuto convierte 8 veces más.
-            </p>
-          </div>
-        </Reveal>
-      </section>
+      <ProblemSection
+        titulo="Cada consulta sin responder es un caso que se va a otro estudio."
+        bullets={[
+          "Consultas por despidos, liquidaciones u hostigamiento llegan a cualquier hora — muchas veces en medio de una crisis, y el trabajador no espera.",
+          "Respondes siempre lo mismo (¿cuánto cobran?, ¿qué necesito?) en vez de dedicar ese tiempo a tus casos.",
+          "Sin un primer filtro, cuesta distinguir una consulta real de alguien que solo pregunta por curiosidad.",
+        ]}
+        stat="Responder en menos de 5 minutos multiplica hasta 21 veces las probabilidades de conversión — por WhatsApp, contestar en menos de 1 minuto convierte 8 veces más."
+      />
 
       {/* 3. LA SOLUCION */}
-      <section className="mx-auto max-w-4xl px-6 pb-20">
-        <Reveal>
-          <h2 className="text-2xl font-medium text-ink md:text-3xl">
-            Un asistente que atiende por tu estudio, 24/7.
-          </h2>
-        </Reveal>
-        <div className="mt-8 grid gap-6 sm:grid-cols-3">
-          {[
-            {
-              icon: MessageCircleMore,
-              t: "Responde al instante",
-              d: "Horarios, tipo de casos que atiendes, cómo funciona la primera consulta.",
-            },
-            {
-              icon: AlertTriangle,
-              t: "Prioriza lo urgente",
-              d: "Detecta casos con plazos ajustados (ej. un despido reciente) y te avisa de inmediato.",
-            },
-            {
-              icon: CalendarCheck,
-              t: "Agenda la primera consulta",
-              d: "Coordina la consulta inicial sin ida y vuelta de mensajes.",
-            },
-          ].map((item, i) => (
-            <Reveal key={item.t} delay={i * 80}>
-              <div className="card-soft hover-lift h-full">
-                <item.icon className="h-6 w-6 text-terracota" strokeWidth={1.5} />
-                <p className="mt-4 font-medium text-ink">{item.t}</p>
-                <p className="mt-2 text-sm text-ink/60">{item.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+      <SolutionGrid
+        titulo="Un asistente que atiende por tu estudio, 24/7."
+        items={[
+          {
+            icon: MessageCircleMore,
+            t: "Responde al instante",
+            d: "Horarios, tipo de casos que atiendes, cómo funciona la primera consulta.",
+          },
+          {
+            icon: AlertTriangle,
+            t: "Prioriza lo urgente",
+            d: "Detecta casos con plazos ajustados (ej. un despido reciente) y te avisa de inmediato.",
+          },
+          {
+            icon: CalendarCheck,
+            t: "Agenda la primera consulta",
+            d: "Coordina la consulta inicial sin ida y vuelta de mensajes.",
+          },
+        ]}
+      >
         <Reveal delay={240}>
           <p className="mt-8 text-ink/60">
             No vendemos &quot;un chatbot con IA&quot;. Te devolvemos tiempo
             para atender casos, no mensajes repetidos.
           </p>
         </Reveal>
-      </section>
+      </SolutionGrid>
 
       {/* 4. CUANTO CUESTA */}
       <section className="mx-auto max-w-3xl px-6 pb-20">

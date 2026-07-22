@@ -5,6 +5,8 @@ import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import PricingTiers from "@/components/PricingTiers";
+import ProblemSection from "@/components/ProblemSection";
+import SolutionGrid from "@/components/SolutionGrid";
 
 export const metadata: Metadata = {
   title: "Asistente de WhatsApp con IA para clínicas en Perú",
@@ -100,75 +102,42 @@ export default function ClinicasPage() {
       </section>
 
       {/* 2. EL PROBLEMA */}
-      <section className="mx-auto max-w-4xl px-6 pb-20">
-        <Reveal>
-          <div className="card-soft">
-            <h2 className="text-2xl font-medium text-ink md:text-3xl">
-              Cada mensaje sin responder es un paciente que se va a otra
-              clínica.
-            </h2>
-            <ul className="mt-6 space-y-3 text-ink/65">
-              <li>
-                • Llegan consultas por WhatsApp fuera de horario y nadie
-                contesta hasta el día siguiente.
-              </li>
-              <li>
-                • Los pacientes no confirman y las citas se pierden: agenda
-                con huecos y sillas vacías.
-              </li>
-              <li>
-                • Recepción se satura respondiendo siempre lo mismo: precios,
-                horarios, ubicación.
-              </li>
-            </ul>
-            <p className="mt-6 text-sm text-ink/50">
-              El 62% de las personas abandona si no le responden rápido. En
-              salud, esa demora se traduce en pacientes y en dinero que no
-              vuelven.
-            </p>
-          </div>
-        </Reveal>
-      </section>
+      <ProblemSection
+        titulo="Cada mensaje sin responder es un paciente que se va a otra clínica."
+        bullets={[
+          "Llegan consultas por WhatsApp fuera de horario y nadie contesta hasta el día siguiente.",
+          "Los pacientes no confirman y las citas se pierden: agenda con huecos y sillas vacías.",
+          "Recepción se satura respondiendo siempre lo mismo: precios, horarios, ubicación.",
+        ]}
+        stat="El 62% de las personas abandona si no le responden rápido. En salud, esa demora se traduce en pacientes y en dinero que no vuelven."
+      />
 
       {/* 3. LA SOLUCION */}
-      <section className="mx-auto max-w-4xl px-6 pb-20">
-        <Reveal>
-          <h2 className="text-2xl font-medium text-ink md:text-3xl">
-            Un asistente que trabaja por tu recepción, 24/7.
-          </h2>
-        </Reveal>
-        <div className="mt-8 grid gap-6 sm:grid-cols-3">
-          {[
-            {
-              icon: Clock,
-              t: "Responde al instante",
-              d: "Consultas frecuentes: horarios, precios, servicios, ubicación.",
-            },
-            {
-              icon: CalendarCheck,
-              t: "Agenda y confirma citas",
-              d: "Con recordatorios automáticos que reducen las ausencias.",
-            },
-            {
-              icon: UserCheck,
-              t: "Te pasa solo los pacientes listos",
-              d: "Ya filtrados, para atender lo que de verdad necesita a un humano.",
-            },
-          ].map((item, i) => (
-            <Reveal key={item.t} delay={i * 80}>
-              <div className="card-soft hover-lift h-full">
-                <item.icon className="h-6 w-6 text-terracota" strokeWidth={1.5} />
-                <p className="mt-4 font-medium text-ink">{item.t}</p>
-                <p className="mt-2 text-sm text-ink/60">{item.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+      <SolutionGrid
+        titulo="Un asistente que trabaja por tu recepción, 24/7."
+        items={[
+          {
+            icon: Clock,
+            t: "Responde al instante",
+            d: "Consultas frecuentes: horarios, precios, servicios, ubicación.",
+          },
+          {
+            icon: CalendarCheck,
+            t: "Agenda y confirma citas",
+            d: "Con recordatorios automáticos que reducen las ausencias.",
+          },
+          {
+            icon: UserCheck,
+            t: "Te pasa solo los pacientes listos",
+            d: "Ya filtrados, para atender lo que de verdad necesita a un humano.",
+          },
+        ]}
+      >
         <p className="mt-8 text-ink/60">
           No vendemos &quot;un chatbot con IA&quot;. Te devolvemos tiempo de
           recepción y pacientes que hoy se pierden.
         </p>
-      </section>
+      </SolutionGrid>
 
       {/* 5. COMO FUNCIONA */}
       <section className="mx-auto max-w-4xl px-6 pb-20">

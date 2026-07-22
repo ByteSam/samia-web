@@ -5,6 +5,8 @@ import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import PricingTiers from "@/components/PricingTiers";
+import ProblemSection from "@/components/ProblemSection";
+import SolutionGrid from "@/components/SolutionGrid";
 
 export const metadata: Metadata = {
   title: "Asistente de WhatsApp con IA para servicios locales en Perú",
@@ -92,68 +94,37 @@ export default function ServiciosLocalesPage() {
       </section>
 
       {/* 2. EL PROBLEMA */}
-      <section className="mx-auto max-w-4xl px-6 pb-20">
-        <Reveal>
-          <div className="card-soft">
-            <h2 className="text-2xl font-medium text-ink md:text-3xl">
-              Estás en un techo, debajo de un lavadero o manejando — y el
-              teléfono suena.
-            </h2>
-            <ul className="mt-6 space-y-3 text-ink/65">
-              <li>• No puedes contestar en el momento y la llamada se pierde.</li>
-              <li>
-                • El cliente no espera: llama al siguiente de la lista en
-                Google.
-              </li>
-              <li>
-                • Las emergencias reales (fuga, corte, algo roto) llegan fuera
-                de tu horario y nadie las atiende.
-              </li>
-            </ul>
-            <p className="mt-6 text-sm text-ink/50">
-              El 62% de las personas abandona si no le responden rápido — y
-              en emergencias del hogar, esa espera se siente peor.
-            </p>
-          </div>
-        </Reveal>
-      </section>
+      <ProblemSection
+        titulo="Estás en un techo, debajo de un lavadero o manejando — y el teléfono suena."
+        bullets={[
+          "No puedes contestar en el momento y la llamada se pierde.",
+          "El cliente no espera: llama al siguiente de la lista en Google.",
+          "Las emergencias reales (fuga, corte, algo roto) llegan fuera de tu horario y nadie las atiende.",
+        ]}
+        stat="El 62% de las personas abandona si no le responden rápido — y en emergencias del hogar, esa espera se siente peor."
+      />
 
       {/* 3. LA SOLUCION */}
-      <section className="mx-auto max-w-4xl px-6 pb-20">
-        <Reveal>
-          <h2 className="text-2xl font-medium text-ink md:text-3xl">
-            No contestas el teléfono — pero nunca dejas a nadie sin
-            respuesta.
-          </h2>
-        </Reveal>
-        <div className="mt-8 grid gap-6 sm:grid-cols-3">
-          {[
-            {
-              icon: PhoneMissed,
-              t: "Missed-call text-back",
-              d: "Si no contestas, le escribe solo por WhatsApp en segundos.",
-            },
-            {
-              icon: Clock3,
-              t: "Responde 24/7",
-              d: "Horarios, tarifas, zona de trabajo — sin que muevas un dedo.",
-            },
-            {
-              icon: MapPinned,
-              t: "Filtra lo urgente",
-              d: "Te avisa de inmediato si suena a emergencia real.",
-            },
-          ].map((item, i) => (
-            <Reveal key={item.t} delay={i * 80}>
-              <div className="card-soft hover-lift h-full">
-                <item.icon className="h-6 w-6 text-terracota" strokeWidth={1.5} />
-                <p className="mt-4 font-medium text-ink">{item.t}</p>
-                <p className="mt-2 text-sm text-ink/60">{item.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <SolutionGrid
+        titulo="No contestas el teléfono — pero nunca dejas a nadie sin respuesta."
+        items={[
+          {
+            icon: PhoneMissed,
+            t: "Missed-call text-back",
+            d: "Si no contestas, le escribe solo por WhatsApp en segundos.",
+          },
+          {
+            icon: Clock3,
+            t: "Responde 24/7",
+            d: "Horarios, tarifas, zona de trabajo — sin que muevas un dedo.",
+          },
+          {
+            icon: MapPinned,
+            t: "Filtra lo urgente",
+            d: "Te avisa de inmediato si suena a emergencia real.",
+          },
+        ]}
+      />
 
       {/* 4. PAQUETES */}
       <PricingTiers paquetes={PAQUETES} />
