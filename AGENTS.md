@@ -10,6 +10,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 Este proyecto usa el flujo `/generate-prp` → `/execute-prp` (ver `.claude/commands/`) para features grandes. Para cambios chicos, seguir estas reglas directamente.
 
 ### 🔄 Project Awareness & Context
+- **Leer `~/Desktop/DANIEL/files/session-handoff-ichan.md` antes de empezar cualquier trabajo en el proyecto** — da el contexto operativo (estado, último commit, pendientes, riesgos) sin tener que reconstruirlo desde cero.
 - Revisar `docs/00-decisiones-vigentes.md` antes de cambiar oferta, mensaje de la web, embudo, precios o arquitectura.
 - Consultar `~/Desktop/DANIEL/files/prd-samia.md` para el estado actual del producto (pendientes, roadmap, decisiones descartadas).
 - Consultar `~/Desktop/DANIEL/files/brand-book-ichan.md` (documento fundacional, congelado v1.0) antes de cualquier cambio de identidad visual, contenido de marca, propuesta comercial o mensaje. **Ningún cambio importante en la marca puede hacerse sin justificar qué parte del Brand Book se modifica y por qué.**
