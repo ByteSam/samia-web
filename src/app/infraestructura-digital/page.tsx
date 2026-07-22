@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "Infraestructura Digital Completa para tu negocio",
   description:
     "Web que vende + pagos + automatización + datos + monitoreo, en una sola arquitectura moderna. El upgrade natural una vez que ya confías en ichan.",
+  alternates: { canonical: "/infraestructura-digital" },
 };
 
 const MODULOS = [

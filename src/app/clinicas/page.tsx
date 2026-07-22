@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Asistente de WhatsApp con IA para clínicas en Perú",
   description:
     "Tu clínica responde mensajes 24/7, confirma citas y reduce las ausencias. Configurado en días. Diagnóstico gratis.",
+  alternates: { canonical: "/clinicas" },
 };
 
 const PAQUETES = [

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Asistente de WhatsApp con IA para servicios locales en Perú",
   description:
     "Gasfitería, cerrajería, mantenimiento, constructoras: no pierdas otra emergencia por no contestar a tiempo. Configurado en días. Diagnóstico gratis.",
+  alternates: { canonical: "/servicios-locales" },
 };
 
 const PAQUETES = [

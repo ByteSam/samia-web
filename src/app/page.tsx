@@ -13,7 +13,8 @@ import FAQSection from "@/components/FAQSection";
 export const metadata: Metadata = {
   title: "Automatización y tecnología para negocios | ichan",
   description:
-    "Deja de perder clientes y tiempo en trabajo manual. Implemento directamente la automatización, WhatsApp y web que tu negocio necesita, con garantía de 14 días.",
+    "Te ayudo a responder a tus clientes más rápido con WhatsApp, automatización y web — implementado directamente, con diagnóstico gratis.",
+  alternates: { canonical: "/" },
 };
 
 const CASOS = [

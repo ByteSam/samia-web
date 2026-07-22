@@ -4,6 +4,7 @@ import Reveal from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "Política de Privacidad",
   description: "Cómo ichan recopila, usa y protege tus datos personales.",
+  alternates: { canonical: "/politica-de-privacidad" },
 };
 
 export default function PoliticaDePrivacidadPage() {

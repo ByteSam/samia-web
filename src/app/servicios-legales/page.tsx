@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Asistente de WhatsApp con IA para estudios de abogacía laboral en Perú",
   description:
     "Tu estudio de abogacía laboral atiende consultas automáticamente 24/7, prioriza los casos urgentes y agenda la primera consulta — configurado en días. Diagnóstico gratis.",
+  alternates: { canonical: "/servicios-legales" },
 };
 
 const FAQS = [

@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: "Desarrollo Web para negocios en Perú",
   description:
     "Landing, web corporativa, portafolio, portal de cliente y e-commerce — sitios que venden, construidos en código, en soles.",
+  alternates: { canonical: "/servicios/desarrollo-web" },
 };
 
 const CATALOGO = [

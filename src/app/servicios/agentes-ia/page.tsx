@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "Agentes de WhatsApp con IA para negocios en Perú",
   description:
     "Recepcionista IA, agente de reservas, chatbot con base de conocimiento, soporte y suites multicanal — agentes de IA por WhatsApp para tu negocio, en soles.",
+  alternates: { canonical: "/servicios/agentes-ia" },
 };
 
 const CATALOGO = [
