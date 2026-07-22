@@ -12,7 +12,7 @@ import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 
 export const metadata: Metadata = {
-  title: "Desarrollo Web",
+  title: "Desarrollo Web para negocios en Perú",
   description:
     "Landing, web corporativa, portafolio, portal de cliente y e-commerce — sitios que venden, construidos en código, en soles.",
 };

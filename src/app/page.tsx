@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArrowUpRight, Hexagon, MessageCircleMore, CalendarCheck, Hammer, Scale } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
@@ -8,6 +9,12 @@ import ProcesoSection from "@/components/ProcesoSection";
 import FundadorBlock from "@/components/FundadorBlock";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
+
+export const metadata: Metadata = {
+  title: "Automatización y tecnología para negocios | ichan",
+  description:
+    "Deja de perder clientes y tiempo en trabajo manual. Implemento directamente la automatización, WhatsApp y web que tu negocio necesita, con garantía de 14 días.",
+};
 
 const CASOS = [
   {

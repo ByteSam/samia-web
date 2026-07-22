@@ -90,7 +90,7 @@ body {
 }
 .btn-pill-whatsapp {
   background: var(--color-whatsapp);
-  color: white;
+  color: var(--color-ink);
 }
 
 /* ---- Chip / tag ---- */

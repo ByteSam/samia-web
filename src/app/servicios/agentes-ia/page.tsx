@@ -14,7 +14,7 @@ import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 
 export const metadata: Metadata = {
-  title: "Agentes y Chatbots con IA",
+  title: "Agentes de WhatsApp con IA para negocios en Perú",
   description:
     "Recepcionista IA, agente de reservas, chatbot con base de conocimiento, soporte y suites multicanal — agentes de IA por WhatsApp para tu negocio, en soles.",
 };
