@@ -246,6 +246,13 @@ export default function Home() {
       {/* GARANTIA */}
       <GarantiaSection condicion="el asistente no te ahorra tiempo ni recupera clientes" />
 
+      {/* SEÑAL DE PRECIO — breve, no es tabla ni catálogo */}
+      <p className="mx-auto -mt-12 max-w-3xl px-6 pb-20 text-center text-sm text-ink/55">
+        Implementaciones desde <strong className="font-medium text-ink">S/1,500</strong>. El
+        precio final depende de tu caso y lo definimos después del
+        diagnóstico gratuito.
+      </p>
+
       {/* FAQ */}
       <FAQSection items={FAQS_HOME} />
 

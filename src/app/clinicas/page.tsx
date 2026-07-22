@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { Check, ShieldCheck, Clock, CalendarCheck, UserCheck } from "lucide-react";
+import { Check, Clock, CalendarCheck, UserCheck } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
+import GarantiaSection from "@/components/GarantiaSection";
+import FAQSection from "@/components/FAQSection";
 
 export const metadata: Metadata = {
   title: "Asistente de WhatsApp con IA para clínicas en Perú",
@@ -237,39 +239,13 @@ export default function ClinicasPage() {
       </section>
 
       {/* 8. GARANTIA */}
-      <section className="mx-auto max-w-3xl px-6 pb-20">
-        <Reveal>
-          <div className="card-soft-tint text-center">
-            <ShieldCheck className="mx-auto h-8 w-8 text-terracota" strokeWidth={1.5} />
-            <h2 className="mt-4 text-2xl font-normal text-ink md:text-3xl">
-              Riesgo cero para ti.
-            </h2>
-            <p className="mt-4 text-ink/65">
-              Piloto de <strong className="font-medium text-ink">14 días</strong>. Si el
-              asistente no te ahorra tiempo ni recupera pacientes,{" "}
-              <strong className="font-medium text-ink">no pagas la configuración</strong>. Así
-              de seguro estoy de que funciona.
-            </p>
-          </div>
-        </Reveal>
-      </section>
+      <GarantiaSection
+        condicion="el asistente no te ahorra tiempo ni recupera pacientes"
+        notaExtra="Así de seguro estoy de que funciona."
+      />
 
       {/* 9. FAQ */}
-      <section className="mx-auto max-w-3xl px-6 pb-20">
-        <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">Preguntas frecuentes</h2>
-        </Reveal>
-        <div className="mt-8 space-y-6">
-          {FAQS.map((f, i) => (
-            <Reveal key={f.q} delay={i * 60}>
-              <div className="border-b border-ink/8 pb-6 last:border-0">
-                <p className="font-medium text-ink">{f.q}</p>
-                <p className="mt-1 text-sm text-ink/60">{f.a}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <FAQSection items={FAQS} />
 
       {/* 10. CTA FINAL */}
       <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
