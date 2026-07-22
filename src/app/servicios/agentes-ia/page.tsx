@@ -13,6 +13,7 @@ import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import CatalogGrid from "@/components/CatalogGrid";
+import FinalCTA from "@/components/FinalCTA";
 
 export const metadata: Metadata = {
   title: "Agentes de WhatsApp con IA para negocios en Perú",
@@ -128,21 +129,11 @@ export default function AgentesIAPage() {
       <FAQSection items={FAQS} />
 
       {/* CTA FINAL */}
-      <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
-        <Reveal>
-          <h2 className="text-2xl font-medium text-ink md:text-3xl">
-            ¿Cuántos clientes se te escapan por no responder a tiempo?
-          </h2>
-          <p className="mt-3 text-ink/60">
-            Diagnóstico gratis de 30 minutos. Sin compromiso.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <WhatsAppButton message="Hola, quiero información sobre agentes de IA">
-              Conversar por WhatsApp
-            </WhatsAppButton>
-          </div>
-        </Reveal>
-      </section>
+      <FinalCTA
+        titulo="¿Cuántos clientes se te escapan por no responder a tiempo?"
+        mensaje="Hola, quiero información sobre agentes de IA"
+        textoBoton="Conversar por WhatsApp"
+      />
     </>
   );
 }

@@ -6,6 +6,7 @@ import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import ProblemSection from "@/components/ProblemSection";
 import SolutionGrid from "@/components/SolutionGrid";
+import FinalCTA from "@/components/FinalCTA";
 
 export const metadata: Metadata = {
   title: "Asistente de WhatsApp con IA para estudios de abogacía laboral en Perú",
@@ -133,22 +134,10 @@ export default function ServiciosLegalesPage() {
       <FAQSection items={FAQS} />
 
       {/* 7. CTA FINAL */}
-      <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
-        <Reveal>
-          <h2 className="text-2xl font-medium text-ink md:text-3xl">
-            ¿Cuántas consultas laborales vas a dejar sin responder esta
-            semana?
-          </h2>
-          <p className="mt-3 text-ink/60">
-            Diagnóstico gratis de 30 minutos. Sin compromiso.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <WhatsAppButton message="Hola, vi tu web y quiero el asistente para mi estudio de abogacía">
-              Escríbeme por WhatsApp
-            </WhatsAppButton>
-          </div>
-        </Reveal>
-      </section>
+      <FinalCTA
+        titulo="¿Cuántas consultas laborales vas a dejar sin responder esta semana?"
+        mensaje="Hola, vi tu web y quiero el asistente para mi estudio de abogacía"
+      />
     </>
   );
 }

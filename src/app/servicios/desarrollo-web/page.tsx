@@ -11,6 +11,7 @@ import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import CatalogGrid from "@/components/CatalogGrid";
+import FinalCTA from "@/components/FinalCTA";
 
 export const metadata: Metadata = {
   title: "Desarrollo Web para negocios en Perú",
@@ -81,21 +82,11 @@ export default function DesarrolloWebPage() {
       <FAQSection items={FAQS} />
 
       {/* CTA FINAL */}
-      <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
-        <Reveal>
-          <h2 className="text-2xl font-medium text-ink md:text-3xl">
-            ¿Tu web de hoy te trae clientes, o solo está ahí?
-          </h2>
-          <p className="mt-3 text-ink/60">
-            Diagnóstico gratis de 30 minutos. Sin compromiso.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <WhatsAppButton message="Hola, quiero información sobre desarrollo web">
-              Conversar por WhatsApp
-            </WhatsAppButton>
-          </div>
-        </Reveal>
-      </section>
+      <FinalCTA
+        titulo="¿Tu web de hoy te trae clientes, o solo está ahí?"
+        mensaje="Hola, quiero información sobre desarrollo web"
+        textoBoton="Conversar por WhatsApp"
+      />
     </>
   );
 }
