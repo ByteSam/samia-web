@@ -152,7 +152,7 @@ export default function InfraestructuraDigitalPage() {
         <Reveal>
           <div className="card-soft-tint text-center">
             <h2 className="text-2xl font-normal text-ink md:text-3xl">
-              ¿Ya tienes un asistente de WhatsApp con nosotros?
+              ¿Ya tienes un asistente de WhatsApp conmigo?
             </h2>
             <p className="mt-4 text-ink/65">
               Este es el siguiente paso natural: integrar todo lo que ya

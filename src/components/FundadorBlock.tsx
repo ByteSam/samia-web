@@ -12,7 +12,7 @@ export default function FundadorBlock() {
         <p className="text-sm text-ink/70">
           Soy Daniel, ingeniero especializado en infraestructura y
           automatización. Hoy implemento personalmente cada solución de
-          ICHAN para asegurar calidad y resultados.
+          ichan para asegurar calidad y resultados.
         </p>
       </div>
     </Reveal>

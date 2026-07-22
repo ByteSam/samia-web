@@ -19,7 +19,7 @@ const SERVICIOS = [
     href: "/infraestructura-digital",
     icon: Workflow,
     beneficio: "Cuando ya validaste, todo tu negocio conectado en un solo sistema.",
-    criterio: "Empieza acá si ya validaste con nosotros y quieres integrarlo todo en un solo sistema.",
+    criterio: "Empieza acá si ya validaste conmigo y quieres integrarlo todo en un solo sistema.",
   },
 ];
 
