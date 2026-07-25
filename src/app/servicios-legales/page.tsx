@@ -41,7 +41,7 @@ export default function ServiciosLegalesPage() {
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
         <Reveal>
           <span className="chip">Especializado en derecho laboral</span>
-          <h1 className="mx-auto mt-6 max-w-3xl text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-[4rem]">
+          <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
             Tu estudio deja de perder consultas laborales por no responder a
             tiempo.
           </h1>
@@ -105,7 +105,7 @@ export default function ServiciosLegalesPage() {
       {/* 4. CUANTO CUESTA */}
       <section className="mx-auto max-w-3xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-2xl font-medium text-ink md:text-3xl">¿Cuánto cuesta?</h2>
+          <h2 className="text-h2 text-ink">¿Cuánto cuesta?</h2>
           <div className="mt-8 card-soft-tint">
             <p className="text-2xl font-medium text-ink">S/1,500 – S/5,000</p>
             <p className="text-xs text-ink/50">
@@ -141,7 +141,7 @@ export default function ServiciosLegalesPage() {
       {/* 5. COMO TRABAJAMOS */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-2xl font-medium text-ink md:text-3xl">Cómo trabajamos</h2>
+          <h2 className="text-h2 text-ink">Cómo trabajamos</h2>
         </Reveal>
         <ol className="mt-8 space-y-6">
           {[

@@ -24,7 +24,7 @@ export default function ProcesoSection() {
   return (
     <section className="mx-auto max-w-5xl px-6 pb-16">
       <Reveal>
-        <h2 className="text-3xl font-medium text-ink">Cómo trabajamos</h2>
+        <h2 className="text-h2 text-ink">Cómo trabajamos</h2>
       </Reveal>
       <div className="mt-10 grid gap-6 sm:grid-cols-3">
         {PASOS.map((step, i) => (

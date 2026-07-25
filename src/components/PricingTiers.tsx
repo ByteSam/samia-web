@@ -27,12 +27,12 @@ export default function PricingTiers({
   return (
     <section className="mx-auto max-w-5xl px-6 pb-20">
       <Reveal>
-        <h2 className="text-2xl font-medium text-ink md:text-3xl">{titulo}</h2>
+        <h2 className="text-h2 text-ink">{titulo}</h2>
       </Reveal>
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         {paquetes.map((p, i) => (
           <Reveal key={p.nombre} delay={i * 80}>
-            <div className={`h-full ${p.destacado ? "card-soft-tint" : "card-soft"}`}>
+            <div className={`hover-lift h-full ${p.destacado ? "card-soft-tint" : "card-soft"}`}>
               {p.destacado && <span className="chip mb-3">{chipDestacado}</span>}
               <h3 className="text-lg font-medium text-ink">{p.nombre}</h3>
               <p className="mt-3 text-2xl font-medium text-ink">{p.setup}</p>

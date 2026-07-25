@@ -101,7 +101,7 @@ export default function AgentesIAPage() {
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
         <Reveal>
           <span className="chip">Servicio · Agentes IA</span>
-          <h1 className="mx-auto mt-6 max-w-3xl text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-[4rem]">
+          <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
             Un agente de IA para cada punto donde hoy pierdes clientes.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
@@ -131,7 +131,7 @@ export default function AgentesIAPage() {
       {/* MOCKUP — así se ve resuelto */}
       <section className="mx-auto max-w-4xl px-6 pb-16 text-center">
         <Reveal>
-          <h2 className="text-2xl font-medium text-ink md:text-3xl">Así responde el agente</h2>
+          <h2 className="text-h2 text-ink">Así responde el agente</h2>
           <p className="mt-2 text-ink/60">Un ejemplo de cómo atiende una consulta, en tu WhatsApp.</p>
           <div className="mt-8 flex justify-center">
             <div className="w-full max-w-xs">
@@ -153,7 +153,7 @@ export default function AgentesIAPage() {
       {/* CÓMO TRABAJAMOS */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-2xl font-medium text-ink md:text-3xl">Cómo trabajamos</h2>
+          <h2 className="text-h2 text-ink">Cómo trabajamos</h2>
         </Reveal>
         <ol className="mt-8 space-y-6">
           {[

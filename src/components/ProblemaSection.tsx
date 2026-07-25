@@ -6,7 +6,7 @@ export default function ProblemaSection() {
     <section className="mx-auto max-w-4xl px-6 pb-20">
       <Reveal>
         <div className="card-soft">
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">
+          <h2 className="text-h2 text-ink">
             Cada mensaje sin responder es un cliente que se va a la competencia.
           </h2>
           <ul className="mt-6 space-y-3 text-ink/65">

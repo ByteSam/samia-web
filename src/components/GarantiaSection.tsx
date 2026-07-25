@@ -15,7 +15,7 @@ export default function GarantiaSection({ condicion, notaExtra }: GarantiaSectio
       <Reveal>
         <div className="card-soft-tint text-center">
           <ShieldCheck className="mx-auto h-8 w-8 text-terracota" strokeWidth={1.5} />
-          <h2 className="mt-4 text-2xl font-normal text-ink md:text-3xl">
+          <h2 className="text-h2 mt-4 text-ink">
             Riesgo cero para ti.
           </h2>
           <p className="mt-4 text-ink/65">

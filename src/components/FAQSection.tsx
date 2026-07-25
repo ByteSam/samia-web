@@ -12,7 +12,7 @@ export default function FAQSection({ items, titulo = "Preguntas frecuentes" }: F
   return (
     <section className="mx-auto max-w-3xl px-6 pb-20">
       <Reveal>
-        <h2 className="text-2xl font-normal text-ink md:text-3xl">{titulo}</h2>
+        <h2 className="text-h2 text-ink">{titulo}</h2>
       </Reveal>
       <div className="mt-8 space-y-6">
         {items.map((f, i) => (

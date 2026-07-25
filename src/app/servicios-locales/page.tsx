@@ -74,7 +74,7 @@ export default function ServiciosLocalesPage() {
       {/* 1. HERO */}
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
         <Reveal>
-          <h1 className="text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-[4rem]">
+          <h1 className="text-h1 text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
             Cada llamada perdida es un cliente que se va con otro gasfitero.
           </h1>
         </Reveal>

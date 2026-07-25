@@ -40,7 +40,7 @@ export default function CatalogGrid({
   return (
     <section className={SECTION_CLASSES[pb]}>
       <Reveal>
-        <h2 className="text-2xl font-medium text-ink md:text-3xl">{titulo}</h2>
+        <h2 className="text-h2 text-ink">{titulo}</h2>
       </Reveal>
       <div className={GRID_CLASSES[columns]}>
         {items.map((p, i) =>

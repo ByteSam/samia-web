@@ -87,7 +87,7 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={80}>
-              <h1 className="relative mt-6 max-w-2xl text-[2.5rem] font-normal leading-[1.05] text-ink sm:text-6xl md:text-[4rem]">
+              <h1 className="text-h1 relative mt-6 max-w-2xl text-[2.5rem] text-ink sm:text-6xl md:text-[4rem]">
                 Tu negocio nunca deja pasar un{" "}
                 <span className="font-display italic text-terracota">cliente</span>.
               </h1>
@@ -125,7 +125,7 @@ export default function Home() {
       {/* PROPUESTA DE VALOR */}
       <section className="mx-auto max-w-5xl px-6 pb-24">
         <Reveal>
-          <h2 className="text-3xl font-medium text-ink">Y tu web no se queda ahí</h2>
+          <h2 className="text-h2 text-ink">Y tu web no se queda ahí</h2>
           <p className="mt-2 max-w-md text-ink/60">
             Una web es el inicio, no el final. Cuando tu negocio lo necesita,
             la conecto con WhatsApp y automatizaciones para que ninguna
@@ -241,7 +241,7 @@ export default function Home() {
       {/* CASOS REALES + FUNDADOR */}
       <section id="casos-reales" className="mx-auto max-w-5xl px-6 pb-24">
         <Reveal>
-          <h2 className="text-3xl font-medium text-ink">Casos reales</h2>
+          <h2 className="text-h2 text-ink">Casos reales</h2>
           <p className="mt-2 max-w-md text-ink/60">
             Negocios peruanos donde ya estoy poniendo esto en práctica.
           </p>
@@ -250,7 +250,7 @@ export default function Home() {
           {CASOS.map((c, i) => (
             <Reveal key={c.nombre} delay={i * 80}>
               {"problema" in c ? (
-                <div className="card-soft-tint flex h-full flex-col">
+                <div className="card-soft-tint hover-lift flex h-full flex-col">
                   <c.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
                   <h3 className="mt-5 text-lg font-medium text-ink">{c.nombre}</h3>
                   <p className="mt-1 text-sm text-ink/50">{c.rubro}</p>
@@ -286,7 +286,7 @@ export default function Home() {
                 </div>
               ) : (
                 <div
-                  className={`card-soft-tint h-full ${c.estado === "proximamente" ? "opacity-60" : ""}`}
+                  className={`card-soft-tint hover-lift h-full ${c.estado === "proximamente" ? "opacity-60" : ""}`}
                 >
                   <c.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
                   <div className="mt-5 flex items-center gap-2">
@@ -325,7 +325,7 @@ export default function Home() {
       {/* CTA FINAL */}
       <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
         <Reveal>
-          <h2 className="text-3xl font-medium text-ink md:text-4xl">
+          <h2 className="text-h2 text-ink">
             ¿Cuántos clientes estás dejando de atender esta semana?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-ink/60">

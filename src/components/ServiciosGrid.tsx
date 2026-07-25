@@ -30,7 +30,7 @@ export default function ServiciosGrid() {
   return (
     <section className="mx-auto max-w-5xl px-6 pb-24">
       <Reveal>
-        <h2 className="text-3xl font-medium text-ink">Servicios</h2>
+        <h2 className="text-h2 text-ink">Servicios</h2>
         <p className="mt-2 max-w-md text-ink/60">
           Tres formas de resolverlo, según dónde estés hoy.
         </p>

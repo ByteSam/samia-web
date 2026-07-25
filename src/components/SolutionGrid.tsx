@@ -19,7 +19,7 @@ export default function SolutionGrid({ titulo, items, children }: SolutionGridPr
   return (
     <section className="mx-auto max-w-4xl px-6 pb-20">
       <Reveal>
-        <h2 className="text-2xl font-medium text-ink md:text-3xl">{titulo}</h2>
+        <h2 className="text-h2 text-ink">{titulo}</h2>
       </Reveal>
       <div className="mt-8 grid gap-6 sm:grid-cols-3">
         {items.map((item, i) => (

@@ -18,7 +18,7 @@ export default function FinalCTA({
   return (
     <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
       <Reveal>
-        <h2 className="text-2xl font-medium text-ink md:text-3xl">{titulo}</h2>
+        <h2 className="text-h2 text-ink">{titulo}</h2>
         <p className="mt-3 text-ink/60">{textoSecundario}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <WhatsAppButton message={mensaje}>{textoBoton}</WhatsAppButton>

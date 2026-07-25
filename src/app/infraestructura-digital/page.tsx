@@ -80,7 +80,7 @@ export default function InfraestructuraDigitalPage() {
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
         <Reveal>
           <span className="chip">Para negocios que ya confían en afynova</span>
-          <h1 className="mx-auto mt-6 max-w-3xl text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-6xl">
+          <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-5xl md:text-6xl">
             La base digital completa de tu negocio, en una sola arquitectura.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
@@ -98,7 +98,7 @@ export default function InfraestructuraDigitalPage() {
 
       <section className="mx-auto max-w-5xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">Qué incluye</h2>
+          <h2 className="text-h2 text-ink">Qué incluye</h2>
         </Reveal>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           {MODULOS.map((m, i) => (
@@ -115,7 +115,7 @@ export default function InfraestructuraDigitalPage() {
 
       <section className="mx-auto max-w-5xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-2xl font-normal text-ink md:text-3xl">Paquetes, en soles</h2>
+          <h2 className="text-h2 text-ink">Paquetes, en soles</h2>
         </Reveal>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {PAQUETES.map((p, i) => (
@@ -151,7 +151,7 @@ export default function InfraestructuraDigitalPage() {
       <section className="mx-auto max-w-3xl px-6 pb-28">
         <Reveal>
           <div className="card-soft-tint text-center">
-            <h2 className="text-2xl font-normal text-ink md:text-3xl">
+            <h2 className="text-h2 text-ink">
               ¿Ya tienes un asistente de WhatsApp conmigo?
             </h2>
             <p className="mt-4 text-ink/65">

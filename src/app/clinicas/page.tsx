@@ -82,7 +82,7 @@ export default function ClinicasPage() {
       {/* 1. HERO */}
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
         <Reveal>
-          <h1 className="text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-[4rem]">
+          <h1 className="text-h1 text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
             Tu clínica deja de perder pacientes por no responder a tiempo.
           </h1>
         </Reveal>
@@ -143,7 +143,7 @@ export default function ClinicasPage() {
       {/* 5. COMO FUNCIONA */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-2xl font-medium text-ink md:text-3xl">Listo en 3 pasos.</h2>
+          <h2 className="text-h2 text-ink">Listo en 3 pasos.</h2>
         </Reveal>
         <ol className="mt-8 space-y-6">
           {[
