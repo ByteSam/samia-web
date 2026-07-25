@@ -1,4 +1,5 @@
 export const WHATSAPP_NUMBER = "51939845408";
+export const CONTACT_EMAIL = "danielsam.fgu@gmail.com";
 
 // TODO: reemplazar con tu link real de Cal.com cuando lo tengas.
 // Mientras sea null, el CTA "Agendar diagnóstico gratis" usa WhatsApp en su lugar.

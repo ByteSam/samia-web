@@ -1,17 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { whatsappLink } from "@/lib/contact";
+import { whatsappLink, CONTACT_EMAIL } from "@/lib/contact";
 
 /**
  * Formulario de captura de leads — opción A del checklist de lanzamiento.
  * No guarda nada en un backend: arma un mensaje de WhatsApp prellenado
- * con los datos y abre el chat directo con Daniel.
+ * con los datos y abre el chat directo con Daniel. Si el navegador bloquea
+ * la ventana emergente (o no hay WhatsApp disponible), muestra un fallback
+ * con correo de contacto en vez de fallar en silencio.
  */
 export default function LeadForm() {
   const [nombre, setNombre] = useState("");
   const [negocio, setNegocio] = useState("");
   const [necesidad, setNecesidad] = useState("");
+  const [mostrarFallback, setMostrarFallback] = useState(false);
+  const [mensajeEnviado, setMensajeEnviado] = useState("");
 
   const disabled = nombre.trim() === "" || necesidad.trim() === "";
 
@@ -23,9 +27,25 @@ export default function LeadForm() {
       `Hola, soy ${nombre}${negocio ? ` de ${negocio}` : ""}.`,
       necesidad,
     ].join(" ");
+    setMensajeEnviado(mensaje);
 
-    window.open(whatsappLink(mensaje), "_blank", "noopener,noreferrer");
+    const ventana = window.open(whatsappLink(mensaje), "_blank");
+    const bloqueada = !ventana || typeof ventana.closed === "undefined";
+
+    if (bloqueada) {
+      setMostrarFallback(true);
+      return;
+    }
+
+    setMostrarFallback(false);
+    window.setTimeout(() => {
+      if (ventana.closed) setMostrarFallback(true);
+    }, 600);
   }
+
+  const mailtoHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+    "Diagnóstico gratis — contacto desde la web"
+  )}&body=${encodeURIComponent(mensajeEnviado)}`;
 
   return (
     <form onSubmit={handleSubmit} className="card-soft space-y-4">
@@ -83,6 +103,16 @@ export default function LeadForm() {
       <p className="text-center text-xs text-ink/45">
         Se abre WhatsApp con tu mensaje ya escrito — tú confirmas el envío.
       </p>
+
+      {mostrarFallback && (
+        <p className="rounded-xl border border-terracota/20 bg-terracota/5 px-4 py-3 text-center text-sm text-ink/75">
+          ¿No se abrió WhatsApp? Escríbeme a{" "}
+          <a href={mailtoHref} className="font-medium text-terracota-dark underline underline-offset-2">
+            {CONTACT_EMAIL}
+          </a>
+          .
+        </p>
+      )}
     </form>
   );
 }

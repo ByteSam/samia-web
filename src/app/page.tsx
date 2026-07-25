@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import type { LucideIcon } from "lucide-react";
 import { ArrowUpRight, Hexagon, MessageCircleMore, CalendarCheck, Hammer, Scale } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
+import WhatsAppMockup from "@/components/WhatsAppMockup";
 import LeadForm from "@/components/LeadForm";
 import ProblemaSection from "@/components/ProblemaSection";
 import ServiciosGrid from "@/components/ServiciosGrid";
@@ -17,20 +19,40 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const CASOS = [
+type CasoBase = {
+  nombre: string;
+  rubro: string;
+  icon: LucideIcon;
+  estado: "entregado" | "proximamente";
+};
+type CasoSimple = CasoBase & { entregable: string };
+type CasoDetallado = CasoBase & {
+  problema: string;
+  solucion: string;
+  resultado: string;
+  url: string;
+};
+type Caso = CasoSimple | CasoDetallado;
+
+const CASOS: Caso[] = [
   {
     nombre: "Fortaleza Vinzos",
     rubro: "Reformas y remodelación",
-    entregable: "Landing page a medida.",
     icon: Hammer,
-    estado: "entregado" as const,
+    estado: "entregado",
+    problema:
+      "Fortaleza Vinzos necesitaba una presencia web profesional para captar solicitudes de presupuesto y transmitir confianza desde el primer contacto.",
+    solucion:
+      "Diseñamos y desarrollamos una landing orientada a conversión, con una propuesta de valor clara, servicios, proyectos, formulario de contacto y CTA a WhatsApp.",
+    resultado: "Sitio web entregado y publicado.",
+    url: "https://fortalezavinzos.es/",
   },
   {
     nombre: "Servicios legales",
     rubro: "Abogacía",
     entregable: "Landing page a medida.",
     icon: Scale,
-    estado: "proximamente" as const,
+    estado: "proximamente",
   },
 ];
 
@@ -58,44 +80,43 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative mx-auto max-w-6xl overflow-hidden px-6 pb-16 pt-20 md:pt-24">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-24 -top-24 h-[420px] w-[420px] rounded-full bg-gradient-to-br from-terracota/25 via-dorado/20 to-transparent blur-3xl"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute right-16 top-52 h-[220px] w-[220px] rounded-full bg-dorado/20 blur-2xl"
-        />
+        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <Reveal>
+              <span className="chip">Webs que venden · automatización · WhatsApp</span>
+            </Reveal>
 
-        <Reveal>
-          <span className="chip">Webs que venden · automatización · WhatsApp</span>
-        </Reveal>
-
-        <Reveal delay={80}>
-          <h1 className="relative mt-6 max-w-2xl text-[2.5rem] font-normal leading-[1.05] text-ink sm:text-6xl md:text-[4rem]">
-            Tu negocio nunca deja pasar un{" "}
-            <span className="font-display italic text-terracota">cliente</span>.
-          </h1>
-        </Reveal>
-        <Reveal delay={140}>
-          <p className="relative mt-6 max-w-xl text-lg text-ink/60">
-            Atiendo mejor a tus clientes por WhatsApp, te ahorro trabajo
-            manual, y respondo por el resultado — implementado directamente
-            por mí, con garantía de 14 días.
-          </p>
-        </Reveal>
-        <Reveal delay={200}>
-          <div className="relative mt-10 flex flex-col items-start gap-3">
-            <div className="flex flex-wrap gap-4">
-              <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
-                Diagnóstico gratis por WhatsApp
-              </WhatsAppButton>
-            </div>
-            <p className="text-sm text-ink/55">
-              Hablarás directamente conmigo, no con un call center.
-            </p>
+            <Reveal delay={80}>
+              <h1 className="relative mt-6 max-w-2xl text-[2.5rem] font-normal leading-[1.05] text-ink sm:text-6xl md:text-[4rem]">
+                Tu negocio nunca deja pasar un{" "}
+                <span className="font-display italic text-terracota">cliente</span>.
+              </h1>
+            </Reveal>
+            <Reveal delay={140}>
+              <p className="relative mt-6 max-w-xl text-lg text-ink/60">
+                Atiendo mejor a tus clientes por WhatsApp, te ahorro trabajo
+                manual, y respondo por el resultado — implementado directamente
+                por mí, con garantía de 14 días.
+              </p>
+            </Reveal>
+            <Reveal delay={200}>
+              <div className="relative mt-10 flex flex-col items-start gap-3">
+                <div className="flex flex-wrap gap-4">
+                  <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
+                    Diagnóstico gratis por WhatsApp
+                  </WhatsAppButton>
+                </div>
+                <p className="text-sm text-ink/55">
+                  Hablarás directamente conmigo, no con un call center.
+                </p>
+              </div>
+            </Reveal>
           </div>
-        </Reveal>
+
+          <Reveal delay={240} className="hidden lg:block">
+            <WhatsAppMockup />
+          </Reveal>
+        </div>
       </section>
 
       {/* PROBLEMA */}
@@ -228,21 +249,58 @@ export default function Home() {
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {CASOS.map((c, i) => (
             <Reveal key={c.nombre} delay={i * 80}>
-              <div
-                className={`card-soft-tint h-full ${c.estado === "proximamente" ? "opacity-60" : ""}`}
-              >
-                <c.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
-                <div className="mt-5 flex items-center gap-2">
-                  <h3 className="text-lg font-medium text-ink">{c.nombre}</h3>
-                  {c.estado === "proximamente" && (
-                    <span className="chip !bg-ink/5 !text-ink/70 text-[0.65rem]">
-                      Próximamente
-                    </span>
-                  )}
+              {"problema" in c ? (
+                <div className="card-soft-tint flex h-full flex-col">
+                  <c.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
+                  <h3 className="mt-5 text-lg font-medium text-ink">{c.nombre}</h3>
+                  <p className="mt-1 text-sm text-ink/50">{c.rubro}</p>
+                  <dl className="mt-5 space-y-4 text-sm">
+                    <div>
+                      <dt className="text-xs font-medium uppercase tracking-wide text-terracota-dark/70">
+                        Problema
+                      </dt>
+                      <dd className="mt-1 text-ink/70">{c.problema}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs font-medium uppercase tracking-wide text-terracota-dark/70">
+                        Solución
+                      </dt>
+                      <dd className="mt-1 text-ink/70">{c.solucion}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs font-medium uppercase tracking-wide text-terracota-dark/70">
+                        Resultado
+                      </dt>
+                      <dd className="mt-1 text-ink/70">{c.resultado}</dd>
+                    </div>
+                  </dl>
+                  <a
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-pill btn-pill-ghost mt-6 inline-flex w-fit items-center gap-1.5"
+                  >
+                    Ver sitio
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
                 </div>
-                <p className="mt-1 text-sm text-ink/50">{c.rubro}</p>
-                <p className="mt-2 text-sm text-ink/60">{c.entregable}</p>
-              </div>
+              ) : (
+                <div
+                  className={`card-soft-tint h-full ${c.estado === "proximamente" ? "opacity-60" : ""}`}
+                >
+                  <c.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
+                  <div className="mt-5 flex items-center gap-2">
+                    <h3 className="text-lg font-medium text-ink">{c.nombre}</h3>
+                    {c.estado === "proximamente" && (
+                      <span className="chip !bg-ink/5 !text-ink/70 text-[0.65rem]">
+                        Próximamente
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-1 text-sm text-ink/50">{c.rubro}</p>
+                  <p className="mt-2 text-sm text-ink/60">{c.entregable}</p>
+                </div>
+              )}
             </Reveal>
           ))}
         </div>
