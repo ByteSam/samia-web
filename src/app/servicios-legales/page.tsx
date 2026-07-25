@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MessageCircleMore, AlertTriangle, CalendarCheck } from "lucide-react";
+import { MessageCircleMore, AlertTriangle, CalendarCheck, Check } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
@@ -107,16 +107,27 @@ export default function ServiciosLegalesPage() {
         <Reveal>
           <h2 className="text-2xl font-medium text-ink md:text-3xl">¿Cuánto cuesta?</h2>
           <div className="mt-8 card-soft-tint">
-            <p className="text-ink/75">
-              Cada estudio necesita una configuración distinta. El precio
-              depende de las integraciones, automatizaciones y herramientas
-              necesarias.
+            <p className="text-2xl font-medium text-ink">S/1,500 – S/5,000</p>
+            <p className="text-xs text-ink/50">
+              Rango de referencia.
             </p>
-            <p className="mt-4 text-ink/75">
-              La mayoría de los proyectos comienzan entre{" "}
-              <strong className="font-medium text-ink">S/1,500 y S/5,000</strong>. Después
-              del diagnóstico gratuito recibirás una propuesta cerrada y sin
-              costos ocultos.
+            <ul className="mt-5 space-y-2 text-sm text-ink/70">
+              <li className="flex items-start gap-2">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-terracota" strokeWidth={1.75} />
+                El precio depende de las integraciones que necesites
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-terracota" strokeWidth={1.75} />
+                También de las automatizaciones que quieras sumar
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-terracota" strokeWidth={1.75} />
+                Y de las herramientas que ya usa tu estudio
+              </li>
+            </ul>
+            <p className="mt-5 text-sm text-ink/60">
+              Después del diagnóstico gratuito recibirás una propuesta cerrada
+              y sin costos ocultos.
             </p>
             <div className="mt-6">
               <WhatsAppButton message="Hola, quiero solicitar un diagnóstico gratuito para mi estudio de abogacía">
@@ -127,13 +138,55 @@ export default function ServiciosLegalesPage() {
         </Reveal>
       </section>
 
-      {/* 5. GARANTIA */}
-      <GarantiaSection condicion="el asistente no te ahorra tiempo ni te ayuda a agendar más consultas" />
+      {/* 5. COMO TRABAJAMOS */}
+      <section className="mx-auto max-w-4xl px-6 pb-20">
+        <Reveal>
+          <h2 className="text-2xl font-medium text-ink md:text-3xl">Cómo trabajamos</h2>
+        </Reveal>
+        <ol className="mt-8 space-y-6">
+          {[
+            {
+              t: "Diagnóstico",
+              d: "Vemos qué tipo de consultas recibes y qué necesita tu estudio — 30 min por WhatsApp, sin costo.",
+            },
+            {
+              t: "Configuración",
+              d: "Entreno el asistente con la información real de tu estudio, para que responda igual que tú lo harías.",
+            },
+            {
+              t: "Implementación",
+              d: "Lo conecto a tu WhatsApp y lo probamos juntos antes de que hable con quienes te escriben.",
+            },
+            {
+              t: "Soporte",
+              d: "Ajustes y acompañamiento continuo — no desaparezco después de la entrega.",
+            },
+          ].map((step, i) => (
+            <Reveal key={step.t} delay={i * 80}>
+              <li className="flex gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 font-medium text-ink">
+                  {i + 1}
+                </span>
+                <div>
+                  <p className="font-medium text-ink">{step.t}</p>
+                  <p className="text-sm text-ink/60">{step.d}</p>
+                </div>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
+      </section>
 
-      {/* 6. FAQ */}
+      {/* 6. GARANTIA */}
+      <GarantiaSection
+        condicion="el asistente no te ahorra tiempo ni te ayuda a agendar más consultas"
+        notaExtra="Así de seguro estoy de que funciona."
+      />
+
+      {/* 7. FAQ */}
       <FAQSection items={FAQS} />
 
-      {/* 7. CTA FINAL */}
+      {/* 8. CTA FINAL */}
       <FinalCTA
         titulo="¿Cuántas consultas laborales vas a dejar sin responder esta semana?"
         mensaje="Hola, vi tu web y quiero el asistente para mi estudio de abogacía"
