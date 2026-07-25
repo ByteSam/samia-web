@@ -16,7 +16,7 @@ import FAQSection from "@/components/FAQSection";
 export const metadata: Metadata = {
   title: "Infraestructura Digital Completa para tu negocio",
   description:
-    "Web que vende + pagos + automatización + datos + monitoreo, en una sola arquitectura moderna. El upgrade natural una vez que ya confías en ichan.",
+    "Web que vende + pagos + automatización + datos + monitoreo, en una sola arquitectura moderna. El upgrade natural una vez que ya confías en afynova.",
   alternates: { canonical: "/infraestructura-digital" },
 };
 
@@ -79,7 +79,7 @@ export default function InfraestructuraDigitalPage() {
     <>
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
         <Reveal>
-          <span className="chip">Para negocios que ya confían en ichan</span>
+          <span className="chip">Para negocios que ya confían en afynova</span>
           <h1 className="mx-auto mt-6 max-w-3xl text-[2.5rem] font-normal leading-[1.08] text-ink sm:text-5xl md:text-6xl">
             La base digital completa de tu negocio, en una sola arquitectura.
           </h1>
@@ -159,7 +159,7 @@ export default function InfraestructuraDigitalPage() {
               funciona en una sola arquitectura que escala contigo.
             </p>
             <div className="mt-8">
-              <WhatsAppButton message="Hola, ya trabajo con ichan y quiero conocer Infraestructura Digital Completa">
+              <WhatsAppButton message="Hola, ya trabajo con afynova y quiero conocer Infraestructura Digital Completa">
                 Hablemos por WhatsApp
               </WhatsAppButton>
             </div>

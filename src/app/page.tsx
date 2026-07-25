@@ -11,7 +11,7 @@ import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 
 export const metadata: Metadata = {
-  title: "Automatización y tecnología para negocios | ichan",
+  title: "Automatización y tecnología para negocios | afynova",
   description:
     "Te ayudo a responder a tus clientes más rápido con WhatsApp, automatización y web — implementado directamente, con diagnóstico gratis.",
   alternates: { canonical: "/" },

@@ -6,7 +6,7 @@ type LogoProps = {
   height?: number;
 };
 
-/** Marca ichan — wordmark en texto (el archivo logo.png tenía un halo que lo hacía ilegible a tamaño navbar; queda como wordmark hasta tener un archivo nuevo sin ese problema). */
+/** Marca afynova — wordmark en texto (el archivo logo.png tenía un halo que lo hacía ilegible a tamaño navbar; queda como wordmark hasta tener un archivo nuevo sin ese problema). */
 export default function Logo({ className, height = 40 }: LogoProps) {
   const fontSize = height * 0.72;
   const iconSize = height * 0.44;
@@ -22,7 +22,7 @@ export default function Logo({ className, height = 40 }: LogoProps) {
       >
         <Waves className="text-dorado" style={{ width: iconSize, height: iconSize }} strokeWidth={2} />
       </span>
-      ichan
+      afynova
     </span>
   );
 }

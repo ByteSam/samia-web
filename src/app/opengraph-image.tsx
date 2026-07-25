@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "ichan — Tu negocio nunca deja pasar un cliente.";
+export const alt = "afynova — Tu negocio nunca deja pasar un cliente.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -45,7 +45,7 @@ export default function Image() {
       >
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <CorteSymbol size={56} />
-          <span style={{ fontSize: 34, color: INK, fontWeight: 600 }}>ichan</span>
+          <span style={{ fontSize: 34, color: INK, fontWeight: 600 }}>afynova</span>
         </div>
         <div style={{ display: "flex", marginTop: 48, maxWidth: 920 }}>
           <span style={{ fontSize: 56, color: INK, fontWeight: 600, lineHeight: 1.15 }}>

@@ -21,8 +21,8 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "ichan — Asistentes de WhatsApp con IA para negocios en Perú",
-    template: "%s | ichan",
+    default: "afynova — Asistentes de WhatsApp con IA para negocios en Perú",
+    template: "%s | afynova",
   },
   description:
     "Automatización y agentes de IA por WhatsApp para pymes peruanas. Menos ausencias, más clientes, configurado en días. Precios en soles.",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "ichan",
+  name: "afynova",
   url: SITE_URL,
   logo: `${SITE_URL}/opengraph-image`,
   description:
