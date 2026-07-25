@@ -14,6 +14,8 @@ import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import CatalogGrid from "@/components/CatalogGrid";
 import FinalCTA from "@/components/FinalCTA";
+import ProblemSection from "@/components/ProblemSection";
+import WhatsAppMockup from "@/components/WhatsAppMockup";
 
 export const metadata: Metadata = {
   title: "Agentes de WhatsApp con IA para negocios en Perú",
@@ -115,6 +117,30 @@ export default function AgentesIAPage() {
         </Reveal>
       </section>
 
+      {/* QUÉ PROBLEMA RESUELVE */}
+      <ProblemSection
+        titulo="Cada minuto sin responder es un cliente que se va con otro negocio."
+        bullets={[
+          "Las consultas llegan a toda hora — fuera de tu horario, en fin de semana, mientras atiendes a alguien más — y quedan sin responder.",
+          "Respondes siempre lo mismo: horarios, precios, disponibilidad — tiempo que no dedicas a lo que sí requiere tu criterio.",
+          "Sin un filtro, no distingues una consulta real de una que solo pregunta por curiosidad — y las urgencias se mezclan con el resto.",
+        ]}
+        stat="El 62% de las personas abandona si no le responden rápido — y cada canal nuevo (web, redes, WhatsApp) es una fuente más de mensajes sin responder."
+      />
+
+      {/* MOCKUP — así se ve resuelto */}
+      <section className="mx-auto max-w-4xl px-6 pb-16 text-center">
+        <Reveal>
+          <h2 className="text-2xl font-medium text-ink md:text-3xl">Así responde el agente</h2>
+          <p className="mt-2 text-ink/60">Un ejemplo de cómo atiende una consulta, en tu WhatsApp.</p>
+          <div className="mt-8 flex justify-center">
+            <div className="w-full max-w-xs">
+              <WhatsAppMockup />
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       <CatalogGrid items={CATALOGO}>
         <Reveal delay={240}>
           <p className="text-sm text-ink/50">
@@ -123,6 +149,45 @@ export default function AgentesIAPage() {
           </p>
         </Reveal>
       </CatalogGrid>
+
+      {/* CÓMO TRABAJAMOS */}
+      <section className="mx-auto max-w-4xl px-6 pb-20">
+        <Reveal>
+          <h2 className="text-2xl font-medium text-ink md:text-3xl">Cómo trabajamos</h2>
+        </Reveal>
+        <ol className="mt-8 space-y-6">
+          {[
+            {
+              t: "Diagnóstico",
+              d: "Vemos juntos dónde estás perdiendo clientes y qué necesita tu negocio — 30 min por WhatsApp, sin costo.",
+            },
+            {
+              t: "Configuración",
+              d: "Entreno el agente con la información real de tu negocio: precios, horarios, servicios, tono.",
+            },
+            {
+              t: "Implementación",
+              d: "Lo conecto a tu WhatsApp y lo probamos juntos antes de que hable con tus clientes.",
+            },
+            {
+              t: "Soporte",
+              d: "Ajustes, monitoreo y mejoras continuas — no desaparezco después de la entrega.",
+            },
+          ].map((step, i) => (
+            <Reveal key={step.t} delay={i * 80}>
+              <li className="flex gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 font-medium text-ink">
+                  {i + 1}
+                </span>
+                <div>
+                  <p className="font-medium text-ink">{step.t}</p>
+                  <p className="text-sm text-ink/60">{step.d}</p>
+                </div>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
+      </section>
 
       <GarantiaSection condicion="el agente no te ahorra tiempo ni recupera clientes" />
 
