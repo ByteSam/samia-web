@@ -4,6 +4,7 @@ import Reveal from "@/components/Reveal";
 type CatalogItem = {
   icon: LucideIcon;
   nombre: string;
+  descripcion?: string;
   entrega?: string;
   setup: string;
   retainer?: string;
@@ -66,9 +67,12 @@ export default function CatalogGrid({
             </Reveal>
           ) : (
             <Reveal key={p.nombre} delay={i * 70}>
-              <div className="card-soft hover-lift h-full">
+              <div className="card-soft hover-lift flex h-full flex-col">
                 <p.icon className="h-6 w-6 text-terracota" strokeWidth={1.5} />
                 <h3 className="mt-4 font-medium text-ink">{p.nombre}</h3>
+                {p.descripcion && (
+                  <p className="mt-2 text-sm text-ink/60">{p.descripcion}</p>
+                )}
                 <p className="mt-3 text-xl font-medium text-ink">{p.setup}</p>
                 <p className="text-xs text-ink/50">Setup</p>
               </div>
