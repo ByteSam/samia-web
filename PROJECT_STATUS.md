@@ -98,12 +98,26 @@ Cambios:
 Archivos modificados: `src/app/page.tsx`, `src/components/Header.tsx`, `src/components/MobileMenu.tsx`.
 
 **Pendiente para una fase posterior** (detectado en la misma auditoría, no implementado aún):
-- Copy del formulario ("así de simple es el paso 1 de arriba") ya no coincide con la nueva posición — necesita ajuste de texto.
-- Segmentación "para quién" ausente en el Hero.
-- Sección "Propuesta de valor" mezcla varios tipos de contenido sin hilo narrativo único.
-- Estadística "62% abandona si no responden rápido" sin atribución de fuente.
-- Copy genérico en Garantía/CTA final ("Riesgo cero", "Sin compromiso") vs. la línea más diferenciada del sitio ("Hablarás directamente conmigo, no con un call center"), hoy relegada a nota pequeña.
+- Sección "Propuesta de valor" mezcla varios tipos de contenido sin hilo narrativo único — requiere decisión de arquitectura de contenido (unificar vs. dividir), no un ajuste de copy simple.
 - Prueba social delgada (1 caso completo) para el posicionamiento de "consultora" — no se resuelve con copy, requiere más casos reales en el tiempo.
+
+## Fase 9 — Auditoría de copy y conversión (solo lectura) ✅
+
+Auditoría de los 6 puntos pendientes de la Fase 8 (Hero, Formulario, Propuesta de valor, Garantía/CTA final, estadística del 62%, prueba social). Hallazgos priorizados 🔴/🟡/🟢, sin modificar código. Resultado: 4 hallazgos de alto/medio impacto y bajo riesgo se implementaron en la Fase 10; 2 quedaron pendientes de decisión de contenido (ver Fase 10).
+
+## Fase 10 — Corrección de copy crítico y refuerzo de confianza ✅
+
+Cambios implementados (todos exclusivos de Home salvo donde se indica):
+- **Formulario**: corregida la referencia posicional rota por la Fase 8 — "así de simple es el paso 1 de arriba, en vivo" → "así empieza tu diagnóstico gratuito".
+- **Estadística sin fuente**: "El 62% de las personas abandona..." → "La mayoría de las personas abandona si no le responden rápido" — se elimina la cifra no verificable manteniendo el mensaje, sin inventar atribución.
+- **Segmentación del Hero**: chip actualizado a "Webs que venden · automatización · WhatsApp para pymes" — verificado visualmente antes de implementar (2 líneas en mobile 375px, sin romper jerarquía, CTA sigue visible en el primer viewport). H1 y estructura del hero sin cambios.
+- **Mensaje diferencial reforzado**: "Hablarás directamente conmigo, no con un call center." añadido vía la prop `notaExtra` (ya existente) en la llamada a `GarantiaSection` desde `page.tsx` — exclusivo de Home, sin tocar `GarantiaSection.tsx` ni su H2 "Riesgo cero para ti.", sin afectar las 6 páginas de servicio/nicho que comparten el componente.
+
+Archivos modificados: `src/app/page.tsx`, `src/components/ProblemaSection.tsx`.
+
+**Pendiente** (sin cambios, fuera de alcance de la Fase 10):
+- Sección "Propuesta de valor" — fase independiente de arquitectura de contenido.
+- Prueba social — sin cambios, se mantiene la honestidad actual (1 caso real + 1 "Próximamente").
 
 ## 2. Qué está pendiente
 
