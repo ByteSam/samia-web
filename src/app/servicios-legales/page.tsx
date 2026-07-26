@@ -64,7 +64,7 @@ export default function ServiciosLegalesPage() {
           "Respondes siempre lo mismo (¿cuánto cobran?, ¿qué necesito?) en vez de dedicar ese tiempo a tus casos.",
           "Sin un primer filtro, cuesta distinguir una consulta real de alguien que solo pregunta por curiosidad.",
         ]}
-        stat="Responder en menos de 5 minutos multiplica hasta 21 veces las probabilidades de conversión — por WhatsApp, contestar en menos de 1 minuto convierte 8 veces más."
+        stat="Responder rápido aumenta las posibilidades de que esa consulta se convierta en cliente — mientras más tardas, más probable es que esa persona ya haya escrito a otro estudio."
       />
 
       {/* 3. LA SOLUCION */}

@@ -104,7 +104,7 @@ export default function ClinicasPage() {
           "Los pacientes no confirman y las citas se pierden: agenda con huecos y sillas vacías.",
           "Recepción se satura respondiendo siempre lo mismo: precios, horarios, ubicación.",
         ]}
-        stat="El 62% de las personas abandona si no le responden rápido. En salud, esa demora se traduce en pacientes y en dinero que no vuelven."
+        stat="La mayoría de las personas abandona si no le responden rápido. En salud, esa demora se traduce en pacientes y en dinero que no vuelven."
       />
 
       {/* 3. LA SOLUCION */}

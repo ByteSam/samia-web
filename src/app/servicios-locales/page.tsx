@@ -95,7 +95,7 @@ export default function ServiciosLocalesPage() {
           "El cliente no espera: llama al siguiente de la lista en Google.",
           "Las emergencias reales (fuga, corte, algo roto) llegan fuera de tu horario y nadie las atiende.",
         ]}
-        stat="El 62% de las personas abandona si no le responden rápido — y en emergencias del hogar, esa espera se siente peor."
+        stat="La mayoría de las personas abandona si no le responden rápido — y en emergencias del hogar, esa espera se siente peor."
       />
 
       {/* 3. LA SOLUCION */}
