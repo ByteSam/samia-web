@@ -216,21 +216,22 @@ export default function Home() {
       {/* SERVICIOS */}
       <ServiciosGrid />
 
-      {/* PROCESO + FORMULARIO EN VIVO */}
+      {/* PROCESO */}
       <ProcesoSection />
-      <section id="contacto" className="mx-auto max-w-md px-6 pb-24 text-center">
+
+      {/* CTA LIGERO */}
+      <section className="mx-auto max-w-md px-6 pb-24 text-center">
         <Reveal>
-          <h3 className="text-xl font-medium text-ink">Pruébalo tú mismo</h3>
-          <p className="mt-2 text-sm text-ink/60">
-            Completa el formulario — así de simple es el paso 1 de arriba, en vivo.
-          </p>
-          <div className="mt-6 text-left">
-            <LeadForm />
+          <p className="text-ink/60">¿Quieres ver qué podríamos mejorar en tu negocio?</p>
+          <div className="mt-4">
+            <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
+              Habla conmigo por WhatsApp
+            </WhatsAppButton>
           </div>
         </Reveal>
       </section>
 
-      {/* CASOS REALES + FUNDADOR */}
+      {/* CASOS REALES */}
       <section id="casos-reales" className="mx-auto max-w-5xl px-6 pb-24">
         <Reveal>
           <h2 className="text-h2 text-ink">Casos reales</h2>
@@ -296,9 +297,11 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
-        <div className="mt-6">
-          <FundadorBlock />
-        </div>
+      </section>
+
+      {/* FUNDADOR */}
+      <section id="fundador" className="mx-auto max-w-3xl px-6 pb-24">
+        <FundadorBlock />
       </section>
 
       {/* GARANTIA */}
@@ -310,6 +313,19 @@ export default function Home() {
         precio final depende de tu caso y lo definimos después del
         diagnóstico gratuito.
       </p>
+
+      {/* FORMULARIO EN VIVO */}
+      <section id="contacto" className="mx-auto max-w-md px-6 pb-24 text-center">
+        <Reveal>
+          <h3 className="text-xl font-medium text-ink">Pruébalo tú mismo</h3>
+          <p className="mt-2 text-sm text-ink/60">
+            Completa el formulario — así de simple es el paso 1 de arriba, en vivo.
+          </p>
+          <div className="mt-6 text-left">
+            <LeadForm />
+          </div>
+        </Reveal>
+      </section>
 
       {/* FAQ */}
       <FAQSection items={FAQS_HOME} />

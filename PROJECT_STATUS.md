@@ -82,6 +82,29 @@ Decisiones:
 - Footer visual ✅
 - Footer architecture ✅
 
+## Fase 8 — Home information architecture (reordenamiento de conversión) ✅
+
+Contexto: auditoría de UX/conversión de la Home completa detectó que el formulario (`LeadForm`) pedía datos personales antes de mostrar prueba social o garantía, y que `FundadorBlock` — el activo de confianza más fuerte de la marca — estaba subordinado dentro de la sección "Casos reales" en vez de tener su propio momento.
+
+Nuevo flujo de Home:
+Hero → Problema → Propuesta de valor → Servicios → Proceso → **CTA ligero** → Casos reales → **Fundador** (sección propia) → Garantía → Señal de precio → **Formulario** → FAQ → CTA final.
+
+Cambios:
+- Nuevo bloque "CTA ligero" (línea contextual + `WhatsAppButton` "Habla conmigo por WhatsApp") entre Proceso y Casos reales, para visitantes ya convencidos que quieren contactar sin llenar el formulario.
+- `FundadorBlock` extraído de la sección "Casos reales" a su propia `<section id="fundador">`, sin H2 nuevo (la foto + el texto en primera persona ya cumplen esa función).
+- Formulario (`id="contacto"`) movido de after-Proceso a after-Garantía — ahora pide el compromiso más alto (nombre/negocio/necesidad) después del bloque de confianza (Casos reales + Fundador + Garantía), no antes.
+- Anchor corregido: "Conoce a Daniel" (`Header.tsx`, `MobileMenu.tsx`) apuntaba a `/#casos-reales`; ahora apunta a `/#fundador`, que es lo que el link promete. `#casos-reales` queda reservado exclusivamente para la sección de casos.
+
+Archivos modificados: `src/app/page.tsx`, `src/components/Header.tsx`, `src/components/MobileMenu.tsx`.
+
+**Pendiente para una fase posterior** (detectado en la misma auditoría, no implementado aún):
+- Copy del formulario ("así de simple es el paso 1 de arriba") ya no coincide con la nueva posición — necesita ajuste de texto.
+- Segmentación "para quién" ausente en el Hero.
+- Sección "Propuesta de valor" mezcla varios tipos de contenido sin hilo narrativo único.
+- Estadística "62% abandona si no responden rápido" sin atribución de fuente.
+- Copy genérico en Garantía/CTA final ("Riesgo cero", "Sin compromiso") vs. la línea más diferenciada del sitio ("Hablarás directamente conmigo, no con un call center"), hoy relegada a nota pequeña.
+- Prueba social delgada (1 caso completo) para el posicionamiento de "consultora" — no se resuelve con copy, requiere más casos reales en el tiempo.
+
 ## 2. Qué está pendiente
 
 Ver sección 9 (priorizado). Resumen:

@@ -27,7 +27,7 @@ export default function Header() {
         <nav className="hidden items-center gap-7 text-sm font-medium text-ink/70 md:flex">
           <NavDropdown label="Soluciones" items={SOLUCIONES} />
           <NavDropdown label="Servicios" items={SERVICIOS} />
-          <Link href="/#casos-reales" className="transition-colors hover:text-terracota">
+          <Link href="/#fundador" className="transition-colors hover:text-terracota">
             Conoce a Daniel
           </Link>
         </nav>
