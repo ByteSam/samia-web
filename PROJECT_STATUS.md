@@ -12,6 +12,12 @@
 - **6 páginas de servicio/nicho** (`clinicas`, `servicios-locales`, `servicios-legales`, `servicios/agentes-ia`, `servicios/desarrollo-web`) migradas al Design System v2 y con el mismo nivel de estructura: Hero → Problema → Solución/Catálogo/Precio → Cómo trabajamos → Garantía → FAQ → CTA final.
 - **SEO técnico**: `sitemap.ts`, `robots.ts`, JSON-LD `ProfessionalService`, `canonical` en las 8 rutas, `SITE_URL` centralizada.
 - **Gobernanza de marca verificada**: "afynova" siempre en minúscula, primera persona singular, sin promesas absolutas, sin testimonios/métricas inventadas — auditado explícitamente más de una vez en este proyecto.
+- **Refinamiento visual premium — Fase 3 completada** (sistema de botones): `.btn-pill` con sombra base permanente y elevación en hover (mismo lenguaje visual que las cards de la Fase 2); `.btn-pill-whatsapp` con halo verde sutil en reposo y hover para reforzar el CTA principal sin volverse promocional; `.btn-pill-ghost` con hover visible (antes dependía solo de `opacity`, casi imperceptible). Único archivo tocado: `src/app/globals.css`.
+
+**Estado actual del sistema visual (refinamiento premium):**
+- Tipografía premium ✅ (Fase 1 — escala `.text-h1`/`.text-h2` consistente en todo el sitio)
+- Cards con profundidad ✅ (Fase 2 — sombra base + hover de elevación en `.card-soft`/`.card-soft-tint`/`.card-soft-dark`)
+- Botones premium ✅ (Fase 3 — sombra base, halo WhatsApp, hover ghost corregido)
 
 ## 2. Qué está pendiente
 
