@@ -24,7 +24,7 @@ export default function ProblemaSection() {
             </li>
           </ul>
           <p className="mt-6 text-sm text-ink/50">
-            El 62% de las personas abandona si no le responden rápido.
+            La mayoría de las personas abandona si no le responden rápido.
           </p>
         </div>
       </Reveal>

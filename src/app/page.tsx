@@ -82,7 +82,7 @@ export default function Home() {
       <section className="relative mx-auto max-w-6xl overflow-hidden px-6 pb-16 pt-20 md:pt-24">
         <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <span className="chip">Webs que venden · automatización · WhatsApp</span>
+            <span className="chip">Webs que venden · automatización · WhatsApp para pymes</span>
 
             <h1 className="text-h1 relative mt-6 max-w-2xl text-[2.5rem] text-ink sm:text-6xl md:text-[4rem]">
               Tu negocio nunca deja pasar un{" "}
@@ -305,7 +305,10 @@ export default function Home() {
       </section>
 
       {/* GARANTIA */}
-      <GarantiaSection condicion="el asistente no te ahorra tiempo ni recupera clientes" />
+      <GarantiaSection
+        condicion="el asistente no te ahorra tiempo ni recupera clientes"
+        notaExtra="Hablarás directamente conmigo, no con un call center."
+      />
 
       {/* SEÑAL DE PRECIO — breve, no es tabla ni catálogo */}
       <p className="mx-auto -mt-12 max-w-3xl px-6 pb-20 text-center text-sm text-ink/55">
@@ -319,7 +322,7 @@ export default function Home() {
         <Reveal>
           <h3 className="text-xl font-medium text-ink">Pruébalo tú mismo</h3>
           <p className="mt-2 text-sm text-ink/60">
-            Completa el formulario — así de simple es el paso 1 de arriba, en vivo.
+            Completa el formulario — así empieza tu diagnóstico gratuito.
           </p>
           <div className="mt-6 text-left">
             <LeadForm />
