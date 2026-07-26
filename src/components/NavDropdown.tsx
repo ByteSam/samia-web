@@ -30,7 +30,7 @@ export default function NavDropdown({ label, items }: NavDropdownProps) {
 
       {open && (
         <div className="absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-3">
-          <div className="rounded-2xl border border-ink/8 bg-white p-2 shadow-[0_12px_32px_rgba(36,21,9,0.12)]">
+          <div className="panel-pop panel-elevated rounded-2xl border border-ink/8 bg-white p-2">
             {items.map((item) => (
               <Link
                 key={item.href}

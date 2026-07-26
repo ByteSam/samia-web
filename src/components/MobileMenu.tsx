@@ -29,7 +29,7 @@ export default function MobileMenu({ groups }: MobileMenuProps) {
       </button>
 
       {open && (
-        <div className="absolute left-4 right-4 top-full mt-3 rounded-2xl border border-ink/8 bg-white p-4 shadow-[0_12px_32px_rgba(36,21,9,0.12)]">
+        <div className="panel-pop panel-elevated absolute left-4 right-4 top-full mt-3 rounded-2xl border border-ink/8 bg-white p-4">
           {groups.map((group) => (
             <div key={group.label} className="mt-2">
               <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink/40">

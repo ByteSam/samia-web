@@ -183,3 +183,25 @@ body {
     0 2px 4px rgba(36, 21, 9, 0.06),
     0 16px 32px rgba(36, 21, 9, 0.10);
 }
+
+/* ---- Paneles flotantes (dropdown, menú mobile): entrada suave, coherente con Reveal ---- */
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.panel-pop {
+  animation: panel-in 0.15s ease-out;
+  transform-origin: top center;
+}
+
+.panel-elevated {
+  box-shadow:
+    0 1px 2px rgba(36, 21, 9, 0.06),
+    0 12px 28px rgba(36, 21, 9, 0.12);
+}
