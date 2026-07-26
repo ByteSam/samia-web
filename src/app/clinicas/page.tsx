@@ -81,25 +81,19 @@ export default function ClinicasPage() {
     <>
       {/* 1. HERO */}
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
-        <Reveal>
-          <h1 className="text-h1 text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
-            Tu clínica deja de perder pacientes por no responder a tiempo.
-          </h1>
-        </Reveal>
-        <Reveal delay={80}>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
-            Un asistente por WhatsApp con IA que contesta 24/7, confirma y
-            recuerda citas, y reduce las ausencias — configurado en días, no
-            en meses.
-          </p>
-        </Reveal>
-        <Reveal delay={140}>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <WhatsAppButton message="Hola, vi tu web y quiero el asistente para mi clínica">
-              Escríbeme por WhatsApp
-            </WhatsAppButton>
-          </div>
-        </Reveal>
+        <h1 className="text-h1 text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
+          Tu clínica deja de perder pacientes por no responder a tiempo.
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
+          Un asistente por WhatsApp con IA que contesta 24/7, confirma y
+          recuerda citas, y reduce las ausencias — configurado en días, no
+          en meses.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <WhatsAppButton message="Hola, vi tu web y quiero el asistente para mi clínica">
+            Escríbeme por WhatsApp
+          </WhatsAppButton>
+        </div>
       </section>
 
       {/* 2. EL PROBLEMA */}

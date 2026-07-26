@@ -33,7 +33,7 @@ export default function Reveal({ children, className = "", delay = 0 }: RevealPr
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
     );
     observer.observe(el);
     return () => observer.disconnect();

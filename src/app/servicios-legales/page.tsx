@@ -39,27 +39,21 @@ export default function ServiciosLegalesPage() {
     <>
       {/* 1. HERO */}
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
-        <Reveal>
-          <span className="chip">Especializado en derecho laboral</span>
-          <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
-            Tu estudio deja de perder consultas laborales por no responder a
-            tiempo.
-          </h1>
-        </Reveal>
-        <Reveal delay={80}>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
-            Un asistente por WhatsApp con IA que atiende a quien te escribe,
-            prioriza los casos urgentes y agenda la primera consulta —
-            configurado en días, no en meses.
-          </p>
-        </Reveal>
-        <Reveal delay={140}>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <WhatsAppButton message="Hola, vi tu web y quiero el asistente para mi estudio de abogacía">
-              Escríbeme por WhatsApp
-            </WhatsAppButton>
-          </div>
-        </Reveal>
+        <span className="chip">Especializado en derecho laboral</span>
+        <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
+          Tu estudio deja de perder consultas laborales por no responder a
+          tiempo.
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
+          Un asistente por WhatsApp con IA que atiende a quien te escribe,
+          prioriza los casos urgentes y agenda la primera consulta —
+          configurado en días, no en meses.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <WhatsAppButton message="Hola, vi tu web y quiero el asistente para mi estudio de abogacía">
+            Escríbeme por WhatsApp
+          </WhatsAppButton>
+        </div>
       </section>
 
       {/* 2. EL PROBLEMA */}

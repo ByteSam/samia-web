@@ -82,21 +82,19 @@ export default function DesarrolloWebPage() {
   return (
     <>
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
-        <Reveal>
-          <span className="chip">Servicio · Desarrollo Web</span>
-          <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-6xl md:text-[4rem]">
-            Un sitio que vende, no uno que solo se ve bonito.
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
-            Construido en código (no plantillas genéricas), rápido, indexable
-            en Google y conectado a tu WhatsApp desde el día uno.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <WhatsAppButton message="Hola, quiero información sobre desarrollo web">
-              Conversar por WhatsApp
-            </WhatsAppButton>
-          </div>
-        </Reveal>
+        <span className="chip">Servicio · Desarrollo Web</span>
+        <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-6xl md:text-[4rem]">
+          Un sitio que vende, no uno que solo se ve bonito.
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
+          Construido en código (no plantillas genéricas), rápido, indexable
+          en Google y conectado a tu WhatsApp desde el día uno.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <WhatsAppButton message="Hola, quiero información sobre desarrollo web">
+            Conversar por WhatsApp
+          </WhatsAppButton>
+        </div>
       </section>
 
       {/* QUÉ PROBLEMA RESUELVE */}

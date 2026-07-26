@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { PhoneMissed, Clock3, MapPinned } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import PricingTiers from "@/components/PricingTiers";
@@ -73,25 +72,19 @@ export default function ServiciosLocalesPage() {
     <>
       {/* 1. HERO */}
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
-        <Reveal>
-          <h1 className="text-h1 text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
-            Cada llamada perdida es un cliente que se va con otro gasfitero.
-          </h1>
-        </Reveal>
-        <Reveal delay={80}>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
-            Un asistente por WhatsApp con IA que responde solo cuando no
-            puedes contestar, filtra lo urgente y agenda visitas —
-            configurado en días.
-          </p>
-        </Reveal>
-        <Reveal delay={140}>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <WhatsAppButton message="Hola, vi tu web y quiero el asistente para mi negocio">
-              Escríbeme
-            </WhatsAppButton>
-          </div>
-        </Reveal>
+        <h1 className="text-h1 text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
+          Cada llamada perdida es un cliente que se va con otro gasfitero.
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
+          Un asistente por WhatsApp con IA que responde solo cuando no
+          puedes contestar, filtra lo urgente y agenda visitas —
+          configurado en días.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <WhatsAppButton message="Hola, vi tu web y quiero el asistente para mi negocio">
+            Escríbeme
+          </WhatsAppButton>
+        </div>
       </section>
 
       {/* 2. EL PROBLEMA */}

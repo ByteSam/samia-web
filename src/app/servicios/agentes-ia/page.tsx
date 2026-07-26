@@ -99,22 +99,20 @@ export default function AgentesIAPage() {
   return (
     <>
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
-        <Reveal>
-          <span className="chip">Servicio · Agentes IA</span>
-          <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
-            Un agente de IA para cada punto donde hoy pierdes clientes.
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
-            Especializado en WhatsApp — no una suite omnicanal genérica.
-            Desde un recepcionista simple hasta una suite multicanal
-            completa, ajustado a lo que tu negocio necesita hoy.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <WhatsAppButton message="Hola, quiero información sobre agentes de IA">
-              Conversar por WhatsApp
-            </WhatsAppButton>
-          </div>
-        </Reveal>
+        <span className="chip">Servicio · Agentes IA</span>
+        <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
+          Un agente de IA para cada punto donde hoy pierdes clientes.
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
+          Especializado en WhatsApp — no una suite omnicanal genérica.
+          Desde un recepcionista simple hasta una suite multicanal
+          completa, ajustado a lo que tu negocio necesita hoy.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <WhatsAppButton message="Hola, quiero información sobre agentes de IA">
+            Conversar por WhatsApp
+          </WhatsAppButton>
+        </div>
       </section>
 
       {/* QUÉ PROBLEMA RESUELVE */}

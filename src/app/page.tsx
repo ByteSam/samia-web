@@ -82,40 +82,32 @@ export default function Home() {
       <section className="relative mx-auto max-w-6xl overflow-hidden px-6 pb-16 pt-20 md:pt-24">
         <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <Reveal>
-              <span className="chip">Webs que venden · automatización · WhatsApp</span>
-            </Reveal>
+            <span className="chip">Webs que venden · automatización · WhatsApp</span>
 
-            <Reveal delay={80}>
-              <h1 className="text-h1 relative mt-6 max-w-2xl text-[2.5rem] text-ink sm:text-6xl md:text-[4rem]">
-                Tu negocio nunca deja pasar un{" "}
-                <span className="font-display italic text-terracota">cliente</span>.
-              </h1>
-            </Reveal>
-            <Reveal delay={140}>
-              <p className="relative mt-6 max-w-xl text-lg text-ink/60">
-                Atiendo mejor a tus clientes por WhatsApp, te ahorro trabajo
-                manual, y respondo por el resultado — implementado directamente
-                por mí, con garantía de 14 días.
-              </p>
-            </Reveal>
-            <Reveal delay={200}>
-              <div className="relative mt-10 flex flex-col items-start gap-3">
-                <div className="flex flex-wrap gap-4">
-                  <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
-                    Diagnóstico gratis por WhatsApp
-                  </WhatsAppButton>
-                </div>
-                <p className="text-sm text-ink/55">
-                  Hablarás directamente conmigo, no con un call center.
-                </p>
+            <h1 className="text-h1 relative mt-6 max-w-2xl text-[2.5rem] text-ink sm:text-6xl md:text-[4rem]">
+              Tu negocio nunca deja pasar un{" "}
+              <span className="font-display italic text-terracota">cliente</span>.
+            </h1>
+            <p className="relative mt-6 max-w-xl text-lg text-ink/60">
+              Atiendo mejor a tus clientes por WhatsApp, te ahorro trabajo
+              manual, y respondo por el resultado — implementado directamente
+              por mí, con garantía de 14 días.
+            </p>
+            <div className="relative mt-10 flex flex-col items-start gap-3">
+              <div className="flex flex-wrap gap-4">
+                <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
+                  Diagnóstico gratis por WhatsApp
+                </WhatsAppButton>
               </div>
-            </Reveal>
+              <p className="text-sm text-ink/55">
+                Hablarás directamente conmigo, no con un call center.
+              </p>
+            </div>
           </div>
 
-          <Reveal delay={240} className="hidden lg:block">
+          <div className="hidden lg:block">
             <WhatsAppMockup />
-          </Reveal>
+          </div>
         </div>
       </section>
 

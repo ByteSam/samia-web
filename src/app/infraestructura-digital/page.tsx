@@ -78,22 +78,20 @@ export default function InfraestructuraDigitalPage() {
   return (
     <>
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
-        <Reveal>
-          <span className="chip">Para negocios que ya confían en afynova</span>
-          <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-5xl md:text-6xl">
-            La base digital completa de tu negocio, en una sola arquitectura.
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
-            En vez de un dashboard suelto o una web aislada, integro web,
-            pagos, automatización, datos y monitoreo — construido para crecer
-            contigo, no para romperse cuando lo hace.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <WhatsAppButton message="Hola, quiero información sobre Infraestructura Digital Completa">
-              Conversar por WhatsApp
-            </WhatsAppButton>
-          </div>
-        </Reveal>
+        <span className="chip">Para negocios que ya confían en afynova</span>
+        <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-5xl md:text-6xl">
+          La base digital completa de tu negocio, en una sola arquitectura.
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
+          En vez de un dashboard suelto o una web aislada, integro web,
+          pagos, automatización, datos y monitoreo — construido para crecer
+          contigo, no para romperse cuando lo hace.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <WhatsAppButton message="Hola, quiero información sobre Infraestructura Digital Completa">
+            Conversar por WhatsApp
+          </WhatsAppButton>
+        </div>
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-20">
