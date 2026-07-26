@@ -119,6 +119,22 @@ Archivos modificados: `src/app/page.tsx`, `src/components/ProblemaSection.tsx`.
 - Sección "Propuesta de valor" — fase independiente de arquitectura de contenido.
 - Prueba social — sin cambios, se mantiene la honestidad actual (1 caso real + 1 "Próximamente").
 
+## Fase 11 — Auditoría e implementación de "Propuesta de valor" ✅
+
+**Auditoría** (solo lectura): la sección "Y tu web no se queda ahí" mezclaba 3 tipos de contenido sin hilo narrativo único (lista de bullets genéricos, stat de velocidad, 2 mini-productos numerados), con redundancia literal entre un bullet y la card "Agenda inteligente", y un elemento decorativo (stack de avatares) en tensión con el posicionamiento de fundador único. Dirección aprobada: mantener una sola sección y reducir ruido (no dividir, para evitar redundancia con `ServiciosGrid`).
+
+**Implementación**:
+- Eliminados los bullets desconectados de la promesa principal: "Cobra por Yape, Plin o Culqi" y "Te avisa si algo se cae".
+- Nuevo enfoque de beneficios alineado con captación, atención y seguimiento: "Responde WhatsApp al instante", "Organiza consultas y solicitudes", "Detecta y prioriza quién necesita seguimiento", "Recupera oportunidades que antes se perdían" — la tercera línea se redactó para complementar la card "Agenda inteligente" en vez de duplicarla.
+- Eliminado el stack de avatares decorativo de la card de estadística (sugería un equipo, en tensión con "Hablarás directamente conmigo, no con un call center").
+- Eliminada la numeración "1"/"2" de las cards "Recepcionista IA" y "Agenda inteligente" (podía confundirse con la numeración 1-2-3 de `ProcesoSection`).
+- Mantenidos sin cambios: H2 "Y tu web no se queda ahí", subtítulo original, stat "<30 seg", contenido de ambas cards de mini-producto.
+
+Archivo modificado: `src/app/page.tsx` (única sección afectada, sin componente propio).
+
+**Pendiente** (sin cambios, fuera de alcance de la Fase 11):
+- Prueba social — sin cambios, se mantiene la honestidad actual (1 caso real + 1 "Próximamente").
+
 ## 2. Qué está pendiente
 
 Ver sección 9 (priorizado). Resumen:
