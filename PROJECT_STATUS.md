@@ -32,6 +32,21 @@ Cambios:
 - Tokens de duración/easing (M2).
 - prefers-reduced-motion (B1).
 
+## Fase 5 completada — Header/Navegación
+
+Nuevos componentes/clases visuales:
+- `.panel-pop` — animación de entrada (150ms, fade + `translateY(-4px) scale(0.98)` → normal, `transform-origin: top center`).
+- `.panel-elevated` — sombra compartida de doble capa, misma familia visual que `.card-soft`/`.btn-pill`, aplicada al dropdown de escritorio (`NavDropdown`) y al menú mobile (`MobileMenu`) en reemplazo de sus sombras inline.
+
+**Estado del sistema:**
+- Tipografía ✅
+- Cards ✅
+- Botones ✅
+- Animaciones/Reveals ✅
+- Header/navegación ✅
+
+**Pendiente** (sin cambios, fuera de alcance de la Fase 5): animación de salida del menú (M1 parcial, requiere estado adicional), tokens de duración/easing (M2), `prefers-reduced-motion` (B1).
+
 ## 2. Qué está pendiente
 
 Ver sección 9 (priorizado). Resumen:
