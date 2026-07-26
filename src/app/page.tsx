@@ -131,9 +131,9 @@ export default function Home() {
               <ul className="mt-6 space-y-4 text-sm">
                 {[
                   "Responde WhatsApp al instante",
-                  "Agenda y confirma citas",
-                  "Cobra por Yape, Plin o Culqi",
-                  "Te avisa si algo se cae",
+                  "Organiza consultas y solicitudes",
+                  "Detecta y prioriza quién necesita seguimiento",
+                  "Recupera oportunidades que antes se perdían",
                 ].map((item) => (
                   <li
                     key={item}
@@ -149,14 +149,7 @@ export default function Home() {
 
           <Reveal className="md:col-span-1" delay={100}>
             <div className="card-soft-tint hover-lift h-full">
-              <div className="flex items-start justify-between">
-                <span className="chip">objetivo de servicio</span>
-                <div className="flex -space-x-2" aria-hidden>
-                  <span className="h-6 w-6 rounded-full border-2 border-white bg-dorado-light/70" />
-                  <span className="h-6 w-6 rounded-full border-2 border-white bg-terracota/60" />
-                  <span className="h-6 w-6 rounded-full border-2 border-white bg-rojo-tierra/50" />
-                </div>
-              </div>
+              <span className="chip">objetivo de servicio</span>
               <h3 className="mt-6 text-lg font-medium text-ink">Tiempo de primera respuesta</h3>
               <p className="mt-8 font-display text-6xl italic text-terracota-dark">
                 &lt;30<span className="text-2xl not-italic font-sans"> seg</span>
@@ -172,18 +165,11 @@ export default function Home() {
           <div className="grid gap-6 md:col-span-1">
             <Reveal delay={160}>
               <div className="card-soft-dark hover-lift">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="font-medium">Recepcionista IA</h3>
-                    <p className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-dorado-light underline underline-offset-2">
-                      <MessageCircleMore className="h-3.5 w-3.5" strokeWidth={1.75} />
-                      Atención 24/7
-                    </p>
-                  </div>
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-sand/25 text-xs font-medium">
-                    1
-                  </span>
-                </div>
+                <h3 className="font-medium">Recepcionista IA</h3>
+                <p className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-dorado-light underline underline-offset-2">
+                  <MessageCircleMore className="h-3.5 w-3.5" strokeWidth={1.75} />
+                  Atención 24/7
+                </p>
                 <p className="mt-3 text-sm text-sand/65">
                   Atiende consultas al instante, deriva a un humano solo
                   cuando hace falta.
@@ -192,18 +178,11 @@ export default function Home() {
             </Reveal>
             <Reveal delay={220}>
               <div className="card-soft hover-lift">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="font-medium text-ink">Agenda inteligente</h3>
-                    <p className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-terracota-dark underline underline-offset-2">
-                      <CalendarCheck className="h-3.5 w-3.5" strokeWidth={1.75} />
-                      Anti-ausencias
-                    </p>
-                  </div>
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-ink/15 text-xs font-medium text-ink">
-                    2
-                  </span>
-                </div>
+                <h3 className="font-medium text-ink">Agenda inteligente</h3>
+                <p className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-terracota-dark underline underline-offset-2">
+                  <CalendarCheck className="h-3.5 w-3.5" strokeWidth={1.75} />
+                  Anti-ausencias
+                </p>
                 <p className="mt-3 text-sm text-ink/60">
                   Confirma y recuerda citas — menos ausencias, agenda llena.
                 </p>
