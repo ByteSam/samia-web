@@ -135,6 +135,36 @@ Archivo modificado: `src/app/page.tsx` (única sección afectada, sin componente
 **Pendiente** (sin cambios, fuera de alcance de la Fase 11):
 - Prueba social — sin cambios, se mantiene la honestidad actual (1 caso real + 1 "Próximamente").
 
+## Fase 12 — Auditoría de las 6 páginas de servicio/nicho (solo lectura) ✅
+
+Primera auditoría completa de `clinicas`, `servicios-locales`, `servicios-legales`, `servicios/agentes-ia`, `servicios/desarrollo-web` e `infraestructura-digital` desde que Home terminó las Fases 1-11. Confirmado que la capa visual (tipografía, cards, botones, animaciones) se hereda automáticamente vía `globals.css`, sin trabajo adicional por página. Hallazgos principales:
+- 3 páginas repetían la estadística "62%" sin fuente ya corregida en Home (Fase 10); `servicios-legales` tenía además dos cifras compuestas (21x, 8x) sin atribución — el caso de mayor riesgo de credibilidad de todo el sitio.
+- El diferenciador "Hablarás directamente conmigo, no con un call center" (reforzado en Home en la Fase 10) no existe en ninguna de las 6 páginas internas — `FinalCTA.tsx` usa un `textoSecundario` genérico por defecto en todas.
+- `servicios-locales` es la única página "Solución" sin sección de Proceso, y su H1 menciona solo "gasfitero" pese a que la página cubre más rubros.
+- `infraestructura-digital` es la más atípica de las 6 (sin Problema/Solución/Proceso, CTA final propio en vez de `FinalCTA`) — evaluado como intencional dado que su audiencia son clientes existentes.
+- La separación Soluciones/Servicios se entiende correctamente en la navegación; único matiz señalado: `infraestructura-digital` vive en el menú "Servicios" pese a ser explícitamente para clientes ya validados.
+
+Decisión: implementar en fases separadas por impacto/riesgo. Fase 13 = estadísticas sin fuente (implementada). Fase 14 = propagación del diferenciador (en auditoría). Estructura de `servicios-locales` e `infraestructura-digital`: mantenidas sin cambios por ahora (decisión explícita).
+
+## Fase 13 — Estadísticas sin fuente en páginas de servicio/nicho ✅
+
+Mismo criterio aplicado en Home (Fase 10): reemplazar cifras no verificables por formulación direccional, sin inventar atribución.
+
+Cambios realizados:
+- Reemplazo de "El 62% de las personas abandona si no le responden rápido" por "La mayoría de las personas abandona si no le responden rápido" en `clinicas`, `servicios-locales` y `servicios/agentes-ia` (el resto de cada oración, con su matiz específico de sector, se mantuvo intacto).
+- Eliminación de las cifras "21 veces" y "8 veces" en `servicios-legales`, reemplazadas por: "Responder rápido aumenta las posibilidades de que esa consulta se convierta en cliente — mientras más tardas, más probable es que esa persona ya haya escrito a otro estudio."
+
+Archivos modificados: `src/app/clinicas/page.tsx`, `src/app/servicios-locales/page.tsx`, `src/app/servicios/agentes-ia/page.tsx`, `src/app/servicios-legales/page.tsx`. `ProblemSection.tsx` (el componente compartido) no se tocó — el texto vive como prop por página.
+
+**Verificaciones realizadas**: `npm run lint` y `npm run build` limpios; confirmado por inspección de texto en el DOM de las 4 páginas en vivo que el texto nuevo está presente y ninguna cifra antigua ("62%", "21 veces", "8 veces") permanece.
+
+**Estado**: cerrado. `git status` limpio, `HEAD` y `origin/main` sincronizados.
+
+**Pendiente** (fuera de alcance de la Fase 13, ver Fase 12):
+- Propagación del diferenciador "no con un call center" a las 6 páginas internas — en auditoría (Fase 14).
+- Sección de Proceso ausente en `servicios-locales`.
+- H1 de `servicios-locales` menciona solo "gasfitero".
+
 ## 2. Qué está pendiente
 
 Ver sección 9 (priorizado). Resumen:
