@@ -47,6 +47,41 @@ Nuevos componentes/clases visuales:
 
 **Pendiente** (sin cambios, fuera de alcance de la Fase 5): animación de salida del menú (M1 parcial, requiere estado adicional), tokens de duración/easing (M2), `prefers-reduced-motion` (B1).
 
+## Fase 7 — Footer information architecture ✅
+
+Cambios:
+- Footer reorganizado según arquitectura de marca:
+  - Soluciones:
+    - Clínicas
+    - Firmas legales
+    - Negocios locales
+  - Servicios:
+    - Desarrollo web
+    - Automatización
+    - Agentes IA
+    - Datos y analítica
+    - Infraestructura cloud
+  - Contacto:
+    - WhatsApp
+    - Email
+  - Legal:
+    - Privacidad
+
+Decisiones:
+- Servicios sin página propia (Automatización y Datos y analítica) quedan como texto no enlazado.
+- Infraestructura cloud mantiene la ruta existente `/infraestructura-digital`.
+- No se crearon rutas nuevas.
+- No se modificó Header ni navegación principal.
+
+**Estado actual:**
+- Tipografía ✅
+- Cards ✅
+- Botones ✅
+- Animaciones ✅
+- Header/navegación ✅
+- Footer visual ✅
+- Footer architecture ✅
+
 ## 2. Qué está pendiente
 
 Ver sección 9 (priorizado). Resumen:
