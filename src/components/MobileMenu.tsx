@@ -11,10 +11,16 @@ type NavGroup = {
 
 type MobileMenuProps = {
   groups: NavGroup[];
+  onConoceDaniel: () => void;
 };
 
-export default function MobileMenu({ groups }: MobileMenuProps) {
+export default function MobileMenu({ groups, onConoceDaniel }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
+
+  function handleConoceDaniel() {
+    setOpen(false);
+    onConoceDaniel();
+  }
 
   return (
     <div className="md:hidden">
@@ -25,7 +31,11 @@ export default function MobileMenu({ groups }: MobileMenuProps) {
         aria-expanded={open}
         className="flex h-9 w-9 items-center justify-center rounded-full text-ink/70"
       >
-        {open ? <X className="h-5 w-5" strokeWidth={1.75} /> : <Menu className="h-5 w-5" strokeWidth={1.75} />}
+        {open ? (
+          <X className="h-5 w-5" strokeWidth={1.75} />
+        ) : (
+          <Menu className="h-5 w-5" strokeWidth={1.75} />
+        )}
       </button>
 
       {open && (
@@ -47,13 +57,13 @@ export default function MobileMenu({ groups }: MobileMenuProps) {
               ))}
             </div>
           ))}
-          <Link
-            href="/#fundador"
-            onClick={() => setOpen(false)}
-            className="mt-2 block rounded-xl px-3 py-2 font-medium text-ink hover:bg-sand"
+          <button
+            type="button"
+            onClick={handleConoceDaniel}
+            className="mt-2 block w-full rounded-xl px-3 py-2 text-left font-medium text-ink hover:bg-sand"
           >
             Conoce a Daniel
-          </Link>
+          </button>
         </div>
       )}
     </div>

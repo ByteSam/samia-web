@@ -15,24 +15,25 @@ export default function PoliticaDePrivacidadPage() {
           Política de Privacidad
         </h1>
         <p className="mt-3 text-sm text-ink/50">
-          Última actualización: julio de 2026.
+          Última actualización: agosto de 2026.
         </p>
 
         <div className="mt-10 space-y-8 text-ink/75">
           <div>
             <h2 className="text-lg font-medium text-ink">1. Quién trata tus datos</h2>
             <p className="mt-2 text-sm leading-relaxed">
-              afynova es un servicio unipersonal operado por Daniel — atención
-              100% remota desde Perú. Como responsable del tratamiento, cumplo
-              con la Ley N° 29733 de Protección de Datos Personales de Perú.
+              afynova es un servicio unipersonal operado por Daniel. Atiendo
+              negocios en Perú, principalmente por WhatsApp. Como responsable
+              del tratamiento de datos, cumplo con la Ley N° 29733 de
+              Protección de Datos Personales del Perú.
             </p>
           </div>
 
           <div>
             <h2 className="text-lg font-medium text-ink">2. Qué datos recopilo</h2>
             <ul className="mt-2 space-y-1 text-sm leading-relaxed">
-              <li>• Tu número de WhatsApp y el contenido de la conversación, cuando nos escribes.</li>
-              <li>• Datos que nos compartes voluntariamente en un diagnóstico o consulta (nombre, negocio, correo).</li>
+              <li>• Tu número de WhatsApp y el contenido de la conversación, cuando me escribes.</li>
+              <li>• Datos que me compartes voluntariamente en un diagnóstico o consulta (nombre, negocio, correo).</li>
               <li>• Datos de navegación anónimos (páginas visitadas, dispositivo) mediante herramientas de analítica, cuando estén activas.</li>
             </ul>
           </div>

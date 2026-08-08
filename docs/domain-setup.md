@@ -26,11 +26,11 @@ Configurar según lo que indique Vercel. Típicamente:
 
 ## 4. Verificación post-deploy
 
-- [ ] `https://afynova.com` carga el sitio
+- [x] `https://afynova.com` carga el sitio
 - [ ] `https://www.afynova.com` redirige al apex (o viceversa)
-- [ ] [`sitemap.xml`](https://afynova.com/sitemap.xml) usa URLs con dominio propio
-- [ ] Google Search Console: añadir propiedad y verificar
-- [ ] Compartir un link en WhatsApp — preview OG correcto
+- [x] [`sitemap.xml`](https://afynova.com/sitemap.xml) usa URLs con dominio propio
+- [x] Google Search Console: añadir propiedad y verificar
+- [ ] Compartir un link en WhatsApp — preview OG correcto (pospuesto)
 
 ## 5. Redirección Vercel antigua
 

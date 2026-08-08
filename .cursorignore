@@ -1,0 +1,23 @@
+# Dependencias y builds (evitan indexar ~1.7 GB)
+node_modules/
+.next/
+out/
+build/
+.vercel/
+
+# Logs y basura
+*.log
+.DS_Store
+Thumbs.db
+
+# Env y secretos
+.env
+.env.*
+
+# Artefactos grandes / generados
+repomix-output.xml
+*.tsbuildinfo
+coverage/
+
+# Binarios pesados (opcional; la foto del fundador sí debe indexarse)
+# public/**/*.psd

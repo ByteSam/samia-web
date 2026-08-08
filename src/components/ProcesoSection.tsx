@@ -4,17 +4,17 @@ import Reveal from "@/components/Reveal";
 const PASOS = [
   {
     t: "Diagnóstico gratuito",
-    d: "Conversamos 30 min sobre tu negocio y detectamos qué automatizar.",
+    d: "Conversamos 30 min sobre tu negocio y definimos si necesitas web, WhatsApp o ambos.",
     icon: ClipboardList,
   },
   {
     t: "Implementación en días",
-    d: "Configuro el asistente, conecto tus herramientas, y lo probamos juntos.",
+    d: "Armo tu web y/o asistente, conecto WhatsApp para avisarte de cada consulta, y lo probamos juntos.",
     icon: Settings2,
   },
   {
     t: "Empiezas a no perder clientes",
-    d: "Recibes el aviso por WhatsApp cada vez que llega alguien nuevo — mides la diferencia desde la primera semana.",
+    d: "Cada nuevo contacto te llega por WhatsApp — mides la diferencia desde la primera semana.",
     icon: PackageCheck,
   },
 ];

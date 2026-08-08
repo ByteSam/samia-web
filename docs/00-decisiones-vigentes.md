@@ -1,6 +1,6 @@
 # Decisiones vigentes
 
-> Última actualización: 12 de julio de 2026
+> Última actualización: 8 de agosto de 2026
 
 ## Propósito
 
@@ -30,8 +30,8 @@ Web o anuncio → landing → WhatsApp o agenda → diagnóstico → propuesta c
 
 ## Decisiones de navegación
 
-- “Conoce a Daniel” es un ancla a la sección `#sobre-mi` de la home, no una página independiente.
-- La navegación debe dejar claro que se trata de una sección de la página principal.
+- “Conoce a Daniel” abre un **panel lateral derecho** (foto, bio, CTA WhatsApp). La Home permanece visible detrás con overlay ligero. No hay sección `#fundador` en la Home.
+- Nombres de Soluciones y Servicios centralizados en `src/lib/navigation.ts` — **Footer es la referencia de marca**.
 
 ## Decisiones pendientes
 

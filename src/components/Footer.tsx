@@ -1,48 +1,18 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { whatsappLink, CONTACT_EMAIL } from "@/lib/contact";
+import { SOLUCIONES, SERVICIOS, isNavLink } from "@/lib/navigation";
 
-type FooterLink = { label: string; href: string; external?: boolean };
-type FooterColumn = {
-  title: string;
-  items: (FooterLink | { label: string; href?: undefined })[];
-};
+const CONTACTO = [
+  {
+    label: "WhatsApp",
+    href: whatsappLink("Hola, vi tu web y quiero conversar sobre mi negocio"),
+    external: true,
+  },
+  { label: "Email", href: `mailto:${CONTACT_EMAIL}`, external: true },
+] as const;
 
-const COLUMNS: FooterColumn[] = [
-  {
-    title: "Soluciones",
-    items: [
-      { label: "Clínicas", href: "/clinicas" },
-      { label: "Firmas legales", href: "/servicios-legales" },
-      { label: "Negocios locales", href: "/servicios-locales" },
-    ],
-  },
-  {
-    title: "Servicios",
-    items: [
-      { label: "Desarrollo web", href: "/servicios/desarrollo-web" },
-      { label: "Automatización" },
-      { label: "Agentes IA", href: "/servicios/agentes-ia" },
-      { label: "Datos y analítica" },
-      { label: "Infraestructura cloud", href: "/infraestructura-digital" },
-    ],
-  },
-  {
-    title: "Contacto",
-    items: [
-      {
-        label: "WhatsApp",
-        href: whatsappLink("Hola, vi tu web y quiero conversar sobre mi negocio"),
-        external: true,
-      },
-      { label: "Email", href: `mailto:${CONTACT_EMAIL}`, external: true },
-    ],
-  },
-  {
-    title: "Legal",
-    items: [{ label: "Privacidad", href: "/politica-de-privacidad" }],
-  },
-];
+const LEGAL = [{ label: "Privacidad", href: "/politica-de-privacidad" }] as const;
 
 export default function Footer() {
   return (
@@ -56,41 +26,92 @@ export default function Footer() {
             </p>
           </div>
 
-          {COLUMNS.map((column) => (
-            <div key={column.title}>
-              <p className="text-xs font-semibold uppercase tracking-wide text-ink/40">
-                {column.title}
-              </p>
-              <ul className="mt-3 space-y-2">
-                {column.items.map((item) => (
-                  <li key={item.label}>
-                    {item.href ? (
-                      item.external ? (
-                        <a
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-ink/70 transition-colors hover:text-terracota"
-                        >
-                          {item.label}
-                        </a>
-                      ) : (
-                        <Link href={item.href} className="text-ink/70 transition-colors hover:text-terracota">
-                          {item.label}
-                        </Link>
-                      )
-                    ) : (
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink/40">
+              Soluciones
+            </p>
+            <ul className="mt-3 space-y-2">
+              {SOLUCIONES.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-ink/70 transition-colors hover:text-terracota"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink/40">
+              Servicios
+            </p>
+            <ul className="mt-3 space-y-2">
+              {SERVICIOS.map((item) => (
+                <li key={item.label}>
+                  {isNavLink(item) ? (
+                    <Link
+                      href={item.href}
+                      className="text-ink/70 transition-colors hover:text-terracota"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <div>
                       <span className="text-ink/40">{item.label}</span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                      <p className="mt-0.5 text-xs leading-snug text-ink/35">
+                        {item.hint}
+                      </p>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink/40">
+              Contacto
+            </p>
+            <ul className="mt-3 space-y-2">
+              {CONTACTO.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ink/70 transition-colors hover:text-terracota"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink/40">
+              Legal
+            </p>
+            <ul className="mt-3 space-y-2">
+              {LEGAL.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-ink/70 transition-colors hover:text-terracota"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <p className="mt-10 border-t border-ink/8 pt-6 text-ink/50">
-          © {new Date().getFullYear()} afynova · Lima, Perú · Atención 100% remota
+          © {new Date().getFullYear()} afynova · Atiendo negocios en Perú
         </p>
       </div>
     </footer>

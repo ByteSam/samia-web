@@ -1,6 +1,6 @@
 # Estado del Proyecto — AFYNOVA Web
 
-> Generado el 25 jul 2026. Refleja el estado real del repositorio al commit `baf182a`, verificado contra el código — no contra suposiciones ni documentación externa desactualizada.
+> Generado el 25 jul 2026. Actualizado 8 ago 2026 (Fases 14–15). Producción: `https://afynova.com`.
 
 ---
 
@@ -165,32 +165,63 @@ Archivos modificados: `src/app/clinicas/page.tsx`, `src/app/servicios-locales/pa
 - Sección de Proceso ausente en `servicios-locales`.
 - H1 de `servicios-locales` menciona solo "gasfitero".
 
+## Fase 14 — Conversión, dominio y medición ✅
+
+Cambios (commit `9722b2a`):
+- Open Graph por ruta (7 landings de conversión + helper `src/lib/og-image.tsx`).
+- Vercel Web Analytics + eventos `click_whatsapp`, `lead`, `booking`.
+- `BookingButton` en Hero (Cal.com cuando `CAL_COM_URL` esté configurado; fallback WhatsApp).
+- `FinalCTA` con mensaje de confianza en páginas internas.
+- `servicios-locales`: H1 ampliado + sección Proceso.
+- `SITE_URL` → `https://afynova.com` (dominio propio en producción).
+- `src/lib/casos.ts` con flag `ACTIVAR_CASO_LEGAL` para publicar caso legal post-piloto.
+
+**Cierre técnico manual (Daniel):**
+- Google Search Console verificado + sitemap enviado ✅
+- Vercel Web Analytics activo ✅
+- Preview OG en WhatsApp — pospuesto
+
+## Fase 15 — Navegación unificada + panel “Conoce a Daniel” ✅
+
+Cambios:
+- Fuente única `src/lib/navigation.ts` — Footer como referencia de nombres (Firmas legales, Negocios locales, Infraestructura cloud, etc.).
+- Footer, Header, MobileMenu y línea de rubros en Home alineados.
+- Servicios sin página propia (Automatización, Datos y analítica) muestran hint en footer, sin links rotos.
+- `FundadorPanel` — panel lateral **derecho** al clic en “Conoce a Daniel”; overlay ligero para ver la Home detrás. Sección `#fundador` eliminada de la Home (bio solo en el panel).
+
+Archivos nuevos: `navigation.ts`, `FundadorPanel.tsx`, `HeaderNav.tsx`.
+
 ## 2. Qué está pendiente
 
 Ver sección 9 (priorizado). Resumen:
-- Dominio propio (sigue en `samia-lake.vercel.app`).
-- Search Console (pendiente de verificación manual por Daniel).
+- Preview OG en WhatsApp (validar caché al compartir links) — pospuesto.
+- Cal.com — `CAL_COM_URL` sigue `null`; CTA usa WhatsApp como fallback.
 - Tokens Success/Warning/Error (documentados, no implementados — correcto, nada los necesita aún).
-- Escala H2 exacta del Design System (28px/36px) vs. implementación real — ni Home ni las páginas secundarias calzan exacto.
-- `PricingTiers` no se usa en `infraestructura-digital` (decisión explícita, no un olvido).
+- Escala H2 exacta del Design System (28px/36px) vs. implementación real.
+- `PricingTiers` no se usa en `infraestructura-digital` (decisión explícita).
 - Manual de identidad formal (más allá del brief de `identidad-visual-ichan.md`).
-- Apple Touch Icon y Web App Manifest — no existen, no evaluados formalmente.
-- Open Graph: solo `/` tiene imagen propia (`opengraph-image.tsx`); las otras 7 rutas no generan una imagen específica.
+- Apple Touch Icon y Web App Manifest — no evaluados formalmente.
+
+**En pausa (no prioridad actual):** piloto legal estructurado, ads Meta/Google, publicar caso legal en Home (`ACTIVAR_CASO_LEGAL`).
 
 ## 3. Roadmap
 
-**Corto plazo (sin bloqueadores técnicos):**
-1. Cerrar el ciclo de "página de servicio completa" en las páginas restantes si se decide seguir el mismo patrón (Home, `infraestructura-digital`, `clinicas`, `servicios-locales` — evaluar si necesitan la misma profundidad que `agentes-ia`/`desarrollo-web`/`servicios-legales`).
-2. Resolver Open Graph por página (impacta directamente cómo se ve el link al compartir por WhatsApp, canal principal del negocio).
-3. Verificar Search Console tras confirmar el deploy.
+**Prioridad actual:** pulir experiencia de navegación y conversión en sitio ya en producción (`https://afynova.com`).
 
-**Mediano plazo (depende de decisiones de Daniel, no técnicas):**
-4. Comprar dominio propio y migrar `SITE_URL`.
-5. Definir si corresponde un Web App Manifest (el sitio no declara intención de ser instalable/PWA hoy).
-6. Evaluar manual de identidad formal una vez que el uso del logo esté validado en producción.
+**Corto plazo:**
+1. Validar preview OG al compartir landings por WhatsApp (cuando se retome).
+2. Configurar Cal.com cuando exista URL real (`docs/calcom-setup.md`).
 
-**Sin fecha (esperan una condición real, no un plazo):**
-7. Tokens Success/Warning/Error — solo cuando exista un formulario que los necesite.
+**En pausa (operaciones / captación):**
+3. Piloto legal estructurado — ver `files/soluciones/servicios-legales/piloto-seguimiento.md`.
+4. Anuncios pagados — ver `files/marketing/ads-lanzamiento.md` (solo post-piloto).
+
+**Mediano plazo (bajo impacto técnico):**
+5. Web App Manifest / Apple Touch Icon — solo si se decide PWA.
+6. Manual de identidad formal.
+
+**Sin fecha:**
+7. Tokens Success/Warning/Error — cuando un formulario los necesite.
 
 ## 4. Arquitectura
 
@@ -208,7 +239,7 @@ Ver sección 9 (priorizado). Resumen:
 /politica-de-privacidad        Legal
 ```
 
-**SEO/metadata generado por código** (no archivos estáticos): `sitemap.ts`, `robots.ts`, `icon.svg` (favicon estático desde el logo real), `opengraph-image.tsx` (dinámico, usa el logo real).
+**SEO/metadata generado por código**: `sitemap.ts`, `robots.ts`, `icon.svg`, `opengraph-image.tsx` por ruta (helper `og-image.tsx`), JSON-LD en `layout.tsx`.
 
 ## 5. Componentes reutilizables
 
@@ -226,8 +257,9 @@ Ver sección 9 (priorizado). Resumen:
 | `Logo` | `height?`, `className?` | `Header`, `Footer` |
 | `Reveal` | `delay?`, `className?` | Prácticamente todos los bloques de contenido (fade-in-up al hacer scroll) |
 | `ProblemaSection` *(con "a")* | — (contenido fijo) | Solo Home — **no confundir con `ProblemSection`** |
-| `ServiciosGrid`, `ProcesoSection`, `FundadorBlock`, `LeadForm` | — | Exclusivos de Home |
-| `Header`, `Footer`, `MobileMenu`, `NavDropdown` | — | Layout global |
+| `ServiciosGrid`, `ProcesoSection`, `LeadForm` | — | Exclusivos de Home |
+| `FundadorPanel` | `open`, `onClose` | Header — “Conoce a Daniel” |
+| `Header`, `Footer`, `MobileMenu`, `NavDropdown`, `HeaderNav`, `FundadorPanel` | — | Layout global / navegación |
 
 ⚠️ **Advertencia activa**: `ProblemaSection` (Home, contenido fijo) y `ProblemSection` (páginas de servicio, con props) son dos componentes distintos con nombres casi idénticos. Verificar siempre cuál se está editando.
 
@@ -272,11 +304,12 @@ De `brand-book-ichan.md` / gobernanza de marca (contenido reescrito para AFYNOVA
 
 ## 9. Pendientes priorizados
 
-1. **Open Graph por página** — hoy solo `/` tiene imagen propia al compartir; las 7 páginas restantes no. Impacto directo en conversión (el canal principal es compartir por WhatsApp).
-2. **Dominio propio** — `SITE_URL` sigue apuntando a `samia-lake.vercel.app`.
-3. **Search Console** — pendiente de verificación manual por Daniel tras confirmar el deploy.
-4. **Escala H2 del Design System (28px/36px)** — ni Home ni las páginas secundarias calzan exacto; implica tocar Home, fuera de alcance de las rondas recientes.
-5. **Apple Touch Icon** — inexistente, nunca evaluado formalmente como pendiente hasta ahora.
-6. **Manual de identidad formal** — más allá del brief actual, una vez validado el logo en producción real.
-7. **Web App Manifest** — solo si se decide que el sitio debe ser instalable; no evaluado como necesidad real todavía.
-8. **Tokens Success/Warning/Error** — esperan a que exista un formulario que realmente los necesite.
+1. **Preview OG en WhatsApp** — imágenes por ruta ya en código; validar caché al compartir (pospuesto).
+2. **Cal.com** — configurar URL en `contact.ts` cuando exista cuenta.
+3. **Escala H2 del Design System (28px/36px)** — ajuste visual global, bajo impacto en conversión.
+4. **Apple Touch Icon** — no evaluado formalmente.
+5. **Manual de identidad formal** — post-validación del logo en producción.
+6. **Web App Manifest** — solo si el sitio debe ser instalable.
+7. **Tokens Success/Warning/Error** — cuando un formulario los necesite.
+
+**En pausa:** piloto legal, caso de éxito en Home, campañas de ads.

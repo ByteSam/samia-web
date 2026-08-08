@@ -8,19 +8,27 @@ import LeadForm from "@/components/LeadForm";
 import ProblemaSection from "@/components/ProblemaSection";
 import ServiciosGrid from "@/components/ServiciosGrid";
 import ProcesoSection from "@/components/ProcesoSection";
-import FundadorBlock from "@/components/FundadorBlock";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
+import HeroTrustLine from "@/components/HeroTrustLine";
 import { CASOS } from "@/lib/casos";
 
 export const metadata: Metadata = {
-  title: "Automatización y tecnología para negocios | afynova",
+  title: "Web que convierte visitas en clientes | afynova",
   description:
-    "Te ayudo a responder a tus clientes más rápido con WhatsApp, automatización y web — implementado directamente, con diagnóstico gratis.",
+    "Web de captación para pymes peruanas: convierte visitas en contactos y te avisa por WhatsApp. Implementado directamente por mí, con diagnóstico gratis.",
   alternates: { canonical: "/" },
 };
 
 const FAQS_HOME = [
+  {
+    q: "¿Necesito ya tener una web?",
+    a: "No. Muchos proyectos empiezan con una web de captación nueva. Si ya tienes una, la evaluamos en el diagnóstico y vemos si conviene mejorarla o rehacerla.",
+  },
+  {
+    q: "¿Qué incluye una implementación desde S/1,500?",
+    a: "Depende de tu caso: puede ser una landing con formulario y aviso por WhatsApp, o un asistente que responde consultas frecuentes. El alcance exacto lo cerramos en el diagnóstico, sin costos ocultos.",
+  },
   {
     q: "¿Necesito cambiar mi número de WhatsApp?",
     a: "No. Se conecta a tu número actual mediante la API oficial de WhatsApp.",
@@ -49,15 +57,19 @@ export default function Home() {
             <span className="chip">Webs que venden · automatización · WhatsApp para pymes</span>
 
             <h1 className="text-h1 relative mt-6 max-w-2xl text-[2.5rem] text-ink sm:text-6xl md:text-[4rem]">
-              Tu negocio nunca deja pasar un{" "}
-              <span className="font-display italic text-terracota">cliente</span>.
+              Una web que{" "}
+              <span className="font-display italic text-terracota">convierte</span>{" "}
+              visitas en clientes.
             </h1>
             <p className="relative mt-6 max-w-xl text-lg text-ink/60">
-              Atiendo mejor a tus clientes por WhatsApp, te ahorro trabajo
-              manual, y respondo por el resultado — implementado directamente
-              por mí, con garantía de 14 días.
+              Te construyo una web que captura consultas y te avisa por
+              WhatsApp cuando llega alguien interesado — con garantía de 14
+              días.
             </p>
-            <div className="relative mt-10 flex flex-col items-start gap-3">
+            <div className="relative mt-6">
+              <HeroTrustLine />
+            </div>
+            <div className="relative mt-8 flex flex-col items-start gap-3">
               <div className="flex flex-wrap gap-4">
                 <WhatsAppButton
                   message="Hola, vi tu web y quiero un diagnóstico gratis"
@@ -77,6 +89,9 @@ export default function Home() {
             <WhatsAppMockup />
           </div>
         </div>
+        <div className="mt-10 flex justify-center lg:hidden">
+          <WhatsAppMockup />
+        </div>
       </section>
 
       {/* PROBLEMA */}
@@ -95,20 +110,19 @@ export default function Home() {
         <div className="mt-10 grid gap-6 md:grid-cols-3 md:auto-rows-fr">
           <Reveal className="md:col-span-1" delay={0}>
             <div className="card-soft hover-lift h-full">
-              <span className="chip">beneficios</span>
+              <span className="chip">Qué ganas</span>
               <ul className="mt-6 space-y-4 text-sm">
                 {[
+                  "Captura consultas desde tu web",
                   "Responde WhatsApp al instante",
-                  "Organiza consultas y solicitudes",
-                  "Detecta y prioriza quién necesita seguimiento",
+                  "Organiza solicitudes y prioriza seguimiento",
                   "Recupera oportunidades que antes se perdían",
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-center justify-between border-b border-ink/8 pb-3 last:border-0 last:pb-0"
+                    className="border-b border-ink/8 pb-3 last:border-0 last:pb-0 text-ink/75"
                   >
-                    <span className="text-ink/75">{item}</span>
-                    <ArrowUpRight className="h-4 w-4 text-terracota" strokeWidth={1.75} />
+                    {item}
                   </li>
                 ))}
               </ul>
@@ -117,7 +131,7 @@ export default function Home() {
 
           <Reveal className="md:col-span-1" delay={100}>
             <div className="card-soft-tint hover-lift h-full">
-              <span className="chip">objetivo de servicio</span>
+              <span className="chip">Mi compromiso</span>
               <h3 className="mt-6 text-lg font-medium text-ink">Tiempo de primera respuesta</h3>
               <p className="mt-8 font-display text-6xl italic text-terracota-dark">
                 &lt;30<span className="text-2xl not-italic font-sans"> seg</span>
@@ -178,19 +192,19 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* CASOS REALES */}
+      {/* PROYECTOS RECIENTES */}
       <section id="casos-reales" className="mx-auto max-w-5xl px-6 pb-24">
         <Reveal>
-          <h2 className="text-h2 text-ink">Casos reales</h2>
+          <h2 className="text-h2 text-ink">Proyectos recientes</h2>
           <p className="mt-2 max-w-md text-ink/60">
-            Negocios peruanos donde ya estoy poniendo esto en práctica.
+            Trabajo entregado y proyectos en curso — sin métricas inventadas.
           </p>
         </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {CASOS.map((c, i) => (
+        <div className="mt-10 grid gap-6">
+          {CASOS.filter((c) => c.estado === "entregado").map((c, i) => (
             <Reveal key={c.nombre} delay={i * 80}>
-              {"problema" in c ? (
-                <div className="card-soft-tint hover-lift flex h-full flex-col">
+              {"problema" in c && (
+                <div className="card-soft-tint hover-lift flex h-full flex-col md:max-w-2xl">
                   <c.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
                   <h3 className="mt-5 text-lg font-medium text-ink">{c.nombre}</h3>
                   <p className="mt-1 text-sm text-ink/50">{c.rubro}</p>
@@ -224,38 +238,25 @@ export default function Home() {
                     <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
                 </div>
-              ) : (
-                <div
-                  className={`card-soft-tint hover-lift h-full ${c.estado === "proximamente" ? "opacity-60" : ""}`}
-                >
-                  <c.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
-                  <div className="mt-5 flex items-center gap-2">
-                    <h3 className="text-lg font-medium text-ink">{c.nombre}</h3>
-                    {c.estado === "proximamente" && (
-                      <span className="chip !bg-ink/5 !text-ink/70 text-[0.65rem]">
-                        Próximamente
-                      </span>
-                    )}
-                  </div>
-                  <p className="mt-1 text-sm text-ink/50">{c.rubro}</p>
-                  <p className="mt-2 text-sm text-ink/60">{c.entregable}</p>
-                </div>
+              )}
+            </Reveal>
+          ))}
+          {CASOS.filter((c) => c.estado === "proximamente").map((c) => (
+            <Reveal key={c.nombre} delay={80}>
+              {"entregable" in c && (
+                <p className="text-sm text-ink/50">
+                  Próximo proyecto:{" "}
+                  <span className="text-ink/70">{c.nombre}</span> ({c.rubro}) —{" "}
+                  {c.entregable}
+                </p>
               )}
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* FUNDADOR */}
-      <section id="fundador" className="mx-auto max-w-3xl px-6 pb-24">
-        <FundadorBlock />
-      </section>
-
       {/* GARANTIA */}
-      <GarantiaSection
-        condicion="el asistente no te ahorra tiempo ni recupera clientes"
-        notaExtra="Hablarás directamente conmigo, no con un call center."
-      />
+      <GarantiaSection condicion="la solución no te ayuda a captar o atender mejor a tus clientes" />
 
       {/* SEÑAL DE PRECIO — breve, no es tabla ni catálogo */}
       <p className="mx-auto -mt-12 max-w-3xl px-6 pb-20 text-center text-sm text-ink/55">

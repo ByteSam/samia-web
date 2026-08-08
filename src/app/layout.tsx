@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
+import FundadorProvider from "@/components/FundadorProvider";
 import { SITE_URL } from "@/lib/site";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
 
@@ -65,10 +66,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <AnalyticsProvider />
+        <FundadorProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <AnalyticsProvider />
+        </FundadorProvider>
       </body>
     </html>
   );
