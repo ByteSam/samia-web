@@ -1,6 +1,6 @@
 # Estado del Proyecto — AFYNOVA Web
 
-> Generado el 25 jul 2026. Actualizado 8 ago 2026 (Fases 14–15). Producción: `https://afynova.com`.
+> Generado el 25 jul 2026. Actualizado 8 ago 2026 (Fases 14–17). Producción: `https://afynova.com`.
 
 ---
 
@@ -9,8 +9,10 @@
 - **Rebrand completo ICHAN → AFYNOVA** en código, metadata, Open Graph, SEO y documentación interna (`docs/`). Cero referencias residuales a "ichan" como texto de marca (solo quedan nombres de archivo históricos fuera de este repo, en `files/`, deliberadamente sin renombrar).
 - **Logo oficial integrado**: SVG real (símbolo + wordmark) en `public/logo/afynova.svg`, usado en `Logo.tsx` (navbar/footer), favicon (`src/app/icon.svg`) y la imagen Open Graph — los tres puntos usan exactamente los mismos paths vectoriales. Color del wordmark corregido a `#241509` (token Ink) para coherencia con el resto del sitio.
 - **Home**: 9 secciones completas (Hero con mockup de WhatsApp ilustrativo, Problema, Propuesta de valor, Servicios, Proceso + formulario en vivo, Casos reales + Fundador, Garantía + precio, FAQ, CTA final). Caso de estudio de Fortaleza Vinzos con problema/solución/resultado verificables y enlace real al sitio entregado. `LeadForm` con fallback de correo si WhatsApp no abre.
-- **6 páginas de servicio/nicho** (`clinicas`, `servicios-locales`, `servicios-legales`, `servicios/agentes-ia`, `servicios/desarrollo-web`) migradas al Design System v2 y con el mismo nivel de estructura: Hero → Problema → Solución/Catálogo/Precio → Cómo trabajamos → Garantía → FAQ → CTA final.
-- **SEO técnico**: `sitemap.ts`, `robots.ts`, JSON-LD `ProfessionalService`, `canonical` en las 8 rutas, `SITE_URL` centralizada.
+- **8 landings de conversión** (3 nichos + 5 servicios) migradas al Design System v2 con patrón Opción B donde aplica: Hero comparativo → un mockup/post-hero → bridge → catálogo/precio → proceso → garantía → FAQ → CTA.
+  - Nichos: `clinicas`, `servicios-locales`, `servicios-legales`
+  - Servicios: `servicios/agentes-ia`, `servicios/desarrollo-web`, `servicios/automatizacion`, `servicios/datos-y-analitica`, `servicios/infraestructura-digital` (ruta anterior `/infraestructura-digital` redirige con 301)
+- **SEO técnico**: `sitemap.ts`, `robots.ts`, JSON-LD `ProfessionalService`, `canonical` en las 10 rutas de conversión, `SITE_URL` centralizada.
 - **Gobernanza de marca verificada**: "afynova" siempre en minúscula, primera persona singular, sin promesas absolutas, sin testimonios/métricas inventadas — auditado explícitamente más de una vez en este proyecto.
 - **Refinamiento visual premium — Fase 3 completada** (sistema de botones): `.btn-pill` con sombra base permanente y elevación en hover (mismo lenguaje visual que las cards de la Fase 2); `.btn-pill-whatsapp` con halo verde sutil en reposo y hover para reforzar el CTA principal sin volverse promocional; `.btn-pill-ghost` con hover visible (antes dependía solo de `opacity`, casi imperceptible). Único archivo tocado: `src/app/globals.css`.
 
@@ -68,10 +70,8 @@ Cambios:
     - Privacidad
 
 Decisiones:
-- Servicios sin página propia (Automatización y Datos y analítica) quedan como texto no enlazado.
-- Infraestructura cloud mantiene la ruta existente `/infraestructura-digital`.
-- No se crearon rutas nuevas.
-- No se modificó Header ni navegación principal.
+- Los cinco servicios del Footer tienen landing propia y enlace clickeable.
+- Infraestructura cloud en `/servicios/infraestructura-digital` (redirect desde `/infraestructura-digital`).
 
 **Estado actual:**
 - Tipografía ✅
@@ -186,10 +186,40 @@ Cambios (commit `9722b2a`):
 Cambios:
 - Fuente única `src/lib/navigation.ts` — Footer como referencia de nombres (Firmas legales, Negocios locales, Infraestructura cloud, etc.).
 - Footer, Header, MobileMenu y línea de rubros en Home alineados.
-- Servicios sin página propia (Automatización, Datos y analítica) muestran hint en footer, sin links rotos.
+- Todos los servicios del Footer enlazan a su landing (actualizado en Fase 17).
 - `FundadorPanel` — panel lateral **derecho** al clic en “Conoce a Daniel”; overlay ligero para ver la Home detrás. Sección `#fundador` eliminada de la Home (bio solo en el panel).
 
 Archivos nuevos: `navigation.ts`, `FundadorPanel.tsx`, `HeaderNav.tsx`.
+
+## Fase 16 — Plan A: landings de nicho diferenciadas ✅
+
+Estrategia documentada en `docs/nichos-landing.md`. Tres URLs separadas (SEO/ads), mismo producto base, distinta historia por rubro.
+
+Cambios:
+- Mockups centralizados en `src/lib/nichos/mockups.ts` — un solo mockup por página (solo Hero; se eliminó la sección demo duplicada).
+- Bloques distintivos tras la solución:
+  - `ClinicasAusenciasBlock` → `/clinicas`
+  - `LocalesMissedCallBlock` → `/servicios-locales`
+  - `LegalLimitsBlock` → `/servicios-legales` (antes del bloque de precio)
+- Legal mantiene rango S/1,500–5,000 sin `PricingTiers`; clínicas y locales siguen con tiers.
+
+Archivos nuevos: `src/lib/nichos/mockups.ts`, `src/components/nichos/*.tsx`, `docs/nichos-landing.md`.
+
+## Fase 17 — Landings Automatización + Datos y analítica + crosslinks ✅
+
+Nuevas rutas bajo `src/app/servicios/` siguiendo patrón Opción B (hero comparativo, un mockup, bridge sin duplicar hero).
+
+Cambios:
+- **`/servicios/automatizacion`**: `AutomatizacionHeroCompare`, mockup `MOCKUP_AUTOMATIZACION`, `AutomatizacionUseCasesBridge` (enlaces a agentes-ia e infra), catálogo con rangos reutilizados + cotización en diagnóstico para flujos custom.
+- **`/servicios/datos-y-analitica`**: `DatosAnaliticaHeroCompare`, `DatosDashboardPreview` (ejemplo ilustrativo, sin métricas inventadas), `DatosAnaliticaBridge`, pricing enlazado a Infra Integral.
+- **`navigation.ts`**: los 5 servicios son `NavLink[]`; Footer simplificado (sin rama hint-only).
+- **`infraestructura-digital`**: ya en `/servicios/infraestructura-digital` con redirect 301 desde ruta antigua.
+- **Crosslinks**: Infra (`InfraestructuraUpgradeBridge`, módulos Automatización/Datos, nota bajo paquetes) y Agentes IA (`AgentesIACatalogBridge`, pie de catálogo) enlazan a automatización y datos.
+- Specs: `docs/servicios/automatizacion-visual-spec.md`, `docs/servicios/datos-y-analitica-visual-spec.md`.
+- Reviews: `npm run review:automatizacion`, `npm run review:datos-analitica`.
+- Docs: `docs/01-oferta-y-servicios.md` actualizado con catálogo completo y relación entre servicios.
+
+Archivos nuevos: `src/app/servicios/automatizacion/*`, `src/app/servicios/datos-y-analitica/*`, `src/components/servicios/Automatizacion*.tsx`, `Datos*.tsx`, `docs/reviews/automatizacion-visual/`, `docs/reviews/datos-analitica-visual/`.
 
 ## 2. Qué está pendiente
 
@@ -227,17 +257,20 @@ Ver sección 9 (priorizado). Resumen:
 
 **Stack**: Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind v4 (`@theme inline`, sin `tailwind.config`), `lucide-react` para iconografía. Sin backend propio — `LeadForm` arma un mensaje y abre WhatsApp/mailto directamente, sin persistencia de datos.
 
-**Rutas (8):**
+**Rutas (10 de conversión + legal):**
 ```
 /                              Home
 /clinicas                      Nicho — clínicas
 /servicios-locales             Nicho — servicios locales (gasfitería, cerrajería, etc.)
 /servicios-legales             Nicho — estudios de abogacía laboral
+/servicios/desarrollo-web      Servicio — catálogo desarrollo web
+/servicios/automatizacion      Servicio — automatización de procesos
 /servicios/agentes-ia          Servicio — catálogo de agentes IA
-/servicios/desarrollo-web      Servicio — catálogo de desarrollo web
-/infraestructura-digital       Servicio — upgrade para clientes existentes
+/servicios/datos-y-analitica   Servicio — tableros, reportes y monitoreo
+/servicios/infraestructura-digital  Servicio — upgrade para clientes existentes
 /politica-de-privacidad        Legal
 ```
+Redirect: `/infraestructura-digital` → `/servicios/infraestructura-digital` (301).
 
 **SEO/metadata generado por código**: `sitemap.ts`, `robots.ts`, `icon.svg`, `opengraph-image.tsx` por ruta (helper `og-image.tsx`), JSON-LD en `layout.tsx`.
 
@@ -245,13 +278,13 @@ Ver sección 9 (priorizado). Resumen:
 
 | Componente | Props clave | Usado en |
 |---|---|---|
-| `GarantiaSection` | `condicion`, `notaExtra?` | Home + las 6 páginas de servicio/nicho |
-| `FAQSection` | `items`, `titulo?` | Home + las 6 páginas de servicio/nicho |
-| `FinalCTA` | `titulo`, `mensaje`, `textoSecundario?`, `textoBoton?` | 5 páginas de servicio/nicho (no Home, no `infraestructura-digital`) |
-| `ProblemSection` | `titulo`, `bullets[]`, `stat` | `clinicas`, `servicios-locales`, `servicios-legales`, `agentes-ia`, `desarrollo-web` |
+| `GarantiaSection` | `condicion`, `notaExtra?` | Home + las 8 landings de conversión |
+| `FAQSection` | `items`, `titulo?` | Home + las 8 landings de conversión |
+| `FinalCTA` | `titulo`, `mensaje`, `textoSecundario?`, `textoBoton?` | 7 landings (no Home, no `infraestructura-digital`) |
+| `ProblemSection` | `titulo`, `bullets[]`, `stat` | Nichos + `agentes-ia`, `desarrollo-web`, `automatizacion`, `datos-y-analitica` |
 | `SolutionGrid` | `titulo`, `items[]`, `children?` | `clinicas`, `servicios-locales`, `servicios-legales` |
 | `PricingTiers` | `paquetes[]`, `titulo?`, `chipDestacado?`, `children?` | `clinicas`, `servicios-locales` (no `infraestructura-digital`, por decisión explícita) |
-| `CatalogGrid` | `items[]` (con `descripcion?`, `entrega?`, `retainer?` opcionales), `columns?`, `pb?`, `children?` | `agentes-ia`, `desarrollo-web` |
+| `CatalogGrid` | `items[]` (con `descripcion?`, `entrega?`, `retainer?` opcionales), `columns?`, `pb?`, `children?` | `agentes-ia`, `desarrollo-web`, `automatizacion` |
 | `WhatsAppMockup` | (sin props) | Home, `agentes-ia` |
 | `WhatsAppButton` | `message`, `variant?` | Todas las páginas |
 | `Logo` | `height?`, `className?` | `Header`, `Footer` |
@@ -259,6 +292,7 @@ Ver sección 9 (priorizado). Resumen:
 | `ProblemaSection` *(con "a")* | — (contenido fijo) | Solo Home — **no confundir con `ProblemSection`** |
 | `ServiciosGrid`, `ProcesoSection`, `LeadForm` | — | Exclusivos de Home |
 | `FundadorPanel` | `open`, `onClose` | Header — “Conoce a Daniel” |
+| Bridges servicios (`*HeroCompare`, `*Bridge`, `*Preview`) | — | Landings de servicio (patrón Opción B) |
 | `Header`, `Footer`, `MobileMenu`, `NavDropdown`, `HeaderNav`, `FundadorPanel` | — | Layout global / navegación |
 
 ⚠️ **Advertencia activa**: `ProblemaSection` (Home, contenido fijo) y `ProblemSection` (páginas de servicio, con props) son dos componentes distintos con nombres casi idénticos. Verificar siempre cuál se está editando.

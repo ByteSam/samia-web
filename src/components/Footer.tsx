@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { whatsappLink, CONTACT_EMAIL } from "@/lib/contact";
-import { SOLUCIONES, SERVICIOS, isNavLink } from "@/lib/navigation";
+import { SOLUCIONES, SERVICIOS } from "@/lib/navigation";
 
 const CONTACTO = [
   {
@@ -50,22 +50,13 @@ export default function Footer() {
             </p>
             <ul className="mt-3 space-y-2">
               {SERVICIOS.map((item) => (
-                <li key={item.label}>
-                  {isNavLink(item) ? (
-                    <Link
-                      href={item.href}
-                      className="text-ink/70 transition-colors hover:text-terracota"
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <div>
-                      <span className="text-ink/40">{item.label}</span>
-                      <p className="mt-0.5 text-xs leading-snug text-ink/35">
-                        {item.hint}
-                      </p>
-                    </div>
-                  )}
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-ink/70 transition-colors hover:text-terracota"
+                  >
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>

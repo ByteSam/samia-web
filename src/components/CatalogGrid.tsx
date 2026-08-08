@@ -42,11 +42,14 @@ export default function CatalogGrid({
       <Reveal>
         <h2 className="text-h2 text-ink">{titulo}</h2>
       </Reveal>
-      <div className={GRID_CLASSES[columns]}>
-        {items.map((p, i) =>
-          p.entrega || p.retainer ? (
-            <Reveal key={p.nombre} delay={i * 70}>
-              <div className="card-soft hover-lift flex h-full flex-col">
+      <Reveal delay={80}>
+        <div className={GRID_CLASSES[columns]}>
+          {items.map((p) =>
+            p.entrega || p.retainer ? (
+              <div
+                key={p.nombre}
+                className="card-soft hover-lift flex flex-col p-5 sm:p-6"
+              >
                 <p.icon className="h-6 w-6 text-terracota" strokeWidth={1.5} />
                 <h3 className="mt-4 font-medium text-ink">{p.nombre}</h3>
                 {p.entrega && (
@@ -64,23 +67,24 @@ export default function CatalogGrid({
                   )}
                 </div>
               </div>
-            </Reveal>
-          ) : (
-            <Reveal key={p.nombre} delay={i * 70}>
-              <div className="card-soft hover-lift flex h-full flex-col">
+            ) : (
+              <div
+                key={p.nombre}
+                className="card-soft hover-lift flex flex-col p-5 sm:p-6"
+              >
                 <p.icon className="h-6 w-6 text-terracota" strokeWidth={1.5} />
                 <h3 className="mt-4 font-medium text-ink">{p.nombre}</h3>
                 {p.descripcion && (
-                  <p className="mt-2 text-sm text-ink/60">{p.descripcion}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/60">{p.descripcion}</p>
                 )}
                 <p className="mt-3 text-xl font-medium text-ink">{p.setup}</p>
                 <p className="text-xs text-ink/50">Setup</p>
               </div>
-            </Reveal>
-          )
-        )}
-      </div>
-      {children && <div className="mt-6">{children}</div>}
+            )
+          )}
+        </div>
+        {children && <div className="mt-6">{children}</div>}
+      </Reveal>
     </section>
   );
 }

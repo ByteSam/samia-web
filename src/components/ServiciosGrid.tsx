@@ -20,7 +20,7 @@ const SERVICIOS = [
   },
   {
     nombre: "Infraestructura cloud",
-    href: "/infraestructura-digital",
+    href: "/servicios/infraestructura-digital",
     icon: Workflow,
     beneficio: "Cuando ya validaste, todo tu negocio conectado en un solo sistema.",
     criterio: "Empieza acá si ya trabajamos juntos y quieres integrarlo todo.",

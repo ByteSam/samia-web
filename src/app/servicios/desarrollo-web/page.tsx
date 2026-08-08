@@ -13,6 +13,10 @@ import FAQSection from "@/components/FAQSection";
 import CatalogGrid from "@/components/CatalogGrid";
 import FinalCTA from "@/components/FinalCTA";
 import ProblemSection from "@/components/ProblemSection";
+import WhatsAppMockup from "@/components/WhatsAppMockup";
+import DesarrolloWebHeroCompare from "@/components/servicios/DesarrolloWebHeroCompare";
+import DesarrolloWebCatalogBridge from "@/components/servicios/DesarrolloWebCatalogBridge";
+import { MOCKUP_CAPTACION_WEB } from "@/lib/nichos/mockups";
 
 export const metadata: Metadata = {
   title: "Desarrollo Web para negocios en Perú",
@@ -59,7 +63,30 @@ const CATALOGO = [
   },
 ];
 
+const PASOS = [
+  {
+    t: "Diagnóstico",
+    d: "Vemos qué necesita tu negocio y qué tipo de sitio se ajusta mejor a tu objetivo — 30 min por WhatsApp, sin costo.",
+  },
+  {
+    t: "Diseño",
+    d: "Defino la estructura y el estilo visual antes de programar, para que apruebes el rumbo desde el inicio.",
+  },
+  {
+    t: "Desarrollo",
+    d: "Construyo el sitio en código real, con tu WhatsApp integrado desde el primer día.",
+  },
+  {
+    t: "Lanzamiento",
+    d: "Publico el sitio, lo dejo indexado en Google, y te enseño lo básico para que puedas actualizarlo tú mismo.",
+  },
+];
+
 const FAQS = [
+  {
+    q: "¿Landing o web corporativa?",
+    a: "Depende de tu objetivo: landing para una oferta puntual o arranque rápido; corporativa si necesitas varias secciones y presencia completa. Lo vemos en el diagnóstico gratis.",
+  },
   {
     q: "¿El sitio queda en código real o en un builder tipo Wix?",
     a: "Código real, no plantillas genéricas — más rápido, más control, mejor indexado en Google.",
@@ -81,91 +108,109 @@ const FAQS = [
 export default function DesarrolloWebPage() {
   return (
     <>
-      <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
-        <span className="chip">Servicio · Desarrollo Web</span>
-        <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-6xl md:text-[4rem]">
-          Un sitio que vende, no uno que solo se ve bonito.
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
-          Construido en código (no plantillas genéricas), rápido, indexable
-          en Google y conectado a tu WhatsApp desde el día uno.
-        </p>
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <WhatsAppButton message="Hola, quiero información sobre desarrollo web">
-            Conversar por WhatsApp
-          </WhatsAppButton>
+      {/* HERO — Opción B: web pasiva vs convierte */}
+      <section className="landing-hero-accent mx-auto max-w-3xl px-6 pb-12 pt-20 md:pb-16 md:pt-28 lg:max-w-4xl">
+        <div className="text-center lg:text-left">
+          <span className="chip">Servicio · Desarrollo web</span>
+
+          <h1 className="text-h1 mt-6 text-[2.5rem] text-ink sm:text-5xl md:text-[3.5rem]">
+            Un sitio que{" "}
+            <span className="font-display italic text-terracota">convierte</span>, no uno que solo
+            se ve bonito.
+          </h1>
+
+          <p className="mt-5 text-lg leading-relaxed text-ink/60">
+            Código real, rápido, indexable en Google y conectado a tu WhatsApp desde el día uno.
+          </p>
+
+          <div className="mt-8 flex flex-col items-center gap-3 lg:items-start">
+            <WhatsAppButton
+              message="Hola, quiero una web que convierta visitas en clientes"
+              source="desarrollo_web_hero"
+            >
+              Quiero una web que convierta
+            </WhatsAppButton>
+            <p className="text-sm text-ink/50">
+              Desde S/600 · Diagnóstico gratis · Hablarás directamente conmigo
+            </p>
+          </div>
+
+          <DesarrolloWebHeroCompare />
         </div>
       </section>
 
-      {/* QUÉ PROBLEMA RESUELVE */}
-      <ProblemSection
-        titulo="Tu web existe, pero no está trabajando para ti."
-        bullets={[
-          "No genera consultas — la gente la visita y se va sin escribirte.",
-          "No transmite confianza — se ve genérica o anticuada, y eso se nota antes de leer una palabra.",
-          "No aparece en Google — nadie te encuentra buscando lo que ofreces.",
-          "Es difícil de actualizar — cambiar un precio o una foto depende de alguien más, o de nadie.",
-        ]}
-        stat="La primera impresión de tu negocio ya no es el local ni la llamada — es lo que la gente ve en tu web en los primeros segundos."
-      />
+      {/* Mockup — aviso de captación, debajo del hero */}
+      <section className="mx-auto max-w-sm px-6 pb-14 md:pb-20">
+        <div className="mockup-frame">
+          <WhatsAppMockup
+            titulo={MOCKUP_CAPTACION_WEB.titulo}
+            subtitulo={MOCKUP_CAPTACION_WEB.subtitulo}
+            mensajes={MOCKUP_CAPTACION_WEB.mensajes}
+          />
+        </div>
+        <p className="mt-3 text-center text-xs text-ink/45">
+          Así te avisa cuando alguien deja datos en tu web.
+        </p>
+      </section>
 
-      <CatalogGrid items={CATALOGO} columns={3} pb="16">
-        <Reveal delay={280}>
+      {/* PROBLEMA */}
+      <div className="section-band">
+        <ProblemSection
+          variant="band"
+          titulo="Tu web existe, pero no está trabajando para ti."
+          bullets={[
+            "No genera consultas — la gente la visita y se va sin escribirte.",
+            "No transmite confianza — se ve genérica o anticuada, y eso se nota antes de leer una palabra.",
+            "No aparece en Google — nadie te encuentra buscando lo que ofreces.",
+            "Es difícil de actualizar — cambiar un precio o una foto depende de alguien más, o de nadie.",
+          ]}
+          stat="La primera impresión de tu negocio ya no es el local ni la llamada — es lo que la gente ve en tu web en los primeros segundos."
+        />
+      </div>
+
+      {/* FIRMA — tipo de sitio */}
+      <DesarrolloWebCatalogBridge />
+
+      {/* CATÁLOGO */}
+      <div className="section-band border-t border-ink/6">
+        <CatalogGrid items={CATALOGO} columns={3} pb="16" titulo="Catálogo de sitios, en soles">
           <p className="text-sm text-ink/50">
-            Mantenimiento: S/100 – 500/mes (hosting, dominio, respaldos y
-            ajustes menores).
+            Mantenimiento: S/100 – 500/mes (hosting, dominio, respaldos y ajustes menores).
           </p>
-        </Reveal>
-      </CatalogGrid>
+        </CatalogGrid>
+      </div>
 
       {/* CÓMO TRABAJAMOS */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-h2 text-ink">Cómo trabajamos</h2>
+          <p className="section-eyebrow">Implementación</p>
+          <h2 className="text-h2 mt-2 text-ink">Cómo trabajamos</h2>
         </Reveal>
-        <ol className="mt-8 space-y-6">
-          {[
-            {
-              t: "Diagnóstico",
-              d: "Vemos qué necesita tu negocio y qué tipo de sitio se ajusta mejor a tu objetivo — 30 min por WhatsApp, sin costo.",
-            },
-            {
-              t: "Diseño",
-              d: "Defino la estructura y el estilo visual antes de programar, para que apruebes el rumbo desde el inicio.",
-            },
-            {
-              t: "Desarrollo",
-              d: "Construyo el sitio en código real, con tu WhatsApp integrado desde el primer día.",
-            },
-            {
-              t: "Lanzamiento",
-              d: "Publico el sitio, lo dejo indexado en Google, y te enseño lo básico para que puedas actualizarlo tú mismo.",
-            },
-          ].map((step, i) => (
-            <Reveal key={step.t} delay={i * 80}>
-              <li className="flex gap-4">
+        <Reveal delay={80}>
+          <ol className="mt-8 space-y-6">
+            {PASOS.map((step, i) => (
+              <li key={step.t} className="flex gap-4">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 font-medium text-ink">
                   {i + 1}
                 </span>
                 <div>
                   <p className="font-medium text-ink">{step.t}</p>
-                  <p className="text-sm text-ink/60">{step.d}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink/60">{step.d}</p>
                 </div>
               </li>
-            </Reveal>
-          ))}
-        </ol>
+            ))}
+          </ol>
+        </Reveal>
       </section>
 
       <GarantiaSection condicion="el sitio no te trae los resultados esperados" />
 
       <FAQSection items={FAQS} />
 
-      {/* CTA FINAL */}
       <FinalCTA
         titulo="¿Tu web de hoy te trae clientes, o solo está ahí?"
-        mensaje="Hola, quiero información sobre desarrollo web"
-        textoBoton="Conversar por WhatsApp"
+        mensaje="Hola, quiero una web que convierta visitas en clientes"
+        textoBoton="Quiero una web que convierta"
       />
     </>
   );

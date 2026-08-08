@@ -7,6 +7,6 @@ export const contentType = ogContentType;
 export default function Image() {
   return createOgImage(
     "Tu estudio deja de perder consultas laborales por no responder a tiempo.",
-    "Abogacía laboral · WhatsApp · Perú"
+    "Abogacía laboral · Primer contacto · Perú"
   );
 }

@@ -8,6 +8,7 @@ import {
   PhoneMissed,
   UserPlus,
 } from "lucide-react";
+import Link from "next/link";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
@@ -16,6 +17,9 @@ import CatalogGrid from "@/components/CatalogGrid";
 import FinalCTA from "@/components/FinalCTA";
 import ProblemSection from "@/components/ProblemSection";
 import WhatsAppMockup from "@/components/WhatsAppMockup";
+import AgentesHeroInboxCompare from "@/components/servicios/AgentesHeroInboxCompare";
+import AgentesIACatalogBridge from "@/components/servicios/AgentesIACatalogBridge";
+import { MOCKUP_AGENTES } from "@/lib/nichos/mockups";
 
 export const metadata: Metadata = {
   title: "Agentes de WhatsApp con IA para negocios en Perú",
@@ -76,7 +80,30 @@ const CATALOGO = [
   },
 ];
 
+const PASOS = [
+  {
+    t: "Diagnóstico",
+    d: "Vemos juntos dónde estás perdiendo clientes y qué necesita tu negocio — 30 min por WhatsApp, sin costo.",
+  },
+  {
+    t: "Configuración",
+    d: "Entreno el agente con la información real de tu negocio: precios, horarios, servicios, tono.",
+  },
+  {
+    t: "Implementación",
+    d: "Lo conecto a tu WhatsApp y lo probamos juntos antes de que hable con tus clientes.",
+  },
+  {
+    t: "Soporte",
+    d: "Ajustes, monitoreo y mejoras continuas — no desaparezco después de la entrega.",
+  },
+];
+
 const FAQS = [
+  {
+    q: "¿Cuál agente me conviene?",
+    a: "En el diagnóstico gratis vemos tu caso y te recomiendo el punto de partida — casi siempre un Recepcionista IA, y después sumas reservas, RAG u otros módulos si hace falta.",
+  },
   {
     q: "¿El agente reemplaza mi atención al cliente?",
     a: "No. Filtra lo repetitivo y te pasa solo las conversaciones que de verdad necesitan a una persona.",
@@ -98,104 +125,117 @@ const FAQS = [
 export default function AgentesIAPage() {
   return (
     <>
-      <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
-        <span className="chip">Servicio · Agentes IA</span>
-        <h1 className="text-h1 mx-auto mt-6 max-w-3xl text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
-          Un agente de IA para cada punto donde hoy pierdes clientes.
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
-          Especializado en WhatsApp — no una suite omnicanal genérica.
-          Desde un recepcionista simple hasta una suite multicanal
-          completa, ajustado a lo que tu negocio necesita hoy.
-        </p>
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <WhatsAppButton message="Hola, quiero información sobre agentes de IA">
-            Conversar por WhatsApp
-          </WhatsAppButton>
+      {/* HERO — Opción B: inbox sin/con agente */}
+      <section className="landing-hero-accent mx-auto max-w-3xl px-6 pb-12 pt-20 md:pb-16 md:pt-28 lg:max-w-4xl">
+        <div className="text-center lg:text-left">
+          <span className="chip">Servicio · Agentes IA por WhatsApp</span>
+
+          <h1 className="text-h1 mt-6 text-[2.5rem] text-ink sm:text-5xl md:text-[3.5rem]">
+            Menos consultas{" "}
+            <span className="font-display italic text-terracota">perdidas</span>, más clientes
+            atendidos.
+          </h1>
+
+          <p className="mt-5 text-lg leading-relaxed text-ink/60">
+            Un agente responde en tu WhatsApp al instante — sin que tengas que estar pegado al
+            teléfono.
+          </p>
+
+          <div className="mt-8 flex flex-col items-center gap-3 lg:items-start">
+            <WhatsAppButton
+              message="Hola, quiero ver qué agente de IA me conviene para mi negocio"
+              source="agentes_ia_hero"
+            >
+              Quiero ver qué agente me conviene
+            </WhatsAppButton>
+            <p className="text-sm text-ink/50">
+              Desde S/500 · Diagnóstico gratis · Hablarás directamente conmigo
+            </p>
+          </div>
+
+          <AgentesHeroInboxCompare />
         </div>
       </section>
 
-      {/* QUÉ PROBLEMA RESUELVE */}
-      <ProblemSection
-        titulo="Cada minuto sin responder es un cliente que se va con otro negocio."
-        bullets={[
-          "Las consultas llegan a toda hora — fuera de tu horario, en fin de semana, mientras atiendes a alguien más — y quedan sin responder.",
-          "Respondes siempre lo mismo: horarios, precios, disponibilidad — tiempo que no dedicas a lo que sí requiere tu criterio.",
-          "Sin un filtro, no distingues una consulta real de una que solo pregunta por curiosidad — y las urgencias se mezclan con el resto.",
-        ]}
-        stat="La mayoría de las personas abandona si no le responden rápido — y cada canal nuevo (web, redes, WhatsApp) es una fuente más de mensajes sin responder."
-      />
-
-      {/* MOCKUP — así se ve resuelto */}
-      <section className="mx-auto max-w-4xl px-6 pb-16 text-center">
-        <Reveal>
-          <h2 className="text-h2 text-ink">Así responde el agente</h2>
-          <p className="mt-2 text-ink/60">Un ejemplo de cómo atiende una consulta, en tu WhatsApp.</p>
-          <div className="mt-8 flex justify-center">
-            <div className="w-full max-w-xs">
-              <WhatsAppMockup />
-            </div>
-          </div>
-        </Reveal>
+      {/* Mockup — una sola instancia, debajo del hero */}
+      <section className="mx-auto max-w-sm px-6 pb-14 md:pb-20">
+        <div className="mockup-frame">
+          <WhatsAppMockup
+            titulo={MOCKUP_AGENTES.titulo}
+            subtitulo={MOCKUP_AGENTES.subtitulo}
+            mensajes={MOCKUP_AGENTES.mensajes}
+          />
+        </div>
+        <p className="mt-3 text-center text-xs text-ink/45">
+          Así responde el agente en tu WhatsApp — sin que tengas que estar pegado al teléfono.
+        </p>
       </section>
 
-      <CatalogGrid items={CATALOGO}>
-        <Reveal delay={240}>
+      {/* PROBLEMA */}
+      <div className="section-band">
+        <ProblemSection
+          variant="band"
+          titulo="Cada minuto sin responder es un cliente que se va con otro negocio."
+          bullets={[
+            "Las consultas llegan a toda hora — fuera de tu horario, en fin de semana, mientras atiendes a alguien más — y quedan sin responder.",
+            "Respondes siempre lo mismo: horarios, precios, disponibilidad — tiempo que no dedicas a lo que sí requiere tu criterio.",
+            "Sin un filtro, no distingues una consulta real de una que solo pregunta por curiosidad — y las urgencias se mezclan con el resto.",
+          ]}
+          stat="La mayoría de las personas abandona si no le responden rápido — y cada canal nuevo (web, redes, WhatsApp) es una fuente más de mensajes sin responder."
+        />
+      </div>
+
+      {/* FIRMA — por dónde empezar */}
+      <AgentesIACatalogBridge />
+
+      {/* CATÁLOGO */}
+      <div className="section-band border-t border-ink/6">
+        <CatalogGrid items={CATALOGO} titulo="Catálogo de agentes, en soles">
           <p className="text-sm text-ink/50">
-            ¿No sabes cuál te conviene? En el diagnóstico gratis vemos tu caso
-            y te recomiendo el punto de partida.
+            ¿No sabes cuál te conviene? En el diagnóstico gratis vemos tu caso y te recomiendo
+            el punto de partida. Para avisos, CRM o integraciones sin chatbot, revisa{" "}
+            <Link
+              href="/servicios/automatizacion"
+              className="text-terracota-dark underline-offset-2 hover:underline"
+            >
+              Automatización
+            </Link>
+            .
           </p>
-        </Reveal>
-      </CatalogGrid>
+        </CatalogGrid>
+      </div>
 
       {/* CÓMO TRABAJAMOS */}
       <section className="mx-auto max-w-4xl px-6 pb-20">
         <Reveal>
-          <h2 className="text-h2 text-ink">Cómo trabajamos</h2>
+          <p className="section-eyebrow">Implementación</p>
+          <h2 className="text-h2 mt-2 text-ink">Cómo trabajamos</h2>
         </Reveal>
-        <ol className="mt-8 space-y-6">
-          {[
-            {
-              t: "Diagnóstico",
-              d: "Vemos juntos dónde estás perdiendo clientes y qué necesita tu negocio — 30 min por WhatsApp, sin costo.",
-            },
-            {
-              t: "Configuración",
-              d: "Entreno el agente con la información real de tu negocio: precios, horarios, servicios, tono.",
-            },
-            {
-              t: "Implementación",
-              d: "Lo conecto a tu WhatsApp y lo probamos juntos antes de que hable con tus clientes.",
-            },
-            {
-              t: "Soporte",
-              d: "Ajustes, monitoreo y mejoras continuas — no desaparezco después de la entrega.",
-            },
-          ].map((step, i) => (
-            <Reveal key={step.t} delay={i * 80}>
-              <li className="flex gap-4">
+        <Reveal delay={80}>
+          <ol className="mt-8 space-y-6">
+            {PASOS.map((step, i) => (
+              <li key={step.t} className="flex gap-4">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 font-medium text-ink">
                   {i + 1}
                 </span>
                 <div>
                   <p className="font-medium text-ink">{step.t}</p>
-                  <p className="text-sm text-ink/60">{step.d}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink/60">{step.d}</p>
                 </div>
               </li>
-            </Reveal>
-          ))}
-        </ol>
+            ))}
+          </ol>
+        </Reveal>
       </section>
 
       <GarantiaSection condicion="el agente no te ahorra tiempo ni recupera clientes" />
 
       <FAQSection items={FAQS} />
 
-      {/* CTA FINAL */}
       <FinalCTA
         titulo="¿Cuántos clientes se te escapan por no responder a tiempo?"
-        mensaje="Hola, quiero información sobre agentes de IA"
-        textoBoton="Conversar por WhatsApp"
+        mensaje="Hola, quiero ver qué agente de IA me conviene para mi negocio"
+        textoBoton="Quiero ver qué agente me conviene"
       />
     </>
   );

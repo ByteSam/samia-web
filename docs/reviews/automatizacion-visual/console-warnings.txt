@@ -1,0 +1,8 @@
+=== automatizacion-mobile ===
+(sin warnings/errors)
+
+=== automatizacion-tablet ===
+(sin warnings/errors)
+
+=== automatizacion-desktop ===
+(sin warnings/errors)

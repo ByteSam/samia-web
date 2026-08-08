@@ -7,6 +7,6 @@ export const contentType = ogContentType;
 export default function Image() {
   return createOgImage(
     "No pierdas otra llamada ni emergencia por no contestar a tiempo.",
-    "Gasfitería · Cerrajería · Mantenimiento"
+    "Gasfitería · Cerrajería · Emergencias · Perú"
   );
 }

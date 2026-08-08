@@ -7,6 +7,6 @@ export const contentType = ogContentType;
 export default function Image() {
   return createOgImage(
     "Tu clínica deja de perder pacientes por no responder a tiempo.",
-    "Clínicas · WhatsApp · Perú"
+    "Clínicas · Citas por WhatsApp · Perú"
   );
 }

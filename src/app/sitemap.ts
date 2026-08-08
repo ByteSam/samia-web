@@ -9,7 +9,9 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/servicios-legales", priority: 0.8, changeFrequency: "monthly" },
   { path: "/servicios/agentes-ia", priority: 0.7, changeFrequency: "monthly" },
   { path: "/servicios/desarrollo-web", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/infraestructura-digital", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/servicios/automatizacion", priority: 0.65, changeFrequency: "monthly" },
+  { path: "/servicios/datos-y-analitica", priority: 0.65, changeFrequency: "monthly" },
+  { path: "/servicios/infraestructura-digital", priority: 0.6, changeFrequency: "monthly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

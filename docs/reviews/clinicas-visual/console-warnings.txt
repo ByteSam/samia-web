@@ -1,0 +1,26 @@
+=== clinicas-mobile ===
+(sin warnings/errors)
+
+=== locales-mobile ===
+(sin warnings/errors)
+
+=== legal-mobile ===
+(sin warnings/errors)
+
+=== clinicas-tablet ===
+(sin warnings/errors)
+
+=== locales-tablet ===
+(sin warnings/errors)
+
+=== legal-tablet ===
+(sin warnings/errors)
+
+=== clinicas-desktop ===
+(sin warnings/errors)
+
+=== locales-desktop ===
+(sin warnings/errors)
+
+=== legal-desktop ===
+(sin warnings/errors)

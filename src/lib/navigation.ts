@@ -18,13 +18,13 @@ export const SOLUCIONES: NavLink[] = [
   { label: "Negocios locales", href: "/servicios-locales" },
 ];
 
-/** Catálogo de servicios — sin página propia = solo texto + hint */
-export const SERVICIOS: NavEntry[] = [
-  { label: "Agentes IA", href: "/servicios/agentes-ia" },
+/** Catálogo de servicios — orden alineado al Footer (Fase 7) */
+export const SERVICIOS: NavLink[] = [
   { label: "Desarrollo web", href: "/servicios/desarrollo-web" },
-  { label: "Infraestructura cloud", href: "/infraestructura-digital" },
-  { label: "Automatización", hint: "Incluida en Agentes IA e Infraestructura cloud" },
-  { label: "Datos y analítica", hint: "Módulo de Infraestructura cloud" },
+  { label: "Automatización", href: "/servicios/automatizacion" },
+  { label: "Agentes IA", href: "/servicios/agentes-ia" },
+  { label: "Datos y analítica", href: "/servicios/datos-y-analitica" },
+  { label: "Infraestructura cloud", href: "/servicios/infraestructura-digital" },
 ];
 
 /** Línea de rubros en Home — Reformas sin landing (caso Fortaleza Vinzos) */
@@ -32,4 +32,4 @@ export const RUBROS_HOME =
   "Clínicas · Firmas legales · Reformas · Negocios locales";
 
 /** Solo enlaces con href — para Header dropdown y MobileMenu */
-export const SERVICIOS_LINKS = SERVICIOS.filter(isNavLink);
+export const SERVICIOS_LINKS = SERVICIOS;

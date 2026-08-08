@@ -1,18 +1,33 @@
-const MENSAJES = [
-  { de: "cliente" as const, texto: "Hola! ¿Tienen turnos para este sábado?" },
+type Mensaje = {
+  de: "cliente" | "asistente";
+  texto: string;
+};
+
+const MENSAJES_DEFAULT: Mensaje[] = [
+  { de: "cliente", texto: "Hola! ¿Tienen turnos para este sábado?" },
   {
-    de: "asistente" as const,
+    de: "asistente",
     texto: "¡Hola! Sí, tenemos disponibilidad el sábado de 9am a 1pm. ¿Te reservo un horario?",
   },
-  { de: "cliente" as const, texto: "Sí, a las 10am porfa" },
+  { de: "cliente", texto: "Sí, a las 10am porfa" },
   {
-    de: "asistente" as const,
+    de: "asistente",
     texto: "Listo ✅ Quedaste agendado para el sábado 10:00am. Te mando un recordatorio un día antes.",
   },
 ];
 
+type WhatsAppMockupProps = {
+  mensajes?: Mensaje[];
+  titulo?: string;
+  subtitulo?: string;
+};
+
 /** Mockup ilustrativo del Recepcionista IA respondiendo por WhatsApp — no es una captura real. */
-export default function WhatsAppMockup() {
+export default function WhatsAppMockup({
+  mensajes = MENSAJES_DEFAULT,
+  titulo = "Recepcionista IA",
+  subtitulo = "en línea",
+}: WhatsAppMockupProps) {
   return (
     <div className="relative w-full max-w-sm">
       <span className="absolute -top-3 right-4 z-10 rounded-full bg-ink px-3 py-1 text-[0.65rem] font-medium text-sand shadow-sm">
@@ -26,13 +41,13 @@ export default function WhatsAppMockup() {
             </svg>
           </span>
           <div className="min-w-0">
-            <p className="truncate text-sm font-medium text-white">Recepcionista IA</p>
-            <p className="text-xs text-white/80">en línea</p>
+            <p className="truncate text-sm font-medium text-white">{titulo}</p>
+            <p className="text-xs text-white/80">{subtitulo}</p>
           </div>
         </div>
 
         <div className="flex flex-col gap-2.5 bg-[#e5ddd0] px-4 py-5">
-          {MENSAJES.map((m, i) => (
+          {mensajes.map((m, i) => (
             <div
               key={i}
               className={`max-w-[80%] rounded-2xl px-3.5 py-2 text-sm leading-snug shadow-sm ${

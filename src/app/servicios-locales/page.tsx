@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { PhoneMissed, Clock3, MapPinned } from "lucide-react";
+import {
+  PhoneMissed,
+  Clock3,
+  MapPinned,
+  ClipboardList,
+  Settings2,
+  PackageCheck,
+} from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
@@ -8,11 +15,14 @@ import PricingTiers from "@/components/PricingTiers";
 import ProblemSection from "@/components/ProblemSection";
 import SolutionGrid from "@/components/SolutionGrid";
 import FinalCTA from "@/components/FinalCTA";
+import WhatsAppMockup from "@/components/WhatsAppMockup";
+import LocalesMissedCallBlock from "@/components/nichos/LocalesMissedCallBlock";
+import { MOCKUP_LOCALES } from "@/lib/nichos/mockups";
 
 export const metadata: Metadata = {
   title: "Asistente de WhatsApp con IA para servicios locales en Perú",
   description:
-    "Gasfitería, cerrajería, mantenimiento, constructoras: no pierdas otra emergencia por no contestar a tiempo. Configurado en días. Diagnóstico gratis.",
+    "Gasfitería, cerrajería, mantenimiento: si no contestas, el asistente responde por WhatsApp, filtra urgencias y agenda visitas. Configurado en días. Diagnóstico gratis de 30 minutos.",
   alternates: { canonical: "/servicios-locales" },
 };
 
@@ -21,7 +31,10 @@ const PAQUETES = [
     nombre: "Esencial",
     setup: "S/500",
     mensualidad: "S/200",
-    features: ["Missed-call text-back automático", "Respuesta 24/7 a consultas frecuentes"],
+    features: [
+      "Si no contestas, responde por WhatsApp en segundos",
+      "Respuesta automática a consultas frecuentes",
+    ],
   },
   {
     nombre: "Profesional",
@@ -29,10 +42,9 @@ const PAQUETES = [
     setup: "S/1,500",
     mensualidad: "S/450",
     features: [
-      "Missed-call text-back automático",
-      "Respuesta 24/7 a consultas frecuentes",
-      "Captación y calificación de leads",
-      "Deriva emergencias reales al instante",
+      "Todo lo del Esencial",
+      "Filtrado de urgencias y aviso inmediato",
+      "Captación de consultas antes de agendar la visita",
     ],
   },
   {
@@ -40,23 +52,43 @@ const PAQUETES = [
     setup: "S/3,000",
     mensualidad: "S/800",
     features: [
-      "Missed-call text-back automático",
-      "Respuesta 24/7 a consultas frecuentes",
-      "Captación y calificación de leads",
-      "Deriva emergencias reales al instante",
-      "Agenda de visitas + reportes",
+      "Todo lo del Profesional",
+      "Agenda de visitas + recordatorios",
+      "Reportes básicos de consultas y trabajos",
     ],
+  },
+];
+
+const PASOS = [
+  {
+    t: "Diagnóstico gratis (30 min)",
+    d: "Vemos cuántas llamadas pierdes y qué consultas se repiten.",
+    icon: ClipboardList,
+  },
+  {
+    t: "Lo configuro en días",
+    d: "Activo la respuesta automática y el asistente con la info de tu negocio.",
+    icon: Settings2,
+  },
+  {
+    t: "Recuperas clientes que hoy se pierden",
+    d: "Mides la diferencia desde la primera semana.",
+    icon: PackageCheck,
   },
 ];
 
 const FAQS = [
   {
     q: "¿Sirve si trabajo solo, sin oficina?",
-    a: "Sí — se conecta a tu WhatsApp personal o de negocio, no necesitas local ni personal.",
+    a: "Se conecta a tu WhatsApp personal o de negocio — no necesitas local ni personal extra.",
   },
   {
     q: "¿Distingue una emergencia real de una consulta cualquiera?",
-    a: "Sí, prioriza y te avisa de inmediato cuando algo suena urgente; el resto lo filtra solo.",
+    a: "Según las palabras y reglas que configures, te avisa cuando algo suena urgente; el resto lo filtra solo. Tú validas si es emergencia real.",
+  },
+  {
+    q: "¿Necesito cambiar mi número de WhatsApp?",
+    a: "No. Se conecta a tu número actual mediante la API oficial de WhatsApp.",
   },
   {
     q: "¿Cuánto tarda en estar listo?",
@@ -71,104 +103,134 @@ const FAQS = [
 export default function ServiciosLocalesPage() {
   return (
     <>
-      {/* 1. HERO */}
-      <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
-        <h1 className="text-h1 text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
-          Cada llamada perdida es un cliente que se va con la competencia.
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
-          Gasfitería, cerrajería, mantenimiento, constructoras: un asistente por
-          WhatsApp con IA que responde cuando no puedes contestar, filtra lo
-          urgente y agenda visitas — configurado en días.
-        </p>
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <WhatsAppButton message="Hola, vi tu web y quiero el asistente para mi negocio">
-            Escríbeme
-          </WhatsAppButton>
+      {/* 1. HERO — flujo llamada perdida como protagonista */}
+      <section className="relative mx-auto max-w-6xl px-6 pb-12 pt-20 md:pb-16 md:pt-24">
+        <div className="text-center lg:text-left">
+          <span className="chip">
+            Gasfitería · cerrajería · mantenimiento · emergencias del hogar
+          </span>
+
+          <h1 className="text-h1 mt-6 text-[2.5rem] text-ink sm:text-5xl md:text-[3.5rem] lg:max-w-3xl">
+            Cada{" "}
+            <span className="font-display italic text-terracota">llamada perdida</span>{" "}
+            es un cliente que se va con la competencia.
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg text-ink/60 lg:mx-0 mx-auto">
+            Si no puedes contestar, el asistente responde por WhatsApp en segundos — antes
+            de que el cliente llame al siguiente en Google.
+          </p>
+
+          <LocalesMissedCallBlock variant="hero" />
+
+          <div className="mt-10 flex flex-col items-center gap-3 lg:items-start">
+            <WhatsAppButton
+              message="Hola, vi tu web y quiero recuperar las llamadas perdidas de mi negocio"
+              source="servicios_locales_hero"
+            >
+              Quiero recuperar llamadas perdidas
+            </WhatsAppButton>
+            <p className="text-sm text-ink/55">
+              Desde S/500 de configuración · Hablarás directamente conmigo
+            </p>
+          </div>
         </div>
+
+        <Reveal>
+          <div className="mt-12 flex flex-col items-center gap-4">
+            <p className="text-sm font-medium text-ink/50">Así se ve cuando el cliente escribe</p>
+            <WhatsAppMockup
+              titulo={MOCKUP_LOCALES.titulo}
+              subtitulo={MOCKUP_LOCALES.subtitulo}
+              mensajes={MOCKUP_LOCALES.mensajes}
+            />
+          </div>
+        </Reveal>
       </section>
 
       {/* 2. EL PROBLEMA */}
-      <ProblemSection
-        titulo="Estás en un techo, debajo de un lavadero o manejando — y el teléfono suena."
-        bullets={[
-          "No puedes contestar en el momento y la llamada se pierde.",
-          "El cliente no espera: llama al siguiente de la lista en Google.",
-          "Las emergencias reales (fuga, corte, algo roto) llegan fuera de tu horario y nadie las atiende.",
-        ]}
-        stat="La mayoría de las personas abandona si no le responden rápido — y en emergencias del hogar, esa espera se siente peor."
-      />
+      <div className="section-band">
+        <ProblemSection
+          titulo="Estás en un techo, debajo de un lavadero o manejando — y el teléfono suena."
+          bullets={[
+            "No puedes contestar en el momento y la llamada se pierde.",
+            "El cliente no espera: llama al siguiente de la lista en Google.",
+            "Las emergencias reales (fuga, corte, algo roto) llegan fuera de tu horario y nadie las atiende.",
+          ]}
+          stat="La mayoría de las personas abandona si no le responden rápido — y en emergencias del hogar, esa espera se siente peor."
+        />
+      </div>
 
-      {/* 3. LA SOLUCION */}
+      {/* 3. PRECIO TEMPRANO — ancla S/500 */}
+      <section className="border-t border-ink/8 pt-4">
+        <PricingTiers
+          paquetes={PAQUETES}
+          titulo="Desde S/500 — paquetes para negocios locales"
+          chipDestacado="El más elegido"
+        >
+          <WhatsAppButton message="Hola, quiero el paquete Profesional para mi negocio local">
+            Quiero el Profesional
+          </WhatsAppButton>
+        </PricingTiers>
+      </section>
+
+      {/* 4. LA SOLUCION */}
       <SolutionGrid
-        titulo="No contestas el teléfono — pero nunca dejas a nadie sin respuesta."
+        titulo="No pierdes la llamada — ni la consulta que viene después."
         items={[
           {
             icon: PhoneMissed,
-            t: "Missed-call text-back",
-            d: "Si no contestas, le escribe solo por WhatsApp en segundos.",
+            t: "Responde si no contestas",
+            d: "Si la llamada no se atiende, le escribe por WhatsApp en segundos — antes de que llame a otro.",
           },
           {
             icon: Clock3,
-            t: "Responde 24/7",
-            d: "Horarios, tarifas, zona de trabajo — sin que muevas un dedo.",
+            t: "Atiende consultas frecuentes",
+            d: "Horarios, tarifas, zona de trabajo — sin que estés disponible.",
           },
           {
             icon: MapPinned,
-            t: "Filtra lo urgente",
-            d: "Te avisa de inmediato si suena a emergencia real.",
+            t: "Te avisa lo urgente",
+            d: "Si suena a emergencia (fuga, corte, algo roto), te notifica para que priorices.",
           },
         ]}
       />
 
-      {/* 4. COMO FUNCIONA */}
-      <section className="mx-auto max-w-4xl px-6 pb-20">
-        <Reveal>
-          <h2 className="text-h2 text-ink">Listo en 3 pasos.</h2>
-        </Reveal>
-        <ol className="mt-8 space-y-6">
-          {[
-            {
-              t: "Diagnóstico gratis (30 min)",
-              d: "Vemos cuántas llamadas pierdes y qué consultas se repiten.",
-            },
-            {
-              t: "Lo configuro en días",
-              d: "Activo missed-call text-back y el asistente con la info de tu negocio.",
-            },
-            {
-              t: "Recuperas clientes que hoy se pierden",
-              d: "Mides la diferencia desde la primera semana.",
-            },
-          ].map((step, i) => (
-            <Reveal key={step.t} delay={i * 80}>
-              <li className="flex gap-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 font-medium text-ink">
-                  {i + 1}
-                </span>
-                <div>
-                  <p className="font-medium text-ink">{step.t}</p>
-                  <p className="text-sm text-ink/60">{step.d}</p>
+      {/* 5. COMO LO IMPLEMENTAMOS */}
+      <div className="section-band">
+        <section className="mx-auto max-w-5xl px-6 py-16 md:py-20">
+          <Reveal>
+            <h2 className="text-h2 text-ink">Cómo lo implementamos</h2>
+          </Reveal>
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            {PASOS.map((step, i) => (
+              <Reveal key={step.t} delay={i * 80}>
+                <div className="card-soft h-full bg-white">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-sm font-medium text-ink">
+                      {i + 1}
+                    </span>
+                    <step.icon className="h-5 w-5 text-terracota" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="mt-4 font-medium text-ink">{step.t}</h3>
+                  <p className="mt-2 text-sm text-ink/60">{step.d}</p>
                 </div>
-              </li>
-            </Reveal>
-          ))}
-        </ol>
-      </section>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      </div>
 
-      {/* 5. PAQUETES */}
-      <PricingTiers paquetes={PAQUETES} />
+      <GarantiaSection
+        condicion="el asistente no te ayuda a recuperar clientes que hoy pierdes"
+        notaExtra="Lo pruebas en tu negocio antes de comprometerte con la configuración."
+      />
 
-      {/* 6. GARANTIA */}
-      <GarantiaSection condicion="el asistente no te ayuda a recuperar clientes que hoy pierdes" />
-
-      {/* 7. FAQ */}
       <FAQSection items={FAQS} />
 
-      {/* 8. CTA FINAL */}
       <FinalCTA
-        titulo="¿Cuántas llamadas vas a dejar pasar esta semana?"
-        mensaje="Hola, vi tu web y quiero el asistente para mi negocio"
+        titulo="¿Cuántas llamadas o mensajes por WhatsApp se quedan sin respuesta cada semana?"
+        mensaje="Hola, vi tu web y quiero recuperar las llamadas perdidas de mi negocio"
+        textoBoton="Quiero recuperar llamadas perdidas"
       />
     </>
   );
