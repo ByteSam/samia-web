@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { whatsappLink, CONTACT_EMAIL } from "@/lib/contact";
+import { trackEvent } from "@/lib/analytics";
 
 /**
  * Formulario de captura de leads — opción A del checklist de lanzamiento.
@@ -34,9 +35,11 @@ export default function LeadForm() {
 
     if (bloqueada) {
       setMostrarFallback(true);
+      trackEvent("lead", { channel: "mailto_fallback" });
       return;
     }
 
+    trackEvent("lead", { channel: "whatsapp" });
     setMostrarFallback(false);
     window.setTimeout(() => {
       if (ventana.closed) setMostrarFallback(true);

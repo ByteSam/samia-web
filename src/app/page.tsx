@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import type { LucideIcon } from "lucide-react";
-import { ArrowUpRight, Hexagon, MessageCircleMore, CalendarCheck, Hammer, Scale } from "lucide-react";
+import { ArrowUpRight, Hexagon, MessageCircleMore, CalendarCheck } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BookingButton from "@/components/BookingButton";
 import Reveal from "@/components/Reveal";
 import WhatsAppMockup from "@/components/WhatsAppMockup";
 import LeadForm from "@/components/LeadForm";
@@ -11,6 +11,7 @@ import ProcesoSection from "@/components/ProcesoSection";
 import FundadorBlock from "@/components/FundadorBlock";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
+import { CASOS } from "@/lib/casos";
 
 export const metadata: Metadata = {
   title: "Automatización y tecnología para negocios | afynova",
@@ -18,43 +19,6 @@ export const metadata: Metadata = {
     "Te ayudo a responder a tus clientes más rápido con WhatsApp, automatización y web — implementado directamente, con diagnóstico gratis.",
   alternates: { canonical: "/" },
 };
-
-type CasoBase = {
-  nombre: string;
-  rubro: string;
-  icon: LucideIcon;
-  estado: "entregado" | "proximamente";
-};
-type CasoSimple = CasoBase & { entregable: string };
-type CasoDetallado = CasoBase & {
-  problema: string;
-  solucion: string;
-  resultado: string;
-  url: string;
-};
-type Caso = CasoSimple | CasoDetallado;
-
-const CASOS: Caso[] = [
-  {
-    nombre: "Fortaleza Vinzos",
-    rubro: "Reformas y remodelación",
-    icon: Hammer,
-    estado: "entregado",
-    problema:
-      "Fortaleza Vinzos necesitaba una presencia web profesional para captar solicitudes de presupuesto y transmitir confianza desde el primer contacto.",
-    solucion:
-      "Diseñamos y desarrollamos una landing orientada a conversión, con una propuesta de valor clara, servicios, proyectos, formulario de contacto y CTA a WhatsApp.",
-    resultado: "Sitio web entregado y publicado.",
-    url: "https://fortalezavinzos.es/",
-  },
-  {
-    nombre: "Servicios legales",
-    rubro: "Abogacía",
-    entregable: "Landing page a medida.",
-    icon: Scale,
-    estado: "proximamente",
-  },
-];
 
 const FAQS_HOME = [
   {
@@ -95,9 +59,13 @@ export default function Home() {
             </p>
             <div className="relative mt-10 flex flex-col items-start gap-3">
               <div className="flex flex-wrap gap-4">
-                <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
+                <WhatsAppButton
+                  message="Hola, vi tu web y quiero un diagnóstico gratis"
+                  source="home_hero"
+                >
                   Diagnóstico gratis por WhatsApp
                 </WhatsAppButton>
+                <BookingButton />
               </div>
               <p className="text-sm text-ink/55">
                 Hablarás directamente conmigo, no con un call center.

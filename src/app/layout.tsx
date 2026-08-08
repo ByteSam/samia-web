@@ -3,6 +3,7 @@ import { Instrument_Serif, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnalyticsProvider from "@/components/AnalyticsProvider";
 import { SITE_URL } from "@/lib/site";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
 
@@ -67,6 +68,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <AnalyticsProvider />
       </body>
     </html>
   );

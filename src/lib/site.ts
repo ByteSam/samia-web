@@ -1,3 +1,3 @@
-// URL real de producción — sin dominio propio todavía (pendiente, ver files/prd-samia.md).
-// Cuando se compre el dominio, cambiar solo esta constante.
-export const SITE_URL = "https://samia-lake.vercel.app";
+// URL de producción con dominio propio.
+// Si el dominio registrado es otro (ej. afynova.com), cambiar solo esta constante.
+export const SITE_URL = "https://afynova.com";

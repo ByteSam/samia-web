@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PhoneMissed, Clock3, MapPinned } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import PricingTiers from "@/components/PricingTiers";
@@ -73,12 +74,12 @@ export default function ServiciosLocalesPage() {
       {/* 1. HERO */}
       <section className="mx-auto max-w-4xl px-6 pb-16 pt-20 text-center md:pt-28">
         <h1 className="text-h1 text-[2.5rem] text-ink sm:text-5xl md:text-[4rem]">
-          Cada llamada perdida es un cliente que se va con otro gasfitero.
+          Cada llamada perdida es un cliente que se va con la competencia.
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-ink/60">
-          Un asistente por WhatsApp con IA que responde solo cuando no
-          puedes contestar, filtra lo urgente y agenda visitas —
-          configurado en días.
+          Gasfitería, cerrajería, mantenimiento, constructoras: un asistente por
+          WhatsApp con IA que responde cuando no puedes contestar, filtra lo
+          urgente y agenda visitas — configurado en días.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <WhatsAppButton message="Hola, vi tu web y quiero el asistente para mi negocio">
@@ -120,16 +121,51 @@ export default function ServiciosLocalesPage() {
         ]}
       />
 
-      {/* 4. PAQUETES */}
+      {/* 4. COMO FUNCIONA */}
+      <section className="mx-auto max-w-4xl px-6 pb-20">
+        <Reveal>
+          <h2 className="text-h2 text-ink">Listo en 3 pasos.</h2>
+        </Reveal>
+        <ol className="mt-8 space-y-6">
+          {[
+            {
+              t: "Diagnóstico gratis (30 min)",
+              d: "Vemos cuántas llamadas pierdes y qué consultas se repiten.",
+            },
+            {
+              t: "Lo configuro en días",
+              d: "Activo missed-call text-back y el asistente con la info de tu negocio.",
+            },
+            {
+              t: "Recuperas clientes que hoy se pierden",
+              d: "Mides la diferencia desde la primera semana.",
+            },
+          ].map((step, i) => (
+            <Reveal key={step.t} delay={i * 80}>
+              <li className="flex gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 font-medium text-ink">
+                  {i + 1}
+                </span>
+                <div>
+                  <p className="font-medium text-ink">{step.t}</p>
+                  <p className="text-sm text-ink/60">{step.d}</p>
+                </div>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
+      </section>
+
+      {/* 5. PAQUETES */}
       <PricingTiers paquetes={PAQUETES} />
 
-      {/* 5. GARANTIA */}
+      {/* 6. GARANTIA */}
       <GarantiaSection condicion="el asistente no te ayuda a recuperar clientes que hoy pierdes" />
 
-      {/* 6. FAQ */}
+      {/* 7. FAQ */}
       <FAQSection items={FAQS} />
 
-      {/* 7. CTA FINAL */}
+      {/* 8. CTA FINAL */}
       <FinalCTA
         titulo="¿Cuántas llamadas vas a dejar pasar esta semana?"
         mensaje="Hola, vi tu web y quiero el asistente para mi negocio"

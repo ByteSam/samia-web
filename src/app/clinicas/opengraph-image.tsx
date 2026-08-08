@@ -1,12 +1,12 @@
 import { createOgImage, ogContentType, ogSize } from "@/lib/og-image";
 
-export const alt = "afynova — Tu negocio nunca deja pasar un cliente.";
+export const alt = "Asistente WhatsApp para clínicas | afynova";
 export const size = ogSize;
 export const contentType = ogContentType;
 
 export default function Image() {
   return createOgImage(
-    "Tu negocio nunca deja pasar un cliente.",
-    "Automatización · WhatsApp · Web"
+    "Tu clínica deja de perder pacientes por no responder a tiempo.",
+    "Clínicas · WhatsApp · Perú"
   );
 }

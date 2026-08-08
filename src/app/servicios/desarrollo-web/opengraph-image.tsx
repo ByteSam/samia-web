@@ -1,12 +1,12 @@
 import { createOgImage, ogContentType, ogSize } from "@/lib/og-image";
 
-export const alt = "afynova — Tu negocio nunca deja pasar un cliente.";
+export const alt = "Desarrollo web que convierte | afynova";
 export const size = ogSize;
 export const contentType = ogContentType;
 
 export default function Image() {
   return createOgImage(
-    "Tu negocio nunca deja pasar un cliente.",
-    "Automatización · WhatsApp · Web"
+    "Webs que convierten visitas en clientes.",
+    "Landing · Corporativo · Captación"
   );
 }

@@ -11,7 +11,7 @@ type FinalCTAProps = {
 /** Bloque de CTA final (WhatsApp) — reutilizado en las páginas de servicio/nicho. */
 export default function FinalCTA({
   titulo,
-  textoSecundario = "Diagnóstico gratis de 30 minutos. Sin compromiso.",
+  textoSecundario = "Diagnóstico gratis de 30 minutos. Sin compromiso. Hablarás directamente conmigo, no con un call center.",
   mensaje,
   textoBoton = "Escríbeme por WhatsApp",
 }: FinalCTAProps) {
