@@ -12,6 +12,8 @@ type Paquete = {
 type PricingTiersProps = {
   paquetes: Paquete[];
   titulo?: string;
+  chip?: string;
+  subtitulo?: string;
   chipDestacado?: string;
   /** CTA opcional bajo el grid (ej. botón de WhatsApp), mismo bloque que antes de extraer el componente. */
   children?: React.ReactNode;
@@ -21,13 +23,17 @@ type PricingTiersProps = {
 export default function PricingTiers({
   paquetes,
   titulo = "Precios claros. Sin sorpresas.",
+  chip,
+  subtitulo,
   chipDestacado = "El más elegido",
   children,
 }: PricingTiersProps) {
   return (
-    <section className="mx-auto max-w-5xl px-6 pb-20">
+    <section className="mx-auto max-w-5xl px-6 section-py">
       <Reveal>
-        <h2 className="text-h2 text-ink">{titulo}</h2>
+        {chip && <span className="chip">{chip}</span>}
+        <h2 className={`text-h2 text-ink ${chip ? "mt-4" : ""}`}>{titulo}</h2>
+        {subtitulo && <p className="mt-2 max-w-md text-ink/60">{subtitulo}</p>}
       </Reveal>
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         {paquetes.map((p, i) => (

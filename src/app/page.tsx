@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, Hexagon, MessageCircleMore, CalendarCheck } from "lucide-react";
+import { Hexagon, CalendarCheck, MessageCircleMore } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BookingButton from "@/components/BookingButton";
 import Reveal from "@/components/Reveal";
@@ -7,16 +7,20 @@ import WhatsAppMockup from "@/components/WhatsAppMockup";
 import LeadForm from "@/components/LeadForm";
 import ProblemaSection from "@/components/ProblemaSection";
 import ServiciosGrid from "@/components/ServiciosGrid";
+import SolucionesGrid from "@/components/SolucionesGrid";
 import ProcesoSection from "@/components/ProcesoSection";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import HeroTrustLine from "@/components/HeroTrustLine";
-import { CASOS } from "@/lib/casos";
+import ProyectosRecientes from "@/components/ProyectosRecientes";
+import MarqueeStrip from "@/components/MarqueeStrip";
+import StickyCTA from "@/components/StickyCTA";
+import { WHATSAPP_DIAGNOSTICO_MESSAGE, isCalComConfigured } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Web que convierte visitas en clientes | afynova",
+  title: "Webs, automatización y agentes IA para pymes | afynova",
   description:
-    "Web de captación para pymes peruanas: convierte visitas en contactos y te avisa por WhatsApp. Implementado directamente por mí, con diagnóstico gratis.",
+    "Web de captación, agentes IA y automatización para pymes peruanas. Ninguna consulta sin respuesta. Implementado directamente por mí, con diagnóstico gratis.",
   alternates: { canonical: "/" },
 };
 
@@ -50,227 +54,198 @@ const FAQS_HOME = [
 export default function Home() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative mx-auto max-w-6xl overflow-hidden px-6 pb-16 pt-20 md:pt-24">
-        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
+      {/* ① HERO — sand */}
+      <section
+        className="landing-hero-accent relative mx-auto max-w-6xl px-6 pb-20 pt-16 md:pb-24 md:pt-20 lg:pt-24"
+      >
+        <div className="grid gap-12 lg:grid-cols-[5fr_4fr] lg:items-center">
           <div>
-            <span className="chip">Webs que venden · automatización · WhatsApp para pymes</span>
+            <Reveal>
+              <span className="chip-muted">Para pymes en Perú</span>
+            </Reveal>
 
-            <h1 className="text-h1 relative mt-6 max-w-2xl text-[2.5rem] text-ink sm:text-6xl md:text-[4rem]">
-              Una web que{" "}
-              <span className="font-display italic text-terracota">convierte</span>{" "}
-              visitas en clientes.
-            </h1>
-            <p className="relative mt-6 max-w-xl text-lg text-ink/60">
-              Te construyo una web que captura consultas y te avisa por
-              WhatsApp cuando llega alguien interesado — con garantía de 14
-              días.
-            </p>
-            <div className="relative mt-6">
-              <HeroTrustLine />
-            </div>
-            <div className="relative mt-8 flex flex-col items-start gap-3">
-              <div className="flex flex-wrap gap-4">
-                <WhatsAppButton
-                  message="Hola, vi tu web y quiero un diagnóstico gratis"
-                  source="home_hero"
-                >
-                  Diagnóstico gratis por WhatsApp
-                </WhatsAppButton>
-                <BookingButton />
-              </div>
-              <p className="text-sm text-ink/55">
-                Hablarás directamente conmigo, no con un call center.
+            <Reveal delay={60}>
+              <h1 className="text-h1 text-balance relative mt-4 max-w-lg text-[2.5rem] text-ink sm:text-[2.75rem] lg:text-[3rem]">
+                Ninguna consulta de tu negocio
+                <br />
+                <span className="font-display italic text-ink/80">sin respuesta.</span>
+              </h1>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <p className="text-pretty relative mt-5 max-w-[26rem] text-base text-ink/70">
+                Webs, IA y automatización — garantía 14 días.
               </p>
-            </div>
+            </Reveal>
+
+            <Reveal delay={160}>
+              <div className="relative mt-8 flex flex-col items-start">
+                <WhatsAppButton
+                  message={WHATSAPP_DIAGNOSTICO_MESSAGE}
+                  variant="terracota"
+                  source="home_hero"
+                  className="btn-pill-hero w-full max-w-[280px] md:w-auto"
+                >
+                  Diagnóstico gratis
+                </WhatsAppButton>
+                <p className="mt-2 text-xs text-ink/40">
+                  Gratis · 30 min · sin compromiso
+                </p>
+                {isCalComConfigured() && (
+                  <BookingButton
+                    variant="link"
+                    subtle
+                    className="mt-3 text-xs text-ink/40"
+                  />
+                )}
+                <div className="mt-3">
+                  <HeroTrustLine />
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={240}>
+              <div className="relative mt-8 flex justify-center lg:hidden">
+                <div className="max-h-[320px] overflow-hidden">
+                  <WhatsAppMockup compact />
+                </div>
+              </div>
+            </Reveal>
           </div>
 
-          <div className="hidden lg:block">
-            <WhatsAppMockup />
-          </div>
-        </div>
-        <div className="mt-10 flex justify-center lg:hidden">
-          <WhatsAppMockup />
+          <Reveal delay={120} className="hidden lg:flex lg:justify-end">
+            <WhatsAppMockup framed />
+          </Reveal>
         </div>
       </section>
 
-      {/* PROBLEMA */}
-      <ProblemaSection />
+      {/* MARQUEE — divider editorial */}
+      <MarqueeStrip />
 
-      {/* PROPUESTA DE VALOR */}
-      <section className="mx-auto max-w-5xl px-6 pb-24">
-        <Reveal>
-          <h2 className="text-h2 text-ink">Y tu web no se queda ahí</h2>
-          <p className="mt-2 max-w-md text-ink/60">
-            Una web es el inicio, no el final. Cuando tu negocio lo necesita,
-            la conecto con WhatsApp y automatizaciones para que ninguna
-            consulta se pierda.
-          </p>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3 md:auto-rows-fr">
-          <Reveal className="md:col-span-1" delay={0}>
-            <div className="card-soft hover-lift h-full">
+      {/* ② PROBLEMA — section-band, layout abierto */}
+      <div className="section-band">
+        <ProblemaSection />
+      </div>
+
+      {/* ③ PROPUESTA DE VALOR — section-white, 2 columnas */}
+      <div className="section-white">
+        <section className="mx-auto max-w-5xl px-6 section-py">
+          <div className="grid gap-12 md:grid-cols-2 md:items-start">
+            {/* Izquierda — qué ganas */}
+            <Reveal>
               <span className="chip">Qué ganas</span>
-              <ul className="mt-6 space-y-4 text-sm">
+              <h2 className="text-h2 mt-4 text-ink">Del primer contacto al negocio integrado</h2>
+              <p className="mt-3 text-ink/60">
+                No importa por dónde empieces — web, WhatsApp o automatización — el objetivo es el
+                mismo: que ninguna consulta se pierda.
+              </p>
+              <ul className="mt-8 space-y-4 text-sm">
                 {[
-                  "Captura consultas desde tu web",
-                  "Responde WhatsApp al instante",
-                  "Organiza solicitudes y prioriza seguimiento",
+                  "Captura y organiza consultas desde cualquier canal",
+                  "Responde al instante lo repetitivo",
+                  "Prioriza quién necesita seguimiento",
                   "Recupera oportunidades que antes se perdían",
                 ].map((item) => (
                   <li
                     key={item}
-                    className="border-b border-ink/8 pb-3 last:border-0 last:pb-0 text-ink/75"
+                    className="flex items-start gap-3 border-b border-ink/8 pb-4 last:border-0 last:pb-0 text-ink/70"
                   >
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-terracota" />
                     {item}
                   </li>
                 ))}
               </ul>
-            </div>
-          </Reveal>
-
-          <Reveal className="md:col-span-1" delay={100}>
-            <div className="card-soft-tint hover-lift h-full">
-              <span className="chip">Mi compromiso</span>
-              <h3 className="mt-6 text-lg font-medium text-ink">Tiempo de primera respuesta</h3>
-              <p className="mt-8 font-display text-6xl italic text-terracota-dark">
-                &lt;30<span className="text-2xl not-italic font-sans"> seg</span>
-              </p>
-              <div className="mt-6 flex items-center gap-2 text-xs font-medium text-terracota-dark/80">
-                <Hexagon className="h-4 w-4 shrink-0" strokeWidth={1.5} />
-                Es lo que me propongo con cada cliente — lo compruebas desde
-                la primera semana.
-              </div>
-            </div>
-          </Reveal>
-
-          <div className="grid gap-6 md:col-span-1">
-            <Reveal delay={160}>
-              <div className="card-soft-dark hover-lift">
-                <h3 className="font-medium">Recepcionista IA</h3>
-                <p className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-dorado-light underline underline-offset-2">
-                  <MessageCircleMore className="h-3.5 w-3.5" strokeWidth={1.75} />
-                  Atención 24/7
-                </p>
-                <p className="mt-3 text-sm text-sand/65">
-                  Atiende consultas al instante, deriva a un humano solo
-                  cuando hace falta.
-                </p>
-              </div>
             </Reveal>
-            <Reveal delay={220}>
-              <div className="card-soft hover-lift">
-                <h3 className="font-medium text-ink">Agenda inteligente</h3>
-                <p className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-terracota-dark underline underline-offset-2">
-                  <CalendarCheck className="h-3.5 w-3.5" strokeWidth={1.75} />
-                  Anti-ausencias
+
+            {/* Derecha — stat + mini-features */}
+            <Reveal delay={100}>
+              <div className="card-soft-tint h-full">
+                <p className="text-xs font-medium uppercase tracking-wide text-terracota-dark/70">
+                  Mi compromiso
                 </p>
-                <p className="mt-3 text-sm text-ink/60">
-                  Confirma y recuerda citas — menos ausencias, agenda llena.
+                <p className="mt-4 font-display text-7xl italic text-terracota-dark">
+                  &lt;30<span className="text-3xl not-italic font-sans"> seg</span>
                 </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICIOS */}
-      <ServiciosGrid />
-
-      {/* PROCESO */}
-      <ProcesoSection />
-
-      {/* CTA LIGERO */}
-      <section className="mx-auto max-w-md px-6 pb-24 text-center">
-        <Reveal>
-          <p className="text-ink/60">¿Quieres ver qué podríamos mejorar en tu negocio?</p>
-          <div className="mt-4">
-            <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
-              Habla conmigo por WhatsApp
-            </WhatsAppButton>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* PROYECTOS RECIENTES */}
-      <section id="casos-reales" className="mx-auto max-w-5xl px-6 pb-24">
-        <Reveal>
-          <h2 className="text-h2 text-ink">Proyectos recientes</h2>
-          <p className="mt-2 max-w-md text-ink/60">
-            Trabajo entregado y proyectos en curso — sin métricas inventadas.
-          </p>
-        </Reveal>
-        <div className="mt-10 grid gap-6">
-          {CASOS.filter((c) => c.estado === "entregado").map((c, i) => (
-            <Reveal key={c.nombre} delay={i * 80}>
-              {"problema" in c && (
-                <div className="card-soft-tint hover-lift flex h-full flex-col md:max-w-2xl">
-                  <c.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
-                  <h3 className="mt-5 text-lg font-medium text-ink">{c.nombre}</h3>
-                  <p className="mt-1 text-sm text-ink/50">{c.rubro}</p>
-                  <dl className="mt-5 space-y-4 text-sm">
-                    <div>
-                      <dt className="text-xs font-medium uppercase tracking-wide text-terracota-dark/70">
-                        Problema
-                      </dt>
-                      <dd className="mt-1 text-ink/70">{c.problema}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs font-medium uppercase tracking-wide text-terracota-dark/70">
-                        Solución
-                      </dt>
-                      <dd className="mt-1 text-ink/70">{c.solucion}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs font-medium uppercase tracking-wide text-terracota-dark/70">
-                        Resultado
-                      </dt>
-                      <dd className="mt-1 text-ink/70">{c.resultado}</dd>
-                    </div>
-                  </dl>
-                  <a
-                    href={c.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-pill btn-pill-ghost mt-6 inline-flex w-fit items-center gap-1.5"
-                  >
-                    Ver sitio
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
+                <p className="mt-2 text-sm text-ink/60">Tiempo de primera respuesta</p>
+                <div className="mt-8 flex items-start gap-3 border-t border-ink/8 pt-6">
+                  <MessageCircleMore className="mt-0.5 h-4 w-4 shrink-0 text-terracota" strokeWidth={1.5} />
+                  <div>
+                    <p className="text-sm font-medium text-ink">Recepcionista IA 24/7</p>
+                    <p className="mt-0.5 text-sm text-ink/55">
+                      Atiende consultas al instante, deriva a un humano solo cuando hace falta.
+                    </p>
+                  </div>
                 </div>
-              )}
+                <div className="mt-5 flex items-start gap-3">
+                  <CalendarCheck className="mt-0.5 h-4 w-4 shrink-0 text-terracota" strokeWidth={1.5} />
+                  <div>
+                    <p className="text-sm font-medium text-ink">Agenda inteligente</p>
+                    <p className="mt-0.5 text-sm text-ink/55">
+                      Confirma y recuerda citas — menos ausencias, agenda llena.
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-5 flex items-start gap-3">
+                  <Hexagon className="mt-0.5 h-4 w-4 shrink-0 text-terracota" strokeWidth={1.5} />
+                  <div>
+                    <p className="text-sm font-medium text-ink">Implementado por mí</p>
+                    <p className="mt-0.5 text-sm text-ink/55">
+                      No desaparezco después de la entrega — soporte y ajustes continuos.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </Reveal>
-          ))}
-          {CASOS.filter((c) => c.estado === "proximamente").map((c) => (
-            <Reveal key={c.nombre} delay={80}>
-              {"entregable" in c && (
-                <p className="text-sm text-ink/50">
-                  Próximo proyecto:{" "}
-                  <span className="text-ink/70">{c.nombre}</span> ({c.rubro}) —{" "}
-                  {c.entregable}
-                </p>
-              )}
-            </Reveal>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      </div>
 
-      {/* GARANTIA */}
-      <GarantiaSection condicion="la solución no te ayuda a captar o atender mejor a tus clientes" />
+      {/* ④ SOLUCIONES POR RUBRO — sand, abierto */}
+      <SolucionesGrid equalCards />
 
-      {/* SEÑAL DE PRECIO — breve, no es tabla ni catálogo */}
-      <p className="mx-auto -mt-12 max-w-3xl px-6 pb-20 text-center text-sm text-ink/55">
-        Implementaciones desde <strong className="font-medium text-ink">S/1,500</strong>. El
-        precio final depende de tu caso y lo definimos después del
-        diagnóstico gratuito.
-      </p>
+      {/* Puente narrativo: rubros vs servicios */}
+      <div className="border-y border-ink/8 bg-sand">
+        <p className="mx-auto max-w-3xl px-6 py-8 text-center text-sm text-ink/60">
+          ¿No ves tu rubro exacto? Los servicios de abajo son el catálogo completo — el mismo
+          sistema, aplicado a cualquier negocio que recibe consultas por web o WhatsApp.
+        </p>
+      </div>
 
-      {/* FORMULARIO EN VIVO */}
-      <section id="contacto" className="mx-auto max-w-md px-6 pb-24 text-center">
+      {/* ⑤ SERVICIOS — section-white */}
+      <div className="section-white">
+        <ServiciosGrid />
+      </div>
+
+      {/* ⑥ PROYECTOS REALIZADOS (proof) — sand */}
+      <ProyectosRecientes />
+
+      {/* ⑦ METODOLOGÍA — section-band */}
+      <div className="section-band">
+        <ProcesoSection />
+      </div>
+
+      {/* ⑧ GARANTÍA + PRECIO — section-ink (un solo bloque oscuro) */}
+      <div className="section-ink">
+        <GarantiaSection
+          condicion="la solución no te ayuda a captar o atender mejor a tus clientes"
+          variant="dark"
+        />
+        <p className="mx-auto max-w-3xl px-6 pb-16 text-center text-sm text-sand/50">
+          Implementaciones desde <strong className="font-medium text-sand/80">S/1,500</strong>. El
+          precio final depende de tu caso y lo definimos después del diagnóstico gratuito.
+        </p>
+      </div>
+
+      {/* ⑨ FORMULARIO + FAQ — sand */}
+      <section
+        id="contacto"
+        className="mx-auto max-w-md px-6 pb-12 pt-16 text-center scroll-mt-8"
+        style={{ scrollMarginBottom: "5rem" }}
+      >
         <Reveal>
-          <h3 className="text-xl font-medium text-ink">Pruébalo tú mismo</h3>
+          <h3 className="text-xl font-medium text-ink">Solicita tu diagnóstico gratuito</h3>
           <p className="mt-2 text-sm text-ink/60">
-            Completa el formulario — así empieza tu diagnóstico gratuito.
+            Completa el formulario y continuamos por WhatsApp — sin compromiso.
           </p>
           <div className="mt-6 text-left">
             <LeadForm />
@@ -278,8 +253,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* FAQ */}
-      <FAQSection items={FAQS_HOME} />
+      <FAQSection items={FAQS_HOME} showContactCta />
 
       {/* CTA FINAL */}
       <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
@@ -290,19 +264,20 @@ export default function Home() {
           <p className="mx-auto mt-3 max-w-xl text-ink/60">
             Diagnóstico gratis de 30 minutos. Sin compromiso.
           </p>
-          <div className="mt-8 flex justify-center gap-4">
-            <WhatsAppButton message="Hola, vi tu web y quiero un diagnóstico gratis">
-              Escríbeme por WhatsApp
+          <div className="mt-8 flex flex-col items-center justify-center gap-3">
+            <WhatsAppButton
+              message={WHATSAPP_DIAGNOSTICO_MESSAGE}
+              variant="terracota"
+              source="home_final"
+            >
+              Diagnóstico gratis
             </WhatsAppButton>
+            <BookingButton variant="link" className="text-ink/50" />
           </div>
-          <a
-            href="#contacto"
-            className="mt-4 inline-block text-sm text-ink/55 underline underline-offset-2 hover:text-terracota"
-          >
-            o deja tus datos en el formulario ↑
-          </a>
         </Reveal>
       </section>
+
+      <StickyCTA />
     </>
   );
 }

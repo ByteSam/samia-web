@@ -62,6 +62,17 @@ export default function InfraestructuraUpgradeBridge() {
           </p>
         </Reveal>
 
+        <Reveal delay={60}>
+          <div className="card-soft mt-8 p-5 sm:p-6">
+            <p className="text-sm font-medium text-ink">Este servicio es para ti si…</p>
+            <ul className="mt-4 space-y-2 text-sm text-ink/65">
+              <li>• Ya validaste un servicio con afynova y quieres integrar todo</li>
+              <li>• Necesitas pagos online, panel de cliente y datos en un solo lugar</li>
+              <li>• Quieres escalar sin rehacer lo que ya funciona</li>
+            </ul>
+          </div>
+        </Reveal>
+
         <Reveal delay={80}>
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {CUANDO.map((item) => (

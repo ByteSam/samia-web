@@ -118,15 +118,18 @@ export default function ServiciosLegalesPage() {
       </section>
 
       {/* 2. EL PROBLEMA */}
-      <ProblemSection
-        titulo="Cada consulta sin responder es un caso que se va a otro estudio."
-        bullets={[
-          "Consultas por despidos, liquidaciones u hostigamiento llegan a cualquier hora — muchas veces en medio de una crisis, y el trabajador no espera.",
-          "Respondes siempre lo mismo (¿cuánto cobran?, ¿qué necesito?) en vez de dedicar ese tiempo a tus casos.",
-          "Sin un primer filtro, cuesta distinguir una consulta real de alguien que solo pregunta por curiosidad.",
-        ]}
-        stat="Responder rápido aumenta las posibilidades de que esa consulta se convierta en cliente — mientras más tardas, más probable es que esa persona ya haya escrito a otro estudio."
-      />
+      <div className="section-band">
+        <ProblemSection
+          variant="band"
+          titulo="Cada consulta sin responder es un caso que se va a otro estudio."
+          bullets={[
+            "Consultas por despidos, liquidaciones u hostigamiento llegan a cualquier hora — muchas veces en medio de una crisis, y el trabajador no espera.",
+            "Respondes siempre lo mismo (¿cuánto cobran?, ¿qué necesito?) en vez de dedicar ese tiempo a tus casos.",
+            "Sin un primer filtro, cuesta distinguir una consulta real de alguien que solo pregunta por curiosidad.",
+          ]}
+          stat="Responder rápido aumenta las posibilidades de que esa consulta se convierta en cliente — mientras más tardas, más probable es que esa persona ya haya escrito a otro estudio."
+        />
+      </div>
 
       {/* 3. FIRMA — confianza antes de solución genérica */}
       <LegalLimitsBlock />
@@ -201,32 +204,59 @@ export default function ServiciosLegalesPage() {
       </section>
 
       {/* 6. COMO LO IMPLEMENTAMOS */}
-      <section className="mx-auto max-w-5xl px-6 pb-20">
-        <Reveal>
-          <h2 className="text-h2 text-ink">Cómo lo implementamos</h2>
-        </Reveal>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {PASOS.map((step, i) => (
-            <Reveal key={step.t} delay={i * 80}>
-              <div className="card-soft h-full">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-sm font-medium text-ink">
+      <div className="section-band">
+        <section className="mx-auto max-w-4xl px-6 section-py">
+          <Reveal>
+            <p className="section-eyebrow">Implementación</p>
+            <h2 className="text-h2 mt-2 text-ink">Cómo lo implementamos</h2>
+          </Reveal>
+          <Reveal delay={80}>
+            <ol className="mt-10 space-y-6">
+              {PASOS.map((step, i) => (
+                <li key={step.t} className="flex gap-4">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 font-medium text-ink">
                     {i + 1}
                   </span>
-                  <step.icon className="h-5 w-5 text-terracota" strokeWidth={1.5} />
-                </div>
-                <h3 className="mt-4 font-medium text-ink">{step.t}</h3>
-                <p className="mt-2 text-sm text-ink/60">{step.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <step.icon className="h-4 w-4 text-terracota" strokeWidth={1.5} />
+                      <p className="font-medium text-ink">{step.t}</p>
+                    </div>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink/60">{step.d}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+        </section>
+      </div>
+
+      {/* ESCALERA — qué servicio base incluye esto */}
+      <section className="mx-auto max-w-3xl px-6 pb-12">
+        <Reveal>
+          <p className="text-xs font-semibold uppercase tracking-wide text-ink/40">
+            Qué hay detrás de esta solución
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-ink/65">
+            Esta solución combina{" "}
+            <a href="/servicios/agentes-ia" className="font-medium text-terracota-dark underline-offset-2 hover:underline">
+              Agentes IA por WhatsApp
+            </a>{" "}
+            para atender y clasificar consultas, y puede complementarse con{" "}
+            <a href="/servicios/desarrollo-web" className="font-medium text-terracota-dark underline-offset-2 hover:underline">
+              Desarrollo web
+            </a>{" "}
+            si tu estudio también necesita presencia profesional en línea.
+          </p>
+        </Reveal>
       </section>
 
-      <GarantiaSection
-        condicion="el asistente no te ahorra tiempo ni te ayuda a agendar más consultas"
-        notaExtra="Lo pruebas en tu estudio antes de comprometerte con la configuración."
-      />
+      <div className="section-ink">
+        <GarantiaSection
+          condicion="el asistente no te ahorra tiempo ni te ayuda a agendar más consultas"
+          variant="dark"
+        />
+      </div>
 
       <FAQSection items={FAQS} />
 

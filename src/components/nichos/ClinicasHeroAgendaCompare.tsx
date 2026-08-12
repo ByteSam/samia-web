@@ -1,102 +1,117 @@
-import { CalendarX, CalendarDays, ArrowRight } from "lucide-react";
+import { CalendarCheck, X, Check, Zap, MessageCircle } from "lucide-react";
 
-type Slot = { id: string; time: string | null };
+type EventoTipo = "neutral" | "accion" | "respuesta" | "malo" | "bueno";
 
-const SLOTS_SIN: Slot[] = [
-  { id: "h-sin-1", time: "10:00" },
-  { id: "h-sin-2", time: null },
-  { id: "h-sin-3", time: "14:30" },
-  { id: "h-sin-4", time: null },
+type EventoData = {
+  texto: string;
+  tipo: EventoTipo;
+};
+
+type Evento = {
+  tiempo: string;
+  sin: EventoData | null;
+  con: EventoData | null;
+};
+
+const EVENTOS: Evento[] = [
+  {
+    tiempo: "Lun 9am",
+    sin: { texto: "Cita agendada", tipo: "neutral" },
+    con: { texto: "Cita agendada", tipo: "neutral" },
+  },
+  {
+    tiempo: "Mié 3pm",
+    sin: null,
+    con: { texto: "Recordatorio enviado", tipo: "accion" },
+  },
+  {
+    tiempo: "Mié 3:10pm",
+    sin: null,
+    con: { texto: "\"Sí, confirmo\"", tipo: "respuesta" },
+  },
+  {
+    tiempo: "Jue 10am",
+    sin: { texto: "Silla vacía", tipo: "malo" },
+    con: { texto: "Paciente llega", tipo: "bueno" },
+  },
 ];
 
-const SLOTS_CON: Slot[] = [
-  { id: "h-con-1", time: "10:00" },
-  { id: "h-con-2", time: "11:30" },
-  { id: "h-con-3", time: "14:30" },
-  { id: "h-con-4", time: "15:00" },
-];
+const TIPO_STYLES: Record<EventoTipo, string> = {
+  neutral: "bg-ink/6 text-ink/55",
+  accion: "bg-terracota/10 text-terracota-dark",
+  respuesta: "bg-[#d4ead8] text-[#2d6e47]",
+  malo: "bg-red-50 text-red-400 line-through",
+  bueno: "bg-terracota/12 text-terracota-dark font-semibold",
+};
 
-function AgendaMiniHero({
-  titulo,
-  slots,
-  vacio,
-  icon: Icon,
-}: {
-  titulo: string;
-  slots: Slot[];
-  vacio: boolean;
-  icon: typeof CalendarX;
-}) {
-  const filled = slots.filter((s) => s.time !== null).length;
-  const empty = slots.length - filled;
+const TIPO_ICON: Partial<Record<EventoTipo, React.ReactNode>> = {
+  accion: <Zap className="h-3 w-3 shrink-0" aria-hidden />,
+  respuesta: <MessageCircle className="h-3 w-3 shrink-0" aria-hidden />,
+  malo: <X className="h-3 w-3 shrink-0" aria-hidden />,
+  bueno: <Check className="h-3 w-3 shrink-0" aria-hidden />,
+  neutral: <CalendarCheck className="h-3 w-3 shrink-0" aria-hidden />,
+};
 
+function EventoPill({ ev }: { ev: EventoData }) {
   return (
-    <div
-      className={`h-full rounded-[20px] border p-5 sm:p-6 ${
-        vacio
-          ? "border-dashed border-ink/12 bg-ink/[0.02]"
-          : "border-terracota/15 bg-terracota/[0.06] shadow-[0_1px_2px_rgba(36,21,9,0.04),0_6px_18px_rgba(36,21,9,0.03)]"
-      }`}
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs ${TIPO_STYLES[ev.tipo]}`}
     >
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <Icon className="h-5 w-5 shrink-0 text-terracota" strokeWidth={1.5} />
-          <p className="text-base font-medium text-ink">{titulo}</p>
-        </div>
-        <span
-          className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${
-            vacio ? "bg-ink/8 text-ink/55" : "bg-terracota/12 text-terracota-dark"
-          }`}
-        >
-          {vacio ? `${empty} huecos` : `${filled} ok`}
-        </span>
-      </div>
-      <div className="mt-4 grid grid-cols-4 gap-2 sm:gap-2.5">
-        {slots.map((slot) => (
-          <div
-            key={slot.id}
-            className={`rounded-lg px-1.5 py-2.5 text-center text-xs font-medium sm:py-3 sm:text-sm ${
-              slot.time === null
-                ? "border border-dashed border-ink/12 text-ink/30"
-                : "bg-white text-ink shadow-sm"
-            }`}
-          >
-            {slot.time ?? "—"}
-          </div>
-        ))}
-      </div>
-    </div>
+      {TIPO_ICON[ev.tipo]}
+      {ev.texto}
+    </span>
   );
 }
 
-/** Mini comparación agenda para el hero — sin vs con recordatorios. */
+/** Comparación narrativa — timeline del mismo turno en dos escenarios. */
 export default function ClinicasHeroAgendaCompare() {
   return (
-    <div className="mt-10 pb-1 sm:mt-12">
-      <p className="section-eyebrow text-center text-[0.72rem] lg:text-left">
-        Sin vs con recordatorios
-      </p>
-      <div className="mt-4 grid items-stretch gap-4 sm:grid-cols-[1fr_auto_1fr] sm:gap-5">
-        <AgendaMiniHero
-          titulo="Sin recordatorios"
-          slots={SLOTS_SIN}
-          vacio={true}
-          icon={CalendarX}
-        />
-        <div className="flex items-center justify-center py-2 sm:py-0">
-          <ArrowRight
-            className="h-5 w-5 rotate-90 text-ink/35 sm:rotate-0"
-            strokeWidth={1.5}
-            aria-hidden
-          />
+    <div className="overflow-hidden rounded-2xl border border-ink/8 bg-white">
+      {/* Cabecera */}
+      <div className="grid grid-cols-[80px_1fr_1fr] border-b border-ink/6 sm:grid-cols-[96px_1fr_1fr]">
+        <div className="px-4 py-3" />
+        <div className="border-l border-ink/6 px-4 py-3">
+          <p className="text-xs font-semibold text-ink/40">Sin recordatorio</p>
         </div>
-        <AgendaMiniHero
-          titulo="Con recordatorios"
-          slots={SLOTS_CON}
-          vacio={false}
-          icon={CalendarDays}
-        />
+        <div className="border-l border-ink/6 bg-terracota/[0.03] px-4 py-3">
+          <p className="text-xs font-semibold text-terracota-dark/70">Con recordatorio</p>
+        </div>
       </div>
+
+      {/* Filas */}
+      {EVENTOS.map((ev, i) => (
+        <div
+          key={ev.tiempo}
+          className={`grid grid-cols-[80px_1fr_1fr] sm:grid-cols-[96px_1fr_1fr] ${
+            i < EVENTOS.length - 1 ? "border-b border-ink/6" : ""
+          }`}
+        >
+          {/* Tiempo */}
+          <div className="flex items-center px-4 py-4">
+            <p className="text-[11px] font-medium tabular-nums text-ink/35 leading-tight">
+              {ev.tiempo}
+            </p>
+          </div>
+
+          {/* Sin recordatorio */}
+          <div className="flex items-center border-l border-ink/6 px-4 py-4">
+            {ev.sin ? (
+              <EventoPill ev={ev.sin} />
+            ) : (
+              <span className="text-xs text-ink/20">—</span>
+            )}
+          </div>
+
+          {/* Con recordatorio */}
+          <div className="flex items-center border-l border-ink/6 bg-terracota/[0.025] px-4 py-4">
+            {ev.con ? (
+              <EventoPill ev={ev.con} />
+            ) : (
+              <span className="text-xs text-ink/20">—</span>
+            )}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

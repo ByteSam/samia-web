@@ -1,108 +1,110 @@
-import { LayoutTemplate, Sparkles, ArrowRight, X, Check } from "lucide-react";
+import { MousePointerClick, X, Check, MessageCircle, UserRound } from "lucide-react";
 
-const ITEMS_PASIVA = [
-  { id: "p-1", texto: "Sin CTA claro a WhatsApp" },
-  { id: "p-2", texto: "Sin formulario ni aviso" },
-  { id: "p-3", texto: "Lenta y difícil de actualizar" },
+type EventoTipo = "neutral" | "accion" | "respuesta" | "malo" | "bueno";
+
+type EventoData = {
+  texto: string;
+  tipo: EventoTipo;
+};
+
+type Evento = {
+  tiempo: string;
+  pasiva: EventoData | null;
+  convierte: EventoData | null;
+};
+
+const EVENTOS: Evento[] = [
+  {
+    tiempo: "Llega",
+    pasiva: { texto: "Entra a tu web", tipo: "neutral" },
+    convierte: { texto: "Entra a tu web", tipo: "neutral" },
+  },
+  {
+    tiempo: "30 seg",
+    pasiva: { texto: "No encuentra cómo contactar", tipo: "malo" },
+    convierte: { texto: "Ve botón WhatsApp claro", tipo: "accion" },
+  },
+  {
+    tiempo: "Al irse",
+    pasiva: { texto: "Sale sin escribir", tipo: "malo" },
+    convierte: { texto: "Deja datos o te escribe", tipo: "respuesta" },
+  },
+  {
+    tiempo: "Resultado",
+    pasiva: { texto: "0 contactos", tipo: "malo" },
+    convierte: { texto: "Te llega el aviso", tipo: "bueno" },
+  },
 ];
 
-const ITEMS_CONVIERTE = [
-  { id: "c-1", texto: "Botón WhatsApp visible" },
-  { id: "c-2", texto: "Te avisa cuando llega alguien" },
-  { id: "c-3", texto: "Código real, indexable" },
-];
+const TIPO_STYLES: Record<EventoTipo, string> = {
+  neutral: "bg-ink/6 text-ink/55",
+  accion: "bg-terracota/10 text-terracota-dark",
+  respuesta: "bg-[#d4ead8] text-[#2d6e47]",
+  malo: "bg-red-50 text-red-400 line-through",
+  bueno: "bg-terracota/12 text-terracota-dark font-semibold",
+};
 
-function WebMiniHero({
-  titulo,
-  convierte,
-  icon: Icon,
-  items,
-}: {
-  titulo: string;
-  convierte: boolean;
-  icon: typeof LayoutTemplate;
-  items: { id: string; texto: string }[];
-}) {
+const TIPO_ICON: Partial<Record<EventoTipo, React.ReactNode>> = {
+  accion: <MousePointerClick className="h-3 w-3 shrink-0" aria-hidden />,
+  respuesta: <MessageCircle className="h-3 w-3 shrink-0" aria-hidden />,
+  malo: <X className="h-3 w-3 shrink-0" aria-hidden />,
+  bueno: <Check className="h-3 w-3 shrink-0" aria-hidden />,
+  neutral: <UserRound className="h-3 w-3 shrink-0" aria-hidden />,
+};
+
+function EventoPill({ ev }: { ev: EventoData }) {
   return (
-    <div
-      className={`h-full rounded-[20px] border p-5 sm:p-6 ${
-        convierte
-          ? "border-terracota/15 bg-terracota/[0.06] shadow-[0_1px_2px_rgba(36,21,9,0.04),0_6px_18px_rgba(36,21,9,0.03)]"
-          : "border-dashed border-ink/12 bg-ink/[0.02]"
-      }`}
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs ${TIPO_STYLES[ev.tipo]}`}
     >
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <Icon className="h-5 w-5 shrink-0 text-terracota" strokeWidth={1.5} />
-          <p className="text-base font-medium text-ink">{titulo}</p>
-        </div>
-        <span
-          className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${
-            convierte ? "bg-terracota/12 text-terracota-dark" : "bg-ink/8 text-ink/55"
-          }`}
-        >
-          {convierte ? "capta contactos" : "solo informa"}
-        </span>
-      </div>
-      <ul className="mt-4 space-y-2.5">
-        {items.map((item) => (
-          <li
-            key={item.id}
-            className={`flex items-start gap-2 rounded-lg px-3 py-2.5 text-sm leading-relaxed ${
-              convierte
-                ? "bg-white text-ink shadow-sm"
-                : "border border-dashed border-ink/10 bg-white/60 text-ink/55"
-            }`}
-          >
-            {convierte ? (
-              <Check
-                className="mt-0.5 h-4 w-4 shrink-0 text-terracota"
-                strokeWidth={2}
-                aria-hidden
-              />
-            ) : (
-              <X
-                className="mt-0.5 h-4 w-4 shrink-0 text-ink/35"
-                strokeWidth={2}
-                aria-hidden
-              />
-            )}
-            <span>{item.texto}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
+      {TIPO_ICON[ev.tipo]}
+      {ev.texto}
+    </span>
   );
 }
 
-/** Mini comparación web para el hero — pasiva vs convierte. */
+/** Comparación narrativa — el mismo visitante en web pasiva vs web que convierte. */
 export default function DesarrolloWebHeroCompare() {
   return (
-    <div className="mt-10 pb-1 sm:mt-12">
-      <p className="section-eyebrow text-center text-[0.72rem] lg:text-left">
-        Pasiva vs que convierte
-      </p>
-      <div className="mt-4 grid items-stretch gap-4 sm:grid-cols-[1fr_auto_1fr] sm:gap-5">
-        <WebMiniHero
-          titulo="Web pasiva"
-          convierte={false}
-          icon={LayoutTemplate}
-          items={ITEMS_PASIVA}
-        />
-        <div className="flex items-center justify-center py-2 sm:py-0">
-          <ArrowRight
-            className="h-5 w-5 rotate-90 text-ink/35 sm:rotate-0"
-            strokeWidth={1.5}
-            aria-hidden
-          />
+    <div className="overflow-hidden rounded-2xl border border-ink/8 bg-white">
+      <div className="grid grid-cols-[72px_1fr_1fr] border-b border-ink/6 sm:grid-cols-[88px_1fr_1fr]">
+        <div className="px-3 py-3 sm:px-4" />
+        <div className="border-l border-ink/6 px-3 py-3 sm:px-4">
+          <p className="text-xs font-semibold text-ink/40">Web pasiva</p>
         </div>
-        <WebMiniHero
-          titulo="Web que convierte"
-          convierte={true}
-          icon={Sparkles}
-          items={ITEMS_CONVIERTE}
-        />
+        <div className="border-l border-ink/6 bg-terracota/[0.03] px-3 py-3 sm:px-4">
+          <p className="text-xs font-semibold text-terracota-dark/70">Web que convierte</p>
+        </div>
       </div>
+
+      {EVENTOS.map((ev, i) => (
+        <div
+          key={ev.tiempo}
+          className={`grid grid-cols-[72px_1fr_1fr] sm:grid-cols-[88px_1fr_1fr] ${
+            i < EVENTOS.length - 1 ? "border-b border-ink/6" : ""
+          }`}
+        >
+          <div className="flex items-center px-3 py-4 sm:px-4">
+            <p className="text-[11px] font-medium tabular-nums text-ink/35 leading-tight">
+              {ev.tiempo}
+            </p>
+          </div>
+          <div className="flex items-center border-l border-ink/6 px-3 py-4 sm:px-4">
+            {ev.pasiva ? (
+              <EventoPill ev={ev.pasiva} />
+            ) : (
+              <span className="text-xs text-ink/20">—</span>
+            )}
+          </div>
+          <div className="flex items-center border-l border-ink/6 bg-terracota/[0.025] px-3 py-4 sm:px-4">
+            {ev.convierte ? (
+              <EventoPill ev={ev.convierte} />
+            ) : (
+              <span className="text-xs text-ink/20">—</span>
+            )}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

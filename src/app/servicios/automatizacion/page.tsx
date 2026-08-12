@@ -170,29 +170,33 @@ export default function AutomatizacionPage() {
         </CatalogGrid>
       </div>
 
-      <section className="mx-auto max-w-4xl px-6 pb-20">
-        <Reveal>
-          <p className="section-eyebrow">Implementación</p>
-          <h2 className="text-h2 mt-2 text-ink">Cómo trabajamos</h2>
-        </Reveal>
-        <Reveal delay={80}>
-          <ol className="mt-8 space-y-6">
-            {PASOS.map((step, i) => (
-              <li key={step.t} className="flex gap-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 font-medium text-ink">
-                  {i + 1}
-                </span>
-                <div>
-                  <p className="font-medium text-ink">{step.t}</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink/60">{step.d}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
-      </section>
+      <div className="section-band">
+        <section className="mx-auto max-w-4xl px-6 section-py">
+          <Reveal>
+            <p className="section-eyebrow">Implementación</p>
+            <h2 className="text-h2 mt-2 text-ink">Cómo trabajamos</h2>
+          </Reveal>
+          <Reveal delay={80}>
+            <ol className="mt-8 space-y-6">
+              {PASOS.map((step, i) => (
+                <li key={step.t} className="flex gap-4">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 font-medium text-ink">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <p className="font-medium text-ink">{step.t}</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink/60">{step.d}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+        </section>
+      </div>
 
-      <GarantiaSection condicion="la automatización no te ahorra tiempo ni recupera oportunidades" />
+      <div className="section-ink">
+        <GarantiaSection condicion="la automatización no te ahorra tiempo ni recupera oportunidades" variant="dark" />
+      </div>
 
       <FAQSection items={FAQS} />
 

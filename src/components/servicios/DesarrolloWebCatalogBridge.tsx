@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   LayoutTemplate,
   Building2,
@@ -29,17 +30,36 @@ const PASOS = [
   },
 ];
 
-/** Firma desarrollo web — tipo de sitio según objetivo (sin duplicar hero). */
+/** Firma desarrollo web — tipo de sitio según objetivo. */
 export default function DesarrolloWebCatalogBridge() {
   return (
-    <section className="py-14 pb-20 md:py-20 md:pb-24">
-      <div className="mx-auto max-w-5xl px-6">
+    <section className="section-white">
+      <div className="mx-auto max-w-5xl px-6 section-py">
         <Reveal>
-          <p className="section-eyebrow">Por dónde empezar</p>
-          <h2 className="text-h2 mt-2 text-ink">El tipo de sitio según tu objetivo</h2>
-          <p className="mt-4 max-w-2xl text-ink/60">
-            No todos necesitan lo mismo. Abajo está el catálogo completo con rangos en soles.
+          <span className="chip">Por dónde empezar</span>
+          <h2 className="text-h2 mt-4 text-ink">El tipo de sitio según tu objetivo</h2>
+          <p className="mt-3 max-w-2xl text-ink/60">
+            No todos necesitan lo mismo. Abajo está el catálogo completo con rangos en soles. Si tienes
+            un estudio legal y buscas también gestionar consultas por WhatsApp, revisa la solución para{" "}
+            <Link
+              href="/servicios-legales"
+              className="text-terracota-dark underline-offset-2 hover:underline"
+            >
+              firmas legales
+            </Link>
+            .
           </p>
+        </Reveal>
+
+        <Reveal delay={60}>
+          <div className="card-soft mt-8 p-5 sm:p-6">
+            <p className="text-sm font-medium text-ink">Este servicio es para ti si…</p>
+            <ul className="mt-4 space-y-2 text-sm text-ink/65">
+              <li>• No tienes web o la actual no convierte visitas en contactos</li>
+              <li>• Necesitas presencia profesional antes de invertir en automatización</li>
+              <li>• Quieres un objetivo claro — captación, portafolio o venta online</li>
+            </ul>
+          </div>
         </Reveal>
 
         <Reveal delay={80}>

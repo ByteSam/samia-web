@@ -13,7 +13,9 @@
     "review:desarrollo-web": "node docs/reviews/desarrollo-web-visual/capture.mjs",
     "review:infraestructura-digital": "node docs/reviews/infraestructura-digital-visual/capture.mjs",
     "review:automatizacion": "node docs/reviews/automatizacion-visual/capture.mjs",
-    "review:datos-analitica": "node docs/reviews/datos-analitica-visual/capture.mjs"
+    "review:datos-analitica": "node docs/reviews/datos-analitica-visual/capture.mjs",
+    "review:home": "node docs/reviews/home-visual/capture.mjs",
+    "review:full-site": "node docs/reviews/full-site-visual/capture.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

@@ -50,7 +50,7 @@ const CASO_LEGAL_PLACEHOLDER: CasoSimple = {
 export const CASOS: Caso[] = [
   {
     nombre: "Fortaleza Vinzos",
-    rubro: "Reformas y remodelación",
+    rubro: "Reformas y remodelación · España",
     icon: Hammer,
     estado: "entregado",
     problema:

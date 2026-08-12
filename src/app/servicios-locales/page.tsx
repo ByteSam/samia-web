@@ -220,10 +220,33 @@ export default function ServiciosLocalesPage() {
         </section>
       </div>
 
-      <GarantiaSection
-        condicion="el asistente no te ayuda a recuperar clientes que hoy pierdes"
-        notaExtra="Lo pruebas en tu negocio antes de comprometerte con la configuración."
-      />
+      {/* ESCALERA — qué servicio base incluye esto */}
+      <section className="mx-auto max-w-3xl px-6 pb-12">
+        <Reveal>
+          <p className="text-xs font-semibold uppercase tracking-wide text-ink/40">
+            Qué hay detrás de esta solución
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-ink/65">
+            Esta solución está construida sobre{" "}
+            <a href="/servicios/agentes-ia" className="font-medium text-terracota-dark underline-offset-2 hover:underline">
+              Agentes IA por WhatsApp
+            </a>{" "}
+            — el servicio que responde, filtra y agenda tus clientes de forma automática. Si necesitas
+            conectar flujos más complejos con otras herramientas, también aplica{" "}
+            <a href="/servicios/automatizacion" className="font-medium text-terracota-dark underline-offset-2 hover:underline">
+              Automatización
+            </a>
+            .
+          </p>
+        </Reveal>
+      </section>
+
+      <div className="section-ink">
+        <GarantiaSection
+          condicion="el asistente no te ayuda a recuperar clientes que hoy pierdes"
+          variant="dark"
+        />
+      </div>
 
       <FAQSection items={FAQS} />
 

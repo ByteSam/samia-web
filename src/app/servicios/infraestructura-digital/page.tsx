@@ -233,7 +233,9 @@ export default function InfraestructuraDigitalPage() {
         </Reveal>
       </section>
 
-      <GarantiaSection condicion="la arquitectura no funciona como se acordó en el diagnóstico" />
+      <div className="section-ink">
+        <GarantiaSection condicion="la arquitectura no funciona como se acordó en el diagnóstico" variant="dark" />
+      </div>
 
       <FAQSection items={FAQS} />
 

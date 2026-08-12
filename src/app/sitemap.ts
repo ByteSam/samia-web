@@ -7,6 +7,7 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/clinicas", priority: 0.8, changeFrequency: "monthly" },
   { path: "/servicios-locales", priority: 0.8, changeFrequency: "monthly" },
   { path: "/servicios-legales", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/servicios", priority: 0.75, changeFrequency: "monthly" },
   { path: "/servicios/agentes-ia", priority: 0.7, changeFrequency: "monthly" },
   { path: "/servicios/desarrollo-web", priority: 0.7, changeFrequency: "monthly" },
   { path: "/servicios/automatizacion", priority: 0.65, changeFrequency: "monthly" },

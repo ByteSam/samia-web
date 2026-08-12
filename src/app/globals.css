@@ -99,6 +99,21 @@ body {
 .btn-pill-solid {
   background: var(--color-terracota);
   color: white;
+  box-shadow:
+    0 2px 8px rgba(193, 80, 46, 0.18),
+    0 8px 24px rgba(193, 80, 46, 0.22);
+}
+.btn-pill-solid:hover {
+  box-shadow:
+    0 4px 12px rgba(193, 80, 46, 0.22),
+    0 14px 32px rgba(193, 80, 46, 0.28);
+}
+
+/* CTA principal del hero — más masa visual */
+.btn-pill-hero {
+  padding: 0.875rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 700;
 }
 .btn-pill-ghost {
   background: transparent;
@@ -129,10 +144,11 @@ body {
   align-items: center;
   gap: 0.4rem;
   border-radius: 999px;
-  padding: 0.4rem 1rem;
-  font-size: 0.8rem;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  background: rgba(193, 80, 46, 0.08);
+  background: rgba(193, 80, 46, 0.12);
+  border: 1px solid rgba(193, 80, 46, 0.20);
   color: var(--color-terracota-dark);
 }
 
@@ -150,8 +166,9 @@ body {
   padding: 0.35rem 0.85rem;
   font-size: 0.75rem;
   font-weight: 500;
-  background: rgba(36, 21, 9, 0.06);
-  color: rgba(36, 21, 9, 0.72);
+  background: rgba(36, 21, 9, 0.09);
+  border: 1px solid rgba(36, 21, 9, 0.1);
+  color: rgba(36, 21, 9, 0.8);
 }
 
 /* ---- Landings de nicho: acentos y frames ---- */
@@ -159,17 +176,34 @@ body {
   position: relative;
   isolation: isolate;
 }
+/* Punto de luz terracota — arriba a la derecha */
 .landing-hero-accent::before {
   content: "";
   position: absolute;
-  top: -8%;
-  right: 0;
+  top: -10%;
+  right: -4%;
   z-index: -1;
-  width: min(52vw, 520px);
-  height: min(52vw, 520px);
+  width: min(56vw, 560px);
+  height: min(56vw, 560px);
   background: radial-gradient(
     circle at center,
-    rgba(193, 80, 46, 0.09) 0%,
+    rgba(193, 80, 46, 0.08) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+/* Punto de luz dorado — abajo a la izquierda */
+.landing-hero-accent::after {
+  content: "";
+  position: absolute;
+  bottom: -15%;
+  left: -6%;
+  z-index: -1;
+  width: min(40vw, 420px);
+  height: min(40vw, 420px);
+  background: radial-gradient(
+    circle at center,
+    rgba(193, 137, 43, 0.055) 0%,
     transparent 68%
   );
   pointer-events: none;
@@ -177,12 +211,29 @@ body {
 
 .mockup-frame {
   border-radius: 28px;
-  padding: 14px;
+  padding: 10px 10px 8px;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.55));
   border: 1px solid rgba(36, 21, 9, 0.07);
   box-shadow:
     0 1px 2px rgba(36, 21, 9, 0.04),
-    0 20px 48px rgba(36, 21, 9, 0.09);
+    0 24px 56px rgba(36, 21, 9, 0.12),
+    0 48px 80px rgba(36, 21, 9, 0.06);
+  transform: rotate(2deg);
+  transform-origin: center center;
+}
+
+.mockup-frame-tilt-light {
+  transform: rotate(1deg);
+  transform-origin: center center;
+}
+
+.mockup-caption {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(36, 21, 9, 0.38);
 }
 
 .section-eyebrow {
@@ -227,9 +278,9 @@ body {
 
 /* ---- Escala tipográfica de títulos ---- */
 .text-h1 {
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
 }
 
 .text-h2 {
@@ -293,4 +344,80 @@ body {
 }
 .fundador-bubble {
   animation: fundador-panel-in 0.25s ease-out;
+}
+
+/* ---- Sistema de secciones (ritmo editorial) ---- */
+
+/* Blanco puro con separadores hairline — cards sin sombra fuerte dentro */
+.section-white {
+  background: white;
+  border-top: 1px solid rgba(36, 21, 9, 0.06);
+  border-bottom: 1px solid rgba(36, 21, 9, 0.06);
+}
+
+/* Oscuro completo — un solo bloque por página para anclaje visual */
+.section-ink {
+  background: var(--color-ink);
+  color: var(--color-sand);
+}
+
+/* Sin contenedor visual — texto sobre fondo de la sección */
+.section-open {
+  /* layout helper: se usa con mx-auto max-w-X px-6 section-py */
+}
+
+/* Padding vertical estándar */
+.section-py {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+@media (min-width: 768px) {
+  .section-py {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Cards en sección blanca — solo hairline, sin sombra */
+.section-white .card-soft {
+  box-shadow: none;
+  border-color: rgba(36, 21, 9, 0.1);
+}
+.section-white .card-soft-tint {
+  box-shadow: none;
+}
+
+/* ---- Marquee strip (servicios) — pulido editorial ---- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  .mockup-frame,
+  .mockup-frame-tilt-light {
+    transform: none;
+  }
+}
+
+/* ---- Sticky CTA: oculta bubble del fundador (compite y tapa contenido) ---- */
+body.sticky-cta-visible .fundador-bubble {
+  visibility: hidden;
+  pointer-events: none;
 }

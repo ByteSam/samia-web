@@ -40,6 +40,17 @@ export default function DatosAnaliticaBridge() {
           </p>
         </Reveal>
 
+        <Reveal delay={60}>
+          <div className="card-soft mt-8 p-5 sm:p-6">
+            <p className="text-sm font-medium text-ink">Este servicio es para ti si…</p>
+            <ul className="mt-4 space-y-2 text-sm text-ink/65">
+              <li>• Tus KPIs están en varias hojas de cálculo que armás cada semana</li>
+              <li>• No sabes qué canal trae más clientes</li>
+              <li>• Quieres ver el negocio sin tener que abrir cuatro herramientas</li>
+            </ul>
+          </div>
+        </Reveal>
+
         <Reveal delay={80}>
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {OFERTAS.map((item) => (

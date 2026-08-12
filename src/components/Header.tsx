@@ -1,21 +1,42 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 import HeaderNav from "./HeaderNav";
 import { useFundador } from "@/components/FundadorProvider";
 
 export default function Header() {
-  const { open, openPanel } = useFundador();
+  const { open } = useFundador();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 16);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <div className="sticky top-4 z-40 px-4 md:top-6 md:px-6">
-      <header className="relative mx-auto flex max-w-5xl items-center justify-between rounded-full border border-ink/8 bg-sand/95 px-5 py-2.5 shadow-[0_8px_30px_rgba(36,21,9,0.08)] backdrop-blur">
-        <Link href="/" aria-label="Ir al inicio de afynova">
-          <Logo height={30} />
+    <div
+      className={`sticky z-40 px-4 transition-[top] duration-200 md:px-6 ${
+        scrolled ? "top-2 md:top-3" : "top-4 md:top-6"
+      }`}
+    >
+      <header
+        className={`relative mx-auto flex max-w-6xl items-center gap-4 rounded-full border bg-white/92 px-5 py-2 backdrop-blur-md transition-shadow duration-200 md:px-6 ${
+          scrolled
+            ? "border-ink/10 shadow-[0_8px_32px_rgba(36,21,9,0.09)]"
+            : "border-ink/8 shadow-[0_2px_16px_rgba(36,21,9,0.05)]"
+        }`}
+      >
+        <Link href="/" className="shrink-0" aria-label="Ir al inicio de afynova">
+            <Logo height={28} />
         </Link>
 
-        <HeaderNav fundadorOpen={open} onOpenFundador={openPanel} />
+        <HeaderNav fundadorOpen={open} />
       </header>
     </div>
   );

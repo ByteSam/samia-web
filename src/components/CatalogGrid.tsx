@@ -13,8 +13,9 @@ type CatalogItem = {
 type CatalogGridProps = {
   items: CatalogItem[];
   titulo?: string;
+  chip?: string;
+  subtitulo?: string;
   columns?: 2 | 3;
-  pb?: "16" | "20";
   /** Texto opcional bajo el grid, mismo bloque que antes de extraer el componente. */
   children?: React.ReactNode;
 };
@@ -24,23 +25,21 @@ const GRID_CLASSES: Record<2 | 3, string> = {
   3: "mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3",
 };
 
-const SECTION_CLASSES: Record<"16" | "20", string> = {
-  "16": "mx-auto max-w-5xl px-6 pb-16",
-  "20": "mx-auto max-w-5xl px-6 pb-20",
-};
-
 /** Grid de catálogo (ítems individuales con precio) — reutilizado en páginas de servicio. */
 export default function CatalogGrid({
   items,
   titulo = "Catálogo, en soles",
+  chip,
+  subtitulo,
   columns = 2,
-  pb = "20",
   children,
 }: CatalogGridProps) {
   return (
-    <section className={SECTION_CLASSES[pb]}>
+    <section className="mx-auto max-w-5xl px-6 section-py">
       <Reveal>
-        <h2 className="text-h2 text-ink">{titulo}</h2>
+        {chip && <span className="chip">{chip}</span>}
+        <h2 className={`text-h2 text-ink ${chip ? "mt-4" : ""}`}>{titulo}</h2>
+        {subtitulo && <p className="mt-2 max-w-md text-ink/60">{subtitulo}</p>}
       </Reveal>
       <Reveal delay={80}>
         <div className={GRID_CLASSES[columns]}>

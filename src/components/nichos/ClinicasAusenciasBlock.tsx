@@ -16,15 +16,15 @@ const REMINDER_CHAT = [
   },
 ];
 
-/** Firma clínicas — recordatorio (sin repetir comparación agenda del hero). */
+/** Firma clínicas — recordatorio (complementa el mockup de agendado en el hero). */
 export default function ClinicasAusenciasBlock() {
   return (
-    <section className="py-14 pb-20 md:py-20 md:pb-28">
-      <div className="mx-auto max-w-4xl px-6">
+    <section className="section-white">
+      <div className="mx-auto max-w-4xl px-6 section-py">
         <Reveal>
-          <p className="section-eyebrow">Cómo confirma el turno</p>
-          <h2 className="text-h2 mt-2 text-ink">El recordatorio que confirma la cita</h2>
-          <p className="mt-4 max-w-2xl text-ink/60">
+          <span className="chip">Cómo confirma el turno</span>
+          <h2 className="text-h2 mt-4 text-ink">El recordatorio que confirma la cita</h2>
+          <p className="mt-3 max-w-2xl text-ink/60">
             Un día antes, el paciente responde en un mensaje — sin que recepción tenga que
             llamar.
           </p>

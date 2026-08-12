@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
+
+const BUBBLE_SCROLL_THRESHOLD = 420;
 
 type FundadorPanelProps = {
   open: boolean;
@@ -11,10 +13,20 @@ type FundadorPanelProps = {
   onClose: () => void;
 };
 
-/** Bubble fijo + panel expandible — “Conoce a Daniel” (bio del fundador fuera del scroll de Home). */
+/** Bubble fijo + panel expandible — aparece tras scroll para no competir con hero. */
 export default function FundadorPanel({ open, onOpen, onClose }: FundadorPanelProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const bubbleButtonRef = useRef<HTMLButtonElement>(null);
+  const [showBubble, setShowBubble] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setShowBubble(window.scrollY > BUBBLE_SCROLL_THRESHOLD);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -34,16 +46,18 @@ export default function FundadorPanel({ open, onOpen, onClose }: FundadorPanelPr
     bubbleButtonRef.current?.focus();
   }
 
+  const bubbleVisible = showBubble || open;
+
   return (
     <>
-      {!open && (
+      {!open && bubbleVisible && (
         <button
           ref={bubbleButtonRef}
           type="button"
           onClick={onOpen}
           aria-label="Conoce a Daniel"
           aria-expanded={false}
-          className="fundador-bubble fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full border-2 border-terracota/30 bg-sand shadow-[0_8px_24px_rgba(36,21,9,0.14)] transition-transform hover:scale-105 hover:border-terracota/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota md:bottom-8 md:right-8"
+          className="fundador-bubble fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full border-2 border-terracota/30 bg-sand shadow-[0_8px_24px_rgba(36,21,9,0.14)] transition-transform hover:scale-105 hover:border-terracota/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota md:hidden"
         >
           <span className="relative h-12 w-12 overflow-hidden rounded-full">
             <Image
@@ -106,13 +120,17 @@ export default function FundadorPanel({ open, onOpen, onClose }: FundadorPanelPr
               <span className="chip mt-2">Implementador directo</span>
 
               <p className="mt-5 text-sm leading-relaxed text-ink/70">
-                Soy ingeniero especializado en infraestructura y automatización.
-                Implemento personalmente cada solución de afynova.
+                Soy ingeniero especializado en infraestructura y automatización para pymes.
+                Implemento personalmente webs, agentes de IA y flujos automatizados —
+                principalmente para negocios en Perú.
               </p>
 
               <div className="mt-5 w-full border-t border-ink/8 pt-5">
                 <p className="text-xs text-ink/50">
                   Certificación en IA generativa · DeepLearning.AI
+                </p>
+                <p className="mt-2 text-xs text-ink/50">
+                  Automatización con n8n · IA con OpenAI y Anthropic · Next.js + Tailwind
                 </p>
                 <p className="mt-3 text-sm text-ink/60">
                   Hablarás directamente conmigo, no con un call center.

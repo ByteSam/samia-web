@@ -40,8 +40,28 @@ export default function AgentesIACatalogBridge() {
             >
               Automatización
             </Link>
-            . Abajo está el catálogo de agentes con rangos en soles.
+            . Abajo está el catálogo de agentes con rangos en soles. ¿Tienes una clínica o negocio de
+            servicios locales? Hay una solución específica para{" "}
+            <Link href="/clinicas" className="text-terracota-dark underline-offset-2 hover:underline">
+              clínicas
+            </Link>{" "}
+            y para{" "}
+            <Link href="/servicios-locales" className="text-terracota-dark underline-offset-2 hover:underline">
+              negocios locales
+            </Link>
+            .
           </p>
+        </Reveal>
+
+        <Reveal delay={60}>
+          <div className="card-soft mt-8 p-5 sm:p-6">
+            <p className="text-sm font-medium text-ink">Este servicio es para ti si…</p>
+            <ul className="mt-4 space-y-2 text-sm text-ink/65">
+              <li>• Recibes consultas por WhatsApp pero no puedes responder al instante</li>
+              <li>• Respondes siempre lo mismo — horarios, precios, disponibilidad</li>
+              <li>• Quieres filtrar urgencias de curiosidades sin leer todo el chat</li>
+            </ul>
+          </div>
         </Reveal>
 
         <Reveal delay={80}>

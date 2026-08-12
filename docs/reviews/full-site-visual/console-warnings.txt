@@ -1,0 +1,59 @@
+=== home-mobile ===
+(sin warnings/errors)
+
+=== servicios-mobile ===
+(sin warnings/errors)
+
+=== desarrollo-web-mobile ===
+(sin warnings/errors)
+
+=== agentes-ia-mobile ===
+(sin warnings/errors)
+
+=== automatizacion-mobile ===
+(sin warnings/errors)
+
+=== datos-analitica-mobile ===
+(sin warnings/errors)
+
+=== infraestructura-mobile ===
+(sin warnings/errors)
+
+=== clinicas-mobile ===
+(sin warnings/errors)
+
+=== legales-mobile ===
+(sin warnings/errors)
+
+=== locales-mobile ===
+(sin warnings/errors)
+
+=== home-desktop ===
+(sin warnings/errors)
+
+=== servicios-desktop ===
+(sin warnings/errors)
+
+=== desarrollo-web-desktop ===
+(sin warnings/errors)
+
+=== agentes-ia-desktop ===
+(sin warnings/errors)
+
+=== automatizacion-desktop ===
+(sin warnings/errors)
+
+=== datos-analitica-desktop ===
+(sin warnings/errors)
+
+=== infraestructura-desktop ===
+(sin warnings/errors)
+
+=== clinicas-desktop ===
+(sin warnings/errors)
+
+=== legales-desktop ===
+(sin warnings/errors)
+
+=== locales-desktop ===
+(sin warnings/errors)

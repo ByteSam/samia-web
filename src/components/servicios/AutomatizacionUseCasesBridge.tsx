@@ -45,6 +45,17 @@ export default function AutomatizacionUseCasesBridge() {
           </p>
         </Reveal>
 
+        <Reveal delay={60}>
+          <div className="card-soft mt-8 p-5 sm:p-6">
+            <p className="text-sm font-medium text-ink">Este servicio es para ti si…</p>
+            <ul className="mt-4 space-y-2 text-sm text-ink/65">
+              <li>• Tu proceso empieza en un formulario y termina en un WhatsApp tuyo</li>
+              <li>• Copias datos entre sistemas a mano</li>
+              <li>• Un lead llega y nadie lo sigue automáticamente</li>
+            </ul>
+          </div>
+        </Reveal>
+
         <Reveal delay={80}>
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {CASOS.map((caso) => (
