@@ -8,5 +8,5 @@
   <!-- Simbolo: Eclipse E6c -->
   <circle cx="30.00" cy="30.00" r="25.20" fill="#C1502E" mask="url(#eclipse-mask-lockup)"/>
   <!-- Wordmark: afynova (Space Grotesk) -->
-  <text x="73" y="36" font-family="Space Grotesk, Inter, system-ui, sans-serif" font-size="25" font-weight="500" fill="#241509" letter-spacing="-0.5">afynova</text>
+  <text x="73" y="36" font-family="Space Grotesk, Inter, system-ui, sans-serif" font-size="25" font-weight="500" fill="#F6ECDA" letter-spacing="-0.5">afynova</text>
 </svg>
