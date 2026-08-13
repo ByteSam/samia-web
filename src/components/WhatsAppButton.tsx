@@ -8,6 +8,7 @@ type WhatsAppButtonProps = {
   children: React.ReactNode;
   /** `terracota` = CTA primario de marca; `outline` = secundario */
   variant?: "terracota" | "outline" | "solid";
+  size?: "sm" | "md";
   className?: string;
   /** Propiedad extra para analytics (ej. página o sección) */
   source?: string;
@@ -25,11 +26,12 @@ export default function WhatsAppButton({
   message,
   children,
   variant = "terracota",
+  size = "md",
   className = "",
   source,
 }: WhatsAppButtonProps) {
   const resolved = variant === "solid" ? "terracota" : variant;
-  const base = "btn-pill";
+  const base = `btn-pill ${size === "sm" ? "btn-pill-sm" : ""}`;
   const styles =
     resolved === "terracota"
       ? "btn-pill-solid"

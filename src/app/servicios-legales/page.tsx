@@ -231,7 +231,7 @@ export default function ServiciosLegalesPage() {
       />
 
       {/* PRECIO */}
-      <section className="section-band py-16 md:py-20">
+      <section className="section-band section-py">
         <div className="mx-auto max-w-3xl px-6">
           <Reveal>
             <span className="chip">Precio según complejidad del estudio</span>

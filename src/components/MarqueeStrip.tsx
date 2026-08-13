@@ -29,14 +29,14 @@ export default function MarqueeStrip() {
 
   return (
     <div
-      className="border-y border-ink/5 overflow-hidden py-3.5" style={{ background: "rgba(246,236,218,0.55)" }}
+      className="marquee-band border-y border-ink/5 overflow-hidden py-3"
       aria-hidden="true"
     >
       <div className="marquee-track flex gap-10 whitespace-nowrap">
         {track.map((item, i) => (
           <span
             key={`${item}-${i}`}
-            className="flex shrink-0 items-center gap-10 text-sm font-medium tracking-wide text-ink/60"
+            className="flex shrink-0 items-center gap-10 text-sm font-medium tracking-wide text-secondary"
           >
             {item}
             <Dot />

@@ -57,7 +57,7 @@ export default function FundadorPanel({ open, onOpen, onClose }: FundadorPanelPr
           onClick={onOpen}
           aria-label="Conoce a Daniel"
           aria-expanded={false}
-          className="fundador-bubble fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full border-2 border-terracota/30 bg-sand shadow-[0_8px_24px_rgba(36,21,9,0.14)] transition-transform hover:scale-105 hover:border-terracota/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota md:hidden"
+          className="fundador-bubble fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full border-2 border-terracota/30 bg-sand shadow-overlay transition-colors hover:border-terracota/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota md:hidden"
         >
           <span className="relative h-12 w-12 overflow-hidden rounded-full">
             <Image
@@ -85,7 +85,7 @@ export default function FundadorPanel({ open, onOpen, onClose }: FundadorPanelPr
             role="dialog"
             aria-labelledby="fundador-panel-title"
             aria-modal="true"
-            className="fundador-panel-pop fixed bottom-6 right-6 z-[70] flex w-[min(100%,24rem)] max-h-[min(36rem,calc(100vh-6rem))] flex-col rounded-3xl border border-ink/10 bg-sand shadow-[0_24px_60px_rgba(36,21,9,0.18)] md:bottom-8 md:right-8"
+            className="fundador-panel-pop fixed bottom-6 right-6 z-[70] flex w-[min(100%,24rem)] max-h-[min(36rem,calc(100vh-6rem))] flex-col rounded-3xl border border-ink/10 bg-sand shadow-overlay md:bottom-8 md:right-8"
           >
             <div className="flex justify-end px-4 pt-4">
               <button

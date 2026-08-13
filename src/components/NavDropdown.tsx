@@ -49,7 +49,7 @@ export default function NavDropdown({ label, eyebrow, items }: NavDropdownProps)
             className="panel-pop panel-elevated rounded-2xl border border-ink/8 bg-white p-2"
             role="menu"
           >
-            <p className="px-3 pb-1 pt-1 text-[0.65rem] font-semibold uppercase tracking-wide text-ink/40">
+            <p className="text-label px-3 pb-1 pt-1">
               {eyebrow}
             </p>
             {items.map((item) => {

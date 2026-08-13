@@ -17,7 +17,7 @@ const NO_HACE = [
 /** Bloque firma legal — confianza: qué hace y qué no hace el asistente. */
 export default function LegalLimitsBlock() {
   return (
-    <section className="section-band py-16 md:py-20">
+    <section className="section-band section-py">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal>
           <span className="chip">Confianza · Límites claros</span>

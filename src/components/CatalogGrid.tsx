@@ -43,14 +43,14 @@ function CatalogCard({ item }: { item: CatalogItem }) {
       }`}
     >
       {item.badge && (
-        <span className="chip absolute right-4 top-4 text-[0.65rem]">{item.badge}</span>
+        <span className="chip absolute right-4 top-4 text-caption">{item.badge}</span>
       )}
       <item.icon className="h-6 w-6 text-terracota" strokeWidth={1.5} />
-      <h3 className={`font-medium text-ink ${item.badge ? "mt-4 pr-24" : "mt-4"}`}>
+      <h3 className={`text-h3 text-ink ${item.badge ? "mt-4 pr-24" : "mt-4"}`}>
         {item.nombre}
       </h3>
       {item.entrega && (
-        <span className="chip-muted mt-2 w-fit text-[0.65rem]">Entrega: {item.entrega}</span>
+        <span className="chip text-caption mt-2 w-fit">Entrega: {item.entrega}</span>
       )}
       {item.descripcion && (
         <p className="mt-2 text-sm leading-relaxed text-ink/60">{item.descripcion}</p>

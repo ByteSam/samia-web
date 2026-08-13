@@ -49,7 +49,7 @@ export default function MobileMenu({ groups, fundadorOpen }: MobileMenuProps) {
             onClick={() => setOpen(false)}
           />
           <div
-            className="panel-pop panel-elevated fixed left-4 right-4 top-[4.5rem] z-50 rounded-2xl border border-ink/8 bg-white p-4 shadow-[0_20px_48px_rgba(36,21,9,0.12)]"
+            className="panel-pop panel-elevated fixed left-4 right-4 top-[4.5rem] z-50 rounded-[var(--radius-md)] border border-ink/8 bg-white p-4 shadow-overlay"
           >
             <WhatsAppButton
               message={WHATSAPP_DIAGNOSTICO_MESSAGE}
@@ -62,7 +62,7 @@ export default function MobileMenu({ groups, fundadorOpen }: MobileMenuProps) {
 
             {groups.map((group) => (
               <div key={group.label} className="mt-4">
-                <p className="px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-ink/40">
+                <p className="text-label px-3 py-1">
                   {group.eyebrow}
                 </p>
                 {group.items.map((item) => {

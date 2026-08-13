@@ -154,7 +154,7 @@ export default function ClinicasPage() {
               <WhatsAppButton
                 message="Hola, vi tu web y quiero reducir las ausencias en mi clínica"
                 source="clinicas_hero"
-                className="w-full max-w-[280px] md:w-auto"
+                className="w-full sm:w-auto"
               >
                 Quiero reducir ausencias
               </WhatsAppButton>

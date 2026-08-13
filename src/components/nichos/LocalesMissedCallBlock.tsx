@@ -73,7 +73,7 @@ export default function LocalesMissedCallBlock({
   }
 
   return (
-    <section className="section-band py-16 md:py-20">
+    <section className="section-band section-py">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal>
           <h2 className="text-h2 text-ink">Llamada perdida → WhatsApp automático</h2>

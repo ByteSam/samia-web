@@ -23,9 +23,9 @@ export default function GarantiaSection({
 }: GarantiaSectionProps) {
   if (variant === "dark") {
     return (
-      <section className="mx-auto max-w-3xl px-6 section-py text-center">
+      <section className="container-prose section-py text-center">
         <Reveal>
-          <ShieldCheck className="mx-auto h-8 w-8 text-terracota" strokeWidth={1.5} />
+          <ShieldCheck className="mx-auto h-6 w-6 text-terracota" strokeWidth={1.5} />
           <h2 className="text-h2 mt-4 text-sand">Riesgo cero para ti.</h2>
           <p className="mt-4 text-sand/70">
             Piloto de <strong className="font-medium text-sand">14 días</strong>. Si{" "}
@@ -51,7 +51,7 @@ export default function GarantiaSection({
   }
 
   return (
-    <section className="mx-auto max-w-3xl px-6 section-py">
+    <section className="container-prose section-py">
       <Reveal>
         <div className="card-soft-tint text-center">
           <ShieldCheck className="mx-auto h-8 w-8 text-terracota" strokeWidth={1.5} />

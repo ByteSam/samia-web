@@ -57,7 +57,7 @@ export default function AutomatizacionUseCasesBridge() {
         </Reveal>
 
         <Reveal delay={80}>
-          <div className="mt-10 grid gap-5 sm:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {CASOS.map((caso) => (
               <div key={caso.titulo} className="card-compact bg-white p-5 sm:p-6">
                 <caso.icon className="h-5 w-5 text-terracota" strokeWidth={1.5} />

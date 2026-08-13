@@ -17,8 +17,8 @@ const LEGAL = [{ label: "Privacidad", href: "/politica-de-privacidad" }] as cons
 
 export default function Footer() {
   return (
-    <footer className="border-t border-ink/8 bg-sand shadow-[0_-8px_24px_rgba(36,21,9,0.03)]">
-      <div className="mx-auto max-w-6xl px-6 py-12 text-sm">
+    <footer className="border-t border-ink/8 bg-sand shadow-footer">
+      <div className="container-shell py-12 text-sm">
         <div className="card-soft-tint mb-10 flex flex-col items-start justify-between gap-6 p-6 sm:flex-row sm:items-center">
           <div>
             <p className="font-medium text-ink">¿Listo para empezar?</p>

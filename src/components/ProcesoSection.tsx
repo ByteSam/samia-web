@@ -26,7 +26,7 @@ const PASOS = [
 /** Sección "De diagnóstico a operación" — timeline numerado (Sobeklab/Lebel). */
 export default function ProcesoSection() {
   return (
-    <section className="mx-auto max-w-3xl px-6 section-py">
+    <section className="container-prose section-py">
       <Reveal>
         <span className="chip">Cómo trabajamos</span>
         <h2 className="text-h2 mt-4 text-ink">De diagnóstico a operación</h2>
@@ -37,7 +37,7 @@ export default function ProcesoSection() {
       <Reveal delay={80}>
         <ol className="mt-10 space-y-0">
           {PASOS.map((step, i) => (
-            <li key={step.t} className="flex gap-5 sm:gap-6">
+            <li key={step.t} className="flex gap-6">
               <div className="flex flex-col items-center">
                 <span className="font-display text-3xl italic text-terracota sm:text-4xl">
                   {String(i + 1).padStart(2, "0")}

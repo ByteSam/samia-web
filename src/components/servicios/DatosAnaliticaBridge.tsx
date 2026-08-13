@@ -83,7 +83,7 @@ export default function DatosAnaliticaBridge() {
         </Reveal>
 
         <Reveal delay={80}>
-          <div className="mt-10 grid gap-5 sm:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {OFERTAS.map((item) => (
               <div key={item.titulo} className="card-compact bg-white p-5 sm:p-6">
                 <item.icon className="h-5 w-5 text-terracota" strokeWidth={1.5} />

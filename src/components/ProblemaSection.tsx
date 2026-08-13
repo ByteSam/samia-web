@@ -3,13 +3,13 @@ import Reveal from "@/components/Reveal";
 /** Sección "Problema" — layout con card sobre section-band. */
 export default function ProblemaSection() {
   return (
-    <section className="mx-auto max-w-4xl px-6 py-16 md:py-20">
+    <section className="container-prose section-py">
       <Reveal>
         <div className="card-soft bg-white">
           <h2 className="text-h2 text-ink">
             Cada consulta que no atiendes a tiempo es un cliente que se va a la competencia.
           </h2>
-          <ul className="mt-8 space-y-4 text-ink/65">
+          <ul className="mt-8 space-y-4 text-body">
             {[
               "Tienes web o redes, pero quien visita no deja datos o no te avisan a tiempo.",
               "Llegan consultas por WhatsApp fuera de horario y nadie contesta hasta el día siguiente.",

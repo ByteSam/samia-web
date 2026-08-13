@@ -19,7 +19,7 @@ export default function ProblemSection({
 
   return (
     <section
-      className={`mx-auto max-w-4xl px-6 ${isBand ? "py-16 md:py-20" : "pb-20"}`}
+      className={`mx-auto max-w-4xl px-6 ${isBand ? "section-py" : "pb-20"}`}
     >
       <Reveal>
         <div className={`card-soft ${isBand ? "bg-white" : ""}`}>

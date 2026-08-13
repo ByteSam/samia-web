@@ -44,7 +44,7 @@ function ArquitecturaIntegrada() {
 export default function InfraestructuraHeroCompare() {
   return (
     <div className="mt-10 pb-1 sm:mt-12">
-      <p className="section-eyebrow text-center text-[0.72rem] lg:text-left">
+      <p className="section-eyebrow text-center lg:text-left">
         Sueltas vs integrada
       </p>
       <div className="mt-4 grid items-stretch gap-4 sm:grid-cols-[1fr_auto_1fr] sm:gap-6">

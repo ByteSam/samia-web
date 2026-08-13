@@ -144,7 +144,7 @@ export default function DesarrolloWebPage() {
               <WhatsAppButton
                 message="Hola, quiero una web que convierta visitas en clientes"
                 source="desarrollo_web_hero"
-                className="w-full max-w-[280px] md:w-auto"
+                className="w-full sm:w-auto"
               >
                 Quiero una web que convierta
               </WhatsAppButton>
@@ -234,7 +234,7 @@ export default function DesarrolloWebPage() {
           <Reveal delay={80}>
             <ol className="mt-10 space-y-0">
               {PASOS.map((step, i) => (
-                <li key={step.t} className="flex gap-5 sm:gap-6">
+                <li key={step.t} className="flex gap-6 sm:gap-6">
                   <div className="flex flex-col items-center">
                     <span className="font-display text-3xl italic text-terracota sm:text-4xl">
                       {String(i + 1).padStart(2, "0")}

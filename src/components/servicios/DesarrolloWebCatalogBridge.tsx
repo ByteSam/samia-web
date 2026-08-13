@@ -63,10 +63,10 @@ export default function DesarrolloWebCatalogBridge() {
         </Reveal>
 
         <Reveal delay={80}>
-          <div className="mt-10 grid gap-5 sm:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {PASOS.map((paso) => (
               <div key={paso.titulo} className="card-compact bg-white p-5 sm:p-6">
-                <span className="chip-muted text-[0.65rem]">{paso.etiqueta}</span>
+                <span className="chip text-caption">{paso.etiqueta}</span>
                 <paso.icon className="mt-4 h-5 w-5 text-terracota" strokeWidth={1.5} />
                 <p className="mt-3 font-medium text-ink">{paso.titulo}</p>
                 <p className="mt-2 text-sm leading-relaxed text-ink/55">{paso.descripcion}</p>

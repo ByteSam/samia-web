@@ -42,20 +42,20 @@ function NichoCard({
   const cardClass = featured ? "card-soft-tint hover-lift" : "card-soft hover-lift";
 
   return (
-    <Link href={n.href} className={`${cardClass} group relative flex h-full flex-col overflow-hidden`}>
+    <Link href={n.href} className={`${cardClass} group relative flex h-full flex-col overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota`}>
       <span className={`absolute inset-x-0 top-0 h-1 ${n.accent}`} aria-hidden />
       <n.icon
         className={`text-terracota ${featured ? "h-8 w-8" : "h-6 w-6"}`}
         strokeWidth={1.5}
       />
-      <h3 className={`mt-5 font-medium text-ink ${featured ? "text-xl" : "text-lg"}`}>
+      <h3 className={`text-h3 ${featured ? "text-h3-featured" : ""} mt-5 text-ink`}>
         {n.nombre}
       </h3>
-      <p className="mt-2 text-sm text-ink/55">{n.dolor}</p>
-      <p className="mt-3 text-sm font-medium text-ink/75">{n.beneficio}</p>
+      <p className="text-small text-muted mt-2">{n.dolor}</p>
+      <p className="text-small text-secondary mt-3 font-medium">{n.beneficio}</p>
       <span className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-medium text-terracota-dark">
         Ver solución para {n.nombre.toLowerCase()}{" "}
-        <ArrowUpRight className="h-3.5 w-3.5" />
+        <ArrowUpRight className="link-card-arrow h-3.5 w-3.5" />
       </span>
     </Link>
   );
@@ -72,11 +72,11 @@ export default function SolucionesGrid({
   const rest = equalCards ? NICHOS : NICHOS.filter((n) => !n.featured);
 
   return (
-    <section className="mx-auto max-w-5xl px-6 section-py">
+    <section className="container-content section-py">
       <Reveal>
         <span className="chip">Mismo sistema, adaptado a tu sector</span>
         <h2 className="text-h2 mt-4 text-ink">Soluciones por rubro</h2>
-        <p className="mt-2 max-w-lg text-ink/60">
+        <p className="text-body mt-2 max-w-lg">
           Si tu negocio tiene un perfil específico, hay una solución pensada exactamente para ti.
         </p>
       </Reveal>

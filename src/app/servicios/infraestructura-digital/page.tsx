@@ -186,7 +186,7 @@ export default function InfraestructuraDigitalPage() {
 
       {/* QUÉ INCLUYE */}
       <div id="modulos" className="section-band border-t border-ink/6">
-        <section className="mx-auto max-w-5xl px-6 py-16 md:py-20">
+        <section className="mx-auto max-w-5xl px-6 section-py">
           <Reveal>
             <p className="section-eyebrow">Módulos</p>
             <h2 className="text-h2 mt-2 text-ink">Qué incluye</h2>

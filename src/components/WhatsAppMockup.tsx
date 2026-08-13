@@ -14,7 +14,7 @@ const MENSAJES_DEFAULT: Mensaje[] = [
   { de: "asistente", texto: "Listo ✅ Confirmado para el sábado 10am." },
 ];
 
-const STAGGER_MS = 320;
+const STAGGER_MS = 280;
 const INITIAL_DELAY_MS = 400;
 
 function subscribeReducedMotion(onChange: () => void) {
@@ -87,10 +87,8 @@ export default function WhatsAppMockup({
   const shell = (
     <div className={`relative w-full ${compact ? "max-w-[280px]" : "max-w-[340px]"}`}>
       <div
-        className={`overflow-hidden rounded-3xl border border-ink/8 bg-white ${
-          compact
-            ? "shadow-[0_12px_32px_rgba(36,21,9,0.08)]"
-            : "shadow-[0_24px_56px_rgba(36,21,9,0.12)]"
+        className={`overflow-hidden rounded-3xl border border-ink/8 bg-white shadow-overlay ${
+          compact ? "" : ""
         }`}
       >
         {/* Header del chat */}

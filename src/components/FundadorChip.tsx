@@ -95,7 +95,7 @@ export default function FundadorChip({
           priority
         />
       </span>
-      <span className="text-xs text-ink/50 transition-colors group-hover:text-ink/65">
+      <span className="text-small text-muted transition-colors group-hover:text-secondary">
         <span className="font-medium text-ink/70">Daniel</span>
         <span> · fundador</span>
       </span>

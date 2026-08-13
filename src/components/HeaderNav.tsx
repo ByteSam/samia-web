@@ -15,7 +15,7 @@ export default function HeaderNav({ fundadorOpen }: HeaderNavProps) {
   return (
     <div className="flex flex-1 items-center justify-end gap-2 md:gap-3 lg:gap-4">
       <nav
-        className="hidden items-center gap-5 text-sm font-medium text-ink/75 md:flex lg:gap-6"
+        className="hidden items-center gap-6 text-sm font-medium text-ink/75 md:flex"
         aria-label="Navegación principal"
       >
         <NavDropdown
@@ -47,8 +47,9 @@ export default function HeaderNav({ fundadorOpen }: HeaderNavProps) {
       <WhatsAppButton
         message={WHATSAPP_DIAGNOSTICO_MESSAGE}
         variant="terracota"
+        size="sm"
         source="header"
-        className="hidden !px-4 !py-2 !text-sm md:inline-flex lg:!px-5"
+        className="hidden md:inline-flex"
       >
         <span className="lg:hidden">Diagnóstico</span>
         <span className="hidden lg:inline">Diagnóstico gratis</span>

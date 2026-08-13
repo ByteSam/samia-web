@@ -61,16 +61,16 @@ function ServicioCard({
   compact?: boolean;
 }) {
   return (
-    <Link href={s.href} className="card-soft hover-lift group flex h-full flex-col">
-      <span className="chip-muted text-[0.65rem]">{chip}</span>
+    <Link href={s.href} className="card-soft hover-lift group flex h-full flex-col focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota">
+      <span className="chip text-caption">{chip}</span>
       <s.icon className={`${compact ? "mt-4 h-6 w-6" : "mt-5 h-7 w-7"} text-terracota`} strokeWidth={1.5} />
-      <h3 className={`${compact ? "mt-4 text-base" : "mt-5 text-lg"} font-medium text-ink`}>
+      <h3 className={`text-h3 ${compact ? "mt-4" : "mt-5"} text-ink`}>
         {s.nombre}
       </h3>
-      <p className="mt-2 text-sm text-ink/75">{s.beneficio}</p>
-      <p className="mt-3 text-sm text-ink/55">{s.criterio}</p>
+      <p className="text-small text-secondary mt-2">{s.beneficio}</p>
+      <p className="text-small text-muted mt-3">{s.criterio}</p>
       <span className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-medium text-terracota-dark">
-        Ver más <ArrowUpRight className="h-3.5 w-3.5" />
+        Ver más <ArrowUpRight className="link-card-arrow h-3.5 w-3.5" />
       </span>
     </Link>
   );
@@ -79,17 +79,21 @@ function ServicioCard({
 /** Grid de 5 servicios con criterio de auto-selección — Home, sección "Servicios". */
 export default function ServiciosGrid() {
   return (
-    <section className="mx-auto max-w-5xl px-6 section-py">
+    <section className="container-content section-py">
       <Reveal>
         <span className="chip">Catálogo completo</span>
         <h2 className="text-h2 mt-4 text-ink">Servicios</h2>
-        <p className="mt-2 max-w-md text-ink/60">
+        <p className="text-body mt-2 max-w-md">
           Cinco formas de resolverlo, según dónde estés hoy.
+        </p>
+        <p className="text-small text-muted mt-4 max-w-lg">
+          ¿No ves tu rubro exacto? El catálogo de abajo es el mismo sistema, aplicado a cualquier
+          negocio que recibe consultas por web o WhatsApp.
         </p>
       </Reveal>
 
       <Reveal delay={60}>
-        <p className="mt-10 text-xs font-semibold uppercase tracking-wide text-ink/40">
+        <p className="text-label mt-10">
           Empieza aquí
         </p>
       </Reveal>
@@ -101,21 +105,21 @@ export default function ServiciosGrid() {
         ))}
       </div>
 
-      <Reveal delay={240}>
-        <p className="mt-10 text-xs font-semibold uppercase tracking-wide text-ink/40">
+      <Reveal delay={80}>
+        <p className="text-label mt-10">
           Cuando ya validas
         </p>
       </Reveal>
       <div className="mt-4 grid gap-6 md:grid-cols-2">
         {ESCALA.map((s, i) => (
-          <Reveal key={s.href} delay={280 + i * 60}>
+          <Reveal key={s.href} delay={80 + i * 60}>
             <ServicioCard s={s} chip="Cuando ya validas" compact />
           </Reveal>
         ))}
       </div>
 
-      <Reveal delay={360}>
-        <p className="mt-8 text-center text-sm text-ink/50">
+      <Reveal delay={80}>
+        <p className="text-small text-muted mt-8 text-center">
           Experiencia aplicable en: {RUBROS_HOME}
         </p>
       </Reveal>
