@@ -17,7 +17,6 @@ import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import CatalogGrid from "@/components/CatalogGrid";
-import FinalCTA from "@/components/FinalCTA";
 import ProblemSection from "@/components/ProblemSection";
 import HeroTrustLine from "@/components/HeroTrustLine";
 import WhatsAppMockup from "@/components/WhatsAppMockup";
@@ -131,7 +130,7 @@ export default function DesarrolloWebPage() {
           <div className="text-center lg:text-left">
             <span className="chip">Servicio · Desarrollo web</span>
 
-            <h1 className="text-h1 text-balance mt-6 text-[2.5rem] text-ink sm:text-[2.75rem] lg:text-[3rem]">
+            <h1 className="text-h1 text-balance mt-6 text-ink">
               Un sitio que{" "}
               <span className="font-display italic text-terracota">convierte</span>, no uno que solo
               se ve bonito.
@@ -265,16 +264,18 @@ export default function DesarrolloWebPage() {
       <ProyectosRecientes variant="compact" />
 
       <div className="section-ink">
-        <GarantiaSection condicion="el sitio no te trae los resultados esperados" variant="dark" />
+        <GarantiaSection
+          condicion="el sitio no te trae los resultados esperados"
+          variant="dark"
+          cta={{
+            message: "Hola, quiero probar mi web con la garantía de 14 días",
+            textoBoton: "Empezar con piloto de 14 días",
+            source: "desarrollo_web_garantia",
+          }}
+        />
       </div>
 
       <FAQSection items={FAQS} />
-
-      <FinalCTA
-        titulo="¿Tu web de hoy te trae clientes, o solo está ahí?"
-        mensaje="Hola, quiero una web que convierta visitas en clientes"
-        textoBoton="Quiero una web que convierta"
-      />
     </>
   );
 }

@@ -4,18 +4,22 @@ import {
   UserPlus,
   Link2,
   Workflow,
+  ClipboardList,
+  Settings2,
+  PackageCheck,
+  Headset,
 } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import CatalogGrid from "@/components/CatalogGrid";
-import FinalCTA from "@/components/FinalCTA";
 import ProblemSection from "@/components/ProblemSection";
-import WhatsAppMockup from "@/components/WhatsAppMockup";
+import HeroTrustLine from "@/components/HeroTrustLine";
 import AutomatizacionHeroCompare from "@/components/servicios/AutomatizacionHeroCompare";
+import AutomatizacionFlowPreview from "@/components/servicios/AutomatizacionFlowPreview";
 import AutomatizacionUseCasesBridge from "@/components/servicios/AutomatizacionUseCasesBridge";
-import { MOCKUP_AUTOMATIZACION } from "@/lib/nichos/mockups";
+import ImplementacionStepper from "@/components/ImplementacionStepper";
 
 export const metadata: Metadata = {
   title: "Automatización de procesos para negocios en Perú",
@@ -65,18 +69,22 @@ const PASOS = [
   {
     t: "Diagnóstico",
     d: "Identificamos el proceso manual que más te cuesta tiempo o dinero — 30 min por WhatsApp, sin costo.",
+    icon: ClipboardList,
   },
   {
     t: "Diseño del flujo",
     d: "Defino qué dispara la automatización, qué datos se guardan y quién recibe el aviso.",
+    icon: Settings2,
   },
   {
     t: "Implementación",
     d: "Configuro el flujo, lo probamos con casos reales y lo dejo documentado.",
+    icon: PackageCheck,
   },
   {
     t: "Soporte",
     d: "Ajustes y mejoras cuando tu operación cambia — no desaparezco después de la entrega.",
+    icon: Headset,
   },
 ];
 
@@ -88,6 +96,10 @@ const FAQS = [
   {
     q: "¿Necesito un CRM como Odoo para automatizar?",
     a: "No obligatorio. Podemos empezar con avisos por WhatsApp y hojas de cálculo, y escalar a CRM o ERP cuando haga falta.",
+  },
+  {
+    q: "¿Puedo ver un ejemplo antes de contratar?",
+    a: "Sí — en la comparación de esta página ves cómo te avisa un flujo cuando necesita tu atención. En el diagnóstico adaptamos el flujo a tu operación.",
   },
   {
     q: "¿Puedo automatizar solo un proceso?",
@@ -102,48 +114,42 @@ const FAQS = [
 export default function AutomatizacionPage() {
   return (
     <>
-      <section className="landing-hero-accent mx-auto max-w-3xl px-6 pb-12 pt-20 md:pb-16 md:pt-28 lg:max-w-4xl">
-        <div className="text-center lg:text-left">
-          <span className="chip">Servicio · Automatización</span>
+      <section className="landing-hero-accent mx-auto max-w-6xl px-6 pb-12 pt-20 md:pb-16 md:pt-28">
+        <div className="grid gap-12 lg:grid-cols-[5fr_4fr] lg:items-center">
+          <div className="text-center lg:text-left">
+            <span className="chip">Servicio · Automatización</span>
 
-          <h1 className="text-h1 mt-6 text-[2.5rem] text-ink sm:text-5xl md:text-[3.5rem]">
-            Menos tareas{" "}
-            <span className="font-display italic text-terracota">repetitivas</span>, más tiempo para
-            lo que importa.
-          </h1>
+            <h1 className="text-h1 text-balance mt-6 text-ink">
+              Menos tareas{" "}
+              <span className="font-display italic text-terracota">repetitivas</span>, más tiempo para
+              lo que importa.
+            </h1>
 
-          <p className="mt-5 text-lg leading-relaxed text-ink/60">
-            Flujos que capturan, avisan y conectan — sin que copies datos entre WhatsApp, Excel y
-            tu correo.
-          </p>
-
-          <div className="mt-8 flex flex-col items-center gap-3 lg:items-start">
-            <WhatsAppButton
-              message="Hola, quiero automatizar procesos en mi negocio"
-              source="automatizacion_hero"
-            >
-              Quiero automatizar procesos
-            </WhatsAppButton>
-            <p className="text-sm text-ink/50">
-              Desde S/900 · Diagnóstico gratis · Hablarás directamente conmigo
+            <p className="mt-6 text-lg leading-relaxed text-ink/60">
+              Flujos que capturan, avisan y conectan — sin que copies datos entre WhatsApp, Excel y
+              tu correo.
             </p>
+
+            <div className="mt-8 flex flex-col items-center gap-3 lg:items-start">
+              <WhatsAppButton
+                message="Hola, quiero automatizar procesos en mi negocio"
+                source="automatizacion_hero"
+              >
+                Quiero automatizar procesos
+              </WhatsAppButton>
+              <p className="text-sm text-ink/50">
+                Desde S/900 · Diagnóstico gratis · Hablarás directamente conmigo
+              </p>
+              <div className="mt-1">
+                <HeroTrustLine />
+              </div>
+            </div>
           </div>
 
-          <AutomatizacionHeroCompare />
+          <Reveal delay={120} className="hidden lg:block">
+            <AutomatizacionFlowPreview />
+          </Reveal>
         </div>
-      </section>
-
-      <section className="mx-auto max-w-sm px-6 pb-14 md:pb-20">
-        <div className="mockup-frame">
-          <WhatsAppMockup
-            titulo={MOCKUP_AUTOMATIZACION.titulo}
-            subtitulo={MOCKUP_AUTOMATIZACION.subtitulo}
-            mensajes={MOCKUP_AUTOMATIZACION.mensajes}
-          />
-        </div>
-        <p className="mt-3 text-center text-xs text-ink/45">
-          Así te avisa cuando un flujo necesita tu atención — sin revisar todo manualmente.
-        </p>
       </section>
 
       <div className="section-band">
@@ -159,10 +165,28 @@ export default function AutomatizacionPage() {
         />
       </div>
 
+      <section className="mx-auto max-w-5xl px-6 section-py">
+        <Reveal>
+          <span className="chip">Manual vs automatizado</span>
+          <h2 className="text-h2 mt-4 text-ink">El mismo lead, dos resultados</h2>
+          <p className="mt-3 max-w-lg text-ink/60">
+            El contacto llega igual. La diferencia está en si alguien lo sigue a tiempo.
+          </p>
+        </Reveal>
+        <Reveal delay={80} className="mt-10">
+          <AutomatizacionHeroCompare />
+        </Reveal>
+      </section>
+
       <AutomatizacionUseCasesBridge />
 
       <div className="section-band border-t border-ink/6">
-        <CatalogGrid items={CATALOGO} titulo="Flujos habituales, en soles" columns={2}>
+        <CatalogGrid
+          items={CATALOGO}
+          titulo="Flujos habituales, en soles"
+          chip="Servicios · Precios orientativos"
+          columns={2}
+        >
           <p className="text-sm text-ink/50">
             También disponible dentro de Agentes IA e Infraestructura digital — el diagnóstico
             define el punto de partida.
@@ -171,40 +195,22 @@ export default function AutomatizacionPage() {
       </div>
 
       <div className="section-band">
-        <section className="mx-auto max-w-4xl px-6 section-py">
-          <Reveal>
-            <p className="section-eyebrow">Implementación</p>
-            <h2 className="text-h2 mt-2 text-ink">Cómo trabajamos</h2>
-          </Reveal>
-          <Reveal delay={80}>
-            <ol className="mt-8 space-y-6">
-              {PASOS.map((step, i) => (
-                <li key={step.t} className="flex gap-4">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 font-medium text-ink">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <p className="font-medium text-ink">{step.t}</p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-ink/60">{step.d}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
-        </section>
+        <ImplementacionStepper titulo="Cómo trabajamos" pasos={PASOS} columns={4} />
       </div>
 
       <div className="section-ink">
-        <GarantiaSection condicion="la automatización no te ahorra tiempo ni recupera oportunidades" variant="dark" />
+        <GarantiaSection
+          condicion="la automatización no te ahorra tiempo ni recupera oportunidades"
+          variant="dark"
+          cta={{
+            message: "Hola, quiero probar la automatización con la garantía de 14 días",
+            textoBoton: "Empezar con piloto de 14 días",
+            source: "automatizacion_garantia",
+          }}
+        />
       </div>
 
       <FAQSection items={FAQS} />
-
-      <FinalCTA
-        titulo="¿Qué proceso manual te gustaría dejar de hacer cada semana?"
-        mensaje="Hola, quiero automatizar procesos en mi negocio"
-        textoBoton="Quiero automatizar procesos"
-      />
     </>
   );
 }

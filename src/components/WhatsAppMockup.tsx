@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 type Mensaje = {
   de: "cliente" | "asistente";
@@ -16,6 +16,20 @@ const MENSAJES_DEFAULT: Mensaje[] = [
 
 const STAGGER_MS = 320;
 const INITIAL_DELAY_MS = 400;
+
+function subscribeReducedMotion(onChange: () => void) {
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+function getReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
 
 type WhatsAppMockupProps = {
   mensajes?: Mensaje[];
@@ -33,20 +47,42 @@ export default function WhatsAppMockup({
   compact = false,
   framed = false,
 }: WhatsAppMockupProps) {
-  const [visibleCount, setVisibleCount] = useState(0);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotion,
+    getReducedMotionServerSnapshot,
+  );
+  const [animatedCount, setAnimatedCount] = useState(0);
+  const visibleCount = prefersReducedMotion ? mensajes.length : animatedCount;
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const timers: ReturnType<typeof setTimeout>[] = [];
-    mensajes.forEach((_, i) => {
-      timers.push(
-        setTimeout(
-          () => setVisibleCount((n) => Math.max(n, i + 1)),
-          INITIAL_DELAY_MS + i * STAGGER_MS,
-        ),
-      );
-    });
-    return () => timers.forEach(clearTimeout);
-  }, [mensajes]);
+    let cancelled = false;
+
+    timers.push(
+      setTimeout(() => {
+        if (cancelled) return;
+        setAnimatedCount(0);
+        mensajes.forEach((_, i) => {
+          timers.push(
+            setTimeout(
+              () => {
+                if (!cancelled) setAnimatedCount((n) => Math.max(n, i + 1));
+              },
+              INITIAL_DELAY_MS + i * STAGGER_MS,
+            ),
+          );
+        });
+      }, 0),
+    );
+
+    return () => {
+      cancelled = true;
+      timers.forEach(clearTimeout);
+    };
+  }, [mensajes, prefersReducedMotion]);
 
   const shell = (
     <div className={`relative w-full ${compact ? "max-w-[280px]" : "max-w-[340px]"}`}>

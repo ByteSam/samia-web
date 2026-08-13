@@ -1,6 +1,31 @@
 import Link from "next/link";
-import { MessageSquareText, CalendarClock, Layers, Zap, Shield, TrendingUp } from "lucide-react";
+import {
+  MessageSquareText,
+  CalendarClock,
+  Layers,
+  Zap,
+  Shield,
+  TrendingUp,
+  Clock,
+  MessageCircle,
+  Filter,
+} from "lucide-react";
 import Reveal from "@/components/Reveal";
+
+const PARA_TI = [
+  {
+    icon: Clock,
+    texto: "Recibes consultas por WhatsApp pero no puedes responder al instante",
+  },
+  {
+    icon: MessageCircle,
+    texto: "Respondes siempre lo mismo — horarios, precios, disponibilidad",
+  },
+  {
+    icon: Filter,
+    texto: "Quieres filtrar urgencias de curiosidades sin leer todo el chat",
+  },
+];
 
 const PASOS = [
   {
@@ -54,12 +79,19 @@ export default function AgentesIACatalogBridge() {
         </Reveal>
 
         <Reveal delay={60}>
-          <div className="card-soft mt-8 p-5 sm:p-6">
+          <div className="card-soft-tint mt-8 p-5 sm:p-6">
             <p className="text-sm font-medium text-ink">Este servicio es para ti si…</p>
-            <ul className="mt-4 space-y-2 text-sm text-ink/65">
-              <li>• Recibes consultas por WhatsApp pero no puedes responder al instante</li>
-              <li>• Respondes siempre lo mismo — horarios, precios, disponibilidad</li>
-              <li>• Quieres filtrar urgencias de curiosidades sin leer todo el chat</li>
+            <ul className="mt-4 space-y-3">
+              {PARA_TI.map((item) => (
+                <li key={item.texto} className="flex items-start gap-3 text-sm text-ink/70">
+                  <item.icon
+                    className="mt-0.5 h-4 w-4 shrink-0 text-terracota"
+                    strokeWidth={1.75}
+                    aria-hidden
+                  />
+                  <span>{item.texto}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </Reveal>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   Clock,
   CalendarCheck,
@@ -6,6 +7,7 @@ import {
   ClipboardList,
   Settings2,
   PackageCheck,
+  Layers,
 } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
@@ -13,11 +15,12 @@ import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import PricingTiers from "@/components/PricingTiers";
 import ProblemSection from "@/components/ProblemSection";
-import FinalCTA from "@/components/FinalCTA";
 import WhatsAppMockup from "@/components/WhatsAppMockup";
 import HeroTrustLine from "@/components/HeroTrustLine";
 import ClinicasAusenciasBlock from "@/components/nichos/ClinicasAusenciasBlock";
 import ClinicasHeroAgendaCompare from "@/components/nichos/ClinicasHeroAgendaCompare";
+import ImplementacionStepper from "@/components/ImplementacionStepper";
+import SolutionSection from "@/components/SolutionSection";
 import { MOCKUP_CLINICA } from "@/lib/nichos/mockups";
 
 export const metadata: Metadata = {
@@ -57,6 +60,24 @@ const PAQUETES = [
       "Integración con tu agenda o sistema (según diagnóstico)",
       "Reportes básicos de consultas y citas",
     ],
+  },
+];
+
+const SOLUCION_ITEMS = [
+  {
+    icon: Clock,
+    t: "Consultas frecuentes",
+    d: "Horarios, precios, servicios y ubicación — al instante.",
+  },
+  {
+    icon: CalendarCheck,
+    t: "Citas y recordatorios",
+    d: "Agenda el turno y manda el aviso 24h antes.",
+  },
+  {
+    icon: UserCheck,
+    t: "Derivación inteligente",
+    d: "Solo pasa a una persona lo urgente o complejo.",
   },
 ];
 
@@ -119,7 +140,7 @@ export default function ClinicasPage() {
           <div className="text-center lg:text-left">
             <span className="chip">Clínicas · citas por WhatsApp</span>
 
-            <h1 className="text-h1 text-balance mt-6 text-[2.5rem] text-ink sm:text-[2.75rem] lg:text-[3rem]">
+            <h1 className="text-h1 text-balance mt-6 text-ink">
               Menos{" "}
               <span className="font-display italic text-terracota">ausencias</span>, agenda más
               llena.
@@ -199,45 +220,11 @@ export default function ClinicasPage() {
       {/* Recordatorio — fondo blanco */}
       <ClinicasAusenciasBlock />
 
-      {/* SOLUCIÓN */}
-      <div className="section-band border-t border-ink/6">
-        <section className="mx-auto max-w-5xl px-6 section-py">
-          <Reveal>
-            <span className="chip">La solución</span>
-            <h2 className="text-h2 mt-4 text-ink">Recepción libre de lo repetitivo</h2>
-          </Reveal>
-          <Reveal delay={80}>
-            <div className="mt-10 grid gap-5 sm:grid-cols-3">
-              {[
-                {
-                  icon: Clock,
-                  t: "Consultas frecuentes",
-                  d: "Horarios, precios, servicios y ubicación — al instante.",
-                },
-                {
-                  icon: CalendarCheck,
-                  t: "Citas y recordatorios",
-                  d: "Agenda el turno y manda el aviso 24h antes.",
-                },
-                {
-                  icon: UserCheck,
-                  t: "Derivación inteligente",
-                  d: "Solo pasa a una persona lo urgente o complejo.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.t}
-                  className="card-compact hover-lift bg-white p-5 sm:p-6"
-                >
-                  <item.icon className="h-5 w-5 text-terracota" strokeWidth={1.5} />
-                  <p className="mt-3 font-medium text-ink">{item.t}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/55">{item.d}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </section>
-      </div>
+      <SolutionSection
+        titulo="Recepción libre de lo repetitivo"
+        items={SOLUCION_ITEMS}
+        cardVariant="compact"
+      />
 
       {/* PAQUETES */}
       <section className="border-t border-ink/8">
@@ -254,68 +241,47 @@ export default function ClinicasPage() {
         </PricingTiers>
       </section>
 
-      {/* IMPLEMENTACIÓN — timeline alineado con Home */}
-      <section className="section-band border-t border-ink/6">
-        <div className="mx-auto max-w-3xl px-6 section-py">
-          <Reveal>
-            <span className="chip">Implementación</span>
-            <h2 className="text-h2 mt-4 text-ink">Cómo lo implementamos en tu clínica</h2>
-            <p className="mt-3 text-ink/60">
-              Configurado con la información real de tu clínica — sin plantillas genéricas.
-            </p>
-          </Reveal>
-          <Reveal delay={80}>
-            <ol className="mt-10 space-y-0">
-              {PASOS.map((step, i) => (
-                <li key={step.t} className="flex gap-5 sm:gap-6">
-                  <div className="flex flex-col items-center">
-                    <span className="font-display text-3xl italic text-terracota sm:text-4xl">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    {i < PASOS.length - 1 && (
-                      <span className="my-2 min-h-10 w-px grow bg-ink/12 sm:min-h-14" aria-hidden />
-                    )}
-                  </div>
-                  <div className="pb-10 sm:pb-12">
-                    <div className="flex items-center gap-2">
-                      <step.icon className="h-4 w-4 text-terracota" strokeWidth={1.5} />
-                      <h3 className="font-medium text-ink">{step.t}</h3>
-                    </div>
-                    <p className="mt-2 flex items-start gap-1.5 text-xs font-medium text-terracota-dark/80">
-                      <PackageCheck className="mt-0.5 h-3.5 w-3.5 shrink-0" strokeWidth={1.75} />
-                      <span>Entregable: {step.entregable}</span>
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-ink/60">{step.d}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
-        </div>
-      </section>
+      {/* IMPLEMENTACIÓN */}
+      <div className="section-band border-t border-ink/6">
+        <ImplementacionStepper
+          labelStyle="chip"
+          label="Implementación"
+          titulo="Cómo lo implementamos en tu clínica"
+          subtitulo="Configurado con la información real de tu clínica — sin plantillas genéricas."
+          pasos={PASOS}
+          columns={3}
+        />
+      </div>
 
-      {/* ESCALERA — qué servicio base incluye esto */}
-      <section className="mx-auto max-w-3xl px-6 section-py">
+      {/* ESCALERA */}
+      <section className="mx-auto max-w-3xl px-6 pb-12">
         <Reveal>
-          <span className="chip-muted">Qué hay detrás</span>
-          <p className="mt-4 text-sm leading-relaxed text-ink/65">
-            Esta solución está construida sobre{" "}
-            <a
-              href="/servicios/agentes-ia"
-              className="font-medium text-terracota-dark underline-offset-2 hover:underline"
-            >
-              Agentes IA por WhatsApp
-            </a>{" "}
-            — el servicio que forma la base del asistente de reservas y recordatorios. Si necesitas
-            conectar tu asistente con otros sistemas, también aplica{" "}
-            <a
-              href="/servicios/automatizacion"
-              className="font-medium text-terracota-dark underline-offset-2 hover:underline"
-            >
-              Automatización
-            </a>
-            .
-          </p>
+          <div className="card-soft-tint p-5 sm:p-6">
+            <div className="flex items-start gap-3">
+              <Layers className="mt-0.5 h-5 w-5 shrink-0 text-terracota" strokeWidth={1.75} />
+              <div>
+                <p className="text-sm font-medium text-ink">Qué hay detrás de esta solución</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink/65">
+                  Esta solución está construida sobre{" "}
+                  <Link
+                    href="/servicios/agentes-ia"
+                    className="font-medium text-terracota-dark underline-offset-2 hover:underline"
+                  >
+                    Agentes IA por WhatsApp
+                  </Link>{" "}
+                  — el servicio que forma la base del asistente de reservas y recordatorios. Si necesitas
+                  conectar tu asistente con otros sistemas, también aplica{" "}
+                  <Link
+                    href="/servicios/automatizacion"
+                    className="font-medium text-terracota-dark underline-offset-2 hover:underline"
+                  >
+                    Automatización
+                  </Link>
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
         </Reveal>
       </section>
 
@@ -323,16 +289,15 @@ export default function ClinicasPage() {
         <GarantiaSection
           condicion="el asistente no te ahorra tiempo ni recupera pacientes"
           variant="dark"
+          cta={{
+            message: "Hola, quiero probar el asistente con la garantía de 14 días para mi clínica",
+            textoBoton: "Empezar con piloto de 14 días",
+            source: "clinicas_garantia",
+          }}
         />
       </div>
 
       <FAQSection items={FAQS} />
-
-      <FinalCTA
-        titulo="¿Cuántas citas se caen cada semana por ausencias en tu clínica?"
-        mensaje="Hola, vi tu web y quiero reducir las ausencias en mi clínica"
-        textoBoton="Quiero reducir ausencias"
-      />
     </>
   );
 }

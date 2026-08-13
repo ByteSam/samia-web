@@ -5,11 +5,7 @@ import { whatsappLink, CONTACT_EMAIL } from "@/lib/contact";
 import { trackEvent } from "@/lib/analytics";
 
 /**
- * Formulario de captura de leads — opción A del checklist de lanzamiento.
- * No guarda nada en un backend: arma un mensaje de WhatsApp prellenado
- * con los datos y abre el chat directo con Daniel. Si el navegador bloquea
- * la ventana emergente (o no hay WhatsApp disponible), muestra un fallback
- * con correo de contacto en vez de fallar en silencio.
+ * Formulario de captura de leads — abre WhatsApp con mensaje prellenado.
  */
 export default function LeadForm() {
   const [nombre, setNombre] = useState("");
@@ -51,7 +47,7 @@ export default function LeadForm() {
   )}&body=${encodeURIComponent(mensajeEnviado)}`;
 
   return (
-    <form onSubmit={handleSubmit} className="card-soft space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label htmlFor="lead-nombre" className="text-sm font-medium text-ink">
           Tu nombre
@@ -62,7 +58,7 @@ export default function LeadForm() {
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
           placeholder="Ej. María Torres"
-          className="mt-1.5 w-full rounded-xl border border-ink/15 bg-white px-4 py-2.5 text-sm text-ink outline-none transition-colors focus:border-terracota"
+          className="input-field"
           required
         />
       </div>
@@ -77,7 +73,7 @@ export default function LeadForm() {
           value={negocio}
           onChange={(e) => setNegocio(e.target.value)}
           placeholder="Ej. Clínica Dental Sonrisa"
-          className="mt-1.5 w-full rounded-xl border border-ink/15 bg-white px-4 py-2.5 text-sm text-ink outline-none transition-colors focus:border-terracota"
+          className="input-field"
         />
       </div>
 
@@ -91,20 +87,20 @@ export default function LeadForm() {
           onChange={(e) => setNecesidad(e.target.value)}
           placeholder="Ej. Quiero una web que capture leads de mis pacientes."
           rows={3}
-          className="mt-1.5 w-full resize-none rounded-xl border border-ink/15 bg-white px-4 py-2.5 text-sm text-ink outline-none transition-colors focus:border-terracota"
+          className="input-field resize-none"
           required
         />
       </div>
 
       <p className="rounded-xl border border-ink/8 bg-sand/60 px-4 py-3 text-sm text-ink/65">
-        Al enviar, se abre WhatsApp con tu mensaje ya escrito. Tú confirmas el
-        envío desde tu teléfono o WhatsApp Web.
+        Al enviar, se abre WhatsApp con tu mensaje ya escrito. Tú confirmas el envío desde tu
+        teléfono o WhatsApp Web.
       </p>
 
       <button
         type="submit"
         disabled={disabled}
-        className="btn-pill btn-pill-whatsapp w-full disabled:!bg-ink/10 disabled:!text-ink/40 disabled:cursor-not-allowed"
+        className="btn-pill btn-pill-solid w-full disabled:!bg-ink/10 disabled:!text-ink/40 disabled:cursor-not-allowed disabled:!shadow-none"
       >
         Continuar en WhatsApp
       </button>

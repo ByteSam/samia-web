@@ -1,6 +1,30 @@
 import Link from "next/link";
-import { BarChart3, FileText, Activity, Layers, Shield } from "lucide-react";
+import {
+  BarChart3,
+  FileText,
+  Activity,
+  Layers,
+  Shield,
+  FileSpreadsheet,
+  HelpCircle,
+  LayoutDashboard,
+} from "lucide-react";
 import Reveal from "@/components/Reveal";
+
+const PARA_TI = [
+  {
+    icon: FileSpreadsheet,
+    texto: "Tus KPIs están en varias hojas de cálculo que armás cada semana",
+  },
+  {
+    icon: HelpCircle,
+    texto: "No sabes qué canal trae más clientes",
+  },
+  {
+    icon: LayoutDashboard,
+    texto: "Quieres ver el negocio sin tener que abrir cuatro herramientas",
+  },
+];
 
 const OFERTAS = [
   {
@@ -41,12 +65,19 @@ export default function DatosAnaliticaBridge() {
         </Reveal>
 
         <Reveal delay={60}>
-          <div className="card-soft mt-8 p-5 sm:p-6">
+          <div className="card-soft-tint mt-8 p-5 sm:p-6">
             <p className="text-sm font-medium text-ink">Este servicio es para ti si…</p>
-            <ul className="mt-4 space-y-2 text-sm text-ink/65">
-              <li>• Tus KPIs están en varias hojas de cálculo que armás cada semana</li>
-              <li>• No sabes qué canal trae más clientes</li>
-              <li>• Quieres ver el negocio sin tener que abrir cuatro herramientas</li>
+            <ul className="mt-4 space-y-3">
+              {PARA_TI.map((item) => (
+                <li key={item.texto} className="flex items-start gap-3 text-sm text-ink/70">
+                  <item.icon
+                    className="mt-0.5 h-4 w-4 shrink-0 text-terracota"
+                    strokeWidth={1.75}
+                    aria-hidden
+                  />
+                  <span>{item.texto}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </Reveal>

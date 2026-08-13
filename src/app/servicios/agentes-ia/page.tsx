@@ -7,20 +7,20 @@ import {
   Layers,
   PhoneMissed,
   UserPlus,
+  ClipboardList,
+  Settings2,
+  Plug,
 } from "lucide-react";
 import Link from "next/link";
 import ProyectosRecientes from "@/components/ProyectosRecientes";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
 import CatalogGrid from "@/components/CatalogGrid";
-import FinalCTA from "@/components/FinalCTA";
 import ProblemSection from "@/components/ProblemSection";
-import WhatsAppMockup from "@/components/WhatsAppMockup";
 import AgentesHeroInboxCompare from "@/components/servicios/AgentesHeroInboxCompare";
 import AgentesIACatalogBridge from "@/components/servicios/AgentesIACatalogBridge";
-import { MOCKUP_AGENTES } from "@/lib/nichos/mockups";
+import ImplementacionStepper from "@/components/ImplementacionStepper";
 
 export const metadata: Metadata = {
   title: "Agentes de WhatsApp con IA para negocios en Perú",
@@ -29,13 +29,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "/servicios/agentes-ia" },
 };
 
-const CATALOGO = [
+const CATALOGO_BASICO = [
   {
     icon: MessageSquareText,
     nombre: "Recepcionista IA WhatsApp",
     entrega: "3-7 días",
     setup: "S/1,500 – 3,500",
     retainer: "S/350 – 800",
+    badge: "Punto de partida",
   },
   {
     icon: CalendarClock,
@@ -44,6 +45,16 @@ const CATALOGO = [
     setup: "S/1,500 – 3,000",
     retainer: "S/300 – 700",
   },
+  {
+    icon: PhoneMissed,
+    nombre: "Missed-call text-back",
+    entrega: "1-2 días",
+    setup: "S/500 – 1,200",
+    retainer: "S/200 – 500",
+  },
+];
+
+const CATALOGO_AVANZADO = [
   {
     icon: BookOpenText,
     nombre: "Chatbot con base de conocimiento (RAG)",
@@ -59,44 +70,41 @@ const CATALOGO = [
     retainer: "S/400 – 1,200",
   },
   {
-    icon: Layers,
-    nombre: "Suite multicanal",
-    entrega: "3-6 semanas",
-    setup: "S/9,000 – 20,000",
-    retainer: "S/700 – 1,500",
-  },
-  {
-    icon: PhoneMissed,
-    nombre: "Missed-call text-back",
-    entrega: "1-2 días",
-    setup: "S/500 – 1,200",
-    retainer: "S/200 – 500",
-  },
-  {
     icon: UserPlus,
     nombre: "Captación + seguimiento de leads",
     entrega: "3-7 días",
     setup: "S/900 – 2,500",
     retainer: "S/300 – 700",
   },
+  {
+    icon: Layers,
+    nombre: "Suite multicanal",
+    entrega: "3-6 semanas",
+    setup: "S/9,000 – 20,000",
+    retainer: "S/700 – 1,500",
+  },
 ];
 
-const PASOS = [
+const PASOS_IMPLEMENTACION = [
   {
     t: "Diagnóstico",
     d: "Vemos juntos dónde estás perdiendo clientes y qué necesita tu negocio — 30 min por WhatsApp, sin costo.",
+    icon: ClipboardList,
   },
   {
     t: "Configuración",
     d: "Entreno el agente con la información real de tu negocio: precios, horarios, servicios, tono.",
+    icon: Settings2,
   },
   {
     t: "Implementación",
     d: "Lo conecto a tu WhatsApp y lo probamos juntos antes de que hable con tus clientes.",
+    icon: Plug,
   },
   {
     t: "Soporte",
     d: "Ajustes, monitoreo y mejoras continuas — no desaparezco después de la entrega.",
+    icon: Headset,
   },
 ];
 
@@ -104,6 +112,10 @@ const FAQS = [
   {
     q: "¿Cuál agente me conviene?",
     a: "En el diagnóstico gratis vemos tu caso y te recomiendo el punto de partida — casi siempre un Recepcionista IA, y después sumas reservas, RAG u otros módulos si hace falta.",
+  },
+  {
+    q: "¿Puedo ver un ejemplo antes de contratar?",
+    a: "Sí — arriba en la página ves cómo responde un agente en WhatsApp, y en el diagnóstico gratuito te muestro un flujo adaptado a tu negocio antes de implementar nada.",
   },
   {
     q: "¿El agente reemplaza mi atención al cliente?",
@@ -126,12 +138,12 @@ const FAQS = [
 export default function AgentesIAPage() {
   return (
     <>
-      {/* HERO — Opción B: inbox sin/con agente */}
-      <section className="landing-hero-accent mx-auto max-w-3xl px-6 pb-12 pt-20 md:pb-16 md:pt-28 lg:max-w-4xl">
+      {/* HERO — inbox sin/con agente + mockup integrado */}
+      <section className="landing-hero-accent mx-auto max-w-3xl px-6 pb-12 pt-20 md:pb-16 md:pt-28 lg:max-w-5xl">
         <div className="text-center lg:text-left">
           <span className="chip">Servicio · Agentes IA por WhatsApp</span>
 
-          <h1 className="text-h1 mt-6 text-[2.5rem] text-ink sm:text-5xl md:text-[3.5rem]">
+          <h1 className="text-h1 mt-6 text-ink">
             Menos consultas{" "}
             <span className="font-display italic text-terracota">perdidas</span>, más clientes
             atendidos.
@@ -158,20 +170,6 @@ export default function AgentesIAPage() {
         </div>
       </section>
 
-      {/* Mockup — una sola instancia, debajo del hero */}
-      <section className="mx-auto max-w-sm px-6 pb-14 md:pb-20">
-        <div className="mockup-frame">
-          <WhatsAppMockup
-            titulo={MOCKUP_AGENTES.titulo}
-            subtitulo={MOCKUP_AGENTES.subtitulo}
-            mensajes={MOCKUP_AGENTES.mensajes}
-          />
-        </div>
-        <p className="mt-3 text-center text-xs text-ink/45">
-          Así responde el agente en tu WhatsApp — sin que tengas que estar pegado al teléfono.
-        </p>
-      </section>
-
       {/* PROBLEMA */}
       <div className="section-band">
         <ProblemSection
@@ -191,7 +189,13 @@ export default function AgentesIAPage() {
 
       {/* CATÁLOGO */}
       <div className="section-band border-t border-ink/6">
-        <CatalogGrid items={CATALOGO} titulo="Catálogo de agentes, en soles">
+        <CatalogGrid
+          titulo="Catálogo de agentes, en soles"
+          groups={[
+            { label: "Para empezar", items: CATALOGO_BASICO, columns: 3 },
+            { label: "Para escalar", items: CATALOGO_AVANZADO, columns: 2 },
+          ]}
+        >
           <p className="text-sm text-ink/50">
             ¿No sabes cuál te conviene? En el diagnóstico gratis vemos tu caso y te recomiendo
             el punto de partida. Para avisos, CRM o integraciones sin chatbot, revisa{" "}
@@ -208,42 +212,24 @@ export default function AgentesIAPage() {
 
       {/* CÓMO TRABAJAMOS */}
       <div className="section-band">
-        <section className="mx-auto max-w-4xl px-6 section-py">
-          <Reveal>
-            <p className="section-eyebrow">Implementación</p>
-            <h2 className="text-h2 mt-2 text-ink">Cómo trabajamos</h2>
-          </Reveal>
-          <Reveal delay={80}>
-            <ol className="mt-8 space-y-6">
-              {PASOS.map((step, i) => (
-                <li key={step.t} className="flex gap-4">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 font-medium text-ink">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <p className="font-medium text-ink">{step.t}</p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-ink/60">{step.d}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
-        </section>
+        <ImplementacionStepper pasos={PASOS_IMPLEMENTACION} columns={4} />
       </div>
 
       <ProyectosRecientes variant="compact" />
 
       <div className="section-ink">
-        <GarantiaSection condicion="el agente no te ahorra tiempo ni recupera clientes" variant="dark" />
+        <GarantiaSection
+          condicion="el agente no te ahorra tiempo ni recupera clientes"
+          variant="dark"
+          cta={{
+            message: "Hola, quiero probar el agente con la garantía de 14 días",
+            textoBoton: "Empezar con piloto de 14 días",
+            source: "agentes_ia_garantia",
+          }}
+        />
       </div>
 
       <FAQSection items={FAQS} />
-
-      <FinalCTA
-        titulo="¿Cuántos clientes se te escapan por no responder a tiempo?"
-        mensaje="Hola, quiero ver qué agente de IA me conviene para mi negocio"
-        textoBoton="Quiero ver qué agente me conviene"
-      />
     </>
   );
 }

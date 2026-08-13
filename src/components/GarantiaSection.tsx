@@ -1,11 +1,17 @@
 import { ShieldCheck } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 type GarantiaSectionProps = {
   condicion: string;
   notaExtra?: string;
   /** "dark" renders open text on section-ink background (no card wrapper) */
   variant?: "default" | "dark";
+  cta?: {
+    message: string;
+    textoBoton: string;
+    source?: string;
+  };
 };
 
 /** Bloque de garantía (piloto 14 días) — reutilizado en Home y en páginas de servicio/nicho. */
@@ -13,6 +19,7 @@ export default function GarantiaSection({
   condicion,
   notaExtra,
   variant = "default",
+  cta,
 }: GarantiaSectionProps) {
   if (variant === "dark") {
     return (
@@ -26,6 +33,18 @@ export default function GarantiaSection({
             <strong className="font-medium text-sand">no pagas la configuración</strong>.
             {notaExtra ? ` ${notaExtra}` : ""}
           </p>
+          {cta && (
+            <div className="mt-8 flex justify-center">
+              <WhatsAppButton
+                message={cta.message}
+                source={cta.source}
+                variant="outline"
+                className="border-sand/30 text-sand hover:bg-sand/10"
+              >
+                {cta.textoBoton}
+              </WhatsAppButton>
+            </div>
+          )}
         </Reveal>
       </section>
     );

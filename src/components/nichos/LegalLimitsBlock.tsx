@@ -20,7 +20,8 @@ export default function LegalLimitsBlock() {
     <section className="section-band py-16 md:py-20">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal>
-          <div className="flex flex-wrap items-center gap-3">
+          <span className="chip">Confianza · Límites claros</span>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
             <Scale className="h-8 w-8 text-terracota" strokeWidth={1.5} />
             <h2 className="text-h2 text-ink">Qué hace y qué no hace</h2>
           </div>

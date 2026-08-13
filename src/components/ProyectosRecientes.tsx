@@ -6,6 +6,15 @@ type Props = {
   variant?: "full" | "compact";
 };
 
+function BrowserPreview({ imagen, alt }: { imagen: string; alt: string }) {
+  return (
+    <div className="mb-5 overflow-hidden rounded-xl border border-ink/8 bg-white shadow-rest">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={imagen} alt={alt} className="aspect-[16/10] w-full object-cover object-top" />
+    </div>
+  );
+}
+
 /** Sección de proyectos / casos reales — reutilizable en Home y landings. */
 export default function ProyectosRecientes({ variant = "full" }: Props) {
   const entregados = CASOS.filter((c) => c.estado === "entregado" && "problema" in c);
@@ -28,6 +37,9 @@ export default function ProyectosRecientes({ variant = "full" }: Props) {
           <Reveal key={c.nombre} delay={i * 80}>
             {"problema" in c && (
               <div className="card-soft-tint hover-lift flex h-full flex-col">
+                {c.imagen && (
+                  <BrowserPreview imagen={c.imagen} alt={`Captura del sitio ${c.nombre}`} />
+                )}
                 <c.icon className="h-7 w-7 text-terracota" strokeWidth={1.5} />
                 <h3 className="mt-5 text-lg font-medium text-ink">{c.nombre}</h3>
                 <p className="mt-1 text-sm text-ink/50">{c.rubro}</p>
@@ -55,15 +67,17 @@ export default function ProyectosRecientes({ variant = "full" }: Props) {
                     </>
                   )}
                 </dl>
-                <a
-                  href={c.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-pill btn-pill-ghost mt-6 inline-flex w-fit items-center gap-1.5"
-                >
-                  Ver sitio
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
+                {"url" in c && (
+                  <a
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-pill btn-pill-ghost mt-6 inline-flex w-fit items-center gap-1.5"
+                  >
+                    Ver sitio
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                )}
               </div>
             )}
           </Reveal>

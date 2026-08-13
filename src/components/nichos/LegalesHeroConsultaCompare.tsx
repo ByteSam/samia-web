@@ -1,19 +1,24 @@
-import { ClipboardList, Workflow, ArrowRight, X } from "lucide-react";
+import { MessageSquareOff, ArrowRight, X } from "lucide-react";
 import ComparePanel from "@/components/ComparePanel";
 import WhatsAppMockup from "@/components/WhatsAppMockup";
-import { MOCKUP_AUTOMATIZACION } from "@/lib/nichos/mockups";
+import { MOCKUP_LEGAL } from "@/lib/nichos/mockups";
 
-const ITEMS_MANUAL = [
-  { id: "m-1", texto: "Copias datos entre WhatsApp y Excel" },
-  { id: "m-2", texto: "Persigues leads uno por uno" },
-  { id: "m-3", texto: "Avisas manualmente a tu equipo" },
+const CONSULTAS_SIN = [
+  { id: "s-1", texto: "\"Me despidieron hoy\" — sin respuesta hasta mañana" },
+  { id: "s-2", texto: "\"¿Cuánto cuesta la consulta?\" — cliente se va a otro estudio" },
+  { id: "s-3", texto: "Consulta fuera de horario — perdida en el chat" },
 ];
 
-function FlujoManual() {
+function SinAsistente() {
   return (
-    <ComparePanel tone="muted" title="Proceso manual" badge="manual" icon={ClipboardList}>
+    <ComparePanel
+      tone="muted"
+      title="Sin asistente"
+      badge="consultas perdidas"
+      icon={MessageSquareOff}
+    >
       <ul className="space-y-2.5">
-        {ITEMS_MANUAL.map((item) => (
+        {CONSULTAS_SIN.map((item) => (
           <li
             key={item.id}
             className="flex items-start gap-2 rounded-lg border border-dashed border-ink/10 bg-white/60 px-3 py-2.5 text-sm leading-relaxed text-ink/55"
@@ -27,35 +32,29 @@ function FlujoManual() {
   );
 }
 
-function FlujoAutomatizado() {
+function ConAsistente() {
   return (
-    <ComparePanel
-      tone="accent"
-      title="Proceso automatizado"
-      badge="flujo automático"
-      icon={Workflow}
-      className="!p-4 sm:!p-5"
-    >
+    <ComparePanel tone="accent" title="Con asistente" badge="filtra y agenda" className="!p-4 sm:!p-5">
       <div className="flex justify-center">
         <WhatsAppMockup
           compact
-          titulo={MOCKUP_AUTOMATIZACION.titulo}
-          subtitulo={MOCKUP_AUTOMATIZACION.subtitulo}
-          mensajes={MOCKUP_AUTOMATIZACION.mensajes}
+          titulo={MOCKUP_LEGAL.titulo}
+          subtitulo={MOCKUP_LEGAL.subtitulo}
+          mensajes={MOCKUP_LEGAL.mensajes}
         />
       </div>
       <p className="mt-3 text-center text-xs text-ink/50">
-        Así te avisa cuando un flujo necesita tu atención — sin revisar todo manualmente.
+        Empatía y agenda — sin dar consejo legal automático.
       </p>
     </ComparePanel>
   );
 }
 
-/** Comparación manual vs automatizado — mockup integrado en panel derecho. */
-export default function AutomatizacionHeroCompare() {
+/** Comparación consulta legal — sin vs con asistente (mockup integrado). */
+export default function LegalesHeroConsultaCompare() {
   return (
     <div className="grid items-stretch gap-4 sm:grid-cols-[1fr_auto_1fr] sm:gap-6">
-      <FlujoManual />
+      <SinAsistente />
       <div className="flex items-center justify-center py-2 sm:py-0">
         <ArrowRight
           className="h-5 w-5 rotate-90 text-ink/35 sm:rotate-0"
@@ -63,7 +62,7 @@ export default function AutomatizacionHeroCompare() {
           aria-hidden
         />
       </div>
-      <FlujoAutomatizado />
+      <ConAsistente />
     </div>
   );
 }

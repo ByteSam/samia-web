@@ -32,7 +32,11 @@ export default function ProblemSection({
               </li>
             ))}
           </ul>
-          <p className="mt-6 border-t border-ink/8 pt-5 text-sm text-ink/50">{stat}</p>
+          <blockquote className="mt-6 border-t border-ink/8 pt-5">
+            <p className="font-display text-base italic leading-relaxed text-terracota-dark sm:text-lg">
+              {stat}
+            </p>
+          </blockquote>
         </div>
       </Reveal>
     </section>

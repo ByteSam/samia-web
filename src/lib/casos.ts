@@ -15,6 +15,8 @@ export type CasoDetallado = CasoBase & {
   solucion: string;
   resultado: string;
   url: string;
+  /** Ruta en /public para captura del sitio — opcional */
+  imagen?: string;
 };
 
 export type Caso = CasoSimple | CasoDetallado;
@@ -59,6 +61,7 @@ export const CASOS: Caso[] = [
       "Diseñamos y desarrollamos una landing orientada a conversión, con una propuesta de valor clara, servicios, proyectos, formulario de contacto y CTA a WhatsApp.",
     resultado: "Sitio web entregado y publicado.",
     url: "https://fortalezavinzos.es/",
+    // TODO(Daniel): añadir imagen: "/casos/fortaleza-vinzos.png" cuando tengas la captura real
   },
   ACTIVAR_CASO_LEGAL ? CASO_LEGAL : CASO_LEGAL_PLACEHOLDER,
 ];

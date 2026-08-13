@@ -10,6 +10,7 @@ const NICHOS = [
     dolor: "Citas que se caen, agenda con huecos, WhatsApp sin responder.",
     beneficio: "Recordatorios automáticos y respuesta al instante — menos ausencias, más agenda llena.",
     featured: true,
+    accent: "bg-terracota",
   },
   {
     nombre: "Firmas legales",
@@ -18,6 +19,7 @@ const NICHOS = [
     dolor: "Consultas que llegan fuera de horario, sin filtro ni prioridad.",
     beneficio: "Clasifica, deriva y agenda la primera consulta — sin que tengas que estar disponible.",
     featured: false,
+    accent: "bg-dorado",
   },
   {
     nombre: "Negocios locales",
@@ -26,6 +28,7 @@ const NICHOS = [
     dolor: "Llamadas perdidas y WhatsApp sin contestar mientras estás en servicio.",
     beneficio: "Atiende lo urgente, filtra cotizaciones y agenda visitas automáticamente.",
     featured: false,
+    accent: "bg-rojo-tierra",
   },
 ];
 
@@ -39,7 +42,8 @@ function NichoCard({
   const cardClass = featured ? "card-soft-tint hover-lift" : "card-soft hover-lift";
 
   return (
-    <Link href={n.href} className={`${cardClass} group flex h-full flex-col`}>
+    <Link href={n.href} className={`${cardClass} group relative flex h-full flex-col overflow-hidden`}>
+      <span className={`absolute inset-x-0 top-0 h-1 ${n.accent}`} aria-hidden />
       <n.icon
         className={`text-terracota ${featured ? "h-8 w-8" : "h-6 w-6"}`}
         strokeWidth={1.5}

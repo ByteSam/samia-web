@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { whatsappLink, CONTACT_EMAIL } from "@/lib/contact";
+import WhatsAppButton from "./WhatsAppButton";
+import { whatsappLink, CONTACT_EMAIL, WHATSAPP_DIAGNOSTICO_MESSAGE } from "@/lib/contact";
 import { SOLUCIONES, SERVICIOS } from "@/lib/navigation";
 
 const CONTACTO = [
@@ -18,6 +19,22 @@ export default function Footer() {
   return (
     <footer className="border-t border-ink/8 bg-sand shadow-[0_-8px_24px_rgba(36,21,9,0.03)]">
       <div className="mx-auto max-w-6xl px-6 py-12 text-sm">
+        <div className="card-soft-tint mb-10 flex flex-col items-start justify-between gap-6 p-6 sm:flex-row sm:items-center">
+          <div>
+            <p className="font-medium text-ink">¿Listo para empezar?</p>
+            <p className="mt-1 text-sm text-ink/55">
+              Diagnóstico gratis de 30 min · Piloto de 14 días sin riesgo
+            </p>
+          </div>
+          <WhatsAppButton
+            message={WHATSAPP_DIAGNOSTICO_MESSAGE}
+            source="footer"
+            variant="terracota"
+          >
+            Diagnóstico gratis
+          </WhatsAppButton>
+        </div>
+
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           <div>
             <Logo height={28} />

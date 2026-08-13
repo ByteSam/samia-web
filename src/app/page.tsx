@@ -15,6 +15,7 @@ import HeroTrustLine from "@/components/HeroTrustLine";
 import ProyectosRecientes from "@/components/ProyectosRecientes";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import StickyCTA from "@/components/StickyCTA";
+import HomeConsultaCompare from "@/components/HomeConsultaCompare";
 import { WHATSAPP_DIAGNOSTICO_MESSAGE, isCalComConfigured } from "@/lib/contact";
 
 export const metadata: Metadata = {
@@ -54,10 +55,8 @@ const FAQS_HOME = [
 export default function Home() {
   return (
     <>
-      {/* ① HERO — sand */}
-      <section
-        className="landing-hero-accent relative mx-auto max-w-6xl px-6 pb-20 pt-16 md:pb-24 md:pt-20 lg:pt-24"
-      >
+      {/* ① HERO */}
+      <section className="landing-hero-accent relative mx-auto max-w-6xl px-6 pb-20 pt-16 md:pb-24 md:pt-20 lg:pt-24">
         <div className="grid gap-12 lg:grid-cols-[5fr_4fr] lg:items-center">
           <div>
             <Reveal>
@@ -65,7 +64,7 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={60}>
-              <h1 className="text-h1 text-balance relative mt-4 max-w-lg text-[2.5rem] text-ink sm:text-[2.75rem] lg:text-[3rem]">
+              <h1 className="text-h1 text-balance relative mt-4 max-w-lg text-ink">
                 Ninguna consulta de tu negocio
                 <br />
                 <span className="font-display italic text-ink/80">sin respuesta.</span>
@@ -73,8 +72,9 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={120}>
-              <p className="text-pretty relative mt-5 max-w-[26rem] text-base text-ink/70">
-                Webs, IA y automatización — garantía 14 días.
+              <p className="text-pretty relative mt-5 max-w-md text-lg leading-relaxed text-ink/65">
+                Webs, agentes IA y automatización por WhatsApp — para que ninguna consulta se pierda
+                mientras tú atiendes lo que importa.
               </p>
             </Reveal>
 
@@ -119,19 +119,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MARQUEE — divider editorial */}
       <MarqueeStrip />
 
-      {/* ② PROBLEMA — section-band, layout abierto */}
+      {/* COMPARACIÓN — consulta perdida vs atendida */}
+      <section className="mx-auto max-w-5xl px-6 section-py">
+        <Reveal>
+          <span className="chip">La misma consulta, dos resultados</span>
+          <h2 className="text-h2 mt-4 text-ink">Sin respuesta vs. atendida al instante</h2>
+          <p className="mt-3 max-w-lg text-ink/60">
+            El cliente escribe igual. La diferencia está en si alguien responde a tiempo.
+          </p>
+        </Reveal>
+        <Reveal delay={80} className="mt-10">
+          <HomeConsultaCompare />
+        </Reveal>
+      </section>
+
+      {/* ② PROBLEMA */}
       <div className="section-band">
         <ProblemaSection />
       </div>
 
-      {/* ③ PROPUESTA DE VALOR — section-white, 2 columnas */}
+      {/* ③ PROPUESTA DE VALOR */}
       <div className="section-white">
         <section className="mx-auto max-w-5xl px-6 section-py">
           <div className="grid gap-12 md:grid-cols-2 md:items-start">
-            {/* Izquierda — qué ganas */}
             <Reveal>
               <span className="chip">Qué ganas</span>
               <h2 className="text-h2 mt-4 text-ink">Del primer contacto al negocio integrado</h2>
@@ -157,7 +169,6 @@ export default function Home() {
               </ul>
             </Reveal>
 
-            {/* Derecha — stat + mini-features */}
             <Reveal delay={100}>
               <div className="card-soft-tint h-full">
                 <p className="text-xs font-medium uppercase tracking-wide text-terracota-dark/70">
@@ -200,10 +211,8 @@ export default function Home() {
         </section>
       </div>
 
-      {/* ④ SOLUCIONES POR RUBRO — sand, abierto */}
       <SolucionesGrid equalCards />
 
-      {/* Puente narrativo: rubros vs servicios */}
       <div className="border-y border-ink/8 bg-sand">
         <p className="mx-auto max-w-3xl px-6 py-8 text-center text-sm text-ink/60">
           ¿No ves tu rubro exacto? Los servicios de abajo son el catálogo completo — el mismo
@@ -211,24 +220,25 @@ export default function Home() {
         </p>
       </div>
 
-      {/* ⑤ SERVICIOS — section-white */}
       <div className="section-white">
         <ServiciosGrid />
       </div>
 
-      {/* ⑥ PROYECTOS REALIZADOS (proof) — sand */}
       <ProyectosRecientes />
 
-      {/* ⑦ METODOLOGÍA — section-band */}
       <div className="section-band">
         <ProcesoSection />
       </div>
 
-      {/* ⑧ GARANTÍA + PRECIO — section-ink (un solo bloque oscuro) */}
       <div className="section-ink">
         <GarantiaSection
           condicion="la solución no te ayuda a captar o atender mejor a tus clientes"
           variant="dark"
+          cta={{
+            message: "Hola, quiero probar con la garantía de 14 días",
+            textoBoton: "Empezar con piloto de 14 días",
+            source: "home_garantia",
+          }}
         />
         <p className="mx-auto max-w-3xl px-6 pb-16 text-center text-sm text-sand/50">
           Implementaciones desde <strong className="font-medium text-sand/80">S/1,500</strong>. El
@@ -236,46 +246,29 @@ export default function Home() {
         </p>
       </div>
 
-      {/* ⑨ FORMULARIO + FAQ — sand */}
+      {/* FORMULARIO + FAQ */}
       <section
         id="contacto"
-        className="mx-auto max-w-md px-6 pb-12 pt-16 text-center scroll-mt-8"
+        className="mx-auto max-w-5xl px-6 pb-12 pt-16 scroll-mt-8"
         style={{ scrollMarginBottom: "5rem" }}
       >
-        <Reveal>
-          <h3 className="text-xl font-medium text-ink">Solicita tu diagnóstico gratuito</h3>
-          <p className="mt-2 text-sm text-ink/60">
-            Completa el formulario y continuamos por WhatsApp — sin compromiso.
-          </p>
-          <div className="mt-6 text-left">
-            <LeadForm />
-          </div>
-        </Reveal>
+        <div className="grid gap-10 md:grid-cols-2 md:items-start">
+          <Reveal>
+            <span className="chip">Contacto</span>
+            <h2 className="text-h2 mt-4 text-ink">Solicita tu diagnóstico gratuito</h2>
+            <p className="mt-3 text-ink/60">
+              Completa el formulario y continuamos por WhatsApp — sin compromiso.
+            </p>
+          </Reveal>
+          <Reveal delay={80}>
+            <div className="card-soft p-6 sm:p-8">
+              <LeadForm />
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       <FAQSection items={FAQS_HOME} showContactCta />
-
-      {/* CTA FINAL */}
-      <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
-        <Reveal>
-          <h2 className="text-h2 text-ink">
-            ¿Cuántos clientes estás dejando de atender esta semana?
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-ink/60">
-            Diagnóstico gratis de 30 minutos. Sin compromiso.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3">
-            <WhatsAppButton
-              message={WHATSAPP_DIAGNOSTICO_MESSAGE}
-              variant="terracota"
-              source="home_final"
-            >
-              Diagnóstico gratis
-            </WhatsAppButton>
-            <BookingButton variant="link" className="text-ink/50" />
-          </div>
-        </Reveal>
-      </section>
 
       <StickyCTA />
     </>
