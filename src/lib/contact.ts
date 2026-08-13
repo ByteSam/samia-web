@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = "51939845408";
+export const WHATSAPP_NUMBER = "56934681636";
 export const CONTACT_EMAIL = "danielsam.fgu@gmail.com";
 
 // TODO: reemplazar con tu link real de Cal.com cuando lo tengas.
