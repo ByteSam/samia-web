@@ -45,6 +45,7 @@
   --color-whatsapp: var(--color-whatsapp);
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);
+  --font-wordmark: var(--font-wordmark);
 
   /* Design tokens — radius */
   --radius-sm: 12px;
@@ -205,6 +206,7 @@ summary:focus-visible {
     0 8px 24px rgba(193, 80, 46, 0.22);
 }
 .btn-pill-solid:hover {
+  background: var(--color-terracota-dark);
   box-shadow:
     0 4px 12px rgba(193, 80, 46, 0.22),
     0 14px 32px rgba(193, 80, 46, 0.28);

@@ -1,115 +1,95 @@
 # Plan rama `develop` — Experimentos visuales afynova
 
-> Creado: 13 agosto 2026  
-> Branch: `develop` (crear desde `main` DESPUES de pushear el logo)  
-> Objetivo: probar cambios visuales sin afectar produccion
+> Actualizado: 14 agosto 2026  
+> Branch: `develop` (existe; no recrear)  
+> Objetivo: experimentos visuales; merge a `main` solo lo aprobado
 
 ---
 
-## Que ya se hizo en `main`
+## Estado
 
-- [x] Logo E6c (eclipse) reemplazado en `Logo.tsx`, `icon.svg`, `public/logo/`
-- [x] Documentacion reorganizada (`docs/negocio/`, `docs/web/`, `docs/tech/`, `docs/ops/`)
-- [x] PRP de mejoras visuales creado (`PRPs/mejoras-visuales-home-prp.md`)
-- [x] Brand identity documentada (`docs/negocio/brand-identity.md`)
-
----
-
-## Que se prueba en `develop`
-
-### 1. Ajustes de color (explorar si el tema actual se beneficia de cambios)
-
-| Experimento | Que probar | Riesgo |
-|---|---|---|
-| Fondo de secciones | Alternar mas entre dark/light para mejor contraste | Bajo |
-| Accent colors | Probar si el dorado `#C1892B` funciona como segundo accent | Medio |
-| Cards background | Probar tonos ligeramente distintos entre `card-soft` y `card-soft-tint` | Bajo |
-| CTA hover states | Variantes de color en hover del btn-pill | Bajo |
-
-### 2. Mejoras visuales (del PRP ya creado)
-
-| # | Mejora | Archivo | Prioridad |
-|---|---|---|---|
-| 4 | Iconos con fondo circular en cards | `ServiciosGrid.tsx`, `SolucionesGrid.tsx` | Alta |
-| 5 | Visual decorativo en ProblemaSection | `ProblemaSection.tsx` | Media |
-| 6 | Glow sutil en hero detras del mockup | `page.tsx` | Baja |
-| 7 | Mayor contraste entre secciones | `globals.css` | Media |
-| 8 | Lockup logo: clearspace + alineacion (header y footer) | `Logo.tsx` (+ QA Header/Footer; OG despues) | **Alta** |
-
-### 3. Imagenes reales
-
-| Tarea | Archivo destino | Dependencia |
-|---|---|---|
-| Screenshot de fortalezavinzos.es | `public/casos/fortaleza-vinzos.png` | Ninguna — listo para copiar |
-| Elementos geometricos decorativos | `public/decorative/` | Generar con Quick |
-| Open Graph image actualizada (con logo nuevo) | `src/app/opengraph-image.tsx` | Logo ya en main |
-
-### 4. Tipografia del wordmark
-
-| Experimento | Que probar |
+| Capa | Qué hay |
 |---|---|
-| Space Grotesk en Logo.tsx | Verificar que la fuente se carga correctamente o usar paths SVG |
-| Fallback a Inter | Si Space Grotesk no esta disponible, como se ve con Inter |
-| Tamano/peso del wordmark | Probar font-weight 400 vs 500 vs 600 |
-
-### 5. Lockup del logo (header + footer) — prioridad Alta
-
-**Problema.** El simbolo eclipse y el wordmark se pisan: la "a" entra en el recorte blanco del circulo y el texto no esta centrado verticalmente. Se ve en header y footer porque ambos usan `Logo.tsx` (`height={28}`). No es un gap de flex: es geometria del SVG (`<text x="85" y="68">` vs circulo que llega a ~x 110). Space Grotesk no esta cargada en `layout.tsx`.
-
-**Solucion.** Corregir el lockup en un solo archivo; header y footer se actualizan solos.
-
-| Que | Como | Archivos |
-|---|---|---|
-| Clearspace simbolo → wordmark | Mover `x` del `<text>` a la derecha del circulo + gap fijo. El circulo termina ~x 110; el texto no puede empezar antes. | `src/components/Logo.tsx` |
-| Alineacion vertical | Centrar opticamente el wordmark con el eje del eclipse (`dominant-baseline` + `y` del circulo). | `src/components/Logo.tsx` |
-| Tipografia real | Usar Inter (ya cargada) o paths. No depender de Space Grotesk hasta que este en `layout.tsx`. | `src/components/Logo.tsx` |
-| Asset canonico | Actualizar `public/logo/` para que coincida con el SVG del componente. | `public/logo/afynova.svg`, `afynova-dark.svg` |
-| Footer | Mismo `Logo`. Verificar en 375 y 1440 que no recorte ni se pegue al copy debajo. | `src/components/Footer.tsx` (QA) |
-| Header | Mismo componente. Verificar en navbar sticky (28px) que el gap se lea. | `src/components/Header.tsx` (QA) |
-| Open Graph | `AfynovaLogo` en `src/lib/og-image.tsx` sigue el lockup viejo. Actualizar tras aprobar el logo. | `src/lib/og-image.tsx` |
-
-**Criterio de exito**
-- [ ] Gap visible entre eclipse y "a" (sin overlap ni tension)
-- [ ] Wordmark centrado opticamente con el simbolo
-- [ ] Header y footer identicos
-- [ ] Mobile 375px y desktop 1440px
-- [ ] Favicon / `icon.svg` no se toca (solo simbolo, sin wordmark)
+| `main` / producción | Logo eclipse E6c inicial (`ecb13d5`). Puede no tener el polish de `0a104dc` si aún no se mergeó. |
+| `develop` | Lockup AFYNOVA corregido, PRP Home #4–#7, spacing de landings (`0a104dc`) |
 
 ---
 
-## Comandos para crear la rama
+## Hecho en `develop` (no repetir)
 
-```powershell
-cd "C:\Users\dfernandezg\OneDrive - SoluforB S.A\Escritorio\qick\samia-web"
+- [x] **Lockup logo** — `AFYNOVA` mayúsculas, clearspace 19, Ø 50 vs cap-height ~78%, viewBox 348×71, header/footer `height={32}`, `py-2.5` en nav. Favicon solo símbolo.
+- [x] **#4** Íconos con fondo `bg-terracota/10` en `ServiciosGrid` y `SolucionesGrid`
+- [x] **#5** Acento decorativo en `ProblemaSection`
+- [x] **#6** Glow sutil detrás del mockup del hero
+- [x] **#7** Bandas más contrastadas + hairline
+- [x] **Spacing landings** — `FAQSection` y bloques “Qué hay detrás” con `.section-py`; sin dos `section-band` seguidas
+- [x] **OG lockup** — eclipse + AFYNOVA en `src/lib/og-image.tsx` (las rutas `opengraph-image.tsx` solo llaman `createOgImage`)
+- [x] Assets `public/logo/afynova.svg` y `afynova-dark.svg` alineados al componente
 
-# Primero: push del logo a main
-git add -A
-git commit -m "brand: reemplazar logo por E6c (eclipse) — simbolo + lockup + favicon"
-git push origin main
+**QA logo pendiente de Daniel:** 375px y 1440px, header + footer. Si se ve bien, no seguir iterando el SVG.
 
-# Despues: crear rama develop
-git checkout -b develop
-git push -u origin develop
+---
+
+## Siguiente (por implementar)
+
+Orden: un experimento por commit cuando se pueda.
+
+### A. Tipografía del wordmark — Space Grotesk
+
+Brand identity pide Space Grotesk. Hoy el logo usa Inter (sí está en `layout.tsx`).
+
+| Qué | Cómo | Archivos |
+|---|---|---|
+| Cargar fuente | `next/font/google` → `--font-wordmark` | `src/app/layout.tsx` |
+| Aplicar al lockup | `fontFamily` / CSS var en el `<text>` | `src/components/Logo.tsx` |
+| Fallback | Inter si Grotesk no carga | ya en stack |
+| Peso | 600 (el lockup actual) | no bajar a 400 sin QA |
+| Paths SVG | Opcional después: más estable en OG/Satori. No bloquea A. | — |
+
+### B. Screenshot Fortaleza Vinzos
+
+`src/lib/casos.ts` tiene TODO. No hay archivo en `public/casos/`. **Daniel copia la captura real**; no inventar captura.
+
+Cuando exista `public/casos/fortaleza-vinzos.png`:
+
+```ts
+imagen: "/casos/fortaleza-vinzos.png",
 ```
 
----
+### C. Decorativos geométricos
 
-## Workflow en `develop`
+`public/decorative/` — generar con Quick. No figurativos. No crear carpeta vacía ni SVGs de relleno sin uso en una sección.
 
-1. **Quick** genera specs/PRPs de cada experimento
-2. **Cursor** implementa en la rama `develop`
-3. Verificar visualmente en `localhost:3000`
-4. Si un cambio se aprueba → merge a `main` (cherry-pick o merge completo)
-5. Si no convence → descartar o iterar
+### D. Color (especulativo — un cambio a la vez)
+
+| Experimento | Riesgo | Nota de marca |
+|---|---|---|
+| Hover CTA → `terracota-dark` | Bajo | Alineado al token hover; no es paleta nueva |
+| Fondos dark/light más marcados | Bajo | Ya hay `section-band` / `section-ink` |
+| Dorado como segundo accent en UI | Medio | Brand: dorado raro, no en botones |
+| Tonos distintos card-soft vs tint | Bajo | Tint ya es terracota 6% |
 
 ---
 
 ## Criterios para merge a `main`
 
-- [ ] `npm run lint` sin errores
-- [ ] `npm run build` compila
-- [ ] Se ve bien en mobile (375px) y desktop (1440px)
-- [ ] No rompe las animaciones (Reveal, stagger)
-- [ ] Respeta brand-identity.md (colores, tono, sin ilustraciones figurativas)
-- [ ] Daniel lo aprueba visualmente
-- [ ] Logo: simbolo y wordmark con clearspace; header y footer coinciden
+- [x] `npm run lint` / `npm run build` (sesión 14 ago)
+- [ ] QA visual 375 y 1440 (logo + home + una landing)
+- [ ] Animaciones Reveal/stagger intactas
+- [ ] Brand: sin ilustraciones figurativas; sin hex de marca nuevos
+- [ ] Daniel aprueba visualmente
+- [x] Logo: clearspace; header y footer el mismo componente
+
+```bash
+git checkout main
+git pull origin main
+git merge develop
+git push origin main
+git checkout develop
+```
+
+---
+
+## Fuera de alcance aquí
+
+Copy, SEO, casos inventados, Cal.com, fusionar landings de nicho.

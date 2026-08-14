@@ -6,5 +6,5 @@
     </mask>
   </defs>
   <circle cx="25" cy="36" r="25" fill="#C1502E" mask="url(#eclipse-mask-lockup-dark)"/>
-  <text x="69" y="37" dominant-baseline="central" font-family="Inter, system-ui, sans-serif" font-size="56" font-weight="600" fill="#F6ECDA" letter-spacing="0.4">AFYNOVA</text>
+  <text x="69" y="37" dominant-baseline="central" font-family="Space Grotesk, Inter, system-ui, sans-serif" font-size="56" font-weight="600" fill="#F6ECDA" letter-spacing="0.4">AFYNOVA</text>
 </svg>
