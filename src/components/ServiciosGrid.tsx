@@ -63,7 +63,11 @@ function ServicioCard({
   return (
     <Link href={s.href} className="card-soft hover-lift group flex h-full flex-col focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota">
       <span className="chip text-caption">{chip}</span>
-      <s.icon className={`${compact ? "mt-4 h-6 w-6" : "mt-5 h-7 w-7"} text-terracota`} strokeWidth={1.5} />
+      <span
+        className={`inline-flex items-center justify-center rounded-xl bg-terracota/10 ${compact ? "mt-4 h-10 w-10" : "mt-5 h-12 w-12"}`}
+      >
+        <s.icon className={`${compact ? "h-5 w-5" : "h-6 w-6"} text-terracota`} strokeWidth={1.5} />
+      </span>
       <h3 className={`text-h3 ${compact ? "mt-4" : "mt-5"} text-ink`}>
         {s.nombre}
       </h3>

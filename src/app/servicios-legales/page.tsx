@@ -276,12 +276,10 @@ export default function ServiciosLegalesPage() {
       </section>
 
       {/* IMPLEMENTACIÓN */}
-      <div className="section-band">
-        <ImplementacionStepper titulo="Cómo lo implementamos" pasos={PASOS_IMPLEMENTACION} columns={4} />
-      </div>
+      <ImplementacionStepper titulo="Cómo lo implementamos" pasos={PASOS_IMPLEMENTACION} columns={4} />
 
       {/* ESCALERA — qué servicio base incluye esto */}
-      <section className="mx-auto max-w-3xl px-6 pb-12">
+      <section className="container-prose section-py">
         <Reveal>
           <div className="card-soft-tint p-5 sm:p-6">
             <div className="flex items-start gap-3">

@@ -26,14 +26,14 @@ export default function Header() {
       }`}
     >
       <header
-        className={`container-shell relative flex items-center gap-4 rounded-full border bg-white/92 px-5 py-2 backdrop-blur-md transition-shadow duration-200 md:px-6 ${
+        className={`container-shell relative flex items-center gap-4 rounded-full border bg-white/92 px-5 py-2.5 backdrop-blur-md transition-shadow duration-200 md:px-6 ${
           scrolled
             ? "border-ink/10 shadow-header-scrolled"
             : "border-ink/8 shadow-header"
         }`}
       >
         <Link href="/" className="block shrink-0" aria-label="Ir al inicio de afynova">
-          <Logo height={28} />
+          <Logo height={32} />
         </Link>
 
         <HeaderNav fundadorOpen={open} />

@@ -1,12 +1,10 @@
-<svg width="203" height="60" viewBox="0 0 203 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="156" height="32" viewBox="0 0 348 71" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <mask id="eclipse-mask-lockup">
-      <rect width="203" height="60" fill="white"/>
-      <circle cx="42.10" cy="19.42" r="12.60" fill="black"/>
+    <mask id="eclipse-mask-lockup-dark">
+      <rect width="348" height="71" fill="white"/>
+      <circle cx="37" cy="25.5" r="12.5" fill="black"/>
     </mask>
   </defs>
-  <!-- Simbolo: Eclipse E6c -->
-  <circle cx="30.00" cy="30.00" r="25.20" fill="#C1502E" mask="url(#eclipse-mask-lockup)"/>
-  <!-- Wordmark: afynova (Space Grotesk) -->
-  <text x="73" y="36" font-family="Space Grotesk, Inter, system-ui, sans-serif" font-size="25" font-weight="500" fill="#F6ECDA" letter-spacing="-0.5">afynova</text>
+  <circle cx="25" cy="36" r="25" fill="#C1502E" mask="url(#eclipse-mask-lockup-dark)"/>
+  <text x="69" y="37" dominant-baseline="central" font-family="Inter, system-ui, sans-serif" font-size="56" font-weight="600" fill="#F6ECDA" letter-spacing="0.4">AFYNOVA</text>
 </svg>

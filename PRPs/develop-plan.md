@@ -34,6 +34,7 @@
 | 5 | Visual decorativo en ProblemaSection | `ProblemaSection.tsx` | Media |
 | 6 | Glow sutil en hero detras del mockup | `page.tsx` | Baja |
 | 7 | Mayor contraste entre secciones | `globals.css` | Media |
+| 8 | Lockup logo: clearspace + alineacion (header y footer) | `Logo.tsx` (+ QA Header/Footer; OG despues) | **Alta** |
 
 ### 3. Imagenes reales
 
@@ -50,6 +51,29 @@
 | Space Grotesk en Logo.tsx | Verificar que la fuente se carga correctamente o usar paths SVG |
 | Fallback a Inter | Si Space Grotesk no esta disponible, como se ve con Inter |
 | Tamano/peso del wordmark | Probar font-weight 400 vs 500 vs 600 |
+
+### 5. Lockup del logo (header + footer) — prioridad Alta
+
+**Problema.** El simbolo eclipse y el wordmark se pisan: la "a" entra en el recorte blanco del circulo y el texto no esta centrado verticalmente. Se ve en header y footer porque ambos usan `Logo.tsx` (`height={28}`). No es un gap de flex: es geometria del SVG (`<text x="85" y="68">` vs circulo que llega a ~x 110). Space Grotesk no esta cargada en `layout.tsx`.
+
+**Solucion.** Corregir el lockup en un solo archivo; header y footer se actualizan solos.
+
+| Que | Como | Archivos |
+|---|---|---|
+| Clearspace simbolo → wordmark | Mover `x` del `<text>` a la derecha del circulo + gap fijo. El circulo termina ~x 110; el texto no puede empezar antes. | `src/components/Logo.tsx` |
+| Alineacion vertical | Centrar opticamente el wordmark con el eje del eclipse (`dominant-baseline` + `y` del circulo). | `src/components/Logo.tsx` |
+| Tipografia real | Usar Inter (ya cargada) o paths. No depender de Space Grotesk hasta que este en `layout.tsx`. | `src/components/Logo.tsx` |
+| Asset canonico | Actualizar `public/logo/` para que coincida con el SVG del componente. | `public/logo/afynova.svg`, `afynova-dark.svg` |
+| Footer | Mismo `Logo`. Verificar en 375 y 1440 que no recorte ni se pegue al copy debajo. | `src/components/Footer.tsx` (QA) |
+| Header | Mismo componente. Verificar en navbar sticky (28px) que el gap se lea. | `src/components/Header.tsx` (QA) |
+| Open Graph | `AfynovaLogo` en `src/lib/og-image.tsx` sigue el lockup viejo. Actualizar tras aprobar el logo. | `src/lib/og-image.tsx` |
+
+**Criterio de exito**
+- [ ] Gap visible entre eclipse y "a" (sin overlap ni tension)
+- [ ] Wordmark centrado opticamente con el simbolo
+- [ ] Header y footer identicos
+- [ ] Mobile 375px y desktop 1440px
+- [ ] Favicon / `icon.svg` no se toca (solo simbolo, sin wordmark)
 
 ---
 
@@ -88,3 +112,4 @@ git push -u origin develop
 - [ ] No rompe las animaciones (Reveal, stagger)
 - [ ] Respeta brand-identity.md (colores, tono, sin ilustraciones figurativas)
 - [ ] Daniel lo aprueba visualmente
+- [ ] Logo: simbolo y wordmark con clearspace; header y footer coinciden

@@ -44,10 +44,14 @@ function NichoCard({
   return (
     <Link href={n.href} className={`${cardClass} group relative flex h-full flex-col overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota`}>
       <span className={`absolute inset-x-0 top-0 h-1 ${n.accent}`} aria-hidden />
-      <n.icon
-        className={`text-terracota ${featured ? "h-8 w-8" : "h-6 w-6"}`}
-        strokeWidth={1.5}
-      />
+      <span
+        className={`inline-flex items-center justify-center rounded-xl bg-terracota/10 ${featured ? "h-14 w-14" : "h-10 w-10"}`}
+      >
+        <n.icon
+          className={`text-terracota ${featured ? "h-7 w-7" : "h-5 w-5"}`}
+          strokeWidth={1.5}
+        />
+      </span>
       <h3 className={`text-h3 ${featured ? "text-h3-featured" : ""} mt-5 text-ink`}>
         {n.nombre}
       </h3>

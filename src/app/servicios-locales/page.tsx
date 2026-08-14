@@ -223,7 +223,7 @@ export default function ServiciosLocalesPage() {
       </div>
 
       {/* PRECIO — ancla S/500 */}
-      <section className="border-t border-ink/8 pt-4">
+      <section>
         <PricingTiers
           paquetes={PAQUETES}
           titulo="Desde S/500 — paquetes para negocios locales"
@@ -251,7 +251,7 @@ export default function ServiciosLocalesPage() {
       </div>
 
       {/* ESCALERA — qué servicio base incluye esto */}
-      <section className="mx-auto max-w-3xl px-6 pb-12">
+      <section className="container-prose section-py">
         <Reveal>
           <div className="card-soft-tint p-5 sm:p-6">
             <div className="flex items-start gap-3">

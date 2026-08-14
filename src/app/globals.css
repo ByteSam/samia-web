@@ -243,7 +243,7 @@ summary:focus-visible {
 
 /* ---- Bandas de sección (ritmo visual en landings de nicho) ---- */
 .section-band {
-  background: color-mix(in srgb, var(--color-sand-dark) 38%, var(--color-sand));
+  background: color-mix(in srgb, var(--color-sand-dark) 48%, var(--color-sand));
   border-top: 1px solid rgba(36, 21, 9, 0.06);
   border-bottom: 1px solid rgba(36, 21, 9, 0.06);
 }
@@ -605,6 +605,11 @@ summary:focus-visible {
 }
 .section-white .card-soft-tint {
   box-shadow: none;
+}
+
+.section-band + .section-white,
+.section-white + .section-band {
+  border-top-color: rgba(36, 21, 9, 0.08);
 }
 
 /* ---- Marquee strip (servicios) — pulido editorial ---- */

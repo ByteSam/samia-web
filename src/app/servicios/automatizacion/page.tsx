@@ -194,9 +194,7 @@ export default function AutomatizacionPage() {
         </CatalogGrid>
       </div>
 
-      <div className="section-band">
-        <ImplementacionStepper titulo="Cómo trabajamos" pasos={PASOS} columns={4} />
-      </div>
+      <ImplementacionStepper titulo="Cómo trabajamos" pasos={PASOS} columns={4} />
 
       <div className="section-ink">
         <GarantiaSection

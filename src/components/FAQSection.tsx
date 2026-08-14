@@ -28,7 +28,7 @@ export default function FAQSection({
   }
 
   return (
-    <section className="mx-auto max-w-3xl px-6 pb-20">
+    <section className="container-prose section-py">
       <Reveal>
         <h2 className="text-h2 text-ink">{titulo}</h2>
       </Reveal>

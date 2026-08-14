@@ -111,7 +111,13 @@ export default function Home() {
           </div>
 
           <Reveal delay={80} className="hidden lg:flex lg:-translate-y-2 lg:justify-end">
-            <WhatsAppMockup framed />
+            <div className="relative">
+              <div
+                className="pointer-events-none absolute -inset-8 rounded-full bg-terracota/6 blur-3xl"
+                aria-hidden
+              />
+              <WhatsAppMockup framed />
+            </div>
           </Reveal>
         </div>
       </section>

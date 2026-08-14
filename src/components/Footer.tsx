@@ -37,7 +37,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           <div>
-            <Logo height={28} />
+            <Logo height={32} />
             <p className="mt-4 max-w-xs text-ink/50">
               Automatización y agentes de IA por WhatsApp para pymes peruanas.
             </p>

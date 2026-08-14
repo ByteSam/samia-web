@@ -229,7 +229,7 @@ export default function InfraestructuraDigitalPage() {
       </div>
 
       {/* PAQUETES */}
-      <section className="mx-auto max-w-5xl px-6 pb-20">
+      <section className="container-content section-py">
         <Reveal>
           <span className="chip">Servicios · Precios orientativos</span>
           <h2 className="text-h2 mt-4 text-ink">Paquetes, en soles</h2>
@@ -298,9 +298,7 @@ export default function InfraestructuraDigitalPage() {
       </section>
 
       {/* CÓMO TRABAJAMOS */}
-      <div className="section-band">
-        <ImplementacionStepper pasos={PASOS_IMPLEMENTACION} columns={4} />
-      </div>
+      <ImplementacionStepper pasos={PASOS_IMPLEMENTACION} columns={4} />
 
       <div className="section-ink">
         <GarantiaSection

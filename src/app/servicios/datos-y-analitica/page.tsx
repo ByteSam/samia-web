@@ -160,9 +160,7 @@ export default function DatosAnaliticaPage() {
       </div>
 
       {/* CÓMO TRABAJAMOS */}
-      <div className="section-band">
-        <ImplementacionStepper pasos={PASOS_IMPLEMENTACION} columns={4} />
-      </div>
+      <ImplementacionStepper pasos={PASOS_IMPLEMENTACION} columns={4} />
 
       <div className="section-ink">
         <GarantiaSection

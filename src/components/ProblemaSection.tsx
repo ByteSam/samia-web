@@ -1,3 +1,4 @@
+import { AlertTriangle } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 /** Sección "Problema" — layout con card sobre section-band. */
@@ -5,11 +6,16 @@ export default function ProblemaSection() {
   return (
     <section className="container-prose section-py">
       <Reveal>
-        <div className="card-soft bg-white">
-          <h2 className="text-h2 text-ink">
+        <div className="card-soft relative overflow-hidden bg-white">
+          <AlertTriangle
+            className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 rotate-12 text-terracota/5"
+            strokeWidth={1}
+            aria-hidden
+          />
+          <h2 className="text-h2 relative text-ink">
             Cada consulta que no atiendes a tiempo es un cliente que se va a la competencia.
           </h2>
-          <ul className="mt-8 space-y-4 text-body">
+          <ul className="relative mt-8 space-y-4 text-body">
             {[
               "Tienes web o redes, pero quien visita no deja datos o no te avisan a tiempo.",
               "Llegan consultas por WhatsApp fuera de horario y nadie contesta hasta el día siguiente.",
@@ -25,7 +31,7 @@ export default function ProblemaSection() {
               </li>
             ))}
           </ul>
-          <blockquote className="mt-6 border-t border-ink/8 pt-5">
+          <blockquote className="relative mt-6 border-t border-ink/8 pt-5">
             <p className="font-display text-base italic leading-relaxed text-terracota-dark sm:text-lg">
               La mayoría de las personas abandona si no le responden rápido.
             </p>
