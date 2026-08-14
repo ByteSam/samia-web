@@ -1,28 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f6ecda;
-  --foreground: #241509;
+  --background: #faf5ee;
+  --foreground: #1b2421;
 
-  /* afynova brand palette */
-  --color-sand: #f6ecda;
-  --color-sand-dark: #ecdcb9;
-  --color-ink: #241509;
-  --color-terracota: #c1502e;
-  --color-terracota-dark: #9c3d21;
-  --color-rojo-tierra: #8c2f1b;
-  --color-dorado: #c1892b;
-  --color-dorado-light: #e9c876;
+  /* exp/color-bandas — paleta cálida / energética (logo eclipse sigue #C1502E) */
+  --color-sand: #faf5ee;
+  --color-sand-dark: #e8dcc8;
+  --color-ink: #1b2421;
+  --color-terracota: #d4622b;
+  --color-terracota-dark: #b04d1e;
+  --color-rojo-tierra: #2d5c44;
+  --color-dorado: #3d7a5c;
+  --color-dorado-light: #8fbfa3;
   --color-whatsapp: #25d366;
 
   /* Semantic text roles */
   --text-primary: var(--color-ink);
-  --text-secondary: rgba(36, 21, 9, 0.62);
-  --text-muted: rgba(36, 21, 9, 0.45);
+  --text-secondary: rgba(27, 36, 33, 0.62);
+  --text-muted: rgba(27, 36, 33, 0.45);
 
   /* Semantic borders */
-  --border-default: rgba(36, 21, 9, 0.08);
-  --border-strong: rgba(36, 21, 9, 0.15);
+  --border-default: rgba(27, 36, 33, 0.08);
+  --border-strong: rgba(27, 36, 33, 0.15);
 
   /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -54,9 +54,9 @@
   --radius-mockup: 28px;
 
   /* Design tokens — shadows */
-  --shadow-rest: 0 1px 2px rgba(36, 21, 9, 0.04), 0 8px 24px rgba(36, 21, 9, 0.03);
-  --shadow-lift: 0 2px 4px rgba(36, 21, 9, 0.06), 0 16px 32px rgba(36, 21, 9, 0.1);
-  --shadow-overlay: 0 1px 2px rgba(36, 21, 9, 0.06), 0 12px 28px rgba(36, 21, 9, 0.12);
+  --shadow-rest: 0 1px 2px rgba(27, 36, 33, 0.04), 0 8px 24px rgba(27, 36, 33, 0.03);
+  --shadow-lift: 0 2px 4px rgba(27, 36, 33, 0.06), 0 16px 32px rgba(27, 36, 33, 0.1);
+  --shadow-overlay: 0 1px 2px rgba(27, 36, 33, 0.06), 0 12px 28px rgba(27, 36, 33, 0.12);
 }
 
 body {
@@ -106,7 +106,7 @@ main {
   margin-top: 0.5rem;
   width: 100%;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(36, 21, 9, 0.15);
+  border: 1px solid rgba(27, 36, 33, 0.15);
   background: white;
   padding: 0.625rem 1rem;
   font-size: 0.875rem;
@@ -117,7 +117,7 @@ main {
 .input-field:focus-visible {
   outline: none;
   border-color: var(--color-terracota);
-  box-shadow: 0 0 0 2px rgba(193, 80, 46, 0.25);
+  box-shadow: 0 0 0 2px rgba(212, 98, 43, 0.25);
 }
 
 a:focus-visible,
@@ -142,15 +142,15 @@ summary:focus-visible {
 /* ---- Tarjetas: radius grande, mucho padding, sin sombra fuerte ---- */
 .card-soft {
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(36, 21, 9, 0.08);
+  border: 1px solid rgba(27, 36, 33, 0.08);
   background: white;
   padding: 32px;
 }
 
 .card-soft-tint {
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(193, 80, 46, 0.15);
-  background: rgba(193, 80, 46, 0.06);
+  border: 1px solid rgba(212, 98, 43, 0.15);
+  background: rgba(212, 98, 43, 0.06);
   padding: 32px;
 }
 
@@ -167,7 +167,7 @@ summary:focus-visible {
 }
 
 .card-soft-dark {
-  box-shadow: 0 8px 24px rgba(36, 21, 9, 0.12);
+  box-shadow: 0 8px 24px rgba(27, 36, 33, 0.12);
 }
 
 /* ---- Botones: grandes, pill, hover sutil, sin gradiente ---- */
@@ -202,14 +202,14 @@ summary:focus-visible {
   background: var(--color-terracota);
   color: white;
   box-shadow:
-    0 2px 8px rgba(193, 80, 46, 0.18),
-    0 8px 24px rgba(193, 80, 46, 0.22);
+    0 2px 8px rgba(212, 98, 43, 0.18),
+    0 8px 24px rgba(212, 98, 43, 0.22);
 }
 .btn-pill-solid:hover {
   background: var(--color-terracota-dark);
   box-shadow:
-    0 4px 12px rgba(193, 80, 46, 0.22),
-    0 14px 32px rgba(193, 80, 46, 0.28);
+    0 4px 12px rgba(212, 98, 43, 0.22),
+    0 14px 32px rgba(212, 98, 43, 0.28);
 }
 
 /* CTA principal del hero — más masa visual */
@@ -225,11 +225,11 @@ summary:focus-visible {
 }
 .btn-pill-ghost:hover {
   opacity: 1;
-  background: rgba(36, 21, 9, 0.04);
-  border-color: rgba(36, 21, 9, 0.25);
+  background: rgba(27, 36, 33, 0.04);
+  border-color: rgba(27, 36, 33, 0.25);
 }
 
-/* ---- Chip / tag ---- */
+/* ---- Chip / tag — acento secundario verde bosque ---- */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -238,16 +238,16 @@ summary:focus-visible {
   padding: 0.45rem 1.1rem;
   font-size: 0.85rem;
   font-weight: 600;
-  background: rgba(193, 80, 46, 0.12);
-  border: 1px solid rgba(193, 80, 46, 0.20);
-  color: var(--color-terracota-dark);
+  background: rgba(61, 122, 92, 0.12);
+  border: 1px solid rgba(61, 122, 92, 0.22);
+  color: var(--color-dorado);
 }
 
 /* ---- Bandas de sección (ritmo visual en landings de nicho) ---- */
 .section-band {
   background: color-mix(in srgb, var(--color-sand-dark) 48%, var(--color-sand));
-  border-top: 1px solid rgba(36, 21, 9, 0.06);
-  border-bottom: 1px solid rgba(36, 21, 9, 0.06);
+  border-top: 1px solid rgba(27, 36, 33, 0.06);
+  border-bottom: 1px solid rgba(27, 36, 33, 0.06);
 }
 
 .chip-muted {
@@ -257,9 +257,9 @@ summary:focus-visible {
   padding: 0.35rem 0.85rem;
   font-size: 0.75rem;
   font-weight: 500;
-  background: rgba(36, 21, 9, 0.09);
-  border: 1px solid rgba(36, 21, 9, 0.1);
-  color: rgba(36, 21, 9, 0.8);
+  background: rgba(27, 36, 33, 0.09);
+  border: 1px solid rgba(27, 36, 33, 0.1);
+  color: rgba(27, 36, 33, 0.8);
 }
 
 /* ---- Landings de nicho: acentos y frames ---- */
@@ -267,7 +267,7 @@ summary:focus-visible {
   position: relative;
   isolation: isolate;
 }
-/* Punto de luz terracota — arriba a la derecha */
+/* Punto de luz naranja — arriba a la derecha */
 .landing-hero-accent::before {
   content: "";
   position: absolute;
@@ -278,12 +278,12 @@ summary:focus-visible {
   height: min(56vw, 560px);
   background: radial-gradient(
     circle at center,
-    rgba(193, 80, 46, 0.08) 0%,
+    rgba(212, 98, 43, 0.08) 0%,
     transparent 65%
   );
   pointer-events: none;
 }
-/* Punto de luz dorado — abajo a la izquierda */
+/* Punto de luz verde menta — abajo a la izquierda */
 .landing-hero-accent::after {
   content: "";
   position: absolute;
@@ -294,7 +294,7 @@ summary:focus-visible {
   height: min(40vw, 420px);
   background: radial-gradient(
     circle at center,
-    rgba(193, 137, 43, 0.055) 0%,
+    rgba(143, 191, 163, 0.08) 0%,
     transparent 68%
   );
   pointer-events: none;
@@ -304,7 +304,7 @@ summary:focus-visible {
   border-radius: var(--radius-mockup);
   padding: 8px;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.55));
-  border: 1px solid rgba(36, 21, 9, 0.07);
+  border: 1px solid rgba(27, 36, 33, 0.07);
   box-shadow: var(--shadow-overlay);
 }
 
@@ -331,7 +331,7 @@ summary:focus-visible {
 
 .card-compact {
   border-radius: var(--radius-md);
-  border: 1px solid rgba(36, 21, 9, 0.08);
+  border: 1px solid rgba(27, 36, 33, 0.08);
   background: white;
   padding: 20px;
   overflow: visible;
@@ -344,13 +344,13 @@ summary:focus-visible {
 }
 
 .compare-panel-muted {
-  border: 1px dashed rgba(36, 21, 9, 0.12);
-  background: rgba(36, 21, 9, 0.02);
+  border: 1px dashed rgba(27, 36, 33, 0.12);
+  background: rgba(27, 36, 33, 0.02);
 }
 
 .compare-panel-accent {
-  border: 1px solid rgba(193, 80, 46, 0.15);
-  background: rgba(193, 80, 46, 0.06);
+  border: 1px solid rgba(212, 98, 43, 0.15);
+  background: rgba(212, 98, 43, 0.06);
   box-shadow: var(--shadow-rest);
 }
 
@@ -484,7 +484,7 @@ summary:focus-visible {
 }
 
 .shadow-footer {
-  box-shadow: 0 -8px 24px rgba(36, 21, 9, 0.03);
+  box-shadow: 0 -8px 24px rgba(27, 36, 33, 0.03);
 }
 
 .marquee-band {
@@ -576,8 +576,8 @@ summary:focus-visible {
 /* Blanco puro con separadores hairline — cards sin sombra fuerte dentro */
 .section-white {
   background: white;
-  border-top: 1px solid rgba(36, 21, 9, 0.06);
-  border-bottom: 1px solid rgba(36, 21, 9, 0.06);
+  border-top: 1px solid rgba(27, 36, 33, 0.06);
+  border-bottom: 1px solid rgba(27, 36, 33, 0.06);
 }
 
 /* Oscuro completo — un solo bloque por página para anclaje visual */
@@ -603,7 +603,7 @@ summary:focus-visible {
 /* Cards en sección blanca — solo hairline, sin sombra */
 .section-white .card-soft {
   box-shadow: none;
-  border-color: rgba(36, 21, 9, 0.1);
+  border-color: rgba(27, 36, 33, 0.1);
 }
 .section-white .card-soft-tint {
   box-shadow: none;
@@ -611,7 +611,7 @@ summary:focus-visible {
 
 .section-band + .section-white,
 .section-white + .section-band {
-  border-top-color: rgba(36, 21, 9, 0.08);
+  border-top-color: rgba(27, 36, 33, 0.08);
 }
 
 /* ---- Marquee strip (servicios) — pulido editorial ---- */
