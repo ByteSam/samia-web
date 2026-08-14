@@ -1,28 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f6ecda;
-  --foreground: #241509;
+  --background: #1a1a2e;
+  --foreground: #f0f0f5;
 
-  /* afynova brand palette */
-  --color-sand: #f6ecda;
-  --color-sand-dark: #ecdcb9;
-  --color-ink: #241509;
-  --color-terracota: #c1502e;
-  --color-terracota-dark: #9c3d21;
-  --color-rojo-tierra: #8c2f1b;
-  --color-dorado: #c1892b;
-  --color-dorado-light: #e9c876;
+  /* exp/color-gradient — dark theme Quick + acentos magenta/púrpura */
+  --color-sand: #1a1a2e;
+  --color-sand-dark: #141422;
+  --color-ink: #f0f0f5;
+  --color-terracota: #e8457c;
+  --color-terracota-dark: #c93566;
+  --color-rojo-tierra: #9b30ff;
+  --color-dorado: #9b30ff;
+  --color-dorado-light: #c77dff;
   --color-whatsapp: #25d366;
 
   /* Semantic text roles */
   --text-primary: var(--color-ink);
-  --text-secondary: rgba(36, 21, 9, 0.62);
-  --text-muted: rgba(36, 21, 9, 0.45);
+  --text-secondary: rgba(240, 240, 245, 0.7);
+  --text-muted: rgba(240, 240, 245, 0.45);
 
   /* Semantic borders */
-  --border-default: rgba(36, 21, 9, 0.08);
-  --border-strong: rgba(36, 21, 9, 0.15);
+  --border-default: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
 
   /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -53,10 +53,10 @@
   --radius-lg: 24px;
   --radius-mockup: 28px;
 
-  /* Design tokens — shadows */
-  --shadow-rest: 0 1px 2px rgba(36, 21, 9, 0.04), 0 8px 24px rgba(36, 21, 9, 0.03);
-  --shadow-lift: 0 2px 4px rgba(36, 21, 9, 0.06), 0 16px 32px rgba(36, 21, 9, 0.1);
-  --shadow-overlay: 0 1px 2px rgba(36, 21, 9, 0.06), 0 12px 28px rgba(36, 21, 9, 0.12);
+  /* Design tokens — shadows (dark surfaces) */
+  --shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.18);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.24), 0 16px 32px rgba(0, 0, 0, 0.28);
+  --shadow-overlay: 0 1px 2px rgba(0, 0, 0, 0.22), 0 12px 28px rgba(0, 0, 0, 0.32);
 }
 
 body {
@@ -106,8 +106,8 @@ main {
   margin-top: 0.5rem;
   width: 100%;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(36, 21, 9, 0.15);
-  background: white;
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.05);
   padding: 0.625rem 1rem;
   font-size: 0.875rem;
   color: var(--color-ink);
@@ -117,7 +117,7 @@ main {
 .input-field:focus-visible {
   outline: none;
   border-color: var(--color-terracota);
-  box-shadow: 0 0 0 2px rgba(193, 80, 46, 0.25);
+  box-shadow: 0 0 0 2px rgba(232, 69, 124, 0.25);
 }
 
 a:focus-visible,
@@ -142,22 +142,23 @@ summary:focus-visible {
 /* ---- Tarjetas: radius grande, mucho padding, sin sombra fuerte ---- */
 .card-soft {
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(36, 21, 9, 0.08);
-  background: white;
+  border: 1px solid var(--border-default);
+  background: rgba(255, 255, 255, 0.05);
   padding: 32px;
 }
 
 .card-soft-tint {
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(193, 80, 46, 0.15);
-  background: rgba(193, 80, 46, 0.06);
+  border: 1px solid rgba(232, 69, 124, 0.25);
+  background: rgba(232, 69, 124, 0.08);
   padding: 32px;
 }
 
 .card-soft-dark {
   border-radius: var(--radius-lg);
-  background: var(--color-ink);
-  color: var(--color-sand);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-ink);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 32px;
 }
 
@@ -167,7 +168,7 @@ summary:focus-visible {
 }
 
 .card-soft-dark {
-  box-shadow: 0 8px 24px rgba(36, 21, 9, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
 /* ---- Botones: grandes, pill, hover sutil, sin gradiente ---- */
@@ -199,17 +200,36 @@ summary:focus-visible {
 }
 
 .btn-pill-solid {
+  position: relative;
+  overflow: hidden;
   background: var(--color-terracota);
   color: white;
   box-shadow:
-    0 2px 8px rgba(193, 80, 46, 0.18),
-    0 8px 24px rgba(193, 80, 46, 0.22);
+    0 2px 8px rgba(232, 69, 124, 0.18),
+    0 8px 24px rgba(232, 69, 124, 0.22);
+}
+.btn-pill-solid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.38) 50%,
+    transparent 62%
+  );
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+.btn-pill-solid:hover::after {
+  animation: btn-shimmer 0.7s var(--ease-out);
 }
 .btn-pill-solid:hover {
   background: var(--color-terracota-dark);
   box-shadow:
-    0 4px 12px rgba(193, 80, 46, 0.22),
-    0 14px 32px rgba(193, 80, 46, 0.28);
+    0 4px 12px rgba(232, 69, 124, 0.22),
+    0 14px 32px rgba(155, 48, 255, 0.2);
 }
 
 /* CTA principal del hero — más masa visual */
@@ -221,12 +241,12 @@ summary:focus-visible {
 .btn-pill-ghost {
   background: transparent;
   color: var(--color-ink);
-  border: 1px solid var(--border-strong);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 .btn-pill-ghost:hover {
   opacity: 1;
-  background: rgba(36, 21, 9, 0.04);
-  border-color: rgba(36, 21, 9, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 /* ---- Chip / tag ---- */
@@ -238,16 +258,27 @@ summary:focus-visible {
   padding: 0.45rem 1.1rem;
   font-size: 0.85rem;
   font-weight: 600;
-  background: rgba(193, 80, 46, 0.12);
-  border: 1px solid rgba(193, 80, 46, 0.20);
-  color: var(--color-terracota-dark);
+  background: transparent;
+  border: 1px solid rgba(232, 69, 124, 0.35);
+  color: var(--color-dorado-light);
 }
 
 /* ---- Bandas de sección (ritmo visual en landings de nicho) ---- */
 .section-band {
-  background: color-mix(in srgb, var(--color-sand-dark) 48%, var(--color-sand));
-  border-top: 1px solid rgba(36, 21, 9, 0.06);
-  border-bottom: 1px solid rgba(36, 21, 9, 0.06);
+  position: relative;
+  background: var(--color-sand-dark);
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+}
+.section-band::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-terracota), var(--color-dorado));
+  pointer-events: none;
 }
 
 .chip-muted {
@@ -257,9 +288,9 @@ summary:focus-visible {
   padding: 0.35rem 0.85rem;
   font-size: 0.75rem;
   font-weight: 500;
-  background: rgba(36, 21, 9, 0.09);
-  border: 1px solid rgba(36, 21, 9, 0.1);
-  color: rgba(36, 21, 9, 0.8);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(240, 240, 245, 0.8);
 }
 
 /* ---- Landings de nicho: acentos y frames ---- */
@@ -267,7 +298,7 @@ summary:focus-visible {
   position: relative;
   isolation: isolate;
 }
-/* Punto de luz terracota — arriba a la derecha */
+/* Punto de luz magenta — arriba a la derecha */
 .landing-hero-accent::before {
   content: "";
   position: absolute;
@@ -278,12 +309,12 @@ summary:focus-visible {
   height: min(56vw, 560px);
   background: radial-gradient(
     circle at center,
-    rgba(193, 80, 46, 0.08) 0%,
+    rgba(232, 69, 124, 0.22) 0%,
     transparent 65%
   );
   pointer-events: none;
 }
-/* Punto de luz dorado — abajo a la izquierda */
+/* Punto de luz púrpura — abajo a la izquierda */
 .landing-hero-accent::after {
   content: "";
   position: absolute;
@@ -294,17 +325,36 @@ summary:focus-visible {
   height: min(40vw, 420px);
   background: radial-gradient(
     circle at center,
-    rgba(193, 137, 43, 0.055) 0%,
+    rgba(155, 48, 255, 0.18) 0%,
     transparent 68%
   );
   pointer-events: none;
+}
+
+/* Glow difuso detrás del mockup del hero (estilo Quick) */
+.hero-mockup-glow {
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 45% 40%,
+    rgba(232, 69, 124, 0.32) 0%,
+    rgba(155, 48, 255, 0.22) 42%,
+    transparent 72%
+  );
+  filter: blur(30px);
+}
+
+/* Glow suave detrás del eclipse en header/footer */
+.logo-lockup:not(.logo-lockup--static) .logo-eclipse {
+  filter:
+    drop-shadow(0 0 10px rgba(232, 69, 124, 0.35))
+    drop-shadow(0 0 24px rgba(155, 48, 255, 0.28));
 }
 
 .mockup-frame {
   border-radius: var(--radius-mockup);
   padding: 8px;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.55));
-  border: 1px solid rgba(36, 21, 9, 0.07);
+  border: 1px solid rgba(26, 15, 46, 0.07);
   box-shadow: var(--shadow-overlay);
 }
 
@@ -331,8 +381,8 @@ summary:focus-visible {
 
 .card-compact {
   border-radius: var(--radius-md);
-  border: 1px solid rgba(36, 21, 9, 0.08);
-  background: white;
+  border: 1px solid var(--border-default);
+  background: rgba(255, 255, 255, 0.05);
   padding: 20px;
   overflow: visible;
   box-shadow: var(--shadow-rest);
@@ -344,17 +394,23 @@ summary:focus-visible {
 }
 
 .compare-panel-muted {
-  border: 1px dashed rgba(36, 21, 9, 0.12);
-  background: rgba(36, 21, 9, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .compare-panel-accent {
-  border: 1px solid rgba(193, 80, 46, 0.15);
-  background: rgba(193, 80, 46, 0.06);
+  border: 1px solid rgba(232, 69, 124, 0.25);
+  background: rgba(232, 69, 124, 0.08);
   box-shadow: var(--shadow-rest);
 }
 
 /* ---- Animaciones sutiles ---- */
+@keyframes btn-shimmer {
+  to {
+    transform: translateX(130%);
+  }
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -389,6 +445,25 @@ summary:focus-visible {
 
   .btn-pill:hover {
     transform: none;
+  }
+
+  .btn-pill-solid::after {
+    animation: none;
+    display: none;
+  }
+
+  .logo-lockup .logo-eclipse {
+    filter: none;
+    fill: #e8457c;
+  }
+
+  .hero-mockup-glow {
+    display: none;
+  }
+
+  .landing-hero-accent::before,
+  .landing-hero-accent::after {
+    opacity: 0.5;
   }
 }
 
@@ -484,11 +559,11 @@ summary:focus-visible {
 }
 
 .shadow-footer {
-  box-shadow: 0 -8px 24px rgba(36, 21, 9, 0.03);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.22);
 }
 
 .marquee-band {
-  background: color-mix(in srgb, var(--color-sand) 55%, transparent);
+  background: color-mix(in srgb, var(--color-sand-dark) 72%, transparent);
 }
 
 .link-card-arrow {
@@ -575,15 +650,46 @@ summary:focus-visible {
 
 /* Blanco puro con separadores hairline — cards sin sombra fuerte dentro */
 .section-white {
-  background: white;
-  border-top: 1px solid rgba(36, 21, 9, 0.06);
-  border-bottom: 1px solid rgba(36, 21, 9, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
 }
 
-/* Oscuro completo — un solo bloque por página para anclaje visual */
+/* Bloque destacado — carbón más profundo con borde gradiente */
 .section-ink {
-  background: var(--color-ink);
-  color: var(--color-sand);
+  position: relative;
+  background: var(--color-sand-dark);
+  color: var(--color-ink);
+}
+.section-ink::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-terracota), var(--color-dorado));
+  pointer-events: none;
+}
+
+/* Tokens invertidos: text-sand en section-ink debe leerse como texto claro */
+.section-ink :is(.text-sand, [class*="text-sand/"]) {
+  color: var(--color-ink);
+}
+.section-ink .text-sand\/70 {
+  color: var(--text-secondary);
+}
+.section-ink .text-sand\/65 {
+  color: var(--text-secondary);
+}
+.section-ink .text-sand\/80 {
+  color: color-mix(in srgb, var(--color-ink) 80%, transparent);
+}
+.section-ink .border-sand\/30 {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.section-ink .hover\:bg-sand\/10:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* Sin contenedor visual — texto sobre fondo de la sección (helper de layout) */
@@ -603,7 +709,7 @@ summary:focus-visible {
 /* Cards en sección blanca — solo hairline, sin sombra */
 .section-white .card-soft {
   box-shadow: none;
-  border-color: rgba(36, 21, 9, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 .section-white .card-soft-tint {
   box-shadow: none;
@@ -611,7 +717,7 @@ summary:focus-visible {
 
 .section-band + .section-white,
 .section-white + .section-band {
-  border-top-color: rgba(36, 21, 9, 0.08);
+  border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 /* ---- Marquee strip (servicios) — pulido editorial ---- */
@@ -650,4 +756,33 @@ summary:focus-visible {
 body.sticky-cta-visible .fundador-bubble {
   visibility: hidden;
   pointer-events: none;
+}
+
+/* ---- exp/color-gradient: header, sticky CTA y superficies hardcodeadas ---- */
+.site-header {
+  background: color-mix(in srgb, var(--color-sand) 92%, transparent);
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-rest);
+}
+.site-header--scrolled {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-overlay);
+}
+
+.sticky-cta-bar {
+  background: color-mix(in srgb, var(--color-sand) 95%, transparent);
+  border-color: var(--border-default);
+}
+
+.panel-elevated.rounded-2xl {
+  background: rgba(20, 20, 34, 0.98);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:where(.bg-white, [class*="bg-white/"]:not(.mockup-frame *)) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+a:not(.btn-pill):hover {
+  color: var(--color-dorado-light);
 }

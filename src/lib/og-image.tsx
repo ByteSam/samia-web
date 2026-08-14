@@ -3,9 +3,9 @@ import { ImageResponse } from "next/og";
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
 
-const TERRACOTA = "#C1502E";
-const ARENA = "#F6ECDA";
-const INK = "#241509";
+const TERRACOTA = "#E8457C";
+const ARENA = "#1A1A2E";
+const INK = "#F0F0F5";
 
 /** Logo oficial — eclipse + wordmark HTML (satori no soporta <text> en SVG). */
 function AfynovaLogo({ height }: { height: number }) {

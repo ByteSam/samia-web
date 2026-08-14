@@ -112,10 +112,7 @@ export default function Home() {
 
           <Reveal delay={80} className="hidden lg:flex lg:-translate-y-2 lg:justify-end">
             <div className="relative">
-              <div
-                className="pointer-events-none absolute -inset-8 rounded-full bg-terracota/6 blur-3xl"
-                aria-hidden
-              />
+              <div className="hero-mockup-glow pointer-events-none absolute -inset-8" aria-hidden />
               <WhatsAppMockup framed />
             </div>
           </Reveal>
