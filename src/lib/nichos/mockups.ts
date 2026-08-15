@@ -3,12 +3,47 @@
 export type MockupMensaje = {
   de: "cliente" | "asistente";
   texto: string;
+  /** Resalta como opción/botón (Fase 9 #75) */
+  choice?: boolean;
 };
 
 export type NichoMockup = {
   titulo: string;
   subtitulo: string;
   mensajes: MockupMensaje[];
+};
+
+export const MOCKUP_HOME: NichoMockup = {
+  titulo: "Recepcionista IA",
+  subtitulo: "en línea",
+  mensajes: [
+    { de: "cliente", texto: "¿Cuánto cuesta y tienen citas el sábado?" },
+    {
+      de: "asistente",
+      texto: "Te paso precios según el servicio. Sábado de 9am a 1pm — ¿qué necesitas?",
+    },
+    { de: "cliente", texto: "Consulta inicial", choice: true },
+    {
+      de: "asistente",
+      texto: "Perfecto ✅ Te confirmo el monto y te agendo. ¿10am te viene bien?",
+    },
+  ],
+};
+
+export const MOCKUP_CLINICA_RECORDATORIO: NichoMockup = {
+  titulo: "Recordatorio automático",
+  subtitulo: "24h antes",
+  mensajes: [
+    {
+      de: "asistente",
+      texto: "Hola María, te recuerdo tu cita mañana a las 3pm. ¿Confirmas? ✅ / ❌",
+    },
+    { de: "cliente", texto: "Sí, confirmo ✅" },
+    {
+      de: "asistente",
+      texto: "Perfecto. Te esperamos mañana a las 3pm.",
+    },
+  ],
 };
 
 export const MOCKUP_CLINICA: NichoMockup = {

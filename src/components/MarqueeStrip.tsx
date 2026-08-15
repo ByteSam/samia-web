@@ -7,19 +7,12 @@ const ITEMS = [
   "Infraestructura digital",
 ];
 
-/** Separador SVG circle — consistente en todos los OS (no depende de Unicode) */
-function Dot() {
+/** Separador ✦ con glow — marquee marciano */
+function StarSep() {
   return (
-    <svg
-      width="4"
-      height="4"
-      viewBox="0 0 4 4"
-      fill="none"
-      className="shrink-0 text-terracota/40"
-      aria-hidden="true"
-    >
-      <circle cx="2" cy="2" r="2" fill="currentColor" />
-    </svg>
+    <span className="marquee-star shrink-0 text-sm leading-none text-dorado-light" aria-hidden="true">
+      ✦
+    </span>
   );
 }
 
@@ -29,7 +22,7 @@ export default function MarqueeStrip() {
 
   return (
     <div
-      className="marquee-band border-y border-ink/5 overflow-hidden py-3"
+      className="marquee-band marquee-band-fade border-y border-ink/5 overflow-hidden py-3"
       aria-hidden="true"
     >
       <div className="marquee-track flex gap-10 whitespace-nowrap">
@@ -39,7 +32,7 @@ export default function MarqueeStrip() {
             className="flex shrink-0 items-center gap-10 text-sm font-medium tracking-wide text-secondary"
           >
             {item}
-            <Dot />
+            <StarSep />
           </span>
         ))}
       </div>

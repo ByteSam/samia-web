@@ -41,6 +41,7 @@ Crosslinks en web: bridges y módulos de Infra enlazan a Automatización y Datos
 afynova no oculta por completo el precio ni publica tarifas cerradas para trabajos variables.
 
 - Home: mostrar un rango general y explicar que la propuesta final es cerrada y sin costos ocultos.
+- **Combo de entrada (Home):** "Presencia + captación" = web + asistente WhatsApp, desde **S/1,800** (referencia pública; detalle interno en `docs/ops/02-propuesta/tabla-precios.md`).
 - Servicios productizados: mostrar un precio “desde” solo cuando el alcance mínimo y el plazo estén definidos.
 - Landings repetibles por nicho: usar paquetes cerrados únicamente cuando se puedan entregar de forma consistente.
 - Infraestructura digital: cotización personalizada; rangos orientativos publicados en la landing (Base / Pro / Integral).

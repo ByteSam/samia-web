@@ -1,18 +1,14 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { ShieldCheck } from "lucide-react";
+import { MOCKUP_HOME } from "@/lib/nichos/mockups";
 
 type Mensaje = {
   de: "cliente" | "asistente";
   texto: string;
+  choice?: boolean;
 };
-
-const MENSAJES_DEFAULT: Mensaje[] = [
-  { de: "cliente", texto: "¿Tienen citas este sábado?" },
-  { de: "asistente", texto: "Sí, tenemos horas de 9am a 1pm. ¿Te reservo una?" },
-  { de: "cliente", texto: "Sí, a las 10am" },
-  { de: "asistente", texto: "Listo ✅ Confirmado para el sábado 10am." },
-];
 
 const STAGGER_MS = 280;
 const INITIAL_DELAY_MS = 400;
@@ -37,15 +33,18 @@ type WhatsAppMockupProps = {
   subtitulo?: string;
   compact?: boolean;
   framed?: boolean;
+  /** Línea de confianza bajo el mockup (ej. escalamiento a humano). */
+  reassurance?: string;
 };
 
 /** Mockup ilustrativo — muestra la IA respondiendo con stagger real al montar. */
 export default function WhatsAppMockup({
-  mensajes = MENSAJES_DEFAULT,
-  titulo = "Recepcionista IA",
-  subtitulo = "en línea",
+  mensajes = MOCKUP_HOME.mensajes,
+  titulo = MOCKUP_HOME.titulo,
+  subtitulo = MOCKUP_HOME.subtitulo,
   compact = false,
   framed = false,
+  reassurance,
 }: WhatsAppMockupProps) {
   const prefersReducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
@@ -86,11 +85,7 @@ export default function WhatsAppMockup({
 
   const shell = (
     <div className={`relative w-full ${compact ? "max-w-[280px]" : "max-w-[340px]"}`}>
-      <div
-        className={`overflow-hidden rounded-3xl border border-ink/8 bg-white shadow-overlay ${
-          compact ? "" : ""
-        }`}
-      >
+      <div className="whatsapp-mockup-shell overflow-hidden rounded-3xl border shadow-overlay">
         {/* Header del chat */}
         <div className="flex items-center gap-3 bg-[#2d8a52] px-4 py-3">
           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/20 text-white">
@@ -105,15 +100,15 @@ export default function WhatsAppMockup({
         </div>
 
         {/* Burbujas con stagger */}
-        <div className="flex flex-col gap-2.5 bg-[#e8e4dc] px-4 py-3">
+        <div className="whatsapp-mockup-chat flex flex-col gap-2.5 px-4 py-3">
           {mensajes.map((m, i) => (
             <div
               key={i}
-              className={`rounded-2xl px-3.5 py-2 text-sm leading-snug shadow-sm transition-all ${
+              className={`whatsapp-bubble rounded-2xl px-3.5 py-2 text-sm leading-snug shadow-sm transition-all ${
                 m.de === "asistente"
-                  ? "max-w-[78%] self-end rounded-tr-sm bg-[#d4ead8] text-ink"
-                  : "max-w-[72%] self-start rounded-tl-sm bg-white text-ink"
-              } ${
+                  ? "whatsapp-bubble-out max-w-[78%] self-end rounded-tr-sm"
+                  : "whatsapp-bubble-in max-w-[72%] self-start rounded-tl-sm"
+              } ${m.choice ? "mockup-bubble-choice" : ""} ${
                 i < visibleCount
                   ? "translate-y-0 opacity-100"
                   : "translate-y-2 opacity-0"
@@ -128,11 +123,23 @@ export default function WhatsAppMockup({
     </div>
   );
 
+  const caption = (
+    <>
+      <p className="mockup-caption">Ejemplo ilustrativo</p>
+      {reassurance ? (
+        <p className="mockup-reassurance ai-safety-line justify-center">
+          <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-terracota" strokeWidth={2} aria-hidden />
+          {reassurance}
+        </p>
+      ) : null}
+    </>
+  );
+
   if (framed) {
     return (
-      <div>
+      <div className="hero-mockup-float">
         <div className="mockup-frame">{shell}</div>
-        <p className="mockup-caption">Ejemplo ilustrativo</p>
+        {caption}
       </div>
     );
   }
@@ -141,7 +148,7 @@ export default function WhatsAppMockup({
     return (
       <div className="mockup-frame-tilt-light">
         {shell}
-        <p className="mockup-caption">Ejemplo ilustrativo</p>
+        {caption}
       </div>
     );
   }

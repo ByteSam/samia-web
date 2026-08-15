@@ -37,11 +37,11 @@ const EVENTOS: Evento[] = [
 ];
 
 const TIPO_STYLES: Record<EventoTipo, string> = {
-  neutral: "bg-ink/6 text-ink/55",
-  accion: "bg-terracota/10 text-terracota-dark",
-  respuesta: "bg-[#d4ead8] text-[#2d6e47]",
-  malo: "bg-red-50 text-red-400 line-through",
-  bueno: "bg-terracota/12 text-terracota-dark font-semibold",
+  neutral: "bg-ink/8 text-secondary",
+  accion: "bg-terracota/12 text-dorado-light",
+  respuesta: "bg-terracota/10 text-ink",
+  malo: "bg-red-950/40 text-red-300/80 line-through",
+  bueno: "bg-terracota/16 text-dorado-light font-semibold",
 };
 
 const TIPO_ICON: Partial<Record<EventoTipo, React.ReactNode>> = {
@@ -66,15 +66,15 @@ function EventoPill({ ev }: { ev: EventoData }) {
 /** Comparación narrativa — timeline del mismo turno en dos escenarios. */
 export default function ClinicasHeroAgendaCompare() {
   return (
-    <div className="overflow-hidden rounded-2xl border border-ink/8 bg-white">
+    <div className="compare-timeline-shell overflow-hidden rounded-2xl border">
       {/* Cabecera */}
-      <div className="grid grid-cols-[80px_1fr_1fr] border-b border-ink/6 sm:grid-cols-[96px_1fr_1fr]">
+      <div className="grid grid-cols-[80px_1fr_1fr] border-b border-ink/10 sm:grid-cols-[96px_1fr_1fr]">
         <div className="px-4 py-3" />
-        <div className="border-l border-ink/6 px-4 py-3">
-          <p className="text-xs font-semibold text-ink/40">Sin recordatorio</p>
+        <div className="border-l border-ink/10 px-4 py-3">
+          <p className="text-xs font-semibold text-muted">Sin recordatorio</p>
         </div>
-        <div className="border-l border-ink/6 bg-terracota/[0.03] px-4 py-3">
-          <p className="text-xs font-semibold text-terracota-dark/70">Con recordatorio</p>
+        <div className="compare-timeline-accent-col border-l border-ink/10 px-4 py-3">
+          <p className="text-xs font-semibold text-dorado-light">Con recordatorio</p>
         </div>
       </div>
 
@@ -83,31 +83,31 @@ export default function ClinicasHeroAgendaCompare() {
         <div
           key={ev.tiempo}
           className={`grid grid-cols-[80px_1fr_1fr] sm:grid-cols-[96px_1fr_1fr] ${
-            i < EVENTOS.length - 1 ? "border-b border-ink/6" : ""
+            i < EVENTOS.length - 1 ? "border-b border-ink/10" : ""
           }`}
         >
           {/* Tiempo */}
           <div className="flex items-center px-4 py-4">
-            <p className="text-[11px] font-medium tabular-nums text-ink/35 leading-tight">
+            <p className="text-[11px] font-medium tabular-nums text-muted leading-tight">
               {ev.tiempo}
             </p>
           </div>
 
           {/* Sin recordatorio */}
-          <div className="flex items-center border-l border-ink/6 px-4 py-4">
+          <div className="flex items-center border-l border-ink/10 px-4 py-4">
             {ev.sin ? (
               <EventoPill ev={ev.sin} />
             ) : (
-              <span className="text-xs text-ink/20">—</span>
+              <span className="text-xs text-muted">—</span>
             )}
           </div>
 
           {/* Con recordatorio */}
-          <div className="flex items-center border-l border-ink/6 bg-terracota/[0.025] px-4 py-4">
+          <div className="compare-timeline-accent-col flex items-center border-l border-ink/10 px-4 py-4">
             {ev.con ? (
               <EventoPill ev={ev.con} />
             ) : (
-              <span className="text-xs text-ink/20">—</span>
+              <span className="text-xs text-muted">—</span>
             )}
           </div>
         </div>

@@ -17,6 +17,7 @@ import PricingTiers from "@/components/PricingTiers";
 import ProblemSection from "@/components/ProblemSection";
 import WhatsAppMockup from "@/components/WhatsAppMockup";
 import HeroTrustLine from "@/components/HeroTrustLine";
+import AiSafetyLine from "@/components/AiSafetyLine";
 import ClinicasAusenciasBlock from "@/components/nichos/ClinicasAusenciasBlock";
 import ClinicasHeroAgendaCompare from "@/components/nichos/ClinicasHeroAgendaCompare";
 import ImplementacionStepper from "@/components/ImplementacionStepper";
@@ -146,8 +147,14 @@ export default function ClinicasPage() {
               llena.
             </h1>
 
-            <p className="mt-5 text-lg leading-relaxed text-ink/60">
+            <p className="mt-5 text-lg leading-relaxed text-secondary">
               Recordatorios por WhatsApp que confirman el turno — sin saturar recepción.
+            </p>
+            <p className="mt-3 text-sm text-muted">
+              Dental, médica, estética, fisio — cualquier clínica con agenda de citas.
+            </p>
+            <p className="mt-3 text-sm text-secondary">
+              Responde como si fuera tu recepción — con tu nombre y tu tono.
             </p>
 
             <div className="mt-8 flex flex-col items-center gap-3 lg:items-start">
@@ -158,9 +165,10 @@ export default function ClinicasPage() {
               >
                 Quiero reducir ausencias
               </WhatsAppButton>
-              <p className="text-sm text-ink/50">
+              <p className="text-sm text-muted">
                 Desde S/1,500 · Diagnóstico gratis · Sin compromiso
               </p>
+              <AiSafetyLine className="mt-2 text-center lg:text-left" />
               <div className="mt-1">
                 <HeroTrustLine />
               </div>
@@ -173,6 +181,7 @@ export default function ClinicasPage() {
               titulo={MOCKUP_CLINICA.titulo}
               subtitulo={MOCKUP_CLINICA.subtitulo}
               mensajes={MOCKUP_CLINICA.mensajes}
+              reassurance="Si no sabe la respuesta, te la pasa a ti directo."
             />
           </Reveal>
         </div>
@@ -184,6 +193,7 @@ export default function ClinicasPage() {
               titulo={MOCKUP_CLINICA.titulo}
               subtitulo={MOCKUP_CLINICA.subtitulo}
               mensajes={MOCKUP_CLINICA.mensajes}
+              reassurance="Si no sabe la respuesta, te la pasa a ti directo."
             />
           </div>
         </Reveal>
@@ -204,7 +214,7 @@ export default function ClinicasPage() {
       </div>
 
       {/* Comparación timeline — después del problema */}
-      <section className="mx-auto max-w-3xl px-6 section-py">
+      <section className="section-depth-b mx-auto max-w-3xl px-6 section-py section-horizon">
         <Reveal>
           <span className="chip">El mismo turno, dos resultados</span>
           <h2 className="text-h2 mt-4 text-ink">Lo que pasa con y sin recordatorio</h2>

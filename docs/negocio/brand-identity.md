@@ -2,6 +2,8 @@
 
 > Documento unificado para el repo. Fuente: `brand-book-ichan.md` (v1.1, 21 jul 2026) + `identidad-visual-ichan.md` (cerrada 20 jul 2026).**Regla:** Ningún cambio importante en la marca puede hacerse sin justificar qué parte se modifica y por qué.
 
+> **⚠️ Rama `exp/color-dorado`** — Este documento ha sido actualizado para reflejar la identidad visual "Marte / Espacio profundo" que se está probando. La versión original (paleta light/terracota) vive en `develop` y `main`.
+
 ---
 
 ## 1. Esencia de marca
@@ -42,18 +44,38 @@
 
 ### Personalidad visual
 
-**Profesional, cercana, confiable, minimalista, moderna, humana.**Posicionamiento: "ingeniería premium accesible".Referencias de sensación: Stripe, Linear, Anthropic, Basecamp (principios, no estilos).
+**Profesional, exploradora, confiable, minimalista, moderna, premium.**
+Posicionamiento: "ingeniería de misión — resolver problemas con precisión, como una operación espacial".
+Referencias de sensación: Stripe, Linear, Amazon Quick, SpaceX (principios, no estilos).
+Temática subyacente: Marte / espacio profundo — el logo como cuerpo celeste, la marca como misión.
 
-### Paleta
+### Paleta — Dark theme "Marte / Espacio"
 
-| Token | Hex | Uso |
+| Token | Hex | Uso | Inspiración |
+| --- | --- | --- | --- |
+| **Espacio profundo** | `#1C1825` | Fondo principal | Cielo nocturno con matiz púrpura |
+| **Vacío cósmico** | `#140F1E` | Fondo alternancia / bandas | Espacio más profundo |
+| **Luz estelar** | `#F2E8DC` | Texto principal (sobre oscuro) | Estrellas con tono cálido |
+| **Naranja marciano** | `#D4622B` | CTA / acento principal | Superficie de Marte iluminada |
+| **Naranja sombra** | `#B34A1C` | CTA hover / variante oscura | Marte en sombra |
+| **Rojo Tierra** | `#8C2F1B` | Acento fuerte / gradiente | Óxido de hierro marciano |
+| **Cobre solar** | `#C1892B` | Acento secundario (dorado) | Sol reflejando en polvo |
+| **Arena dorada** | `#E9C876` | Highlight sutil | Dunas marcianas al amanecer |
+| **WhatsApp** | `#25D366` | Solo botón WhatsApp | — |
+
+**Esquema:** Dark theme. Fondos oscuros (espacio), texto claro (luz estelar), acentos cálidos puntuales (naranja marciano, cobre solar).
+
+**Regla:** Los naranjas/dorados son ACENTOS, no fondos. El 90% de la superficie visual es oscura. Los colores vibrantes se usan en: CTAs, logo, glows, bordes, íconos, links.
+
+#### Tokens semánticos adicionales
+
+| Token | Valor | Uso |
 | --- | --- | --- |
-| **Terracota** | `#C1502E` | Primario de marca, CTA, acentos |
-| **Rojo Tierra** | `#8C2F1B` | Variante oscura terracota |
-| **Dorado** | `#C1892B` | Acento secundario (cálido) |
-| **Ink (Tinta)** | `#241509` | Texto principal, wordmark |
-| **Arena** | `#F6ECDA` | Fondo claro, backgrounds |
-| **Azul** | Reservado | NUNCA en sitio de marketing. Solo futuro Software/Academy |
+| `--text-secondary` | `rgba(242, 232, 220, 0.72)` | Texto secundario |
+| `--text-muted` | `rgba(242, 232, 220, 0.45)` | Texto terciario |
+| `--border-subtle` | `rgba(209, 137, 43, 0.12)` | Bordes suaves (tinte dorado) |
+| `--border-strong` | `rgba(209, 137, 43, 0.25)` | Bordes más visibles |
+| `--surface-card` | `rgba(193, 137, 43, 0.04)` | Fondo cards (calidez sutil) |
 
 ### Tipografía
 
@@ -68,6 +90,7 @@ Logo y headings usan fuentes distintas a propósito: marca = precisión, conteni
 ### Iconografía
 
 Lucide, estilo outline, 20/24/32px. Funcional y discreta, nunca decorativa ni 3D.
+Color: naranja marciano o cobre solar sobre fondo oscuro.
 
 ### Ilustraciones
 
@@ -88,7 +111,7 @@ Lucide, estilo outline, 20/24/32px. Funcional y discreta, nunca decorativa ni 3D
 
 **Círculo geométrico casi completo, con una única intervención/corte diagonal.**
 
-Sensación: precisión, no ruptura. La forma se sigue sintiendo entera.Interpretación abierta: sistema abierto, mejora continua, pieza que encaja.
+Sensación: precisión, no ruptura. La forma se sigue sintiendo entera. Interpretación ampliada: cuerpo celeste con un corte — como un planeta con un cráter o un eclipse parcial.
 
 ### Especificaciones del símbolo
 
@@ -99,24 +122,38 @@ Sensación: precisión, no ruptura. La forma se sigue sintiendo entera.Interpret
 | Ángulo | **Diagonal (30-50°)** — curva suave descartada |
 | Relación símbolo/wordmark | **Equilibrado** (dominante solo en favicon) |
 | Tipografía wordmark | **Space Grotesk** |
-| Color símbolo | Terracota `#C1502E` |
-| Color wordmark | Ink `#241509` |
+| Color símbolo | **Gradiente animado:** Naranja marciano `#D4622B` → Cobre solar `#C1892B` → Rojo tierra `#8C2F1B` (rotación 360° en ~10-12s) |
+| Color wordmark | Luz estelar `#F2E8DC` (sobre fondo oscuro) |
+| Glow del símbolo | Resplandor naranja/dorado (blur ~25px, opacity 30%) — simula atmósfera planetaria |
+
+### Efectos de marca (estilo Quick)
+
+| Efecto | Descripción |
+| --- | --- |
+| **Gradiente animado** | El eclipse rota su gradiente lentamente — parece un planeta girando |
+| **Glow atmosférico** | Resplandor difuso detrás del símbolo |
+| **Shimmer en CTAs** | Destello dorado que recorre botones en hover |
+| **Bordes gradiente** | Separadores con gradiente naranja→dorado (horizonte marciano) |
+| **Micro-estrellas** | Puntos diminutos en fondo (opacity 0.1-0.2) — campo de estrellas |
+| **Reducción de movimiento** | `prefers-reduced-motion` → todo estático, eclipse naranja sólido |
 
 ### Implementación actual
 
 - SVG en `public/logo/afynova.svg`
-- Componente `Logo.tsx` (símbolo + wordmark como paths vectoriales)
-- Favicon en `src/app/icon.svg`
-- Open Graph usa el mismo SVG
+- Componente `Logo.tsx` (símbolo con `<linearGradient>` + `gradientTransform` animado + wordmark)
+- Favicon en `src/app/icon.svg` (naranja marciano sólido, sin gradiente)
+- Open Graph usa SVG estático (naranja marciano sólido)
 
 ### Reglas de uso
 
 | Contexto | Regla |
 | --- | --- |
-| Favicon (32px) | Solo símbolo, nunca wordmark. Fill sólido. Validar en escala de grises |
-| Navbar/Footer | Símbolo + wordmark equilibrado |
-| Monocromo | Negro sobre blanco ✅ / Blanco sobre ink ✅ (validar). Nunca grises intermedios |
-| Bordado/serigrafía | Un solo color. Corte "medio". Sin ángulos internos <20° |
+| Favicon (32px) | Solo símbolo, naranja marciano sólido. Validar en escala de grises |
+| Navbar/Footer | Símbolo (con gradiente animado + glow) + wordmark luz estelar |
+| Sobre fondo claro (impresión) | Símbolo naranja sólido, wordmark ink `#241509` |
+| Sobre fondo oscuro (digital) | Símbolo con gradiente + glow, wordmark luz estelar |
+| Monocromo | Blanco sobre oscuro ✅ / Negro sobre blanco ✅ (sin gradiente) |
+| Bordado/serigrafia | Un solo color (naranja marciano). Sin ángulos internos <20° |
 
 ### Lo que fue descartado
 
@@ -175,12 +212,13 @@ Pyme de 1-20 empleados, dueño/gerente que decide directamente, que ya pierde cl
 ### Antes de tocar identidad visual:
 
 - Consultar sección 4 y 5 de este documento
-- Justificar qué parte del brand identity se modifica y por qué
+- Respetar: Dark theme, paleta Marte/Espacio, acentos puntuales
 - Respetar: Lucide outline, sin ilustraciones figurativas, sin stock, sin IA generativa para personas
+- Los fondos son SIEMPRE oscuros. Los colores vibrantes son SOLO acentos
 
 ### Antes de cambiar logo:
 
 - El concepto "El Corte Preciso" está **cerrado**
+- El gradiente animado y glow son parte de la identidad actual
 - Solo queda refinamiento de ejecución (proporciones, pruebas)
 - No explorar nuevos conceptos sin justificación contra este documento
-

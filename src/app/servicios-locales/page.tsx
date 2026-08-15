@@ -17,6 +17,7 @@ import FAQSection from "@/components/FAQSection";
 import PricingTiers from "@/components/PricingTiers";
 import ProblemSection from "@/components/ProblemSection";
 import WhatsAppMockup from "@/components/WhatsAppMockup";
+import AiSafetyLine from "@/components/AiSafetyLine";
 import LocalesMissedCallBlock from "@/components/nichos/LocalesMissedCallBlock";
 import ImplementacionStepper from "@/components/ImplementacionStepper";
 import SolutionSection from "@/components/SolutionSection";
@@ -75,8 +76,8 @@ const SOLUCION_ITEMS = [
   },
   {
     icon: MapPinned,
-    t: "Te avisa lo urgente",
-    d: "Si suena a emergencia (fuga, corte, algo roto), te notifica para que priorices.",
+    t: "Zona y urgencias",
+    d: "Configuras tu zona de trabajo — el asistente avisa al cliente si estás fuera de rango.",
   },
 ];
 
@@ -127,6 +128,14 @@ const FAQS = [
     q: "¿Puedo perder una llamada y aun así no perder al cliente?",
     a: "Ese es el punto: si no contestas la llamada, el asistente le escribe solo por WhatsApp en segundos.",
   },
+  {
+    q: "¿Necesito internet todo el tiempo?",
+    a: "No — el asistente funciona en la nube. Aunque estés en un sótano sin señal, responde por ti.",
+  },
+  {
+    q: "¿Lo puedo apagar cuando estoy de vacaciones?",
+    a: "Sí — lo pausas y lo reactivas cuando vuelvas.",
+  },
 ];
 
 export default function ServiciosLocalesPage() {
@@ -136,9 +145,7 @@ export default function ServiciosLocalesPage() {
       <section className="landing-hero-accent mx-auto max-w-6xl px-6 pb-12 pt-20 md:pb-16 md:pt-28">
         <div className="grid gap-12 lg:grid-cols-[5fr_4fr] lg:items-start">
           <div className="text-center lg:text-left">
-            <span className="chip">
-              Gasfitería · cerrajería · mantenimiento · emergencias del hogar
-            </span>
+            <span className="chip">Servicios del hogar y emergencias</span>
 
             <h1 className="text-h1 text-balance mt-6 text-ink">
               Cada{" "}
@@ -146,9 +153,12 @@ export default function ServiciosLocalesPage() {
               es un cliente que se va con la competencia.
             </h1>
 
-            <p className="mt-6 text-lg leading-relaxed text-ink/60">
+            <p className="mt-6 text-lg leading-relaxed text-secondary">
               Si no puedes contestar, el asistente responde por WhatsApp en segundos — antes
               de que el cliente llame al siguiente en Google.
+            </p>
+            <p className="mt-3 text-sm text-muted">
+              Gasfitería, cerrajería, mantenimiento y más.
             </p>
 
             <div className="mt-10 flex flex-col items-center gap-3 lg:items-start">
@@ -158,9 +168,10 @@ export default function ServiciosLocalesPage() {
               >
                 Quiero recuperar llamadas perdidas
               </WhatsAppButton>
-              <p className="text-sm text-ink/55">
+              <p className="text-sm text-muted">
                 Desde S/500 de configuración · Hablarás directamente conmigo
               </p>
+              <AiSafetyLine className="text-center lg:text-left" />
               <div className="mt-1 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-ink/50 lg:justify-start">
                 <span className="flex items-center gap-1.5">
                   <Shield className="h-3.5 w-3.5 text-terracota" strokeWidth={1.75} aria-hidden />
@@ -181,6 +192,7 @@ export default function ServiciosLocalesPage() {
                 titulo={MOCKUP_LOCALES.titulo}
                 subtitulo={MOCKUP_LOCALES.subtitulo}
                 mensajes={MOCKUP_LOCALES.mensajes}
+                reassurance="Si no sabe la respuesta, te la pasa a ti directo."
               />
               <p className="mt-3 text-center text-xs text-ink/45">
                 Ejemplo: fuga urgente — el asistente responde mientras trabajas
@@ -198,6 +210,7 @@ export default function ServiciosLocalesPage() {
             titulo={MOCKUP_LOCALES.titulo}
             subtitulo={MOCKUP_LOCALES.subtitulo}
             mensajes={MOCKUP_LOCALES.mensajes}
+            reassurance="Si no sabe la respuesta, te la pasa a ti directo."
           />
         </Reveal>
       </section>

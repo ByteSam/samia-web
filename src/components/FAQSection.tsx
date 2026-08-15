@@ -28,16 +28,16 @@ export default function FAQSection({
   }
 
   return (
-    <section className="container-prose section-py">
+    <section className="faq-section container-prose section-py section-horizon">
       <Reveal>
-        <h2 className="text-h2 text-ink">{titulo}</h2>
+        <h2 className="faq-heading text-h2 text-ink">{titulo}</h2>
       </Reveal>
       <div className="mt-8 space-y-2">
         {items.map((f, i) => {
           const isOpen = openIndex === i;
           return (
             <Reveal key={f.q} delay={i * 40}>
-              <div className="border-b border-ink/8 last:border-0">
+              <div className="faq-item border-b last:border-0">
                 <button
                   type="button"
                   onClick={() => toggle(i)}

@@ -21,7 +21,7 @@ function SinAsistente() {
         {CONSULTAS_SIN.map((item) => (
           <li
             key={item.id}
-            className="flex items-start gap-2 rounded-lg border border-dashed border-ink/10 bg-white/60 px-3 py-2.5 text-sm leading-relaxed text-ink/55"
+            className="flex items-start gap-2 compare-list-item-muted rounded-lg border border-dashed px-3 py-2.5 text-sm leading-relaxed"
           >
             <X className="mt-0.5 h-4 w-4 shrink-0 text-ink/35" strokeWidth={2} aria-hidden />
             <span>{item.texto}</span>
@@ -34,7 +34,7 @@ function SinAsistente() {
 
 function ConAsistente() {
   return (
-    <ComparePanel tone="accent" title="Con asistente" badge="filtra y agenda" className="!p-4 sm:!p-5">
+    <ComparePanel tone="accent" title="Con asistente" badge="filtra y agenda" className="compare-panel-accent-glow !p-4 sm:!p-5">
       <div className="flex justify-center">
         <WhatsAppMockup
           compact
@@ -57,7 +57,7 @@ export default function LegalesHeroConsultaCompare() {
       <SinAsistente />
       <div className="flex items-center justify-center py-2 sm:py-0">
         <ArrowRight
-          className="h-5 w-5 rotate-90 text-ink/35 sm:rotate-0"
+          className="compare-arrow-pulse h-5 w-5 rotate-90 text-dorado-light sm:rotate-0"
           strokeWidth={1.5}
           aria-hidden
         />

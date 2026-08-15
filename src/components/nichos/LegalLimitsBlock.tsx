@@ -25,9 +25,13 @@ export default function LegalLimitsBlock() {
             <Scale className="h-8 w-8 text-terracota" strokeWidth={1.5} />
             <h2 className="text-h2 text-ink">Qué hace y qué no hace</h2>
           </div>
-          <p className="mt-4 max-w-2xl text-ink/60">
+          <p className="mt-4 max-w-2xl text-secondary">
             Importante para estudios de abogacía: la herramienta organiza el primer
             contacto; la asesoría sigue siendo tuya.
+          </p>
+          <p className="mt-3 max-w-2xl text-sm text-muted">
+            Tú defines las reglas — palabras clave, contexto, tipo de caso. No es IA
+            inventando prioridades.
           </p>
         </Reveal>
 

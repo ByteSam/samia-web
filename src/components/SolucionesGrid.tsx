@@ -7,28 +7,37 @@ const NICHOS = [
     nombre: "Clínicas",
     href: "/clinicas",
     icon: Stethoscope,
+    gancho: "¿Pacientes que no confirman?",
     dolor: "Citas que se caen, agenda con huecos, WhatsApp sin responder.",
     beneficio: "Recordatorios automáticos y respuesta al instante — menos ausencias, más agenda llena.",
     featured: true,
     accent: "bg-terracota",
+    iconColor: "text-terracota",
+    iconBg: "bg-terracota/12",
   },
   {
     nombre: "Firmas legales",
     href: "/servicios-legales",
     icon: Scale,
+    gancho: "¿Consultas fuera de horario?",
     dolor: "Consultas que llegan fuera de horario, sin filtro ni prioridad.",
     beneficio: "Clasifica, deriva y agenda la primera consulta — sin que tengas que estar disponible.",
     featured: false,
     accent: "bg-dorado",
+    iconColor: "text-dorado",
+    iconBg: "bg-dorado/12",
   },
   {
     nombre: "Negocios locales",
     href: "/servicios-locales",
     icon: Wrench,
+    gancho: "¿Pierdes llamadas?",
     dolor: "Llamadas perdidas y WhatsApp sin contestar mientras estás en servicio.",
     beneficio: "Atiende lo urgente, filtra cotizaciones y agenda visitas automáticamente.",
     featured: false,
     accent: "bg-rojo-tierra",
+    iconColor: "text-rojo-tierra",
+    iconBg: "bg-rojo-tierra/12",
   },
 ];
 
@@ -42,20 +51,21 @@ function NichoCard({
   const cardClass = featured ? "card-soft-tint hover-lift" : "card-soft hover-lift";
 
   return (
-    <Link href={n.href} className={`${cardClass} group relative flex h-full flex-col overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota`}>
+    <Link href={n.href} className={`${cardClass} card-hover-mars group relative flex h-full flex-col overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota`}>
       <span className={`absolute inset-x-0 top-0 h-1 ${n.accent}`} aria-hidden />
       <span
-        className={`inline-flex items-center justify-center rounded-xl bg-terracota/10 ${featured ? "h-14 w-14" : "h-10 w-10"}`}
+        className={`inline-flex items-center justify-center rounded-xl ${n.iconBg} ${featured ? "h-14 w-14" : "h-10 w-10"}`}
       >
         <n.icon
-          className={`text-terracota ${featured ? "h-7 w-7" : "h-5 w-5"}`}
+          className={`${n.iconColor} ${featured ? "h-7 w-7" : "h-5 w-5"}`}
           strokeWidth={1.5}
         />
       </span>
       <h3 className={`text-h3 ${featured ? "text-h3-featured" : ""} mt-5 text-ink`}>
         {n.nombre}
       </h3>
-      <p className="text-small text-muted mt-2">{n.dolor}</p>
+      <p className="mt-2 text-sm font-medium text-terracota-dark/90">{n.gancho}</p>
+      <p className="text-small text-muted mt-1.5">{n.dolor}</p>
       <p className="text-small text-secondary mt-3 font-medium">{n.beneficio}</p>
       <span className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-medium text-terracota-dark">
         Ver solución para {n.nombre.toLowerCase()}{" "}
@@ -76,10 +86,10 @@ export default function SolucionesGrid({
   const rest = equalCards ? NICHOS : NICHOS.filter((n) => !n.featured);
 
   return (
-    <section className="container-content section-py">
+    <section className="section-depth-a container-content section-py section-horizon">
       <Reveal>
-        <span className="chip">Mismo sistema, adaptado a tu sector</span>
-        <h2 className="text-h2 mt-4 text-ink">Soluciones por rubro</h2>
+        <span className="chip">Por sector</span>
+        <h2 className="text-h2 mt-4 text-ink">¿En qué rubro estás?</h2>
         <p className="text-body mt-2 max-w-lg">
           Si tu negocio tiene un perfil específico, hay una solución pensada exactamente para ti.
         </p>

@@ -92,7 +92,7 @@ export default function LeadForm() {
         />
       </div>
 
-      <p className="rounded-xl border border-ink/8 bg-sand/60 px-4 py-3 text-sm text-ink/65">
+      <p className="lead-form-hint rounded-xl border px-4 py-3 text-sm">
         Al enviar, se abre WhatsApp con tu mensaje ya escrito. Tú confirmas el envío desde tu
         teléfono o WhatsApp Web.
       </p>
@@ -100,7 +100,7 @@ export default function LeadForm() {
       <button
         type="submit"
         disabled={disabled}
-        className="btn-pill btn-pill-solid w-full disabled:!bg-ink/10 disabled:!text-ink/40 disabled:cursor-not-allowed disabled:!shadow-none"
+        className="btn-pill btn-pill-solid btn-pill-whatsapp w-full disabled:!cursor-not-allowed disabled:!opacity-40 disabled:!shadow-none"
       >
         Continuar en WhatsApp
       </button>

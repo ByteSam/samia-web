@@ -85,15 +85,17 @@ export default function FundadorChip({
       className="group flex items-center gap-2 text-left transition-opacity hover:opacity-90"
       aria-label="Conoce a Daniel — abrir información del fundador"
     >
-      <span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full border border-ink/12">
-        <Image
-          src="/daniel-avatar.jpg"
-          alt=""
-          fill
-          sizes="32px"
-          className="object-cover object-[center_22%]"
-          priority
-        />
+      <span className="fundador-avatar-ring relative block h-9 w-9 shrink-0 rounded-full p-[2px]">
+        <span className="relative block h-full w-full overflow-hidden rounded-full bg-sand">
+          <Image
+            src="/daniel-avatar.jpg"
+            alt=""
+            fill
+            sizes="32px"
+            className="object-cover object-[center_22%]"
+            priority
+          />
+        </span>
       </span>
       <span className="text-small text-muted transition-colors group-hover:text-secondary">
         <span className="font-medium text-ink/70">Daniel</span>

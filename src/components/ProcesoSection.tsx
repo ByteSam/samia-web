@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ClipboardList, Settings2, TrendingUp, PackageCheck, ArrowRight } from "lucide-react";
+import { ClipboardList, Settings2, TrendingUp, PackageCheck } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 const PASOS = [
@@ -43,7 +43,11 @@ export default function ProcesoSection() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {i < PASOS.length - 1 && (
-                  <span className="my-2 min-h-10 w-px grow bg-ink/12 sm:min-h-14" aria-hidden />
+                  <>
+                    <span className="timeline-marker mt-2" aria-hidden />
+                    <span className="timeline-connector my-1 min-h-10 w-px grow sm:min-h-14" aria-hidden />
+                    <span className="timeline-marker mb-1" aria-hidden />
+                  </>
                 )}
               </div>
               <div className="pb-10 sm:pb-12">
@@ -51,7 +55,7 @@ export default function ProcesoSection() {
                   <step.icon className="h-4 w-4 text-terracota" strokeWidth={1.5} />
                   <h3 className="font-medium text-ink">{step.t}</h3>
                 </div>
-                <p className="mt-2 flex items-start gap-1.5 text-xs font-medium text-terracota-dark/80">
+                <p className="timeline-entregable mt-3">
                   <PackageCheck className="mt-0.5 h-3.5 w-3.5 shrink-0" strokeWidth={1.75} />
                   <span>Entregable: {step.entregable}</span>
                 </p>
@@ -60,15 +64,11 @@ export default function ProcesoSection() {
             </li>
           ))}
         </ol>
-        <p className="mt-2 border-t border-ink/8 pt-8">
-          <Link
-            href="#contacto"
-            className="inline-flex items-center gap-2 text-sm font-medium text-terracota-dark hover:text-terracota"
-          >
-            Empezar con el diagnóstico gratuito
-            <ArrowRight className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+        <div className="mt-8 flex justify-center">
+          <Link href="#contacto" className="btn-pill btn-pill-solid">
+            Empezar con diagnóstico gratis →
           </Link>
-        </p>
+        </div>
       </Reveal>
     </section>
   );

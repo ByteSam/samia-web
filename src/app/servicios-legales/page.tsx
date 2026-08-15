@@ -4,8 +4,6 @@ import {
   MessageCircleMore,
   AlertTriangle,
   CalendarCheck,
-  CalendarClock,
-  Workflow,
   Layers,
   Shield,
   ClipboardList,
@@ -17,36 +15,54 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/Reveal";
 import GarantiaSection from "@/components/GarantiaSection";
 import FAQSection from "@/components/FAQSection";
+import PricingTiers from "@/components/PricingTiers";
 import ProblemSection from "@/components/ProblemSection";
 import WhatsAppMockup from "@/components/WhatsAppMockup";
+import AiSafetyLine from "@/components/AiSafetyLine";
 import LegalLimitsBlock from "@/components/nichos/LegalLimitsBlock";
+import LegalUrgencyAlert from "@/components/nichos/LegalUrgencyAlert";
 import LegalesHeroConsultaCompare from "@/components/nichos/LegalesHeroConsultaCompare";
 import ImplementacionStepper from "@/components/ImplementacionStepper";
 import SolutionSection from "@/components/SolutionSection";
 import { MOCKUP_LEGAL } from "@/lib/nichos/mockups";
 
 export const metadata: Metadata = {
-  title: "Asistente de WhatsApp con IA para estudios de abogacía laboral en Perú",
+  title: "Asistente de WhatsApp con IA para estudios de abogacía en Perú",
   description:
-    "Asistente por WhatsApp para estudios de abogacía laboral: atiende consultas, prioriza lo urgente y agenda la primera cita. Configurado en días. Diagnóstico gratis de 30 minutos.",
+    "Asistente por WhatsApp para estudios de abogacía: atiende consultas, prioriza lo urgente y agenda la primera cita. Sin asesoría legal automática. Configurado en días. Diagnóstico gratis.",
   alternates: { canonical: "/servicios-legales" },
 };
 
-const FACTORES_PRECIO = [
+const PAQUETES = [
   {
-    icon: MessageCircleMore,
-    titulo: "Solo FAQ",
-    descripcion: "Respuestas frecuentes y clasificación básica de consultas.",
+    nombre: "Básico",
+    setup: "S/1,500",
+    mensualidad: "S/350",
+    features: [
+      "Filtro de consultas y derivación al abogado correcto",
+      "Respuestas frecuentes con la información de tu estudio",
+    ],
   },
   {
-    icon: CalendarClock,
-    titulo: "FAQ + agenda",
-    descripcion: "Agenda la primera consulta sin ida y vuelta de mensajes.",
+    nombre: "Estándar",
+    destacado: true,
+    setup: "S/2,500",
+    mensualidad: "S/550",
+    features: [
+      "Todo lo del Básico",
+      "Clasificación por tipo de caso y urgencia",
+      "Agenda de la primera consulta por WhatsApp",
+    ],
   },
   {
-    icon: Workflow,
-    titulo: "Integraciones",
-    descripcion: "Conexión con agenda, CRM o formularios que ya uses.",
+    nombre: "Completo",
+    setup: "S/5,000",
+    mensualidad: "S/800",
+    features: [
+      "Todo lo del Estándar",
+      "Web profesional + seguimiento de leads",
+      "Integración con agenda o CRM (según diagnóstico)",
+    ],
   },
 ];
 
@@ -129,16 +145,22 @@ export default function ServiciosLegalesPage() {
       <section className="landing-hero-accent mx-auto max-w-6xl px-6 pb-12 pt-20 md:pb-16 md:pt-28">
         <div className="grid gap-12 lg:grid-cols-[5fr_4fr] lg:items-center">
           <div className="text-center lg:text-left">
-            <span className="chip">Especializado en derecho laboral</span>
+            <span className="chip">Estudios de abogacía</span>
+            <span className="legal-trust-badge mt-4 block w-fit lg:inline-flex">
+              0% consejo legal automatizado
+            </span>
 
             <h1 className="text-h1 text-balance mt-6 text-ink">
               Organiza el primer contacto de tu estudio{" "}
               <span className="font-display italic text-terracota">sin dar asesoría automática</span>.
             </h1>
 
-            <p className="mt-6 text-lg leading-relaxed text-ink/60">
+            <p className="mt-6 text-lg leading-relaxed text-secondary">
               Un asistente por WhatsApp que responde lo frecuente, te avisa cuando algo suena
               urgente y agenda la primera consulta — la asesoría legal sigue siendo tuya.
+            </p>
+            <p className="mt-3 text-sm text-muted">
+              Mismo sistema para laboral, civil, penal y más — adaptado a tu estudio.
             </p>
 
             <div className="mt-10 flex flex-col items-center gap-3 lg:items-start">
@@ -148,9 +170,10 @@ export default function ServiciosLegalesPage() {
               >
                 Solicitar diagnóstico para mi estudio
               </WhatsAppButton>
-              <p className="text-sm text-ink/55">
-                30 min sin costo · Hablarás directamente conmigo
+              <p className="text-sm text-muted">
+                Desde S/1,500 · 30 min sin costo · Hablarás directamente conmigo
               </p>
+              <AiSafetyLine className="text-center lg:text-left" />
               <div className="mt-1 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-ink/50 lg:justify-start">
                 <span className="flex items-center gap-1.5">
                   <Shield className="h-3.5 w-3.5 text-terracota" strokeWidth={1.75} aria-hidden />
@@ -171,6 +194,7 @@ export default function ServiciosLegalesPage() {
                 titulo={MOCKUP_LEGAL.titulo}
                 subtitulo={MOCKUP_LEGAL.subtitulo}
                 mensajes={MOCKUP_LEGAL.mensajes}
+                reassurance="Si no sabe la respuesta, te la pasa a ti directo."
               />
               <p className="mt-3 text-center text-xs text-ink/45">
                 Ejemplo de primer contacto (sin consejo legal automático)
@@ -188,6 +212,7 @@ export default function ServiciosLegalesPage() {
             titulo={MOCKUP_LEGAL.titulo}
             subtitulo={MOCKUP_LEGAL.subtitulo}
             mensajes={MOCKUP_LEGAL.mensajes}
+            reassurance="Si no sabe la respuesta, te la pasa a ti directo."
           />
         </Reveal>
       </section>
@@ -207,7 +232,7 @@ export default function ServiciosLegalesPage() {
       </div>
 
       {/* COMPARACIÓN — sin vs con asistente */}
-      <section className="mx-auto max-w-5xl px-6 section-py">
+      <section className="section-depth-b mx-auto max-w-5xl px-6 section-py section-horizon">
         <Reveal>
           <span className="chip">La misma consulta, dos resultados</span>
           <h2 className="text-h2 mt-4 text-ink">Sin responder vs. filtrar y agendar</h2>
@@ -224,55 +249,30 @@ export default function ServiciosLegalesPage() {
       {/* FIRMA — confianza antes de solución */}
       <LegalLimitsBlock />
 
+      <LegalUrgencyAlert />
+
       <SolutionSection
         titulo="Tu estudio deja de perderse en mensajes repetidos."
         subtitulo="Filtra, avisa y agenda — sin reemplazar tu criterio legal."
         items={SOLUCION_ITEMS}
       />
 
-      {/* PRECIO */}
-      <section className="section-band section-py">
-        <div className="mx-auto max-w-3xl px-6">
-          <Reveal>
-            <span className="chip">Precio según complejidad del estudio</span>
-            <h2 className="text-h2 mt-4 text-ink">Inversión según tu estudio</h2>
-            <div className="card-soft-tint mt-8 bg-white/80 p-5 sm:p-6">
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <p className="text-2xl font-medium text-ink">S/1,500 – S/5,000</p>
-                  <p className="text-xs text-ink/50">Rango de referencia · setup</p>
-                </div>
-                <span className="chip text-[0.65rem]">Propuesta cerrada en diagnóstico</span>
-              </div>
-
-              <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                {FACTORES_PRECIO.map((f) => (
-                  <div
-                    key={f.titulo}
-                    className="rounded-xl border border-ink/8 bg-white px-3 py-4 shadow-sm"
-                  >
-                    <f.icon className="h-5 w-5 text-terracota" strokeWidth={1.5} />
-                    <p className="mt-2 text-sm font-medium text-ink">{f.titulo}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-ink/55">{f.descripcion}</p>
-                  </div>
-                ))}
-              </div>
-
-              <p className="mt-5 text-sm text-ink/60">
-                Después del diagnóstico gratuito recibirás una propuesta cerrada y sin costos
-                ocultos.
-              </p>
-              <div className="mt-6">
-                <WhatsAppButton
-                  message="Hola, quiero solicitar un diagnóstico gratuito para mi estudio de abogacía"
-                  source="servicios_legales_precio"
-                >
-                  Solicitar diagnóstico gratuito
-                </WhatsAppButton>
-              </div>
-            </div>
-          </Reveal>
-        </div>
+      {/* PAQUETES */}
+      <section className="border-t border-ink/8">
+        <PricingTiers
+          paquetes={PAQUETES}
+          chip="Precios claros"
+          titulo="Paquetes para estudios de abogacía"
+          subtitulo="Rango S/1,500 – S/5,000 · propuesta cerrada en el diagnóstico gratuito."
+          chipDestacado="El más elegido"
+        >
+          <WhatsAppButton
+            message="Hola, quiero solicitar un diagnóstico gratuito para mi estudio de abogacía"
+            source="servicios_legales_precio"
+          >
+            Solicitar diagnóstico gratuito
+          </WhatsAppButton>
+        </PricingTiers>
       </section>
 
       {/* IMPLEMENTACIÓN */}

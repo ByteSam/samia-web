@@ -8,31 +8,38 @@ type LocalesMissedCallBlockProps = {
 
 const STEPS = [
   {
-    id: "no-contestas",
+    id: "llamada",
     icon: PhoneMissed,
-    t: "1. No contestas",
+    t: "1. Llamada perdida",
     d: "Estás en ruta, en un techo o con las manos ocupadas.",
     tint: false,
   },
   {
     id: "whatsapp",
     icon: MessageCircleMore,
-    t: "2. WhatsApp en segundos",
-    d: "El cliente recibe respuesta antes de llamar al siguiente en Google.",
+    t: "2. WhatsApp automático",
+    d: "El cliente recibe un mensaje en segundos — antes de llamar a otro.",
     tint: true,
   },
   {
-    id: "recuperado",
+    id: "respuesta",
+    icon: MessageCircleMore,
+    t: "3. Respuesta al cliente",
+    d: "Horarios, tarifas y zona — sin que estés disponible.",
+    tint: false,
+  },
+  {
+    id: "cita",
     icon: UserCheck,
-    t: "3. Cliente recuperado",
-    d: "Filtra urgencia, captura distrito y agenda la visita.",
+    t: "4. Cita agendada",
+    d: "Filtra urgencia, captura distrito y confirma la visita.",
     tint: false,
   },
 ];
 
 function MissedCallFlow({ isHero }: { isHero: boolean }) {
   return (
-    <div className="mt-8 grid gap-4 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-stretch">
+    <div className="mt-8 grid gap-4 sm:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] sm:items-stretch">
       {STEPS.map((step, i) => (
         <Reveal key={step.id} delay={i * 80} className="contents">
           <div

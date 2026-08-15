@@ -6,9 +6,9 @@ export default function ProblemaSection() {
   return (
     <section className="container-prose section-py">
       <Reveal>
-        <div className="card-soft relative overflow-hidden bg-white">
+        <div className="card-soft problem-card relative overflow-hidden">
           <AlertTriangle
-            className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 rotate-12 text-terracota/5"
+            className="problem-card-icon pointer-events-none absolute -right-4 -top-4 h-24 w-24 rotate-12"
             strokeWidth={1}
             aria-hidden
           />
@@ -26,12 +26,12 @@ export default function ProblemaSection() {
                 key={item}
                 className="flex items-start gap-3 border-b border-ink/8 pb-4 last:border-0 last:pb-0"
               >
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-terracota" />
-                <span className="text-base leading-relaxed">{item}</span>
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-terracota" aria-hidden />
+                <span className="text-base leading-relaxed text-secondary">{item}</span>
               </li>
             ))}
           </ul>
-          <blockquote className="relative mt-6 border-t border-ink/8 pt-5">
+          <blockquote className="problem-card-quote relative">
             <p className="font-display text-base italic leading-relaxed text-terracota-dark sm:text-lg">
               La mayoría de las personas abandona si no le responden rápido.
             </p>

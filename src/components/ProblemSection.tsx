@@ -22,7 +22,7 @@ export default function ProblemSection({
       className={`mx-auto max-w-4xl px-6 ${isBand ? "section-py" : "pb-20"}`}
     >
       <Reveal>
-        <div className={`card-soft ${isBand ? "bg-white" : ""}`}>
+        <div className="card-soft">
           <h2 className="text-h2 text-ink">{titulo}</h2>
           <ul className="mt-6 space-y-3 text-ink/65">
             {bullets.map((b) => (

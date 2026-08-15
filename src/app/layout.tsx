@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Instrument_Serif, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import ScrollIndicator from "@/components/ScrollIndicator";
+import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import FundadorProvider from "@/components/FundadorProvider";
@@ -74,7 +76,10 @@ export default function RootLayout({
         />
         <FundadorProvider>
           <Header />
-          <main className="flex-1">{children}</main>
+          <ScrollIndicator />
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
           <AnalyticsProvider />
         </FundadorProvider>

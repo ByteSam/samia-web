@@ -65,3 +65,14 @@ export const CASOS: Caso[] = [
   },
   ACTIVAR_CASO_LEGAL ? CASO_LEGAL : CASO_LEGAL_PLACEHOLDER,
 ];
+
+/** Casos entregados listos para mostrar en Home — oculta 1 solo caso sin captura. */
+export function casosEntregadosVisibles(): CasoDetallado[] {
+  const entregados = CASOS.filter(
+    (c): c is CasoDetallado => c.estado === "entregado" && "problema" in c,
+  );
+  if (entregados.length === 0) return [];
+  const conImagen = entregados.filter((c) => Boolean(c.imagen));
+  if (entregados.length === 1 && conImagen.length === 0) return [];
+  return entregados;
+}

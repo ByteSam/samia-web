@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import { CASOS } from "@/lib/casos";
+import { casosEntregadosVisibles } from "@/lib/casos";
 
 type Props = {
   variant?: "full" | "compact";
@@ -8,7 +8,7 @@ type Props = {
 
 function BrowserPreview({ imagen, alt }: { imagen: string; alt: string }) {
   return (
-    <div className="mb-5 overflow-hidden rounded-xl border border-ink/8 bg-white shadow-rest">
+    <div className="browser-preview mb-5 overflow-hidden rounded-xl border shadow-rest">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={imagen} alt={alt} className="aspect-[16/10] w-full object-cover object-top" />
     </div>
@@ -17,12 +17,12 @@ function BrowserPreview({ imagen, alt }: { imagen: string; alt: string }) {
 
 /** Sección de proyectos / casos reales — reutilizable en Home y landings. */
 export default function ProyectosRecientes({ variant = "full" }: Props) {
-  const entregados = CASOS.filter((c) => c.estado === "entregado" && "problema" in c);
+  const entregados = casosEntregadosVisibles();
 
   if (entregados.length === 0) return null;
 
   return (
-    <section id="casos-reales" className="mx-auto max-w-5xl px-6 section-py">
+    <section id="casos-reales" className="section-depth-b mx-auto max-w-5xl px-6 section-py section-horizon">
       <Reveal>
         <span className="chip">Casos reales</span>
         <h2 className="text-h2 mt-4 text-ink">Proyectos realizados</h2>
