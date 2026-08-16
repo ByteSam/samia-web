@@ -77,56 +77,62 @@ export default function Home() {
               </h1>
             </Reveal>
 
-            <Reveal delay={80}>
-              <p className="text-lead text-pretty relative mt-6 max-w-md">
-                Tu negocio responde solo — web, WhatsApp y automatización que trabajan por ti
-                mientras atiendes lo que importa.
-              </p>
-              <p className="mt-3 max-w-md text-sm text-secondary">
-                Atiende mejor, vende más, deja de perder tiempo.
-              </p>
-              <p className="mt-2 max-w-md text-sm text-muted">
-                No es un bot genérico. Está configurado para tu negocio.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <p className="hero-price-chip">Desde S/500 · según tu caso</p>
-                <p className="combo-chip">Combo web + asistente desde S/1,800</p>
-              </div>
-              <p className="mt-3 max-w-md text-sm text-secondary">
-                Si recuperas 2 clientes al mes, se paga solo
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <p className="piloto-badge">🔒 API oficial WhatsApp</p>
-                <p className="piloto-badge">Piloto 14 días sin riesgo</p>
-                <p className="piloto-badge">Operando desde 2026</p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={80}>
-              <div className="relative mt-8 flex flex-col items-start">
-                <WhatsAppButton
-                  message={WHATSAPP_DIAGNOSTICO_MESSAGE}
-                  variant="terracota"
-                  source="home_hero"
-                  className="btn-pill-hero w-full sm:w-auto"
-                >
-                  Diagnóstico gratis
-                </WhatsAppButton>
-                <p className="hero-cta-caption">
-                  Gratis · 30 min · sin compromiso
+            {/* Mobile (<sm): CTA tras subtitle; chips/badges debajo. Desktop (sm+): orden actual. */}
+            <div className="relative flex flex-col">
+              <Reveal delay={80}>
+                <p className="text-lead text-pretty relative mt-6 max-w-md">
+                  Tu negocio responde solo — web, WhatsApp y automatización que trabajan por ti
+                  mientras atiendes lo que importa.
                 </p>
-                {isCalComConfigured() && (
-                  <BookingButton
-                    variant="link"
-                    subtle
-                    className="text-caption mt-3"
-                  />
-                )}
-                <div className="mt-3">
-                  <HeroTrustLine />
+                <p className="mt-3 max-w-md text-sm text-secondary">
+                  Atiende mejor, vende más, deja de perder tiempo.
+                </p>
+              </Reveal>
+
+              <Reveal delay={80} className="order-2 sm:order-3 relative mt-6 sm:mt-8">
+                <div className="flex flex-col items-start">
+                  <WhatsAppButton
+                    message={WHATSAPP_DIAGNOSTICO_MESSAGE}
+                    variant="terracota"
+                    source="home_hero"
+                    className="btn-pill-hero w-full sm:w-auto"
+                  >
+                    Diagnóstico gratis
+                  </WhatsAppButton>
+                  <p className="hero-cta-caption">
+                    Gratis · 30 min · sin compromiso
+                  </p>
+                  {isCalComConfigured() && (
+                    <BookingButton
+                      variant="link"
+                      subtle
+                      className="text-caption mt-3"
+                    />
+                  )}
+                  <div className="mt-3">
+                    <HeroTrustLine />
+                  </div>
                 </div>
-              </div>
-            </Reveal>
+              </Reveal>
+
+              <Reveal delay={80} className="order-3 sm:order-2 mt-5 sm:mt-3">
+                <p className="max-w-md text-sm text-muted">
+                  No es un bot genérico. Está configurado para tu negocio.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <p className="hero-price-chip">Desde S/500 · según tu caso</p>
+                  <p className="combo-chip">Combo web + asistente desde S/1,800</p>
+                </div>
+                <p className="mt-3 max-w-md text-sm text-secondary">
+                  Si recuperas 2 clientes al mes, se paga solo
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <p className="piloto-badge">🔒 API oficial WhatsApp</p>
+                  <p className="piloto-badge">Piloto 14 días sin riesgo</p>
+                  <p className="piloto-badge">Operando desde 2026</p>
+                </div>
+              </Reveal>
+            </div>
 
             <Reveal delay={80}>
               <div className="relative mt-8 flex justify-center lg:hidden">
