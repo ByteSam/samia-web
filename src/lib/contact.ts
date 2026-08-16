@@ -1,5 +1,5 @@
 export const WHATSAPP_NUMBER = "56934681636";
-export const CONTACT_EMAIL = "danielsam.fgu@gmail.com";
+export const CONTACT_EMAIL = "info@afynova.com";
 
 // TODO: reemplazar con tu link real de Cal.com cuando lo tengas.
 // Mientras sea null, el CTA "Agendar diagnóstico" usa WhatsApp en su lugar.

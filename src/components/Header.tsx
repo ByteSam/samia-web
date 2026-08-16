@@ -26,7 +26,7 @@ export default function Header() {
       }`}
     >
       <header
-        className={`site-header container-shell relative flex items-center gap-4 rounded-full border px-5 py-2.5 backdrop-blur-md transition-shadow duration-200 md:px-6 ${
+        className={`site-header header-glass container-shell relative flex items-center gap-4 rounded-full border px-5 py-2.5 transition-shadow duration-200 md:px-6 ${
           scrolled ? "site-header--scrolled" : ""
         }`}
       >

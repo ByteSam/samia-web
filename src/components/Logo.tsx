@@ -49,11 +49,22 @@ function usePrefersReducedMotion() {
   );
 }
 
+function useIsFirefox() {
+  return useSyncExternalStore(
+    () => () => {},
+    () => /firefox/i.test(navigator.userAgent),
+    () => false
+  );
+}
+
 /** Marca afynova — eclipse planeta marciano (exp/color-dorado) + wordmark luz estelar. */
 export default function Logo({ className, height = 32 }: LogoProps) {
   const maskId = `eclipse-lockup-${useId().replace(/:/g, "")}`;
   const gradientId = `eclipse-gradient-${useId().replace(/:/g, "")}`;
   const prefersReducedMotion = usePrefersReducedMotion();
+  const isFirefox = useIsFirefox();
+  /* Firefox: sin SMIL spin (muy caro en Gecko) — diag perf */
+  const staticEclipse = prefersReducedMotion || isFirefox;
   const moonR = R * 0.5;
   const moonCx = CX + R * 0.48;
   const moonCy = CY + R * -0.42;
@@ -67,7 +78,7 @@ export default function Logo({ className, height = 32 }: LogoProps) {
       viewBox={`0 0 ${VIEWBOX_W} ${VIEWBOX_H}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`logo-lockup ${prefersReducedMotion ? "logo-lockup--static" : ""} ${className ?? ""}`}
+      className={`logo-lockup ${staticEclipse ? "logo-lockup--static" : ""} ${className ?? ""}`}
       role="img"
       aria-label="afynova"
       overflow="visible"
@@ -77,7 +88,7 @@ export default function Logo({ className, height = 32 }: LogoProps) {
           <rect width={VIEWBOX_W} height={VIEWBOX_H} fill="white" />
           <circle cx={moonCx} cy={moonCy} r={moonR} fill="black" />
         </mask>
-        {!prefersReducedMotion && (
+        {!staticEclipse && (
           <linearGradient
             id={gradientId}
             x1={CX}
@@ -106,7 +117,7 @@ export default function Logo({ className, height = 32 }: LogoProps) {
         cy={CY}
         r={R}
         className="logo-eclipse"
-        fill={prefersReducedMotion ? ECLIPSE_TERRACOTA : `url(#${gradientId})`}
+        fill={staticEclipse ? ECLIPSE_TERRACOTA : `url(#${gradientId})`}
         mask={`url(#${maskId})`}
       />
       <text
