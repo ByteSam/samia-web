@@ -2,11 +2,17 @@
 
 import { useEffect } from "react";
 
-const DESKTOP_MQ = "(min-width: 640px)";
+const DESKTOP_MQ = "(min-width: 768px)";
 
-/** Ajusta --hero-parallax-y en el hero para mover glows al scroll — solo desktop (Fase 4). */
+function isFirefox(): boolean {
+  return typeof navigator !== "undefined" && /firefox/i.test(navigator.userAgent);
+}
+
+/** Parallax de glows del hero — solo desktop (#134). Firefox OFF (diag perf). */
 export default function HeroParallaxEffect() {
   useEffect(() => {
+    if (isFirefox()) return;
+
     const hero = document.querySelector<HTMLElement>(".landing-hero-accent");
     if (!hero) return;
 

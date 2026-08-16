@@ -30,7 +30,7 @@ export default function NavDropdown({ label, eyebrow, items }: NavDropdownProps)
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-1 transition-colors hover:text-terracota ${
+        className={`nav-link-underline flex items-center gap-1 transition-colors hover:text-terracota ${
           isGroupActive ? "text-terracota-dark" : ""
         }`}
         aria-expanded={open}

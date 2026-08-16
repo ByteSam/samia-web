@@ -568,3 +568,60 @@ RECOMENDADO:
 9. #129 Línea de continuidad
 10. #131 Mockup más variado
 ```
+
+---
+
+## FASE 12 — Splash "Eclipse Formation" + Performance + Polish premium
+
+### Optimización rendimiento (URGENTE — la web se siente lenta)
+
+| # | Fix | Detalle |
+|---|-----|---------|
+| 134 | Desactivar en mobile (<768px) | ✅ HeroCursorTrail + HeroParallaxEffect + animaciones loop. En mobile NO hay cursor |
+| 135 | Optimizar animaciones | ✅ TODAS deben usar transform/opacity (GPU). NUNCA animar width/height/margin/box-shadow |
+| 136 | will-change: transform | ✅ Solo en elementos que se mueven, no en todo |
+| 137 | Lazy load secciones debajo del fold | ✅ dynamic import FAQ/Sticky/trail/parallax (sin ssr:false en RSC Next 16) |
+| 138 | Splash no blocking | ✅ Web carga en background, splash es CSS overlay (pointer-events: none) |
+| 139 | Lighthouse | ⏳ Meta: Performance >80 — pendiente (sin Chrome en el entorno del agente; correr en local: `npm run build && npm start` + Lighthouse) |
+
+### Splash — Concepto "Eclipse Formation"
+
+Idea: como un eclipse real. Sol naranja aparece → luna oscura se interpone → se forma el logo.
+
+| Paso | Tiempo | Detalle |
+|------|--------|---------|
+| Círculo naranja GRANDE | 0–0.8s | ✅ Círculo #D4622B aparece al centro (scale 0.5→1.0) + glow pulsante |
+| Círculo oscuro se acerca | 0.8–1.8s | ✅ Círculo #1C1825 se mueve desde la derecha, superpone al naranja → forma el "corte" |
+| Se forma el eclipse | 1.8–2.3s | ✅ Superposición completa = logo. Se achica al tamaño real |
+| Wordmark aparece | 2.0–2.5s | ✅ "AFYNOVA" en fade debajo |
+| Fade out → web | 2.5–3.0s | ✅ Splash fade out, web se revela |
+
+Reglas:
+- Duración: 2.5–3 seg
+- Solo 1 vez por sesión (sessionStorage)
+- prefers-reduced-motion: skip, logo estático 0.5s → web
+- CSS @keyframes, mínimo JS
+- Overlay position: fixed; z-index: 9999
+- Componente: SplashScreen.tsx en layout.tsx
+
+### Detalles premium
+
+| # | Detalle |
+|---|---------|
+| 145 | ✅ Grain/noise texture fondo (opacity ~2.5%) |
+| 146 | ✅ Sombras con color en cards (rgba naranja, no negro) |
+| 147 | ✅ Hover cards borde ilumina (0.08→0.2) |
+| 148 | ✅ Más whitespace secciones (64-80px) |
+| 149 | ✅ Font size 17px en dark (`.text-body`) |
+| 150 | ✅ Number counter "<30 seg" al entrar viewport |
+| 151 | ✅ Tracking eyebrows 0.05em |
+| 152 | ✅ Botón hover scale(1.02) |
+| 153 | ✅ Line-height 1.7 párrafos |
+| 154 | ✅ "Configurado en 5 días" (FAQ Home) |
+| 155 | ✅ Email footer info@afynova.com |
+| 156 | ✅ Hover links nav underline crece |
+
+### Prioridad:
+1. PRIMERO: #134-139 (performance — la web está lenta)
+2. DESPUÉS: #140-144 (splash Eclipse Formation)
+3. LUEGO: #145-156 (polish premium)

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Hexagon, CalendarCheck, MessageCircleMore } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BookingButton from "@/components/BookingButton";
@@ -10,15 +11,18 @@ import ServiciosGrid from "@/components/ServiciosGrid";
 import SolucionesGrid from "@/components/SolucionesGrid";
 import ProcesoSection from "@/components/ProcesoSection";
 import GarantiaSection from "@/components/GarantiaSection";
-import FAQSection from "@/components/FAQSection";
 import HeroTrustLine from "@/components/HeroTrustLine";
 import ProyectosRecientes from "@/components/ProyectosRecientes";
 import MarqueeStrip from "@/components/MarqueeStrip";
-import StickyCTA from "@/components/StickyCTA";
-import HeroParallaxEffect from "@/components/HeroParallaxEffect";
-import HeroCursorTrail from "@/components/HeroCursorTrail";
 import HomeConsultaCompare from "@/components/HomeConsultaCompare";
+import StatCounter from "@/components/StatCounter";
 import { WHATSAPP_DIAGNOSTICO_MESSAGE, isCalComConfigured } from "@/lib/contact";
+
+/* #137 — below-fold / client chrome (code-split; no ssr:false en RSC) */
+const FAQSection = dynamic(() => import("@/components/FAQSection"));
+const StickyCTA = dynamic(() => import("@/components/StickyCTA"));
+const HeroParallaxEffect = dynamic(() => import("@/components/HeroParallaxEffect"));
+const HeroCursorTrail = dynamic(() => import("@/components/HeroCursorTrail"));
 
 export const metadata: Metadata = {
   title: "Tu negocio responde solo — webs y asistentes WhatsApp para pymes | afynova",
@@ -46,7 +50,7 @@ const FAQS_HOME = [
   },
   {
     q: "¿Cuánto tarda en estar listo?",
-    a: "Normalmente pocos días desde que tengo la información de tu negocio.",
+    a: "Normalmente en 5 días desde que tengo la información de tu negocio.",
   },
   {
     q: "¿Qué pasa si no funciona para mi caso?",
@@ -59,38 +63,49 @@ const MOCKUP_REASSURANCE = "Si no sabe la respuesta, te la pasa a ti directo.";
 export default function Home() {
   return (
     <>
-      {/* ① HERO */}
-      <section className="landing-hero-accent container-shell relative pb-20 pt-16 md:pb-24 md:pt-20 lg:pt-24">
+      {/* ① HERO — mobile: 3 bloques con jerarquía clara */}
+      <section className="landing-hero-accent hero-home container-shell relative pb-14 pt-6 md:pb-24 md:pt-20 lg:pt-24">
         <HeroCursorTrail />
         <HeroParallaxEffect />
         <div className="hero-nebula pointer-events-none absolute -right-24 top-8 -z-10 h-72 w-72 opacity-40 md:h-80 md:w-80" aria-hidden />
-        <div className="grid gap-12 lg:grid-cols-[5fr_4fr] lg:items-center">
-          <div>
-            <Reveal>
-              <p className="hero-eyebrow section-eyebrow">Para pymes en Perú</p>
-            </Reveal>
-
-            <Reveal delay={60}>
-              <h1 className="text-h1 text-balance relative mt-4 max-w-xl text-ink">
-                Ninguna consulta de tu negocio{" "}
-                <span className="hero-text-gradient font-display italic">sin respuesta.</span>
-              </h1>
-            </Reveal>
-
-            {/* Mobile (<sm): CTA tras subtitle; chips/badges debajo. Desktop (sm+): orden actual. */}
-            <div className="relative flex flex-col">
+        <div className="grid gap-10 lg:grid-cols-[5fr_4fr] lg:items-center lg:gap-12">
+          <div className="hero-copy">
+            {/* BLOQUE 1 — above the fold */}
+            <div className="hero-block hero-block--primary">
+              <Reveal>
+                <p className="hero-eyebrow section-eyebrow">Para pymes en Perú</p>
+              </Reveal>
+              <Reveal delay={60}>
+                <h1 className="text-h1 text-balance relative mt-3 max-w-xl text-ink md:mt-4">
+                  Ninguna consulta de tu negocio{" "}
+                  <span className="hero-text-gradient font-display italic">sin respuesta.</span>
+                </h1>
+              </Reveal>
               <Reveal delay={80}>
-                <p className="text-lead text-pretty relative mt-6 max-w-md">
-                  Tu negocio responde solo — web, WhatsApp y automatización que trabajan por ti
-                  mientras atiendes lo que importa.
-                </p>
-                <p className="mt-3 max-w-md text-sm text-secondary">
-                  Atiende mejor, vende más, deja de perder tiempo.
+                <p className="text-lead text-pretty relative mt-4 max-w-md md:mt-6">
+                  <span className="md:hidden">
+                    Tu negocio responde solo — web y WhatsApp que trabajan por ti.
+                  </span>
+                  <span className="hidden md:inline">
+                    Tu negocio responde solo — web, WhatsApp y automatización que trabajan por ti
+                    mientras atiendes lo que importa.
+                  </span>
                 </p>
               </Reveal>
 
-              <Reveal delay={80} className="order-2 sm:order-3 relative mt-6 sm:mt-8">
-                <div className="flex flex-col items-start">
+              {/* Solo desktop: precios extras antes del CTA */}
+              <Reveal delay={80} className="hero-desktop-extras mt-4 hidden md:block">
+                <div className="flex flex-wrap gap-2">
+                  <p className="hero-price-chip">Desde S/500 · según tu caso</p>
+                  <p className="combo-chip">Combo web + asistente desde S/1,800</p>
+                </div>
+                <p className="mt-3 max-w-md text-sm text-secondary">
+                  Si recuperas 2 clientes al mes, se paga solo
+                </p>
+              </Reveal>
+
+              <Reveal delay={80}>
+                <div className="relative mt-6 flex flex-col items-start md:mt-8">
                   <WhatsAppButton
                     message={WHATSAPP_DIAGNOSTICO_MESSAGE}
                     variant="terracota"
@@ -100,7 +115,8 @@ export default function Home() {
                     Diagnóstico gratis
                   </WhatsAppButton>
                   <p className="hero-cta-caption">
-                    Gratis · 30 min · sin compromiso
+                    <span className="md:hidden">Gratis · 30 min · Desde S/500</span>
+                    <span className="hidden md:inline">Gratis · 30 min · sin compromiso</span>
                   </p>
                   {isCalComConfigured() && (
                     <BookingButton
@@ -109,33 +125,41 @@ export default function Home() {
                       className="text-caption mt-3"
                     />
                   )}
-                  <div className="mt-3">
-                    <HeroTrustLine />
-                  </div>
-                </div>
-              </Reveal>
-
-              <Reveal delay={80} className="order-3 sm:order-2 mt-5 sm:mt-3">
-                <p className="max-w-md text-sm text-muted">
-                  No es un bot genérico. Está configurado para tu negocio.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <p className="hero-price-chip">Desde S/500 · según tu caso</p>
-                  <p className="combo-chip">Combo web + asistente desde S/1,800</p>
-                </div>
-                <p className="mt-3 max-w-md text-sm text-secondary">
-                  Si recuperas 2 clientes al mes, se paga solo
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <p className="piloto-badge">🔒 API oficial WhatsApp</p>
-                  <p className="piloto-badge">Piloto 14 días sin riesgo</p>
-                  <p className="piloto-badge">Operando desde 2026</p>
                 </div>
               </Reveal>
             </div>
 
-            <Reveal delay={80}>
-              <div className="relative mt-8 flex justify-center lg:hidden">
+            {/* BLOQUE 2 — fundador + promesa */}
+            <div className="hero-block hero-block--trust">
+              <Reveal delay={80}>
+                <div className="hero-trust-row">
+                  <HeroTrustLine />
+                  <p className="hero-trust-promise">
+                    No es un bot genérico. Configurado para tu negocio.
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* BLOQUE 3 — badges agrupados */}
+            <div className="hero-block hero-block--badges">
+              <Reveal delay={80}>
+                <div className="hero-badges" role="list">
+                  <p className="piloto-badge" role="listitem">
+                    🔒 API oficial WhatsApp
+                  </p>
+                  <p className="piloto-badge" role="listitem">
+                    Piloto 14 días sin riesgo
+                  </p>
+                  <p className="piloto-badge" role="listitem">
+                    Operando desde 2026
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+
+            <Reveal delay={80} className="hero-block hero-block--mockup">
+              <div className="relative flex justify-center lg:hidden">
                 <WhatsAppMockup compact reassurance={MOCKUP_REASSURANCE} />
               </div>
             </Reveal>
@@ -159,6 +183,9 @@ export default function Home() {
           <h2 className="text-h2 mt-4 text-ink">Tres niveles claros</h2>
           <p className="text-body mt-2 max-w-lg">
             Configuración única + mensualidad. El alcance exacto lo cerramos en el diagnóstico.
+          </p>
+          <p className="mt-3 text-sm text-secondary md:hidden">
+            Si recuperas 2 clientes al mes, se paga solo. Combo web + asistente desde S/1,800.
           </p>
         </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -263,7 +290,8 @@ export default function Home() {
                   Mi compromiso
                 </p>
                 <p className="commitment-stat mt-4 font-display text-7xl italic text-terracota-dark">
-                  &lt;30<span className="text-3xl not-italic font-sans"> seg</span>
+                  &lt;<StatCounter to={30} />
+                  <span className="text-3xl not-italic font-sans"> seg</span>
                 </p>
                 <p className="text-small text-secondary mt-2">Tiempo de primera respuesta</p>
                 <div className="commitment-item mt-8 flex items-start gap-3">

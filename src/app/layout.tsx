@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Instrument_Serif, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -7,6 +8,7 @@ import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import FundadorProvider from "@/components/FundadorProvider";
+import SplashScreen from "@/components/SplashScreen";
 import { SITE_URL } from "@/lib/site";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
 
@@ -71,20 +73,31 @@ export default function RootLayout({
   return (
     <html
       lang="es"
+      suppressHydrationWarning
       className={`${inter.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-sand text-ink">
+        <Script
+          id="splash-gate"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var k="afynova-splash";if(sessionStorage.getItem(k)==="1"){document.documentElement.classList.add("splash-skip");return;}if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("splash-reduced");}}catch(e){document.documentElement.classList.add("splash-skip");}})();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+        <SplashScreen />
         <FundadorProvider>
-          <Header />
-          <ScrollIndicator />
-          <main className="flex-1">
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
+          <div className="site-chrome flex min-h-0 flex-1 flex-col">
+            <Header />
+            <ScrollIndicator />
+            <main className="flex-1">
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer />
+          </div>
           <AnalyticsProvider />
         </FundadorProvider>
       </body>

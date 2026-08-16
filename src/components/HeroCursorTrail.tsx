@@ -9,10 +9,14 @@ type TrailDot = {
 };
 
 const MAX_DOTS = 10;
-/** Desktop only — sm breakpoint (~640px). */
-const DESKTOP_MQ = "(min-width: 640px) and (pointer: fine)";
+/** Desktop only — <768px no cursor trail (#134). Firefox OFF (diag perf). */
+const DESKTOP_MQ = "(min-width: 768px) and (pointer: fine)";
 
-/** Trail dorado muy sutil al mover el mouse en el hero — solo desktop (Fase 6). */
+function isFirefox(): boolean {
+  return typeof navigator !== "undefined" && /firefox/i.test(navigator.userAgent);
+}
+
+/** Trail dorado sutil en el hero — solo desktop (no Firefox). */
 export default function HeroCursorTrail() {
   const layerRef = useRef<HTMLDivElement>(null);
   const nextId = useRef(0);
@@ -22,6 +26,8 @@ export default function HeroCursorTrail() {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
+    if (isFirefox()) return;
+
     const desktop = window.matchMedia(DESKTOP_MQ);
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -48,7 +54,6 @@ export default function HeroCursorTrail() {
 
   useEffect(() => {
     if (!enabled) return;
-
     const layer = layerRef.current;
     if (!layer) return;
 
@@ -75,7 +80,11 @@ export default function HeroCursorTrail() {
   if (!enabled) return null;
 
   return (
-    <div ref={layerRef} className="hero-cursor-trail pointer-events-none absolute inset-0 z-0" aria-hidden>
+    <div
+      ref={layerRef}
+      className="hero-cursor-trail pointer-events-none absolute inset-0 z-0"
+      aria-hidden
+    >
       {dots.map((dot) => (
         <span
           key={dot.id}
