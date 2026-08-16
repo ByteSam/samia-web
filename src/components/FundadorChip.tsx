@@ -32,9 +32,9 @@ export default function FundadorChip({
         type="button"
         onClick={handleClick}
         aria-expanded={expanded}
-        title="Daniel — fundador"
+        title="Daniel · fundador"
         className={`group flex shrink-0 items-center gap-2 rounded-full border border-ink/8 bg-white/80 py-1 pl-1 pr-3 transition-colors hover:border-ink/15 hover:bg-white ${className}`}
-        aria-label="Conoce a Daniel — abrir información del fundador"
+        aria-label="Conoce a Daniel. Abrir información del fundador"
       >
         <span className="relative block h-8 w-8 overflow-hidden rounded-full border border-ink/10">
           <Image
@@ -59,7 +59,7 @@ export default function FundadorChip({
         onClick={handleClick}
         aria-expanded={expanded}
         className={`group flex items-center gap-2 rounded-full border border-ink/8 bg-sand/50 py-1 pl-1 pr-3 text-left transition-colors hover:border-ink/15 hover:bg-white ${className}`}
-        aria-label="Conoce a Daniel — abrir información del fundador"
+        aria-label="Conoce a Daniel. Abrir información del fundador"
       >
         <span className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full border border-ink/10">
           <Image
@@ -83,7 +83,7 @@ export default function FundadorChip({
       type="button"
       onClick={handleClick}
       className="group flex items-center gap-2 text-left transition-opacity hover:opacity-90"
-      aria-label="Conoce a Daniel — abrir información del fundador"
+      aria-label="Conoce a Daniel. Abrir información del fundador"
     >
       <span className="fundador-avatar-ring relative block h-9 w-9 shrink-0 rounded-full p-[2px]">
         <span className="relative block h-full w-full overflow-hidden rounded-full bg-sand">

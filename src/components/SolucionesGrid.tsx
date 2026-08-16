@@ -10,7 +10,7 @@ const NICHOS = [
     icon: Stethoscope,
     gancho: "¿Pacientes que no confirman?",
     dolor: "Citas que se caen, agenda con huecos, WhatsApp sin responder.",
-    beneficio: "Recordatorios automáticos y respuesta al instante — menos ausencias, más agenda llena.",
+    beneficio: "Recordatorios automáticos. Respuesta al instante. Menos ausencias. Más agenda llena.",
     featured: true,
     accent: "bg-terracota",
     iconColor: "text-terracota",
@@ -22,7 +22,7 @@ const NICHOS = [
     icon: Scale,
     gancho: "¿Consultas fuera de horario?",
     dolor: "Consultas que llegan fuera de horario, sin filtro ni prioridad.",
-    beneficio: "Clasifica, deriva y agenda la primera consulta — sin que tengas que estar disponible.",
+    beneficio: "Clasifica. Deriva. Agenda la primera consulta. Sin que tengas que estar disponible.",
     featured: false,
     accent: "bg-dorado",
     iconColor: "text-dorado",
@@ -93,7 +93,7 @@ function OtroRubroCard() {
         También funciona
       </p>
       <p className="text-small text-muted mt-1.5">
-        Si tu negocio no está en la lista, conversemos — el diagnóstico es gratis.
+        Si tu negocio no está en la lista, conversemos. El diagnóstico es gratis.
       </p>
       <span className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-medium text-terracota-dark">
         Conversemos por WhatsApp{" "}

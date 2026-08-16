@@ -18,7 +18,7 @@ const PASOS = [
   {
     t: "Seguimiento",
     entregable: "Diferencia medida desde la primera semana",
-    d: "Ajustes, soporte y mejoras continuas — no desaparezco después de la entrega.",
+    d: "Ajustes, soporte y mejoras continuas. No desaparezco después de la entrega.",
     icon: TrendingUp,
   },
 ];
@@ -31,7 +31,7 @@ export default function ProcesoSection() {
         <span className="chip">Cómo trabajamos</span>
         <h2 className="text-h2 mt-4 text-ink">De diagnóstico a operación</h2>
         <p className="mt-2 max-w-md text-ink/60">
-          Tres pasos, sin sorpresas — aplica para cualquier servicio del catálogo.
+          Tres pasos. Sin sorpresas. Aplica a cualquier servicio del catálogo.
         </p>
       </Reveal>
       <Reveal delay={80}>

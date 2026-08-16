@@ -37,7 +37,7 @@ const ENTRADA = [
     nombre: "Automatización",
     href: "/servicios/automatizacion",
     icon: Workflow,
-    beneficio: "Avisos, seguimiento e integraciones — sin copiar datos a mano.",
+    beneficio: "Avisos. Seguimiento. Integraciones. Sin copiar datos a mano.",
     criterio: "Empieza acá si los flujos repetitivos te quitan tiempo cada semana.",
     chip: "Automatización",
     popular: false,
