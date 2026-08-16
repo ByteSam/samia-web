@@ -44,16 +44,17 @@ export default function HeaderNav({ fundadorOpen }: HeaderNavProps) {
         fundadorOpen={fundadorOpen}
       />
 
-      <WhatsAppButton
-        message={WHATSAPP_DIAGNOSTICO_MESSAGE}
-        variant="terracota"
-        size="sm"
-        source="header"
-        className="hidden md:inline-flex"
-      >
-        <span className="lg:hidden">Diagnóstico</span>
-        <span className="hidden lg:inline">Diagnóstico gratis</span>
-      </WhatsAppButton>
+      <div className="hidden md:contents">
+        <WhatsAppButton
+          message={WHATSAPP_DIAGNOSTICO_MESSAGE}
+          variant="terracota"
+          size="sm"
+          source="header"
+        >
+          <span className="lg:hidden">Diagnóstico</span>
+          <span className="hidden lg:inline">Diagnóstico gratis</span>
+        </WhatsAppButton>
+      </div>
     </div>
   );
 }

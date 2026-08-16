@@ -100,7 +100,7 @@ export default function LeadForm() {
       <button
         type="submit"
         disabled={disabled}
-        className="btn-pill btn-pill-solid btn-pill-whatsapp w-full disabled:!cursor-not-allowed disabled:!opacity-40 disabled:!shadow-none"
+        className="btn-pill btn-pill-solid btn-pill-whatsapp inline-flex w-full disabled:!cursor-not-allowed disabled:!opacity-40 disabled:!shadow-none"
       >
         Continuar en WhatsApp
       </button>

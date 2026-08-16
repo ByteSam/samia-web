@@ -90,7 +90,7 @@ export default function StickyCTA() {
           href={whatsappLink(WHATSAPP_DIAGNOSTICO_MESSAGE)}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-pill btn-pill-solid flex-1 justify-center py-3 text-sm"
+          className="btn-pill btn-pill-solid inline-flex flex-1 justify-center py-3 text-sm"
           onClick={() => trackEvent("click_whatsapp", { source: "sticky_bar" })}
         >
           Diagnóstico gratis

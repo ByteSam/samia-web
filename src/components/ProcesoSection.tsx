@@ -65,7 +65,7 @@ export default function ProcesoSection() {
           ))}
         </ol>
         <div className="mt-8 flex justify-center">
-          <Link href="#contacto" className="btn-pill btn-pill-solid">
+          <Link href="#contacto" className="btn-pill btn-pill-solid inline-flex">
             Empezar con diagnóstico gratis →
           </Link>
         </div>

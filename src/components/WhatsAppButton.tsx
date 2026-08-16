@@ -31,7 +31,7 @@ export default function WhatsAppButton({
   source,
 }: WhatsAppButtonProps) {
   const resolved = variant === "solid" ? "terracota" : variant;
-  const base = `btn-pill ${size === "sm" ? "btn-pill-sm" : ""}`;
+  const base = `inline-flex btn-pill ${size === "sm" ? "btn-pill-sm" : ""}`;
   const styles =
     resolved === "terracota"
       ? "btn-pill-solid"

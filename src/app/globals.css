@@ -68,6 +68,7 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   position: relative;
   isolation: isolate;
+  overflow-x: clip;
 }
 
 body::before {
@@ -196,7 +197,7 @@ summary:focus-visible {
 
 /* ---- Botones: grandes, pill, hover sutil, sin gradiente ---- */
 .btn-pill {
-  display: inline-flex;
+  /* display vía Tailwind (inline-flex / hidden / md:inline-flex) — no forzar aquí */
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
