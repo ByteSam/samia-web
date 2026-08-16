@@ -46,7 +46,7 @@ export default function NavDropdown({ label, eyebrow, items }: NavDropdownProps)
       {open && (
         <div className="absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-2">
           <div
-            className="panel-pop panel-elevated rounded-2xl border border-ink/8 bg-white p-2"
+            className="panel-pop panel-elevated rounded-2xl border p-2"
             role="menu"
           >
             <p className="text-label px-3 pb-1 pt-1">

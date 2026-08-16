@@ -694,6 +694,8 @@ summary:focus-visible {
 
 .panel-elevated {
   box-shadow: var(--shadow-overlay);
+  background: #140f1e;
+  border-color: var(--border-default);
 }
 
 /* ---- Fundador: bubble → panel desde esquina inferior derecha ---- */
@@ -869,7 +871,7 @@ body.sticky-cta-visible .fundador-bubble {
 }
 
 .panel-elevated.rounded-2xl {
-  background: rgba(20, 15, 30, 0.98);
+  background: #140f1e;
   border-color: var(--border-default);
 }
 

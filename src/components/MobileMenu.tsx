@@ -44,12 +44,13 @@ export default function MobileMenu({ groups, fundadorOpen }: MobileMenuProps) {
         <>
           <button
             type="button"
-            className="fixed inset-0 z-40 bg-ink/20 backdrop-blur-[2px]"
+            className="fixed inset-0 z-40 bg-black/80"
             aria-label="Cerrar menú"
             onClick={() => setOpen(false)}
           />
           <div
-            className="panel-pop panel-elevated fixed left-4 right-4 top-[4.5rem] z-50 rounded-[var(--radius-md)] border border-ink/8 bg-white p-4 shadow-overlay"
+            className="panel-pop panel-elevated fixed left-3 right-3 top-[4.25rem] z-50 max-h-[calc(100dvh-5.25rem)] overflow-y-auto rounded-2xl border p-4"
+            style={{ backgroundColor: "#140f1e" }}
           >
             <WhatsAppButton
               message={WHATSAPP_DIAGNOSTICO_MESSAGE}
