@@ -917,9 +917,9 @@ body.sticky-cta-visible .fundador-bubble {
   }
 }
 
-/* Firefox: kill-switch diagnóstico — desactivar TODO lo costoso.
-   Si FF queda fluido, reactivar grupos uno a uno para hallar el culpable. */
-@-moz-document url-prefix() {
+/* Firefox (Gecko): kill-switch de efectos costosos.
+   Usamos @supports (-moz-appearance), NO @-moz-document (rompe LightningCSS/Turbopack en Vercel). */
+@supports (-moz-appearance: none) {
   .header-glass,
   .site-header,
   .site-header--scrolled {
