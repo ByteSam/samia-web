@@ -45,8 +45,7 @@ function ConAsistente() {
     <ComparePanel tone="accent" title="Con asistente" badge="responde al instante" className="compare-panel-accent-glow">
       <CompareChecksList items={CON_ASISTENTE} />
       <p className="mt-3 text-xs text-ink/50">
-        El mockup del hero muestra cómo responde en WhatsApp — sin que tengas que estar pegado al
-        teléfono.
+        El mockup del hero muestra cómo responde en WhatsApp. Sin estar pegado al teléfono.
       </p>
     </ComparePanel>
   );

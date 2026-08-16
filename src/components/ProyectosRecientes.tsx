@@ -28,7 +28,7 @@ export default function ProyectosRecientes({ variant = "full" }: Props) {
         <h2 className="text-h2 mt-4 text-ink">Proyectos realizados</h2>
         {variant === "full" && (
           <p className="mt-2 max-w-md text-ink/60">
-            Trabajo entregado — sin métricas inventadas.
+            Trabajo entregado. Sin métricas inventadas.
           </p>
         )}
       </Reveal>

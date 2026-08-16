@@ -43,7 +43,7 @@ export default function LeadForm() {
   }
 
   const mailtoHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-    "Diagnóstico gratis — contacto desde la web"
+    "Diagnóstico gratis. Contacto desde la web"
   )}&body=${encodeURIComponent(mensajeEnviado)}`;
 
   return (

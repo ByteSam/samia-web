@@ -19,8 +19,8 @@ export default function ProblemaSection() {
             {[
               "Tienes web o redes, pero quien visita no deja datos o no te avisan a tiempo.",
               "Llegan consultas por WhatsApp fuera de horario y nadie contesta hasta el día siguiente.",
-              "Las citas o consultas no se confirman y se pierden — agenda con huecos.",
-              "Respondes siempre lo mismo — precios, horarios, disponibilidad — tiempo que no dedicas a atender.",
+              "Las citas no se confirman. Se pierden. Agenda con huecos.",
+              "Respondes siempre lo mismo. Precios. Horarios. Disponibilidad. Tiempo que no dedicas a atender.",
             ].map((item) => (
               <li
                 key={item}

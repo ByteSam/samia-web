@@ -25,9 +25,9 @@ const HeroParallaxEffect = dynamic(() => import("@/components/HeroParallaxEffect
 const HeroCursorTrail = dynamic(() => import("@/components/HeroCursorTrail"));
 
 export const metadata: Metadata = {
-  title: "Tu negocio responde solo — webs y asistentes WhatsApp para pymes | afynova",
+  title: "Tu negocio responde solo. Webs y asistentes WhatsApp para pymes | afynova",
   description:
-    "Atiende mejor, vende más, deja de perder tiempo. Webs y asistentes de WhatsApp para pymes peruanas. Diagnóstico gratis · piloto 14 días.",
+    "Atiende mejor. Vende más. Deja de perder tiempo. Webs y asistentes de WhatsApp para pymes peruanas. Diagnóstico gratis. Piloto 14 días.",
   alternates: { canonical: "/" },
 };
 
@@ -54,7 +54,7 @@ const FAQS_HOME = [
   },
   {
     q: "¿Qué pasa si no funciona para mi caso?",
-    a: "No pagas la configuración — es literalmente lo que cubre el piloto de 14 días.",
+    a: "No pagas la configuración. Es lo que cubre el piloto de 14 días.",
   },
 ];
 
@@ -83,13 +83,7 @@ export default function Home() {
               </Reveal>
               <Reveal delay={80}>
                 <p className="text-lead text-pretty relative mt-4 max-w-md md:mt-6">
-                  <span className="md:hidden">
-                    Tu negocio responde solo — web y WhatsApp que trabajan por ti.
-                  </span>
-                  <span className="hidden md:inline">
-                    Tu negocio responde solo — web, WhatsApp y automatización que trabajan por ti
-                    mientras atiendes lo que importa.
-                  </span>
+                  Tus clientes escriben. Tu negocio responde solo.
                 </p>
               </Reveal>
 
@@ -135,7 +129,7 @@ export default function Home() {
                 <div className="hero-trust-row">
                   <HeroTrustLine />
                   <p className="hero-trust-promise">
-                    No es un bot genérico. Configurado para tu negocio.
+                    Configurado para tu negocio. No un bot genérico.
                   </p>
                 </div>
               </Reveal>
@@ -234,7 +228,7 @@ export default function Home() {
           <p className="section-eyebrow">La misma consulta, dos resultados</p>
           <h2 className="text-h2 mt-4 text-ink">Sin respuesta vs. atendida al instante</h2>
           <p className="text-body mt-3 max-w-lg">
-            El cliente escribe igual. La diferencia está en si alguien responde a tiempo.
+            El cliente escribe igual. La diferencia: quién responde primero.
           </p>
         </Reveal>
         <Reveal delay={80} className="mt-10">
@@ -263,8 +257,8 @@ export default function Home() {
               <p className="section-eyebrow">Qué ganas</p>
               <h2 className="text-h2 mt-4 text-ink">Lo que cambia en tu negocio</h2>
               <p className="text-body mt-3">
-                No importa por dónde empieces — web, WhatsApp o automatización — el objetivo es el
-                mismo: que ninguna consulta se pierda.
+                Empieza por web, WhatsApp o automatización. El objetivo es el mismo. Ninguna consulta
+                se pierde.
               </p>
               <ul className="mt-8 space-y-4 text-small">
                 {[
@@ -308,7 +302,7 @@ export default function Home() {
                   <div>
                     <p className="text-small font-medium text-ink">Agenda inteligente</p>
                     <p className="text-small text-muted mt-0.5">
-                      Confirma y recuerda citas — menos ausencias, agenda llena.
+                      Confirma y recuerda citas. Menos ausencias. Agenda llena.
                     </p>
                   </div>
                 </div>
@@ -317,7 +311,7 @@ export default function Home() {
                   <div>
                     <p className="text-small font-medium text-ink">Implementado por mí</p>
                     <p className="text-small text-muted mt-0.5">
-                      Soporte directo después de la entrega — no desaparezco. Punto.
+                      Soporte directo después de la entrega. No desaparezco.
                     </p>
                   </div>
                 </div>
@@ -368,7 +362,7 @@ export default function Home() {
             <p className="section-eyebrow">Contacto</p>
             <h2 className="text-h2 mt-4 text-ink">Solicita tu diagnóstico gratuito</h2>
             <p className="text-body mt-3">
-              Completa el formulario y continuamos por WhatsApp — sin compromiso.
+              Completa el formulario. Seguimos por WhatsApp. Sin compromiso.
             </p>
           </Reveal>
           <Reveal delay={80}>
