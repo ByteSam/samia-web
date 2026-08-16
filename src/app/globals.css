@@ -321,11 +321,11 @@ summary:focus-visible {
   position: relative;
   isolation: isolate;
 }
-/* Punto de luz terracota — arriba a la derecha */
+/* Punto de luz terracota — arriba a la derecha (parallax vía transform/GPU) */
 .landing-hero-accent::before {
   content: "";
   position: absolute;
-  top: calc(-18% + var(--hero-parallax-y, 0px) * -0.35);
+  top: -18%;
   right: -8%;
   z-index: -1;
   width: min(72vw, 720px);
@@ -337,12 +337,13 @@ summary:focus-visible {
   );
   filter: blur(64px);
   pointer-events: none;
+  transform: translate3d(0, calc(var(--hero-parallax-y, 0px) * -0.35), 0);
 }
 /* Punto de luz dorado — abajo a la izquierda */
 .landing-hero-accent::after {
   content: "";
   position: absolute;
-  bottom: calc(-20% + var(--hero-parallax-y, 0px) * -0.2);
+  bottom: -20%;
   left: -10%;
   z-index: -1;
   width: min(52vw, 520px);
@@ -354,6 +355,13 @@ summary:focus-visible {
   );
   filter: blur(72px);
   pointer-events: none;
+  transform: translate3d(0, calc(var(--hero-parallax-y, 0px) * 0.2), 0);
+}
+
+/* will-change solo mientras el parallax está activo en desktop */
+.landing-hero-accent.hero-parallax-active::before,
+.landing-hero-accent.hero-parallax-active::after {
+  will-change: transform;
 }
 
 /* Glow difuso detrás del mockup del hero — #70 */
@@ -368,25 +376,24 @@ summary:focus-visible {
   filter: blur(60px);
 }
 
-/* Glow atmósfera marciana detrás del eclipse */
+/* Glow atmósfera marciana — filter estático; pulse con opacity/scale (GPU) */
 .logo-lockup:not(.logo-lockup--static) .logo-eclipse {
   filter:
     drop-shadow(0 0 10px rgba(212, 98, 43, 0.3))
     drop-shadow(0 0 25px rgba(193, 137, 43, 0.24));
+  transform-origin: center;
   animation: logo-glow-breathe 4s ease-in-out infinite;
 }
 
 @keyframes logo-glow-breathe {
   0%,
   100% {
-    filter:
-      drop-shadow(0 0 8px rgba(212, 98, 43, 0.2))
-      drop-shadow(0 0 18px rgba(193, 137, 43, 0.16));
+    opacity: 0.82;
+    transform: scale(1);
   }
   50% {
-    filter:
-      drop-shadow(0 0 12px rgba(212, 98, 43, 0.35))
-      drop-shadow(0 0 28px rgba(193, 137, 43, 0.28));
+    opacity: 1;
+    transform: scale(1.04);
   }
 }
 
@@ -1232,17 +1239,19 @@ a:not(.btn-pill):hover {
 
 .hero-mockup-float {
   animation: hero-mockup-float 4.5s ease-in-out infinite;
+  /* Sombra estática (no animada) — el motion va por transform */
   filter: drop-shadow(0 24px 48px rgba(212, 98, 43, 0.22))
     drop-shadow(0 8px 24px rgba(193, 137, 43, 0.14));
+  will-change: transform;
 }
 
 @keyframes hero-mockup-float {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translateY(-5px);
+    transform: translate3d(0, -5px, 0);
   }
 }
 
@@ -1384,6 +1393,22 @@ a:not(.btn-pill):hover {
   }
 }
 
+@media (max-width: 639px) {
+  .landing-hero-accent::before,
+  .landing-hero-accent::after {
+    transform: none;
+  }
+
+  .landing-hero-accent.hero-parallax-active::before,
+  .landing-hero-accent.hero-parallax-active::after {
+    will-change: auto;
+  }
+
+  .hero-cursor-trail {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-indicator {
     display: none;
@@ -1399,6 +1424,7 @@ a:not(.btn-pill):hover {
 
   .hero-mockup-float {
     animation: none;
+    will-change: auto;
   }
 
   .logo-lockup:not(.logo-lockup--static) .logo-eclipse {
@@ -1417,7 +1443,6 @@ a:not(.btn-pill):hover {
 
   .landing-hero-accent::before,
   .landing-hero-accent::after {
-    top: -18%;
-    bottom: -20%;
+    transform: none;
   }
 }

@@ -10,9 +10,11 @@ import FundadorProvider from "@/components/FundadorProvider";
 import { SITE_URL } from "@/lib/site";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
 
+/* next/font self-hosts + injects preload <link> automatically */
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const instrumentSerif = Instrument_Serif({
@@ -20,12 +22,14 @@ const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: ["400"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-wordmark",
   subsets: ["latin"],
   weight: ["500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

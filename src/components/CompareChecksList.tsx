@@ -1,11 +1,9 @@
-"use client";
-
 import { Check } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 type Item = { id: string; texto: string };
 
-/** Lista con checks en stagger al entrar en viewport (Fase 5). */
+/** Lista con checks en stagger al entrar en viewport (Fase 5). Server + Reveal client. */
 export default function CompareChecksList({ items }: { items: Item[] }) {
   return (
     <ul className="space-y-2.5">
