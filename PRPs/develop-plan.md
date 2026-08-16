@@ -506,3 +506,65 @@ RECOMENDADO:
 POST-MERGE (cuando haya material real):
 11. #113 Testimonios/casos/números
 ```
+
+---
+
+## FASE 11 — Tests de usuario simulados: modificaciones al inicio
+
+Resultado de 8 simulaciones como buyer personas visitando la Home por primera vez. Patrones detectados y fixes.
+
+### Las 5 barreras más comunes (de 8 tests)
+
+| # | Barrera | Personas afectadas | Impacto |
+|---|---------|-------------------|---------|
+| 1 | "S/1,500 parece caro" — no ven el Esencial a S/500 | 4 de 8 | 50% de visitantes se van |
+| 2 | "No habla MI idioma / no soy nicho listado" | 3 de 8 | Se sienten excluidos |
+| 3 | "No encuentro paquetes/precio exacto en la Home" | 3 de 8 | Abandonan buscando |
+| 4 | "¿Es solo 1 persona? ¿Y si desaparece?" | 2 de 8 | Desconfianza |
+| 5 | "0 testimonios = 0 confianza" | 2 de 8 | No contactan sin referido |
+
+### Modificaciones al inicio (Hero + primer scroll)
+
+| # | Cambio | Actual | Propuesta | Personas que ayuda |
+|---|--------|--------|-----------|-------------------|
+| 124 | **Hero subtitle → resultado** | "Webs, asistentes de WhatsApp y automatización — para que ninguna consulta se pierda..." | "Tu negocio responde solo — mientras tú trabajas. Web, WhatsApp y automatización que atienden por ti." | Todos (8/8) |
+| 125 | **Precio visible → "Desde S/500"** | "Desde S/1,500 · implementación completa" | "Desde S/500/mes · implementación en días" (o "Desde S/500 config + S/200/mes") | Jorge, Roberto, Ana, Valentina |
+| 126 | **Mini-pricing en Home** | No existe — solo "Desde S/X" | Agregar bloque con 3 niveles: "Esencial S/500 · Profesional S/1,500 · Integral S/3,500" con 1 línea cada uno | Ana, Valentina, Marco |
+| 127 | **"¿Otro rubro?"** en Soluciones | Solo 3 nichos listados | Agregar card/link: "¿Otro rubro? También funciona — conversemos" con link al diagnóstico | Pedro + cualquier no-listado |
+| 128 | **Frase-dolor por nicho** en cards Soluciones | Solo nombre del rubro | Subtítulo: "¿Pierdes llamadas?" / "¿Pacientes no confirman?" / "¿Consultas fuera de horario?" | Jorge, Carla, Roberto |
+| 129 | **Línea de continuidad** | Solo "Implementado por mí" | Agregar: "Soporte directo por WhatsApp. Si dejo de operar, te entrego todo configurado." | Lucía, Marco |
+| 130 | **Badges de confianza** en el hero o post-hero | Solo "API oficial" en landings de nicho | Agregar en Home: "🔒 API oficial WhatsApp" + "Operando desde 2026" + "Piloto 14 días sin riesgo" | Marco, Roberto |
+| 131 | **Mockup más variado** | Solo ejemplo de "citas" | Cambiar a ejemplo que incluya precios + horarios (no solo agendar) para que más rubros se identifiquen | Roberto, Pedro |
+| 132 | **ROI visible** | No hay justificación de precio | Agregar línea: "Si recuperas 2 clientes al mes, se paga solo" cerca del precio | Jorge, Roberto, Ana |
+| 133 | **"No es un bot genérico"** | No se dice explícitamente | Agregar línea prominente: "No es un bot genérico. Está configurado con la info real de TU negocio." | Todos |
+
+### Lo que SÍ funciona (NO tocar)
+
+- ✅ "Ninguna consulta sin respuesta" (heading) — todos entienden el dolor
+- ✅ "Diagnóstico gratis, 30 min, sin compromiso" — bajo riesgo
+- ✅ "Si no sabe la respuesta, te la pasa a ti" — resuelve miedo al bot
+- ✅ "Piloto 14 días" — genera seguridad (pero mover más arriba)
+- ✅ Mockup WhatsApp — se entiende visualmente
+- ✅ "Sin respuesta vs. atendida" — la sección más potente
+- ✅ "<30 seg" — concreto y diferenciador
+- ✅ Dark theme — se ve profesional/premium
+
+### Prioridad FASE 11
+
+```
+IMPRESCINDIBLE (sin esto pierdes 50%+ de visitantes):
+1. #124 Hero subtitle → resultado ("tu negocio responde solo") ✅ (Fase 10)
+2. #125 Precio → "Desde S/500" (no S/1,500) ✅ (Fase 10)
+3. #133 "No es genérico, configurado para TU negocio" ✅ (Fase 10)
+4. #130 Badges confianza (API oficial + piloto 14 días + desde 2026) ✅
+
+ALTO IMPACTO:
+5. #126 Mini-pricing (3 niveles visibles en Home) ✅
+6. #128 Frase-dolor por nicho en cards ✅ (Fase 10)
+7. #132 ROI visible ("se paga solo si recuperas 2 clientes") ✅
+8. #127 "¿Otro rubro? También funciona" ✅
+
+RECOMENDADO:
+9. #129 Línea de continuidad
+10. #131 Mockup más variado
+```

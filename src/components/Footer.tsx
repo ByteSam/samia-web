@@ -119,7 +119,7 @@ export default function Footer() {
         </div>
 
         <p className="mt-10 border-t border-ink/8 pt-6 text-ink/50">
-          © {new Date().getFullYear()} afynova · Atiendo negocios en Perú
+          © {new Date().getFullYear()} afynova · Atiendo negocios de Perú
         </p>
       </div>
     </footer>

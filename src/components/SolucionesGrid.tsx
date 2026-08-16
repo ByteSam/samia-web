@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowUpRight, Stethoscope, Scale, Wrench } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Stethoscope, Scale, Wrench } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import { whatsappLink, WHATSAPP_DIAGNOSTICO_MESSAGE } from "@/lib/contact";
 
 const NICHOS = [
   {
@@ -75,6 +76,33 @@ function NichoCard({
   );
 }
 
+function OtroRubroCard() {
+  return (
+    <a
+      href={whatsappLink(WHATSAPP_DIAGNOSTICO_MESSAGE)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="card-soft hover-lift card-hover-mars group relative flex h-full flex-col overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracota"
+    >
+      <span className="absolute inset-x-0 top-0 h-1 bg-ink/25" aria-hidden />
+      <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-ink/8 text-ink">
+        <MessageCircle className="h-5 w-5" strokeWidth={1.5} />
+      </span>
+      <h3 className="text-h3 mt-5 text-ink">¿Otro rubro?</h3>
+      <p className="mt-2 text-sm font-medium text-terracota-dark/90">
+        También funciona
+      </p>
+      <p className="text-small text-muted mt-1.5">
+        Si tu negocio no está en la lista, conversemos — el diagnóstico es gratis.
+      </p>
+      <span className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-medium text-terracota-dark">
+        Conversemos por WhatsApp{" "}
+        <ArrowUpRight className="link-card-arrow h-3.5 w-3.5" />
+      </span>
+    </a>
+  );
+}
+
 /** Grid bento de soluciones por rubro — Home, sección "Soluciones". */
 export default function SolucionesGrid({
   equalCards = false,
@@ -96,12 +124,15 @@ export default function SolucionesGrid({
       </Reveal>
 
       {equalCards ? (
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {NICHOS.map((n, i) => (
             <Reveal key={n.href} delay={i * 80}>
               <NichoCard n={n} />
             </Reveal>
           ))}
+          <Reveal delay={NICHOS.length * 80}>
+            <OtroRubroCard />
+          </Reveal>
         </div>
       ) : (
         <>
@@ -112,6 +143,9 @@ export default function SolucionesGrid({
                 <NichoCard n={n} featured={n.featured} />
               </Reveal>
             ))}
+            <Reveal delay={NICHOS.length * 80}>
+              <OtroRubroCard />
+            </Reveal>
           </div>
 
           {/* Desktop: bento — card featured + columna derecha */}
@@ -127,6 +161,9 @@ export default function SolucionesGrid({
               </Reveal>
             ))}
           </div>
+          <Reveal delay={200} className="mt-6 hidden md:block">
+            <OtroRubroCard />
+          </Reveal>
         </>
       )}
     </section>

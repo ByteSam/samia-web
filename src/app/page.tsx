@@ -91,7 +91,14 @@ export default function Home() {
               <div className="mt-4 flex flex-wrap gap-2">
                 <p className="hero-price-chip">Desde S/500 · según tu caso</p>
                 <p className="combo-chip">Combo web + asistente desde S/1,800</p>
-                <p className="piloto-badge">Piloto 14 días · si no funciona, no pagas la config</p>
+              </div>
+              <p className="mt-3 max-w-md text-sm text-secondary">
+                Si recuperas 2 clientes al mes, se paga solo
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <p className="piloto-badge">🔒 API oficial WhatsApp</p>
+                <p className="piloto-badge">Piloto 14 días sin riesgo</p>
+                <p className="piloto-badge">Operando desde 2026</p>
               </div>
             </Reveal>
 
@@ -138,6 +145,55 @@ export default function Home() {
       </section>
 
       <MarqueeStrip />
+
+      {/* Mini-pricing — 3 niveles (#126) */}
+      <section className="section-depth-a container-content section-py section-horizon">
+        <Reveal>
+          <span className="chip">Precios</span>
+          <h2 className="text-h2 mt-4 text-ink">Tres niveles claros</h2>
+          <p className="text-body mt-2 max-w-lg">
+            Configuración única + mensualidad. El alcance exacto lo cerramos en el diagnóstico.
+          </p>
+        </Reveal>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              nombre: "Esencial",
+              setup: "S/500",
+              mes: "S/200/mes",
+              linea: "Entrada: asistente o web de captación.",
+            },
+            {
+              nombre: "Profesional",
+              setup: "S/1,500",
+              mes: "S/450/mes",
+              linea: "Más flujo, más automatización.",
+              destacado: true,
+            },
+            {
+              nombre: "Integral",
+              setup: "S/3,500",
+              mes: "S/800/mes",
+              linea: "Web + asistente + automatización.",
+            },
+          ].map((p, i) => (
+            <Reveal key={p.nombre} delay={i * 60}>
+              <div
+                className={`h-full ${p.destacado ? "card-soft-tint" : "card-soft"} p-5`}
+              >
+                {p.destacado && <span className="chip mb-2">El más elegido</span>}
+                <h3 className="text-lg font-medium text-ink">{p.nombre}</h3>
+                <p className="mt-2 text-xl font-medium text-ink">
+                  {p.setup}{" "}
+                  <span className="text-sm font-normal text-muted">setup</span>
+                </p>
+                <p className="mt-0.5 text-base font-medium text-dorado">{p.mes}</p>
+                <p className="mt-3 text-sm text-secondary">{p.linea}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
       {/* COMPARACIÓN — consulta perdida vs atendida */}
       <section className="section-depth-b container-content section-py section-horizon">
